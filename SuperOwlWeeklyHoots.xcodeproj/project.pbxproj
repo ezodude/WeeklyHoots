@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
+		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
+		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
+		894C513113AB7B2900F83A5F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 894C512F13AB7B2900F83A5F /* InfoPlist.strings */; };
+		894C513413AB7B2900F83A5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513313AB7B2900F83A5F /* main.m */; };
+		894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */; };
+		894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C513813AB7B2900F83A5F /* MainWindow.xib */; };
+		894C513D13AB7B2900F83A5F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513C13AB7B2900F83A5F /* FirstViewController.m */; };
+		894C514013AB7B2900F83A5F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513F13AB7B2900F83A5F /* SecondViewController.m */; };
+		894C514313AB7B2900F83A5F /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514113AB7B2900F83A5F /* FirstView.xib */; };
+		894C514613AB7B2900F83A5F /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514413AB7B2900F83A5F /* SecondView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		894C512A13AB7B2900F83A5F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		894C512E13AB7B2900F83A5F /* SuperOwlWeeklyHoots-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SuperOwlWeeklyHoots-Info.plist"; sourceTree = "<group>"; };
+		894C513013AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		894C513213AB7B2900F83A5F /* SuperOwlWeeklyHoots-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuperOwlWeeklyHoots-Prefix.pch"; sourceTree = "<group>"; };
+		894C513313AB7B2900F83A5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperOwlWeeklyHootsAppDelegate.h; sourceTree = "<group>"; };
+		894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperOwlWeeklyHootsAppDelegate.m; sourceTree = "<group>"; };
+		894C513913AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		894C513B13AB7B2900F83A5F /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		894C513C13AB7B2900F83A5F /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		894C513E13AB7B2900F83A5F /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		894C513F13AB7B2900F83A5F /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		894C514213AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
+		894C514513AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		894C511F13AB7B2900F83A5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */,
+				894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */,
+				894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		894C511713AB7B2900F83A5F = {
+			isa = PBXGroup;
+			children = (
+				894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */,
+				894C512513AB7B2900F83A5F /* Frameworks */,
+				894C512313AB7B2900F83A5F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		894C512313AB7B2900F83A5F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		894C512513AB7B2900F83A5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				894C512613AB7B2900F83A5F /* UIKit.framework */,
+				894C512813AB7B2900F83A5F /* Foundation.framework */,
+				894C512A13AB7B2900F83A5F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */ = {
+			isa = PBXGroup;
+			children = (
+				894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */,
+				894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */,
+				894C513813AB7B2900F83A5F /* MainWindow.xib */,
+				894C513B13AB7B2900F83A5F /* FirstViewController.h */,
+				894C513C13AB7B2900F83A5F /* FirstViewController.m */,
+				894C513E13AB7B2900F83A5F /* SecondViewController.h */,
+				894C513F13AB7B2900F83A5F /* SecondViewController.m */,
+				894C514113AB7B2900F83A5F /* FirstView.xib */,
+				894C514413AB7B2900F83A5F /* SecondView.xib */,
+				894C512D13AB7B2900F83A5F /* Supporting Files */,
+			);
+			path = SuperOwlWeeklyHoots;
+			sourceTree = "<group>";
+		};
+		894C512D13AB7B2900F83A5F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				894C512E13AB7B2900F83A5F /* SuperOwlWeeklyHoots-Info.plist */,
+				894C512F13AB7B2900F83A5F /* InfoPlist.strings */,
+				894C513213AB7B2900F83A5F /* SuperOwlWeeklyHoots-Prefix.pch */,
+				894C513313AB7B2900F83A5F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		894C512113AB7B2900F83A5F /* SuperOwlWeeklyHoots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 894C514913AB7B2900F83A5F /* Build configuration list for PBXNativeTarget "SuperOwlWeeklyHoots" */;
+			buildPhases = (
+				894C511E13AB7B2900F83A5F /* Sources */,
+				894C511F13AB7B2900F83A5F /* Frameworks */,
+				894C512013AB7B2900F83A5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperOwlWeeklyHoots;
+			productName = SuperOwlWeeklyHoots;
+			productReference = 894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		894C511913AB7B2900F83A5F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Said.fm Ltd";
+			};
+			buildConfigurationList = 894C511C13AB7B2900F83A5F /* Build configuration list for PBXProject "SuperOwlWeeklyHoots" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 894C511713AB7B2900F83A5F;
+			productRefGroup = 894C512313AB7B2900F83A5F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				894C512113AB7B2900F83A5F /* SuperOwlWeeklyHoots */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		894C512013AB7B2900F83A5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				894C513113AB7B2900F83A5F /* InfoPlist.strings in Resources */,
+				894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */,
+				894C514313AB7B2900F83A5F /* FirstView.xib in Resources */,
+				894C514613AB7B2900F83A5F /* SecondView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		894C511E13AB7B2900F83A5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				894C513413AB7B2900F83A5F /* main.m in Sources */,
+				894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */,
+				894C513D13AB7B2900F83A5F /* FirstViewController.m in Sources */,
+				894C514013AB7B2900F83A5F /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		894C512F13AB7B2900F83A5F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				894C513013AB7B2900F83A5F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		894C513813AB7B2900F83A5F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				894C513913AB7B2900F83A5F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		894C514113AB7B2900F83A5F /* FirstView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				894C514213AB7B2900F83A5F /* en */,
+			);
+			name = FirstView.xib;
+			sourceTree = "<group>";
+		};
+		894C514413AB7B2900F83A5F /* SecondView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				894C514513AB7B2900F83A5F /* en */,
+			);
+			name = SecondView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		894C514713AB7B2900F83A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		894C514813AB7B2900F83A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		894C514A13AB7B2900F83A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Prefix.pch";
+				INFOPLIST_FILE = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		894C514B13AB7B2900F83A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Prefix.pch";
+				INFOPLIST_FILE = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		894C511C13AB7B2900F83A5F /* Build configuration list for PBXProject "SuperOwlWeeklyHoots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				894C514713AB7B2900F83A5F /* Debug */,
+				894C514813AB7B2900F83A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		894C514913AB7B2900F83A5F /* Build configuration list for PBXNativeTarget "SuperOwlWeeklyHoots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				894C514A13AB7B2900F83A5F /* Debug */,
+				894C514B13AB7B2900F83A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 894C511913AB7B2900F83A5F /* Project object */;
+}
