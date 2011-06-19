@@ -14,10 +14,10 @@
 		894C513413AB7B2900F83A5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513313AB7B2900F83A5F /* main.m */; };
 		894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */; };
 		894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C513813AB7B2900F83A5F /* MainWindow.xib */; };
-		894C513D13AB7B2900F83A5F /* WeeklyHootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513C13AB7B2900F83A5F /* WeeklyHootController.m */; };
-		894C514013AB7B2900F83A5F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513F13AB7B2900F83A5F /* SecondViewController.m */; };
-		894C514313AB7B2900F83A5F /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514113AB7B2900F83A5F /* FirstView.xib */; };
-		894C514613AB7B2900F83A5F /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514413AB7B2900F83A5F /* SecondView.xib */; };
+		894C513D13AB7B2900F83A5F /* WeeklyHootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513C13AB7B2900F83A5F /* WeeklyHootViewController.m */; };
+		894C514013AB7B2900F83A5F /* RewindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513F13AB7B2900F83A5F /* RewindViewController.m */; };
+		894C514313AB7B2900F83A5F /* WeeklyHootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514113AB7B2900F83A5F /* WeeklyHootView.xib */; };
+		894C514613AB7B2900F83A5F /* RewindView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514413AB7B2900F83A5F /* RewindView.xib */; };
 		894C514D13AB9E9D00F83A5F /* hoots.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C514C13AB9E9D00F83A5F /* hoots.png */; };
 		894C515113ABA47F00F83A5F /* historical-hoots.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515013ABA47F00F83A5F /* historical-hoots.png */; };
 		894C515313ABA81300F83A5F /* starred.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515213ABA81300F83A5F /* starred.png */; };
@@ -37,12 +37,12 @@
 		894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperOwlWeeklyHootsAppDelegate.h; sourceTree = "<group>"; };
 		894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperOwlWeeklyHootsAppDelegate.m; sourceTree = "<group>"; };
 		894C513913AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		894C513B13AB7B2900F83A5F /* WeeklyHootController.h */ = {isa = PBXFileReference; path = WeeklyHootController.h; sourceTree = "<group>"; };
-		894C513C13AB7B2900F83A5F /* WeeklyHootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeeklyHootController.m; sourceTree = "<group>"; };
-		894C513E13AB7B2900F83A5F /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		894C513F13AB7B2900F83A5F /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		894C514213AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
-		894C514513AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
+		894C513B13AB7B2900F83A5F /* WeeklyHootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeeklyHootViewController.h; sourceTree = "<group>"; };
+		894C513C13AB7B2900F83A5F /* WeeklyHootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeeklyHootViewController.m; sourceTree = "<group>"; };
+		894C513E13AB7B2900F83A5F /* RewindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewindViewController.h; sourceTree = "<group>"; };
+		894C513F13AB7B2900F83A5F /* RewindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewindViewController.m; sourceTree = "<group>"; };
+		894C514213AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WeeklyHootView.xib; sourceTree = "<group>"; };
+		894C514513AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RewindView.xib; sourceTree = "<group>"; };
 		894C514C13AB9E9D00F83A5F /* hoots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hoots.png; sourceTree = "<group>"; };
 		894C515013ABA47F00F83A5F /* historical-hoots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "historical-hoots.png"; sourceTree = "<group>"; };
 		894C515213ABA81300F83A5F /* starred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starred.png; sourceTree = "<group>"; };
@@ -97,12 +97,12 @@
 				894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */,
 				894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */,
 				894C513813AB7B2900F83A5F /* MainWindow.xib */,
-				894C513B13AB7B2900F83A5F /* WeeklyHootController.h */,
-				894C513C13AB7B2900F83A5F /* WeeklyHootController.m */,
-				894C513E13AB7B2900F83A5F /* SecondViewController.h */,
-				894C513F13AB7B2900F83A5F /* SecondViewController.m */,
-				894C514113AB7B2900F83A5F /* FirstView.xib */,
-				894C514413AB7B2900F83A5F /* SecondView.xib */,
+				894C513B13AB7B2900F83A5F /* WeeklyHootViewController.h */,
+				894C513C13AB7B2900F83A5F /* WeeklyHootViewController.m */,
+				894C513E13AB7B2900F83A5F /* RewindViewController.h */,
+				894C513F13AB7B2900F83A5F /* RewindViewController.m */,
+				894C514113AB7B2900F83A5F /* WeeklyHootView.xib */,
+				894C514413AB7B2900F83A5F /* RewindView.xib */,
 				894C512D13AB7B2900F83A5F /* Supporting Files */,
 			);
 			path = SuperOwlWeeklyHoots;
@@ -176,8 +176,8 @@
 			files = (
 				894C513113AB7B2900F83A5F /* InfoPlist.strings in Resources */,
 				894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */,
-				894C514313AB7B2900F83A5F /* FirstView.xib in Resources */,
-				894C514613AB7B2900F83A5F /* SecondView.xib in Resources */,
+				894C514313AB7B2900F83A5F /* WeeklyHootView.xib in Resources */,
+				894C514613AB7B2900F83A5F /* RewindView.xib in Resources */,
 				894C514D13AB9E9D00F83A5F /* hoots.png in Resources */,
 				894C515113ABA47F00F83A5F /* historical-hoots.png in Resources */,
 				894C515313ABA81300F83A5F /* starred.png in Resources */,
@@ -195,8 +195,8 @@
 			files = (
 				894C513413AB7B2900F83A5F /* main.m in Sources */,
 				894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */,
-				894C513D13AB7B2900F83A5F /* WeeklyHootController.m in Sources */,
-				894C514013AB7B2900F83A5F /* SecondViewController.m in Sources */,
+				894C513D13AB7B2900F83A5F /* WeeklyHootViewController.m in Sources */,
+				894C514013AB7B2900F83A5F /* RewindViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,20 +219,20 @@
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
-		894C514113AB7B2900F83A5F /* FirstView.xib */ = {
+		894C514113AB7B2900F83A5F /* WeeklyHootView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				894C514213AB7B2900F83A5F /* en */,
 			);
-			name = FirstView.xib;
+			name = WeeklyHootView.xib;
 			sourceTree = "<group>";
 		};
-		894C514413AB7B2900F83A5F /* SecondView.xib */ = {
+		894C514413AB7B2900F83A5F /* RewindView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				894C514513AB7B2900F83A5F /* en */,
 			);
-			name = SecondView.xib;
+			name = RewindView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -317,6 +317,7 @@
 				894C514B13AB7B2900F83A5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
