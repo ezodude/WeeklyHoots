@@ -18,6 +18,11 @@
 		894C514013AB7B2900F83A5F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513F13AB7B2900F83A5F /* SecondViewController.m */; };
 		894C514313AB7B2900F83A5F /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514113AB7B2900F83A5F /* FirstView.xib */; };
 		894C514613AB7B2900F83A5F /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514413AB7B2900F83A5F /* SecondView.xib */; };
+		894C514D13AB9E9D00F83A5F /* hoots.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C514C13AB9E9D00F83A5F /* hoots.png */; };
+		894C515113ABA47F00F83A5F /* historical-hoots.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515013ABA47F00F83A5F /* historical-hoots.png */; };
+		894C515313ABA81300F83A5F /* starred.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515213ABA81300F83A5F /* starred.png */; };
+		894C515513ABA9A900F83A5F /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515413ABA9A900F83A5F /* settings.png */; };
+		894C515713ABACC300F83A5F /* rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515613ABACC300F83A5F /* rewind.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		894C513F13AB7B2900F83A5F /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		894C514213AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
 		894C514513AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
+		894C514C13AB9E9D00F83A5F /* hoots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hoots.png; sourceTree = "<group>"; };
+		894C515013ABA47F00F83A5F /* historical-hoots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "historical-hoots.png"; sourceTree = "<group>"; };
+		894C515213ABA81300F83A5F /* starred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starred.png; sourceTree = "<group>"; };
+		894C515413ABA9A900F83A5F /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		894C515613ABACC300F83A5F /* rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewind.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +111,11 @@
 		894C512D13AB7B2900F83A5F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				894C515613ABACC300F83A5F /* rewind.png */,
+				894C515413ABA9A900F83A5F /* settings.png */,
+				894C515213ABA81300F83A5F /* starred.png */,
+				894C515013ABA47F00F83A5F /* historical-hoots.png */,
+				894C514C13AB9E9D00F83A5F /* hoots.png */,
 				894C512E13AB7B2900F83A5F /* SuperOwlWeeklyHoots-Info.plist */,
 				894C512F13AB7B2900F83A5F /* InfoPlist.strings */,
 				894C513213AB7B2900F83A5F /* SuperOwlWeeklyHoots-Prefix.pch */,
@@ -163,6 +178,11 @@
 				894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */,
 				894C514313AB7B2900F83A5F /* FirstView.xib in Resources */,
 				894C514613AB7B2900F83A5F /* SecondView.xib in Resources */,
+				894C514D13AB9E9D00F83A5F /* hoots.png in Resources */,
+				894C515113ABA47F00F83A5F /* historical-hoots.png in Resources */,
+				894C515313ABA81300F83A5F /* starred.png in Resources */,
+				894C515513ABA9A900F83A5F /* settings.png in Resources */,
+				894C515713ABACC300F83A5F /* rewind.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
