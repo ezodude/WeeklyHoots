@@ -14,7 +14,7 @@
 		894C513413AB7B2900F83A5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513313AB7B2900F83A5F /* main.m */; };
 		894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */; };
 		894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C513813AB7B2900F83A5F /* MainWindow.xib */; };
-		894C513D13AB7B2900F83A5F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513C13AB7B2900F83A5F /* FirstViewController.m */; };
+		894C513D13AB7B2900F83A5F /* WeeklyHootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513C13AB7B2900F83A5F /* WeeklyHootController.m */; };
 		894C514013AB7B2900F83A5F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513F13AB7B2900F83A5F /* SecondViewController.m */; };
 		894C514313AB7B2900F83A5F /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514113AB7B2900F83A5F /* FirstView.xib */; };
 		894C514613AB7B2900F83A5F /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514413AB7B2900F83A5F /* SecondView.xib */; };
@@ -37,8 +37,8 @@
 		894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperOwlWeeklyHootsAppDelegate.h; sourceTree = "<group>"; };
 		894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperOwlWeeklyHootsAppDelegate.m; sourceTree = "<group>"; };
 		894C513913AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		894C513B13AB7B2900F83A5F /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		894C513C13AB7B2900F83A5F /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		894C513B13AB7B2900F83A5F /* WeeklyHootController.h */ = {isa = PBXFileReference; path = WeeklyHootController.h; sourceTree = "<group>"; };
+		894C513C13AB7B2900F83A5F /* WeeklyHootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeeklyHootController.m; sourceTree = "<group>"; };
 		894C513E13AB7B2900F83A5F /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		894C513F13AB7B2900F83A5F /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		894C514213AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
@@ -97,8 +97,8 @@
 				894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */,
 				894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */,
 				894C513813AB7B2900F83A5F /* MainWindow.xib */,
-				894C513B13AB7B2900F83A5F /* FirstViewController.h */,
-				894C513C13AB7B2900F83A5F /* FirstViewController.m */,
+				894C513B13AB7B2900F83A5F /* WeeklyHootController.h */,
+				894C513C13AB7B2900F83A5F /* WeeklyHootController.m */,
 				894C513E13AB7B2900F83A5F /* SecondViewController.h */,
 				894C513F13AB7B2900F83A5F /* SecondViewController.m */,
 				894C514113AB7B2900F83A5F /* FirstView.xib */,
@@ -195,7 +195,7 @@
 			files = (
 				894C513413AB7B2900F83A5F /* main.m in Sources */,
 				894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */,
-				894C513D13AB7B2900F83A5F /* FirstViewController.m in Sources */,
+				894C513D13AB7B2900F83A5F /* WeeklyHootController.m in Sources */,
 				894C514013AB7B2900F83A5F /* SecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
