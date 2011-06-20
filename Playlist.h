@@ -24,4 +24,9 @@
 @property (nonatomic, retain) NSString *duration;
 @property (nonatomic, retain) NSString *publicationDate;
 @property (nonatomic, retain) NSArray *programmes;
+
+-(Playlist *)initWithTitle:(NSString *)title 
+                storyJockey:(NSString *)storyJockey 
+                summary:(NSString *)summary duration:(NSString *)duration
+                programmes:(NSArray *)programmes;
 @end

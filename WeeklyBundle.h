@@ -12,13 +12,15 @@
 @interface WeeklyBundle : NSObject {
     NSString *_startDate;
     NSString *_endDate;
-    NSString *_durationInMinutes;
+    NSString *_durationInHours;
     NSArray *_playlists;
 }
 
 @property (nonatomic, retain) NSString *startDate;
 @property (nonatomic, retain) NSString *endDate;
-@property (nonatomic, assign) NSString *durationInMinutes;
+@property (nonatomic, assign) NSString *durationInHours;
 @property (nonatomic, retain) NSArray *playlists;
+
+-(WeeklyBundle *)initWithStartDate:(NSString *)startDate endDate:(NSString *)endDate durationInHours:(NSString *)durationInHours playlists:(NSArray *)playlists;
 
 @end

@@ -13,7 +13,17 @@
 
 @synthesize startDate=_startDate;
 @synthesize endDate=_endDate;
-@synthesize durationInMinutes=_durationInMinutes;
+@synthesize durationInHours=_durationInHours;
 @synthesize playlists=_playlists;
 
+-(WeeklyBundle *)initWithStartDate:(NSString *)startDate endDate:(NSString *)endDate durationInHours:(NSString *)durationInHours playlists:(NSArray *)playlists{
+    self = [super init];
+    if(self){
+        self.startDate = startDate;
+        self.endDate = endDate;
+        self.durationInHours = durationInHours;
+        self.playlists = playlists;
+    }
+    return self;
+}
 @end

@@ -13,6 +13,9 @@
     NSString *_title;
     NSString *_duration;
 }
+
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *duration;
+
+-(Programme *)initWithTitle:(NSString *)title duration:(NSString *)duration;
 @end
