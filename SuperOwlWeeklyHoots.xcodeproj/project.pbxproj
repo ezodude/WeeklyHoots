@@ -23,6 +23,9 @@
 		894C515313ABA81300F83A5F /* starred.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515213ABA81300F83A5F /* starred.png */; };
 		894C515513ABA9A900F83A5F /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515413ABA9A900F83A5F /* settings.png */; };
 		894C515713ABACC300F83A5F /* rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = 894C515613ABACC300F83A5F /* rewind.png */; };
+		89DF135413AF9351005A557A /* WeeklyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135313AF9351005A557A /* WeeklyBundle.m */; };
+		89DF135713AF9941005A557A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135613AF9941005A557A /* Playlist.m */; };
+		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,12 @@
 		894C515213ABA81300F83A5F /* starred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starred.png; sourceTree = "<group>"; };
 		894C515413ABA9A900F83A5F /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		894C515613ABACC300F83A5F /* rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewind.png; sourceTree = "<group>"; };
+		89DF135213AF9351005A557A /* WeeklyBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundle.h; sourceTree = "<group>"; };
+		89DF135313AF9351005A557A /* WeeklyBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundle.m; sourceTree = "<group>"; };
+		89DF135513AF9941005A557A /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
+		89DF135613AF9941005A557A /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
+		89DF135813AF9A86005A557A /* Programme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Programme.h; sourceTree = "<group>"; };
+		89DF135913AF9A86005A557A /* Programme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Programme.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +76,7 @@
 		894C511713AB7B2900F83A5F = {
 			isa = PBXGroup;
 			children = (
+				89DF135113AF931C005A557A /* Models */,
 				894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */,
 				894C512513AB7B2900F83A5F /* Frameworks */,
 				894C512313AB7B2900F83A5F /* Products */,
@@ -122,6 +132,19 @@
 				894C513313AB7B2900F83A5F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89DF135113AF931C005A557A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				89DF135213AF9351005A557A /* WeeklyBundle.h */,
+				89DF135313AF9351005A557A /* WeeklyBundle.m */,
+				89DF135513AF9941005A557A /* Playlist.h */,
+				89DF135613AF9941005A557A /* Playlist.m */,
+				89DF135813AF9A86005A557A /* Programme.h */,
+				89DF135913AF9A86005A557A /* Programme.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +220,9 @@
 				894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */,
 				894C513D13AB7B2900F83A5F /* WeeklyHootViewController.m in Sources */,
 				894C514013AB7B2900F83A5F /* RewindViewController.m in Sources */,
+				89DF135413AF9351005A557A /* WeeklyBundle.m in Sources */,
+				89DF135713AF9941005A557A /* Playlist.m in Sources */,
+				89DF135A13AF9A86005A557A /* Programme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
