@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeeklyHootSectionHeader.h"
+
 @class WeeklyBundle;
+@class WeeklyHootSectionHeader;
 
 @interface WeeklyHootViewController : UITableViewController {
     WeeklyBundle *_currentBundle;

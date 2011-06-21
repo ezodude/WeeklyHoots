@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad
 {
+    self.tableView.sectionHeaderHeight = 66.0;
     Programme *firstProg = [[Programme alloc] initWithTitle:@"Programme1" duration:@"30"];
     
     NSArray *progs = [[NSArray alloc] initWithObjects:firstProg, nil];
@@ -27,7 +28,7 @@
                                         duration:@"1" 
                                         programmes: progs];
     NSArray *playlists = [[NSArray alloc] initWithObjects:firstPlaylist, nil];
-    WeeklyBundle *bundle = [[WeeklyBundle alloc] initWithStartDate:@"13 June 11" endDate:@"19th June 11" durationInHours:@"10" playlists:playlists];
+    WeeklyBundle *bundle = [[WeeklyBundle alloc] initWithStartDate:@"13th" endDate:@"19th June 11" durationInHours:@"10" playlists:playlists];
     
     self.currentBundle = bundle;
     
@@ -76,11 +77,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [[self.currentBundle playlists] count];
 }
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return [NSString stringWithFormat:@"Starting %@: %@ hrs", [self.currentBundle startDate], [self.currentBundle durationInHours]];
-}
-
+     
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
     return @"Previously...";
 }
@@ -98,4 +95,25 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"By %@", [playlist storyJockey]];
     return cell;
 }
+
+#pragma mark -
+#pragma mark TableView Delegate Methods
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    WeeklyHootSectionHeader *header = nil;
+    
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"WeeklyHootSectionHeaderView" owner:self options:nil];
+    
+    for (id currentObject in topLevelObjects) {
+        if ([currentObject isKindOfClass:[UIView class]]) {
+            header = (WeeklyHootSectionHeader *) currentObject;
+            break;
+        }
+    }
+    
+    header.startToEndDateLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.currentBundle startDate], [self.currentBundle endDate]];
+    header.durationLabel.text = [NSString stringWithFormat:@"%@ Hrs", [self.currentBundle durationInHours]];
+    return header;
+}
+
 @end

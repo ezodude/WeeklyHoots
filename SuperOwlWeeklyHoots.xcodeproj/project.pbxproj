@@ -26,6 +26,8 @@
 		89DF135413AF9351005A557A /* WeeklyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135313AF9351005A557A /* WeeklyBundle.m */; };
 		89DF135713AF9941005A557A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135613AF9941005A557A /* Playlist.m */; };
 		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
+		89DF135D13B0A046005A557A /* WeeklyHootSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */; };
+		89DF136013B0A27D005A557A /* WeeklyHootSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135F13B0A27D005A557A /* WeeklyHootSectionHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,9 @@
 		89DF135613AF9941005A557A /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		89DF135813AF9A86005A557A /* Programme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Programme.h; sourceTree = "<group>"; };
 		89DF135913AF9A86005A557A /* Programme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Programme.m; sourceTree = "<group>"; };
+		89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyHootSectionHeaderView.xib; sourceTree = "<group>"; };
+		89DF135E13B0A27D005A557A /* WeeklyHootSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyHootSectionHeader.h; sourceTree = "<group>"; };
+		89DF135F13B0A27D005A557A /* WeeklyHootSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyHootSectionHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +81,7 @@
 		894C511713AB7B2900F83A5F = {
 			isa = PBXGroup;
 			children = (
+				89DF135B13B0A000005A557A /* Custom Views */,
 				89DF135113AF931C005A557A /* Models */,
 				894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */,
 				894C512513AB7B2900F83A5F /* Frameworks */,
@@ -147,6 +153,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		89DF135B13B0A000005A557A /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */,
+				89DF135E13B0A27D005A557A /* WeeklyHootSectionHeader.h */,
+				89DF135F13B0A27D005A557A /* WeeklyHootSectionHeader.m */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,6 +222,7 @@
 				894C515313ABA81300F83A5F /* starred.png in Resources */,
 				894C515513ABA9A900F83A5F /* settings.png in Resources */,
 				894C515713ABACC300F83A5F /* rewind.png in Resources */,
+				89DF135D13B0A046005A557A /* WeeklyHootSectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +240,7 @@
 				89DF135413AF9351005A557A /* WeeklyBundle.m in Sources */,
 				89DF135713AF9941005A557A /* Playlist.m in Sources */,
 				89DF135A13AF9A86005A557A /* Programme.m in Sources */,
+				89DF136013B0A27D005A557A /* WeeklyHootSectionHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
