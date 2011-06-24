@@ -6,6 +6,7 @@
 //  Copyright 2011 Said.fm Ltd. All rights reserved.
 //
 
+#import "Environment.h"
 #import "WeeklyHootViewController.h"
 #import "WeeklyBundle.h"
 #import "Playlist.h"
@@ -20,7 +21,10 @@
 
 - (void)viewDidLoad
 {
-    NSURL *url = [NSURL URLWithString:@"http://192.168.1.67:5000/bundles/current.json"];
+    Environment *myEnvironment = [Environment sharedInstance];
+    NSString *programmesAPIURL = myEnvironment.programmesAPIURL;
+    
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL]];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request startSynchronous];
     NSError *error = [request error];
@@ -31,7 +35,7 @@
         NSLog(@"The Bundle start date is: %@", [dictionary objectForKey:@"start_date"]);
     }
     
-    self.tableView.sectionHeaderHeight = 66.0;
+    self.tableView.sectionHeaderHeight = 66.0;  
     Programme *firstProg = [[Programme alloc] initWithTitle:@"Programme1" duration:@"30"];
     
     NSArray *progs = [[NSArray alloc] initWithObjects:firstProg, nil];
