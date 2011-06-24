@@ -10,6 +10,8 @@
 #import "WeeklyBundle.h"
 #import "Playlist.h"
 #import "Programme.h"
+#import "ASIHTTPRequest.h"
+#import "JSONKit/JSONKit.h"
 
 @implementation WeeklyHootViewController
 
@@ -18,6 +20,17 @@
 
 - (void)viewDidLoad
 {
+    NSURL *url = [NSURL URLWithString:@"http://192.168.1.67:5000/bundles/current.json"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request startSynchronous];
+    NSError *error = [request error];
+    if (!error) {
+        NSString *response = [request responseString];
+        NSDictionary *dictionary = (NSDictionary *)[response objectFromJSONString];
+
+        NSLog(@"The Bundle start date is: %@", [dictionary objectForKey:@"start_date"]);
+    }
+    
     self.tableView.sectionHeaderHeight = 66.0;
     Programme *firstProg = [[Programme alloc] initWithTitle:@"Programme1" duration:@"30"];
     

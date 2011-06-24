@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:asi-http-request"
+      name = "asi-http-request">
+      <FileRef
+         location = "group:ASIHTTPRequest.xcworkspace">
+      </FileRef>
+      <Group
+         location = "group:Build Scripts"
+         name = "Build Scripts">
+         <FileRef
+            location = "group:fetch_ios_ghunit.rb">
+         </FileRef>
+         <FileRef
+            location = "group:fetch_mac_ghunit.rb">
+         </FileRef>
+         <FileRef
+            location = "group:set_version_number.rb">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Classes"
+         name = "Classes">
+         <FileRef
+            location = "group:ASIAuthenticationDialog.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIAuthenticationDialog.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASICacheDelegate.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIDataCompressor.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIDataCompressor.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASIDataDecompressor.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIDataDecompressor.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASIDownloadCache.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIDownloadCache.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASIFormDataRequest.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIFormDataRequest.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASIHTTPRequest.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIHTTPRequest.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASIHTTPRequestConfig.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIHTTPRequestDelegate.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIInputStream.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASIInputStream.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASINetworkQueue.h">
+         </FileRef>
+         <FileRef
+            location = "group:ASINetworkQueue.m">
+         </FileRef>
+         <FileRef
+            location = "group:ASIProgressDelegate.h">
+         </FileRef>
+         <Group
+            location = "group:ASIWebPageRequest"
+            name = "ASIWebPageRequest">
+            <FileRef
+               location = "group:ASIWebPageRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIWebPageRequest.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:CloudFiles"
+            name = "CloudFiles">
+            <FileRef
+               location = "group:ASICloudFilesCDNRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesCDNRequest.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesContainer.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesContainer.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesContainerRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesContainerRequest.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesContainerXMLParserDelegate.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesContainerXMLParserDelegate.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesObject.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesObject.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesObjectRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesObjectRequest.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesRequest.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:S3"
+            name = "S3">
+            <FileRef
+               location = "group:ASINSXMLParserCompat.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3Bucket.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3Bucket.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3BucketObject.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3BucketObject.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3BucketRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3BucketRequest.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3ObjectRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3ObjectRequest.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3Request.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3Request.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3ServiceRequest.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3ServiceRequest.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Tests"
+            name = "Tests">
+            <FileRef
+               location = "group:ASICloudFilesRequestTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASICloudFilesRequestTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIDataCompressorTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIDataCompressorTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIDownloadCacheTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIDownloadCacheTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIFormDataRequestTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIFormDataRequestTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIHTTPRequestTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIHTTPRequestTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASINetworkQueueTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASINetworkQueueTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3RequestTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIS3RequestTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASITestCase.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASITestCase.m">
+            </FileRef>
+            <FileRef
+               location = "group:ASIWebPageRequestTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ASIWebPageRequestTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:BlocksTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:BlocksTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ClientCertificateTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ClientCertificateTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:GHUnitTestMain.m">
+            </FileRef>
+            <FileRef
+               location = "group:PerformanceTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:PerformanceTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:ProxyTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:ProxyTests.m">
+            </FileRef>
+            <FileRef
+               location = "group:StressTests.h">
+            </FileRef>
+            <FileRef
+               location = "group:StressTests.m">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:DONORS">
+      </FileRef>
+      <Group
+         location = "group:External"
+         name = "External">
+         <Group
+            location = "group:GHUnit"
+            name = "GHUnit">
+            <FileRef
+               location = "group:README-GHUnit">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Reachability"
+            name = "Reachability">
+            <FileRef
+               location = "group:Reachability.h">
+            </FileRef>
+            <FileRef
+               location = "group:Reachability.m">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:iPhone Sample"
+         name = "iPhone Sample">
+         <FileRef
+            location = "group:AuthenticationViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:AuthenticationViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:DetailCell.h">
+         </FileRef>
+         <FileRef
+            location = "group:DetailCell.m">
+         </FileRef>
+         <FileRef
+            location = "group:GHUnitIOSTestMain.m">
+         </FileRef>
+         <FileRef
+            location = "group:InfoCell.h">
+         </FileRef>
+         <FileRef
+            location = "group:InfoCell.m">
+         </FileRef>
+         <FileRef
+            location = "group:iPadInfo.plist">
+         </FileRef>
+         <FileRef
+            location = "group:iPadSampleAppDelegate.h">
+         </FileRef>
+         <FileRef
+            location = "group:iPadSampleAppDelegate.m">
+         </FileRef>
+         <FileRef
+            location = "group:iphone-icon.png">
+         </FileRef>
+         <FileRef
+            location = "group:iphone-tests-icon.png">
+         </FileRef>
+         <FileRef
+            location = "group:iPhone_Prefix.pch">
+         </FileRef>
+         <FileRef
+            location = "group:iPhoneInfo.plist">
+         </FileRef>
+         <FileRef
+            location = "group:iPhoneSampleAppDelegate.h">
+         </FileRef>
+         <FileRef
+            location = "group:iPhoneSampleAppDelegate.m">
+         </FileRef>
+         <FileRef
+            location = "group:main.m">
+         </FileRef>
+         <FileRef
+            location = "group:QueueViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:QueueViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:RequestProgressCell.h">
+         </FileRef>
+         <FileRef
+            location = "group:RequestProgressCell.m">
+         </FileRef>
+         <Group
+            location = "group:Resources"
+            name = "Resources">
+            <FileRef
+               location = "group:client.p12">
+            </FileRef>
+            <FileRef
+               location = "group:info.png">
+            </FileRef>
+            <FileRef
+               location = "group:iPadMainWindow.xib">
+            </FileRef>
+            <FileRef
+               location = "group:iPhoneMainWindow.xib">
+            </FileRef>
+            <FileRef
+               location = "group:Sample.xib">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:RootViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:RootViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:SampleViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:SampleViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:SynchronousViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:SynchronousViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:Tests-Info.plist">
+         </FileRef>
+         <FileRef
+            location = "group:ToggleCell.h">
+         </FileRef>
+         <FileRef
+            location = "group:ToggleCell.m">
+         </FileRef>
+         <FileRef
+            location = "group:UploadViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:UploadViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:WebPageViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:WebPageViewController.m">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:iPhone.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:libasihttp.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:LICENSE">
+      </FileRef>
+      <Group
+         location = "group:Mac Sample"
+         name = "Mac Sample">
+         <FileRef
+            location = "group:AppDelegate.h">
+         </FileRef>
+         <FileRef
+            location = "group:AppDelegate.m">
+         </FileRef>
+         <Group
+            location = "group:English.lproj"
+            name = "English.lproj">
+            <FileRef
+               location = "group:InfoPlist.strings">
+            </FileRef>
+            <FileRef
+               location = "group:MainMenu.xib">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:Info.plist">
+         </FileRef>
+         <FileRef
+            location = "group:Mac_Prefix.pch">
+         </FileRef>
+         <FileRef
+            location = "group:main.m">
+         </FileRef>
+         <FileRef
+            location = "group:Tests-Info.plist">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:Mac.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:README.textile">
+      </FileRef>
+      <FileRef
+         location = "group:strict.xcconfig">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "container:SuperOwlWeeklyHoots.xcodeproj">
+   </FileRef>
+</Workspace>

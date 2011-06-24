@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89099BE913B4969D00FEE82B /* libasihttp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BE813B4969D00FEE82B /* libasihttp.a */; };
+		89099BEB13B49F0600FEE82B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BEA13B49F0600FEE82B /* CFNetwork.framework */; };
+		89099BED13B49F2C00FEE82B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BEC13B49F2C00FEE82B /* SystemConfiguration.framework */; };
+		89099BEF13B49F3700FEE82B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BEE13B49F3700FEE82B /* MobileCoreServices.framework */; };
+		89099BF213B49F5A00FEE82B /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BF113B49F5A00FEE82B /* libz.1.2.3.dylib */; };
+		89099BF913B4A2E300FEE82B /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 89099BF513B4A2E300FEE82B /* CHANGELOG.md */; };
+		89099BFA13B4A2E300FEE82B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 89099BF713B4A2E300FEE82B /* JSONKit.m */; };
+		89099BFB13B4A2E300FEE82B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 89099BF813B4A2E300FEE82B /* README.md */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -31,6 +39,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89099BE813B4969D00FEE82B /* libasihttp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libasihttp.a; sourceTree = SOURCE_ROOT; };
+		89099BEA13B49F0600FEE82B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		89099BEC13B49F2C00FEE82B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		89099BEE13B49F3700FEE82B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		89099BF013B49F4500FEE82B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		89099BF113B49F5A00FEE82B /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		89099BF513B4A2E300FEE82B /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		89099BF613B4A2E300FEE82B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		89099BF713B4A2E300FEE82B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		89099BF813B4A2E300FEE82B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,15 +87,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89099BF213B49F5A00FEE82B /* libz.1.2.3.dylib in Frameworks */,
+				894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */,
+				89099BEF13B49F3700FEE82B /* MobileCoreServices.framework in Frameworks */,
+				89099BED13B49F2C00FEE82B /* SystemConfiguration.framework in Frameworks */,
+				89099BEB13B49F0600FEE82B /* CFNetwork.framework in Frameworks */,
+				89099BE913B4969D00FEE82B /* libasihttp.a in Frameworks */,
 				894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */,
 				894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */,
-				894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89099BF313B4A2AA00FEE82B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				89099BF413B4A2E300FEE82B /* JSONKit */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		89099BF413B4A2E300FEE82B /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				89099BF513B4A2E300FEE82B /* CHANGELOG.md */,
+				89099BF613B4A2E300FEE82B /* JSONKit.h */,
+				89099BF713B4A2E300FEE82B /* JSONKit.m */,
+				89099BF813B4A2E300FEE82B /* README.md */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		894C511713AB7B2900F83A5F = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +142,12 @@
 		894C512513AB7B2900F83A5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89099BF113B49F5A00FEE82B /* libz.1.2.3.dylib */,
+				89099BF013B49F4500FEE82B /* CoreGraphics.framework */,
+				89099BEE13B49F3700FEE82B /* MobileCoreServices.framework */,
+				89099BEC13B49F2C00FEE82B /* SystemConfiguration.framework */,
+				89099BEA13B49F0600FEE82B /* CFNetwork.framework */,
+				89099BE813B4969D00FEE82B /* libasihttp.a */,
 				894C512613AB7B2900F83A5F /* UIKit.framework */,
 				894C512813AB7B2900F83A5F /* Foundation.framework */,
 				894C512A13AB7B2900F83A5F /* CoreGraphics.framework */,
@@ -110,6 +158,7 @@
 		894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */ = {
 			isa = PBXGroup;
 			children = (
+				89099BF313B4A2AA00FEE82B /* Vendor */,
 				894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */,
 				894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */,
 				894C513813AB7B2900F83A5F /* MainWindow.xib */,
@@ -223,6 +272,8 @@
 				894C515513ABA9A900F83A5F /* settings.png in Resources */,
 				894C515713ABACC300F83A5F /* rewind.png in Resources */,
 				89DF135D13B0A046005A557A /* WeeklyHootSectionHeaderView.xib in Resources */,
+				89099BF913B4A2E300FEE82B /* CHANGELOG.md in Resources */,
+				89099BFB13B4A2E300FEE82B /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +292,7 @@
 				89DF135713AF9941005A557A /* Playlist.m in Sources */,
 				89DF135A13AF9A86005A557A /* Programme.m in Sources */,
 				89DF136013B0A27D005A557A /* WeeklyHootSectionHeader.m in Sources */,
+				89099BFA13B4A2E300FEE82B /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -295,6 +348,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -303,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -310,6 +365,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -323,7 +379,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Prefix.pch";
 				INFOPLIST_FILE = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "\"$(BUILT_PRODUCTS_DIR)/asihttp\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -336,7 +397,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Prefix.pch";
 				INFOPLIST_FILE = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "\"$(BUILT_PRODUCTS_DIR)/asihttp\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
