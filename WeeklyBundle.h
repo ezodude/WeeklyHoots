@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Playlist.h"
+@class Playlist;
 
 @interface WeeklyBundle : NSObject {
     NSString *_startDate;
@@ -18,9 +19,10 @@
 
 @property (nonatomic, retain) NSString *startDate;
 @property (nonatomic, retain) NSString *endDate;
-@property (nonatomic, assign) NSString *durationInHours;
+@property (nonatomic, retain) NSString *durationInHours;
 @property (nonatomic, retain) NSArray *playlists;
 
+-(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
 -(WeeklyBundle *)initWithStartDate:(NSString *)startDate endDate:(NSString *)endDate durationInHours:(NSString *)durationInHours playlists:(NSArray *)playlists;
 
 @end

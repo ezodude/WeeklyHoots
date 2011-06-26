@@ -21,39 +21,25 @@
 
 - (void)viewDidLoad
 {
+    self.tableView.sectionHeaderHeight = 66.0;
+    
     Environment *myEnvironment = [Environment sharedInstance];
     NSString *programmesAPIURL = myEnvironment.programmesAPIURL;
+    NSString *urlPath = [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL];
     
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL]];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request startSynchronous];
-    NSError *error = [request error];
-    if (!error) {
-        NSString *response = [request responseString];
-        NSDictionary *dictionary = (NSDictionary *)[response objectFromJSONString];
-
-        NSLog(@"The Bundle start date is: %@", [dictionary objectForKey:@"start_date"]);
-    }
+    [self grabURLInBackground:urlPath];
     
-    self.tableView.sectionHeaderHeight = 66.0;  
-    Programme *firstProg = [[Programme alloc] initWithTitle:@"Programme1" duration:@"30"];
+//    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL]];
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+//    [request startSynchronous];
+//    NSError *error = [request error];
+//    if (!error) {
+//        NSString *response = [request responseString];
+//        NSDictionary *dictionary = (NSDictionary *)[response objectFromJSONString];
+//
+//        NSLog(@"The Bundle start date is: %@", [dictionary objectForKey:@"start_date"]);
+//    }
     
-    NSArray *progs = [[NSArray alloc] initWithObjects:firstProg, nil];
-    Playlist *firstPlaylist = [[Playlist alloc] initWithTitle:@"Playlist 1" 
-                                        storyJockey:@"Jock 1" 
-                                        summary:@"Cool Summary" 
-                                        duration:@"1" 
-                                        programmes: progs];
-    NSArray *playlists = [[NSArray alloc] initWithObjects:firstPlaylist, nil];
-    WeeklyBundle *bundle = [[WeeklyBundle alloc] initWithStartDate:@"13th" endDate:@"19th June 11" durationInHours:@"10" playlists:playlists];
-    
-    self.currentBundle = bundle;
-    
-    [firstProg release];
-    [firstPlaylist release];
-    [progs release];
-    [playlists release];
-    [bundle release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -89,6 +75,35 @@
 }
 
 #pragma mark -
+#pragma mark Bundle Ingestor Methods
+
+- (void)grabURLInBackground:(NSString *)urlPath
+{
+    NSURL *url = [NSURL URLWithString:urlPath];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDelegate:self];
+    [request startAsynchronous];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    // Use when fetching text data
+    NSString *responseString = [request responseString];
+    NSDictionary *dictionary = (NSDictionary *)[responseString objectFromJSONString];
+    
+    WeeklyBundle *bundle = [[WeeklyBundle alloc] initFromDictionary:dictionary];
+    self.currentBundle = bundle;
+    [self.tableView reloadData];
+    [bundle release];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSError *error = [request error];
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+#pragma mark -
 #pragma mark TableView Data Source Methods
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -106,10 +121,12 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PlaylistId] autorelease];
     }
     
-    Playlist *playlist = (Playlist *)[[self.currentBundle playlists] 
-                                      objectAtIndex:[indexPath row]];
-    cell.textLabel.text = [playlist title];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"By %@", [playlist storyJockey]];
+    if(self.currentBundle){
+        Playlist *playlist = (Playlist *)[[self.currentBundle playlists] 
+                                          objectAtIndex:[indexPath row]];
+        cell.textLabel.text = [playlist title];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"by %@", [playlist storyJockey]];
+    }
     return cell;
 }
 
@@ -128,8 +145,10 @@
         }
     }
     
-    header.startToEndDateLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.currentBundle startDate], [self.currentBundle endDate]];
-    header.durationLabel.text = [NSString stringWithFormat:@"%@ Hrs", [self.currentBundle durationInHours]];
+    if(self.currentBundle){
+        header.startToEndDateLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.currentBundle startDate], [self.currentBundle endDate]];
+        header.durationLabel.text = [NSString stringWithFormat:@"%@ Hrs", [self.currentBundle durationInHours]];
+    }
     return header;
 }
 

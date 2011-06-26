@@ -13,12 +13,18 @@
 @synthesize title=_title;
 @synthesize duration=_duration;
 
--(Programme *)initWithTitle:(NSString *)title duration:(NSString *)duration{
+-(Programme *)initWithTitle:(NSString *)title duration:(NSNumber *)duration{
     self = [super init];
     if(self){
         self.title = title;
         self.duration = duration;
     }
     return self;
+}
+
+- (void)dealloc {
+    [self.title release];
+    [self.duration release];
+    [super dealloc];
 }
 @end

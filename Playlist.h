@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Programme.h"
+@class Programme;
 
 @interface Playlist : NSObject {
     NSString *_title;
     NSString *_storyJockey;
     NSString *_summary;
-    NSString *_duration;
+    NSNumber *_duration;
     NSString *_publicationDate;
     NSArray *_programmes;
 }
@@ -21,12 +22,12 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *storyJockey;
 @property (nonatomic, retain) NSString *summary;
-@property (nonatomic, retain) NSString *duration;
+@property (nonatomic, retain) NSNumber *duration;
 @property (nonatomic, retain) NSString *publicationDate;
 @property (nonatomic, retain) NSArray *programmes;
 
 -(Playlist *)initWithTitle:(NSString *)title 
                 storyJockey:(NSString *)storyJockey 
-                summary:(NSString *)summary duration:(NSString *)duration
+                summary:(NSString *)summary duration:(NSNumber *)duration
                 programmes:(NSArray *)programmes;
 @end

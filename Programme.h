@@ -11,11 +11,11 @@
 
 @interface Programme : NSObject {
     NSString *_title;
-    NSString *_duration;
+    NSNumber *_duration;
 }
 
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *duration;
+@property (nonatomic, retain) NSNumber *duration;
 
--(Programme *)initWithTitle:(NSString *)title duration:(NSString *)duration;
+-(Programme *)initWithTitle:(NSString *)title duration:(NSNumber *)duration;
 @end

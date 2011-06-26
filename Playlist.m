@@ -20,7 +20,7 @@
 
 -(Playlist *)initWithTitle:(NSString *)title 
                 storyJockey:(NSString *)storyJockey 
-                summary:(NSString *)summary duration:(NSString *)duration
+                summary:(NSString *)summary duration:(NSNumber *)duration
                 programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
@@ -28,8 +28,29 @@
         self.storyJockey = storyJockey;
         self.summary = summary;
         self.duration = duration;
+        
+        NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
+                                         initWithCapacity:[programmes count]];
+        [programmes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSDictionary *content = (NSDictionary *)obj;
+            Programme *prog = [[Programme alloc] initWithTitle:[content objectForKey:@"title"] duration:[content objectForKey:@"duration"]];
+            [newProgrammes addObject:prog];
+            
+            [prog release];
+        }];
         self.programmes = programmes;
+        [newProgrammes release];
     }
     return self;
+}
+
+- (void)dealloc {
+    [self.title release];
+    [self.storyJockey release];
+    [self.summary release];
+    [self.duration release];
+    [self.publicationDate release];
+    [self.programmes release];
+    [super dealloc];
 }
 @end
