@@ -145,11 +145,12 @@
         }
     }
     
+    header.parentController = self;
+    
     if(self.currentBundle){
         header.startToEndDateLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.currentBundle startDate], [self.currentBundle endDate]];
         header.durationLabel.text = [NSString stringWithFormat:@"%@ Hrs", [self.currentBundle durationInHours]];
     }
     return header;
 }
-
 @end

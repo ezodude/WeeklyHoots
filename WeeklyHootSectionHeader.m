@@ -13,11 +13,17 @@
 @synthesize startToEndDateLabel=_startToEndDateLabel;
 @synthesize durationLabel=_durationLabel;
 @synthesize syncButton=_syncButton;
+@synthesize parentController=_parentController;
+
+-(IBAction)startSync:(id)sender{
+    NSLog(@"Hello");
+}
 
 -(void)dealloc{
     [self.startToEndDateLabel release];
     [self.durationLabel release];
     [self.syncButton release];
+    [self.parentController release];
     [super dealloc];
 }
 
