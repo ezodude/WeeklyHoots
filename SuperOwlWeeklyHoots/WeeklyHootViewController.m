@@ -153,4 +153,71 @@
     }
     return header;
 }
+
+#pragma mark -
+#pragma mark Audio Stash Storage Methods
+
+-(void)startSyncing{
+    NSLog(@"Iam Syncing");
+    [self createAudioStashDirectoryIfUnavailable];
+    [self downloadCurrentBundleFirstPlaylistProgrammeIfUnavailableLocally];
+}
+
+- (NSString *)applicationDocumentsDirectory {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	return ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+}
+
+-(void)createAudioStashDirectoryIfUnavailable{
+    NSLog(@"creating Audio Stash Directory If Unavailable");
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
+                                                         NSUserDomainMask, YES);
+    if ([paths count] > 0) {
+        NSString *basePath = [paths objectAtIndex:0];
+        NSString *audioStashDirectory = [basePath stringByAppendingFormat:AUDIO_STASH_DIR];
+        
+        NSFileManager *manager = [[NSFileManager alloc] init];
+        [manager createDirectoryAtPath:audioStashDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+        
+        if([manager fileExistsAtPath:audioStashDirectory]){
+            NSLog(@"File exists!!");
+        }
+        [manager release];
+    }
+}
+
+-(void)downloadCurrentBundleFirstPlaylistProgrammeIfUnavailableLocally{
+    NSLog(@"downloading Current Bundle First Playlist Programme If UnavailableLocally");
+    
+    NSString *documentsDirectory = [self applicationDocumentsDirectory];
+    if(!documentsDirectory) return;
+    
+    NSString *audioStashDirectory = [documentsDirectory stringByAppendingFormat:AUDIO_STASH_DIR];
+    
+    if(!self.currentBundle) return;
+    
+    Programme *toDownload = [[[[self.currentBundle playlists] objectAtIndex:0] programmes] objectAtIndex:0];
+    
+    NSString *extension = [[toDownload audioUri] pathExtension];
+    NSString *fileToSave = [audioStashDirectory stringByAppendingFormat:@"/%@", [[toDownload guid] stringByAppendingFormat:@".%@", extension]];
+    NSLog(@"Save This::: [%@]", fileToSave);
+        
+    NSURL *url = [NSURL URLWithString:[toDownload audioUri]];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDownloadDestinationPath:fileToSave];
+    
+    [request setCompletionBlock:^{
+        [self markPlaylistAsDownloaded];
+    }];
+    
+    [request setFailedBlock:^{
+        NSError *error = [request error];
+    }];
+    [request startAsynchronous];
+}
+
+-(void)markPlaylistAsDownloaded{
+    NSLog(@"marking Playlist As Downloaded");
+}
+
 @end

@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "WeeklyHootSectionHeader.h"
 #import "ASIHTTPRequest.h"
+#import "SuperOwlSyncNotifications.h"
 
 @class WeeklyBundle;
 @class WeeklyHootSectionHeader;
 
-@interface WeeklyHootViewController : UITableViewController {
+#define AUDIO_STASH_DIR @"/SuperOwl Audio Stash"
+
+@interface WeeklyHootViewController : UITableViewController <SuperOwlSyncNotifications>{
     WeeklyBundle *_currentBundle;
     WeeklyBundle *_lastBundle;
 }
@@ -24,4 +27,11 @@
 - (void)grabURLInBackground:(NSString *)urlPath;
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;
+
+- (void)startSyncing;
+- (NSString *)applicationDocumentsDirectory;
+- (void)createAudioStashDirectoryIfUnavailable;
+- (void)downloadCurrentBundleFirstPlaylistProgrammeIfUnavailableLocally;
+- (void)markPlaylistAsDownloaded;
+
 @end

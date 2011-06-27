@@ -8,23 +8,29 @@
 
 #import "Programme.h"
 
-
 @implementation Programme
+
+@synthesize guid=_guid;
 @synthesize title=_title;
 @synthesize duration=_duration;
+@synthesize audioUri=_audioUri;
 
--(Programme *)initWithTitle:(NSString *)title duration:(NSNumber *)duration{
+-(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri{
     self = [super init];
     if(self){
+        self.guid = guid;
         self.title = title;
         self.duration = duration;
+        self.audioUri = audioUri;
     }
     return self;
 }
 
 - (void)dealloc {
+    [self.guid release];
     [self.title release];
     [self.duration release];
+    [self.audioUri release];
     [super dealloc];
 }
 @end

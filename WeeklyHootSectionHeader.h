@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SuperOwlSyncNotifications.h"
 
 @interface WeeklyHootSectionHeader : UIView {
     UILabel *_startToEndDateLabel;

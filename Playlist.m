@@ -33,12 +33,13 @@
                                          initWithCapacity:[programmes count]];
         [programmes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSDictionary *content = (NSDictionary *)obj;
-            Programme *prog = [[Programme alloc] initWithTitle:[content objectForKey:@"title"] duration:[content objectForKey:@"duration"]];
-            [newProgrammes addObject:prog];
             
+            Programme *prog = [[Programme alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] duration:[content objectForKey:@"duration"] audioURI:[content objectForKey:@"audio_uri"]];
+            
+            [newProgrammes addObject:prog];
             [prog release];
         }];
-        self.programmes = programmes;
+        self.programmes = newProgrammes;
         [newProgrammes release];
     }
     return self;

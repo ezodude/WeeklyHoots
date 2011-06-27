@@ -18,9 +18,9 @@
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary{
 //    NSLog(@"Bundle: %@", [dictionary description]);
-    NSLog(@"Bundle start: %@", [dictionary objectForKey:@"start_date"]);
-    NSLog(@"Bundle end: %@", [dictionary objectForKey:@"end_date"]);
-    NSLog(@"Bundle duration: %@", [dictionary objectForKey:@"duration_in_hours"]);
+//    NSLog(@"Bundle start: %@", [dictionary objectForKey:@"start_date"]);
+//    NSLog(@"Bundle end: %@", [dictionary objectForKey:@"end_date"]);
+//    NSLog(@"Bundle duration: %@", [dictionary objectForKey:@"duration_in_hours"]);
     
     return [self initWithStartDate: [dictionary objectForKey:@"start_date"] endDate:[dictionary objectForKey:@"end_date"] durationInHours:[dictionary objectForKey:@"duration_in_hours"] playlists:(NSArray *)[dictionary objectForKey:@"playlists"]];
 }

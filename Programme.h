@@ -10,12 +10,16 @@
 
 
 @interface Programme : NSObject {
+    NSString *_guid;
     NSString *_title;
     NSNumber *_duration;
+    NSString *_audioUri;
 }
 
+@property (nonatomic, retain) NSString *guid;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSNumber *duration;
+@property (nonatomic, retain) NSString *audioUri;
 
--(Programme *)initWithTitle:(NSString *)title duration:(NSNumber *)duration;
+-(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri;
 @end

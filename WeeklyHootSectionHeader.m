@@ -8,7 +8,6 @@
 
 #import "WeeklyHootSectionHeader.h"
 
-
 @implementation WeeklyHootSectionHeader
 @synthesize startToEndDateLabel=_startToEndDateLabel;
 @synthesize durationLabel=_durationLabel;
@@ -16,7 +15,10 @@
 @synthesize parentController=_parentController;
 
 -(IBAction)startSync:(id)sender{
-    NSLog(@"Hello");
+    if(!self.parentController) return;
+    if(![self.parentController respondsToSelector:@selector(startSyncing)]) return;
+    
+    [self.parentController performSelector:@selector(startSyncing)];
 }
 
 -(void)dealloc{
