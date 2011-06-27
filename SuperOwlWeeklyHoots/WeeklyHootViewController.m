@@ -18,9 +18,11 @@
 
 @synthesize currentBundle=_currentBundle;
 @synthesize lastBundle=_lastBundle;
+@synthesize audioAvailable=_audioAvailable;
 
 - (void)viewDidLoad
 {
+    self.audioAvailable = NO;
     self.tableView.sectionHeaderHeight = 66.0;
     
     Environment *myEnvironment = [Environment sharedInstance];
@@ -150,6 +152,16 @@
     if(self.currentBundle){
         header.startToEndDateLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.currentBundle startDate], [self.currentBundle endDate]];
         header.durationLabel.text = [NSString stringWithFormat:@"%@ Hrs", [self.currentBundle durationInHours]];
+        
+        if(self.audioAvailable){
+            header.playButton.hidden = NO;
+            header.syncButton.hidden = YES;
+            NSLog(@"Showing Play Button!");
+        }else{
+            header.playButton.hidden = YES;
+            header.syncButton.hidden = NO;
+            NSLog(@"Hiding Play Button!");
+        }
     }
     return header;
 }
@@ -191,17 +203,24 @@
     
     NSString *documentsDirectory = [self applicationDocumentsDirectory];
     if(!documentsDirectory) return;
-    
-    NSString *audioStashDirectory = [documentsDirectory stringByAppendingFormat:AUDIO_STASH_DIR];
-    
     if(!self.currentBundle) return;
     
     Programme *toDownload = [[[[self.currentBundle playlists] objectAtIndex:0] programmes] objectAtIndex:0];
     
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
+    
+    NSString *audioStashDirectory = [documentsDirectory stringByAppendingFormat:AUDIO_STASH_DIR];
+    
     NSString *extension = [[toDownload audioUri] pathExtension];
     NSString *fileToSave = [audioStashDirectory stringByAppendingFormat:@"/%@", [[toDownload guid] stringByAppendingFormat:@".%@", extension]];
+    
+    if([manager fileExistsAtPath:fileToSave]) {
+        [self markPlaylistAsDownloaded];
+        return;
+    }
+    
     NSLog(@"Save This::: [%@]", fileToSave);
-        
+    
     NSURL *url = [NSURL URLWithString:[toDownload audioUri]];
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDownloadDestinationPath:fileToSave];
@@ -212,12 +231,23 @@
     
     [request setFailedBlock:^{
         NSError *error = [request error];
+        self.audioAvailable = NO;
+        NSLog(@"error: [%@]", [error localizedDescription]);
     }];
     [request startAsynchronous];
 }
 
 -(void)markPlaylistAsDownloaded{
-    NSLog(@"marking Playlist As Downloaded");
+    NSLog(@"marking Playlist As Downloaded!");
+    
+    self.audioAvailable = YES;
+    [self.tableView reloadData];
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:path];
+    
+    NSString *originalText = cell.textLabel.text;
+    cell.textLabel.text = [@"**" stringByAppendingString:originalText];
 }
 
 @end

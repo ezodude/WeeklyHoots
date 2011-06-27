@@ -12,6 +12,7 @@
 @synthesize startToEndDateLabel=_startToEndDateLabel;
 @synthesize durationLabel=_durationLabel;
 @synthesize syncButton=_syncButton;
+@synthesize playButton=_playButton;
 @synthesize parentController=_parentController;
 
 -(IBAction)startSync:(id)sender{
@@ -25,6 +26,7 @@
     [self.startToEndDateLabel release];
     [self.durationLabel release];
     [self.syncButton release];
+    [self.playButton release];
     [self.parentController release];
     [super dealloc];
 }

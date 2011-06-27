@@ -19,10 +19,12 @@
 @interface WeeklyHootViewController : UITableViewController <SuperOwlSyncNotifications>{
     WeeklyBundle *_currentBundle;
     WeeklyBundle *_lastBundle;
+    BOOL _audioAvailable;
 }
 
 @property (nonatomic, retain) WeeklyBundle *currentBundle;
 @property (nonatomic, retain) WeeklyBundle *lastBundle;
+@property (nonatomic, assign) BOOL audioAvailable;
 
 - (void)grabURLInBackground:(NSString *)urlPath;
 - (void)requestFinished:(ASIHTTPRequest *)request;
