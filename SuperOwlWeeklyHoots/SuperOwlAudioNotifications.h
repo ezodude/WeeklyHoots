@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SuperOwlSyncNotifications <NSObject>
+@protocol SuperOwlAudioNotifications <NSObject>
 -(void)startSyncing;
+-(void)startPlaying;
 @end

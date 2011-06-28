@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SuperOwlSyncNotifications.h"
+#import "SuperOwlAudioNotifications.h"
 
 @interface WeeklyHootSectionHeader : UIView {
     UILabel *_startToEndDateLabel;
@@ -23,4 +23,5 @@
 @property (nonatomic, retain) UIViewController *parentController;
 
 -(IBAction)startSync:(id)sender;
+-(IBAction)startPlayer:(id)sender;
 @end

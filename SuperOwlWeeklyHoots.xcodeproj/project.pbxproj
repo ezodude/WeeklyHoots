@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8904F36E13B8E18400D0B9BE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8904F36C13B8E18400D0B9BE /* AudioToolbox.framework */; };
+		8904F36F13B8E18400D0B9BE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8904F36D13B8E18400D0B9BE /* AVFoundation.framework */; };
 		89099BE913B4969D00FEE82B /* libasihttp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BE813B4969D00FEE82B /* libasihttp.a */; };
 		89099BEB13B49F0600FEE82B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BEA13B49F0600FEE82B /* CFNetwork.framework */; };
 		89099BED13B49F2C00FEE82B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89099BEC13B49F2C00FEE82B /* SystemConfiguration.framework */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8904F36C13B8E18400D0B9BE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8904F36D13B8E18400D0B9BE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		89099BE813B4969D00FEE82B /* libasihttp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libasihttp.a; sourceTree = SOURCE_ROOT; };
 		89099BEA13B49F0600FEE82B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		89099BEC13B49F2C00FEE82B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -76,7 +80,7 @@
 		894C515213ABA81300F83A5F /* starred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starred.png; sourceTree = "<group>"; };
 		894C515413ABA9A900F83A5F /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		894C515613ABACC300F83A5F /* rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewind.png; sourceTree = "<group>"; };
-		89D4A51D13B799EF0051A9F3 /* SuperOwlSyncNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperOwlSyncNotifications.h; sourceTree = "<group>"; };
+		89D4A51D13B799EF0051A9F3 /* SuperOwlAudioNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SuperOwlAudioNotifications.h; sourceTree = "<group>"; };
 		89DF135213AF9351005A557A /* WeeklyBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundle.h; sourceTree = "<group>"; };
 		89DF135313AF9351005A557A /* WeeklyBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundle.m; sourceTree = "<group>"; };
 		89DF135513AF9941005A557A /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8904F36E13B8E18400D0B9BE /* AudioToolbox.framework in Frameworks */,
+				8904F36F13B8E18400D0B9BE /* AVFoundation.framework in Frameworks */,
 				89099BF213B49F5A00FEE82B /* libz.1.2.3.dylib in Frameworks */,
 				894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */,
 				89099BEF13B49F3700FEE82B /* MobileCoreServices.framework in Frameworks */,
@@ -158,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				89099BF113B49F5A00FEE82B /* libz.1.2.3.dylib */,
+				8904F36C13B8E18400D0B9BE /* AudioToolbox.framework */,
+				8904F36D13B8E18400D0B9BE /* AVFoundation.framework */,
 				89099BF013B49F4500FEE82B /* CoreGraphics.framework */,
 				89099BEE13B49F3700FEE82B /* MobileCoreServices.framework */,
 				89099BEC13B49F2C00FEE82B /* SystemConfiguration.framework */,
@@ -210,7 +218,7 @@
 		89D4A51B13B799970051A9F3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				89D4A51D13B799EF0051A9F3 /* SuperOwlSyncNotifications.h */,
+				89D4A51D13B799EF0051A9F3 /* SuperOwlAudioNotifications.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

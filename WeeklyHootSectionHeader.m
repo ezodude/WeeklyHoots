@@ -22,6 +22,15 @@
     [self.parentController performSelector:@selector(startSyncing)];
 }
 
+-(IBAction)startPlayer:(id)sender{
+    if(!self.parentController) return;
+    if(![self.parentController respondsToSelector:@selector(startPlaying)]) return;
+    
+    [self.parentController performSelector:@selector(startPlaying)];
+    [self.playButton setTitle:@"Playing" forState:UIControlStateHighlighted];
+    [self.playButton setTitle:@"Playing" forState:UIControlStateNormal];
+}
+
 -(void)dealloc{
     [self.startToEndDateLabel release];
     [self.durationLabel release];

@@ -19,29 +19,19 @@
 @synthesize currentBundle=_currentBundle;
 @synthesize lastBundle=_lastBundle;
 @synthesize audioAvailable=_audioAvailable;
+@synthesize player=_player;
 
 - (void)viewDidLoad
 {
     self.audioAvailable = NO;
     self.tableView.sectionHeaderHeight = 66.0;
     
+    
     Environment *myEnvironment = [Environment sharedInstance];
     NSString *programmesAPIURL = myEnvironment.programmesAPIURL;
     NSString *urlPath = [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL];
     
     [self grabURLInBackground:urlPath];
-    
-//    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL]];
-//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-//    [request startSynchronous];
-//    NSError *error = [request error];
-//    if (!error) {
-//        NSString *response = [request responseString];
-//        NSDictionary *dictionary = (NSDictionary *)[response objectFromJSONString];
-//
-//        NSLog(@"The Bundle start date is: %@", [dictionary objectForKey:@"start_date"]);
-//    }
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -73,6 +63,7 @@
 {
     [self.currentBundle release];
     [self.lastBundle release];
+    [self.player release];
     [super dealloc];
 }
 
@@ -173,6 +164,50 @@
     NSLog(@"Iam Syncing");
     [self createAudioStashDirectoryIfUnavailable];
     [self downloadCurrentBundleFirstPlaylistProgrammeIfUnavailableLocally];
+}
+
+-(void)startPlaying{
+    NSLog(@"start Playing");
+    
+    NSString *documentsDirectory = [self applicationDocumentsDirectory];
+    if(!documentsDirectory) return;
+    
+    Programme *toPlay = [[[[self.currentBundle playlists] objectAtIndex:0] programmes] objectAtIndex:0];
+    
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
+    
+    NSString *audioStashDirectory = [documentsDirectory stringByAppendingFormat:AUDIO_STASH_DIR];
+    
+    NSString *extension = [[toPlay audioUri] pathExtension];
+    NSString *fileToPlay = [audioStashDirectory stringByAppendingFormat:@"/%@", [[toPlay guid] stringByAppendingFormat:@".%@", extension]];
+    
+    if(![manager fileExistsAtPath:fileToPlay]) return;
+    
+    NSLog(@"About to Play: [%@]", fileToPlay);
+    
+    NSURL *fileToPlayAsURL = [NSURL fileURLWithPath:fileToPlay];
+    
+    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileToPlayAsURL
+                                                                      error: nil];
+    self.player = newPlayer;
+    [newPlayer release];
+    
+    [self.player setVolume: 1.0]; 
+    [self.player prepareToPlay];
+    [self.player setDelegate:self];
+    
+    if (self.player.playing)
+        [self.player pause];
+    else
+        [self.player play];
+}
+
+- (void) audioPlayerDidFinishPlaying: (AVAudioPlayer *) player
+                        successfully: (BOOL) completed {
+    if (completed) {
+        NSLog(@"Play completed");
+//        [self.button setTitle: @"Play" forState: UIControlStateNormal];
+    }
 }
 
 - (NSString *)applicationDocumentsDirectory {
