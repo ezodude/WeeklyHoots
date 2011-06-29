@@ -12,12 +12,14 @@
 #import "Playlist.h"
 #import "Programme.h"
 #import "ASIHTTPRequest.h"
+#import "ASINetworkQueue.h"
 #import "JSONKit/JSONKit.h"
 
 @implementation WeeklyHootViewController
 
 @synthesize currentBundle=_currentBundle;
 @synthesize lastBundle=_lastBundle;
+@synthesize networkQueue=_networkQueue;
 @synthesize audioAvailable=_audioAvailable;
 @synthesize player=_player;
 
@@ -63,6 +65,7 @@
 {
     [self.currentBundle release];
     [self.lastBundle release];
+    [self.networkQueue release];
     [self.player release];
     [super dealloc];
 }
@@ -163,7 +166,7 @@
 -(void)startSyncing{
     NSLog(@"Iam Syncing");
     [self createAudioStashDirectoryIfUnavailable];
-    [self downloadCurrentBundleFirstPlaylistProgrammeIfUnavailableLocally];
+    [self downloadCurrentBundleIfUnavailableLocally];
 }
 
 -(void)startPlaying{
@@ -233,43 +236,90 @@
     }
 }
 
--(void)downloadCurrentBundleFirstPlaylistProgrammeIfUnavailableLocally{
-    NSLog(@"downloading Current Bundle First Playlist Programme If UnavailableLocally");
+- (void)queueRequestFinished:(ASIHTTPRequest *)request
+{
+	// You could release the queue here if you wanted
+	if ([[self networkQueue] requestsCount] == 0) {
+        
+		// Since this is a retained property, setting it to nil will release it
+		// This is the safest way to handle releasing things - most of the time you only ever need to release in your accessors
+		// And if you an Objective-C 2.0 property for the queue (as in this example) the accessor is generated automatically for you
+		[self setNetworkQueue:nil]; 
+	}
+    
+	//... Handle success
+	NSLog(@"Request for [%@] Finished", [request originalURL]);
+}
+
+- (void)queueRequestFailed:(ASIHTTPRequest *)request
+{
+	// You could release the queue here if you wanted
+	if ([[self networkQueue] requestsCount] == 0) {
+		[self setNetworkQueue:nil]; 
+	}
+    
+	//... Handle failure
+	NSLog(@"Request for [%@] FAILbED", [request originalURL]);
+}
+
+
+- (void)queueFinished:(ASINetworkQueue *)queue
+{
+	// You could release the queue here if you wanted
+	if ([[self networkQueue] requestsCount] == 0) {
+		[self setNetworkQueue:nil]; 
+	}
+    [self markPlaylistAsDownloaded];
+    
+    NSLog(@"Completed downloads: [%@]", [[NSDate date] description]);
+	NSLog(@"Queue finished");
+}
+
+-(void)downloadCurrentBundleIfUnavailableLocally{
+    NSLog(@"downloading Current Bundle If UnavailableLocally");
     
     NSString *documentsDirectory = [self applicationDocumentsDirectory];
     if(!documentsDirectory) return;
     if(!self.currentBundle) return;
     
-    Programme *toDownload = [[[[self.currentBundle playlists] objectAtIndex:0] programmes] objectAtIndex:0];
+    [self.networkQueue cancelAllOperations];
     
-    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
-    
+    // Creating a new queue each time we use it means we don't have to worry about clearing delegates or resetting progress tracking
+	[self setNetworkQueue:[ASINetworkQueue queue]];
+	[[self networkQueue] setDelegate:self];
+    [[self networkQueue] setMaxConcurrentOperationCount:3];
+	[[self networkQueue] setRequestDidFinishSelector:@selector(queueRequestFinished:)];
+	[[self networkQueue] setRequestDidFailSelector:@selector(queueRequestFailed:)];
+	[[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
+        
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];    
     NSString *audioStashDirectory = [documentsDirectory stringByAppendingFormat:AUDIO_STASH_DIR];
     
-    NSString *extension = [[toDownload audioUri] pathExtension];
-    NSString *fileToSave = [audioStashDirectory stringByAppendingFormat:@"/%@", [[toDownload guid] stringByAppendingFormat:@".%@", extension]];
-    
-    if([manager fileExistsAtPath:fileToSave]) {
-        [self markPlaylistAsDownloaded];
-        return;
+    for (Playlist *playlist in [self.currentBundle playlists]) {
+        for (Programme *prog in [playlist programmes]) {
+            
+            NSString *extension = [[[[prog.audioUri componentsSeparatedByString:@"?"] objectAtIndex:0] pathExtension] lowercaseString];
+            NSString *fileToSave = [audioStashDirectory stringByAppendingFormat:@"/%@", [prog.guid stringByAppendingFormat:@".%@", extension]];
+            
+            if([manager fileExistsAtPath:fileToSave] == NO) {
+                NSLog(@"Save This::: [%@]", fileToSave);
+                
+                NSURL *url = [NSURL URLWithString:prog.audioUri];
+                ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+                [request setDownloadDestinationPath:fileToSave];
+                
+                [[self networkQueue] addOperation:request];
+            }
+        }
     }
     
-    NSLog(@"Save This::: [%@]", fileToSave);
-    
-    NSURL *url = [NSURL URLWithString:[toDownload audioUri]];
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDownloadDestinationPath:fileToSave];
-    
-    [request setCompletionBlock:^{
+    if ([[self networkQueue] requestsCount] == 0) {
+		[self setNetworkQueue:nil];
         [self markPlaylistAsDownloaded];
-    }];
-    
-    [request setFailedBlock:^{
-        NSError *error = [request error];
-        self.audioAvailable = NO;
-        NSLog(@"error: [%@]", [error localizedDescription]);
-    }];
-    [request startAsynchronous];
+	}else{
+        [[self networkQueue] go];
+    }
+    NSLog(@"Starting downloads: [%@]", [[NSDate date] description]);    
 }
 
 -(void)markPlaylistAsDownloaded{

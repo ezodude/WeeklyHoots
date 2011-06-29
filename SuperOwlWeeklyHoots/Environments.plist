@@ -7,20 +7,15 @@
 		<key>programmesAPIURL</key>
 		<string>http://owler.heroku.com/</string>
 	</dict>
-	<key>Release</key>
-	<dict>
-		<key>programmesAPIURL</key>
-		<string>http://owler.heroku.com/</string>
-	</dict>
 	<key>LocalDev</key>
 	<dict>
 		<key>programmesAPIURL</key>
 		<string>http://0.0.0.0:5000/</string>
 	</dict>
-	<key>DemoDev</key>
+	<key>Release</key>
 	<dict>
 		<key>programmesAPIURL</key>
-		<string>http://192.168.1.67:5000/</string>
+		<string>http://owler.heroku.com/</string>
 	</dict>
 </dict>
 </plist>
