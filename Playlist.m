@@ -8,9 +8,9 @@
 
 #import "Playlist.h"
 
-
 @implementation Playlist
 
+@synthesize guid=_guid;
 @synthesize title=_title;
 @synthesize storyJockey=_storyJockey ;
 @synthesize summary=_summary;
@@ -18,10 +18,7 @@
 @synthesize publicationDate=_publicationDate;
 @synthesize programmes=_programmes;
 
--(Playlist *)initWithTitle:(NSString *)title 
-                storyJockey:(NSString *)storyJockey 
-                summary:(NSString *)summary duration:(NSNumber *)duration
-                programmes:(NSArray *)programmes{
+-(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title storyJockey:(NSString *)storyJockey summary:(NSString *)summary duration:(NSNumber *)duration programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
         self.title = title;
@@ -46,6 +43,7 @@
 }
 
 - (void)dealloc {
+    [self.guid release];
     [self.title release];
     [self.storyJockey release];
     [self.summary release];

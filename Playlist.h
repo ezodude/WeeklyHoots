@@ -11,22 +11,24 @@
 @class Programme;
 
 @interface Playlist : NSObject {
+    NSString *_guid;
     NSString *_title;
     NSString *_storyJockey;
     NSString *_summary;
     NSNumber *_duration;
-    NSString *_publicationDate;
+    NSDate *_publicationDate;
     NSArray *_programmes;
 }
 
+@property (nonatomic, retain) NSString *guid;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *storyJockey;
 @property (nonatomic, retain) NSString *summary;
 @property (nonatomic, retain) NSNumber *duration;
-@property (nonatomic, retain) NSString *publicationDate;
+@property (nonatomic, retain) NSDate *publicationDate;
 @property (nonatomic, retain) NSArray *programmes;
 
--(Playlist *)initWithTitle:(NSString *)title 
+-(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
                 storyJockey:(NSString *)storyJockey 
                 summary:(NSString *)summary duration:(NSNumber *)duration
                 programmes:(NSArray *)programmes;

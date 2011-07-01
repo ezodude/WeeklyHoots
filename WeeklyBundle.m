@@ -36,11 +36,8 @@
             
             NSString *storyJockey = [(NSDictionary *)[content objectForKey:@"curator"] objectForKey:@"firstname"];
             
-            Playlist *playlist = [[Playlist alloc] initWithTitle:[content objectForKey:@"title"]
-                                            storyJockey:storyJockey
-                                            summary:[content objectForKey:@"full_summary"]
-                                            duration:[content objectForKey:@"duration"]
-                                            programmes:(NSArray *)[content objectForKey:@"programmes"]];
+            Playlist *playlist = [[Playlist alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] storyJockey:storyJockey summary:[content objectForKey:@"full_summary"] duration:[content objectForKey:@"duration"] programmes:(NSArray *)[content objectForKey:@"programmes"]];
+            
             [newPlaylists addObject:playlist];
             [playlist release];
         }];       
