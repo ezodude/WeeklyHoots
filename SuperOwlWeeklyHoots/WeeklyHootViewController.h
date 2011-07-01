@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+#import "BundlesManager.h"
 #import "WeeklyHootSectionHeader.h"
 #import "ASIHTTPRequest.h"
 #import "SuperOwlAudioNotifications.h"

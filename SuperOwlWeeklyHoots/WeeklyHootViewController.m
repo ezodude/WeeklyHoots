@@ -28,12 +28,16 @@
     self.audioAvailable = NO;
     self.tableView.sectionHeaderHeight = 66.0;
     
+//    Environment *myEnvironment = [Environment sharedInstance];
+//    NSString *programmesAPIURL = myEnvironment.programmesAPIURL;
+//    NSString *urlPath = [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL];
     
-    Environment *myEnvironment = [Environment sharedInstance];
-    NSString *programmesAPIURL = myEnvironment.programmesAPIURL;
-    NSString *urlPath = [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL];
-    
-    [self grabURLInBackground:urlPath];
+    BundlesManager *bundlesManager = [BundlesManager manager];
+    [bundlesManager setupBundlesWithCallback:^{
+        [self setCurrentBundle:[bundlesManager currentBundle]];
+        [self.tableView reloadData];
+    }];
+//    [self grabURLInBackground:urlPath];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -20,6 +20,7 @@
 		89099BFD13B4AB8600FEE82B /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89099BFC13B4AB8600FEE82B /* Environments.plist */; };
 		89099C0513B4AF7B00FEE82B /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 89099C0413B4AF7B00FEE82B /* Environment.m */; };
 		891DB32713BCCF2100B27C2F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 891DB32613BCCF2100B27C2F /* icon.png */; };
+		891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DB32913BCD09500B27C2F /* BundlesManager.m */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -60,6 +61,8 @@
 		89099C0313B4AF7B00FEE82B /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		89099C0413B4AF7B00FEE82B /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
 		891DB32613BCCF2100B27C2F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		891DB32813BCD09500B27C2F /* BundlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundlesManager.h; sourceTree = "<group>"; };
+		891DB32913BCD09500B27C2F /* BundlesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundlesManager.m; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -235,6 +238,8 @@
 				89DF135613AF9941005A557A /* Playlist.m */,
 				89DF135813AF9A86005A557A /* Programme.h */,
 				89DF135913AF9A86005A557A /* Programme.m */,
+				891DB32813BCD09500B27C2F /* BundlesManager.h */,
+				891DB32913BCD09500B27C2F /* BundlesManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				89DF136013B0A27D005A557A /* WeeklyHootSectionHeader.m in Sources */,
 				89099BFA13B4A2E300FEE82B /* JSONKit.m in Sources */,
 				89099C0513B4AF7B00FEE82B /* Environment.m in Sources */,
+				891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
