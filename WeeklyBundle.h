@@ -11,18 +11,20 @@
 @class Playlist;
 
 @interface WeeklyBundle : NSObject {
-    NSString *_startDate;
-    NSString *_endDate;
-    NSString *_durationInHours;
+    NSString *_guid;
+    NSDate *_startDate;
+    NSDate *_endDate;
+    NSNumber *_durationInMinutes;
     NSArray *_playlists;
 }
 
-@property (nonatomic, retain) NSString *startDate;
-@property (nonatomic, retain) NSString *endDate;
-@property (nonatomic, retain) NSString *durationInHours;
+@property (nonatomic, retain) NSString *guid;
+@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, retain) NSDate *endDate;
+@property (nonatomic, retain) NSNumber *durationInMinutes;
 @property (nonatomic, retain) NSArray *playlists;
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
--(WeeklyBundle *)initWithStartDate:(NSString *)startDate endDate:(NSString *)endDate durationInHours:(NSString *)durationInHours playlists:(NSArray *)playlists;
+-(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSDate *)startDate endDate:(NSDate *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
 
 @end

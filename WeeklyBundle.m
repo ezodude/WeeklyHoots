@@ -10,27 +10,24 @@
 
 @implementation WeeklyBundle
 
+@synthesize guid=_guid;
 @synthesize startDate=_startDate;
 @synthesize endDate=_endDate;
-@synthesize durationInHours=_durationInHours;
+@synthesize durationInMinutes=_durationInMinutes;
 @synthesize playlists=_playlists;
 
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary{
-//    NSLog(@"Bundle: %@", [dictionary description]);
-//    NSLog(@"Bundle start: %@", [dictionary objectForKey:@"start_date"]);
-//    NSLog(@"Bundle end: %@", [dictionary objectForKey:@"end_date"]);
-//    NSLog(@"Bundle duration: %@", [dictionary objectForKey:@"duration_in_hours"]);
-    
-    return [self initWithStartDate: [dictionary objectForKey:@"start_date"] endDate:[dictionary objectForKey:@"end_date"] durationInHours:[dictionary objectForKey:@"duration_in_hours"] playlists:(NSArray *)[dictionary objectForKey:@"playlists"]];
+    return [self initWithGuid:[dictionary objectForKey:@"id"] startDate: [dictionary objectForKey:@"start_date"] endDate:[dictionary objectForKey:@"end_date"] durationInMinutes:[dictionary objectForKey:@"duration"] playlists:(NSArray *)[dictionary objectForKey:@"playlists"]];
 }
 
--(WeeklyBundle *)initWithStartDate:(NSString *)startDate endDate:(NSString *)endDate durationInHours:(NSString *)durationInHours playlists:(NSArray *)playlists{
+-(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSDate *)startDate endDate:(NSDate *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists{
     self = [super init];
     if(self){
+        self.guid = guid;
         self.startDate = startDate;
         self.endDate = endDate;
-        self.durationInHours = durationInHours;
+        self.durationInMinutes = durationInMinutes;
         
         NSMutableArray *newPlaylists = [[NSMutableArray alloc] 
                                         initWithCapacity:[playlists count]];
@@ -55,9 +52,10 @@
 }
 
 - (void)dealloc {
+    [self.guid release];
     [self.startDate release];
     [self.endDate release];
-    [self.durationInHours release];
+    [self.durationInMinutes release];
     [self.playlists release];
     [super dealloc];
 }

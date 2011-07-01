@@ -149,7 +149,7 @@
     
     if(self.currentBundle){
         header.startToEndDateLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.currentBundle startDate], [self.currentBundle endDate]];
-        header.durationLabel.text = [NSString stringWithFormat:@"%@ Hrs", [self.currentBundle durationInHours]];
+        header.durationLabel.text = [NSString stringWithFormat:@"%@ Hrs", [self.currentBundle durationInMinutes]];
         
         if(self.audioAvailable){
             header.playButton.hidden = NO;
