@@ -22,6 +22,7 @@
         self.title = title;
         self.duration = duration;
         self.audioUri = audioUri;
+        self.audioType = [[[[audioUri componentsSeparatedByString:@"?"] objectAtIndex:0] pathExtension] lowercaseString];
     }
     return self;
 }

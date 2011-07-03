@@ -14,12 +14,14 @@
     NSString *_title;
     NSNumber *_duration;
     NSString *_audioUri;
+    NSString *_audioType;
 }
 
 @property (nonatomic, retain) NSString *guid;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSNumber *duration;
 @property (nonatomic, retain) NSString *audioUri;
+@property (nonatomic, retain) NSString *audioType;
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri;
 @end

@@ -21,6 +21,8 @@
 		89099C0513B4AF7B00FEE82B /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 89099C0413B4AF7B00FEE82B /* Environment.m */; };
 		891DB32713BCCF2100B27C2F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 891DB32613BCCF2100B27C2F /* icon.png */; };
 		891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DB32913BCD09500B27C2F /* BundlesManager.m */; };
+		892F7CB413C0F78B00C4B98C /* DownloadsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CB313C0F78B00C4B98C /* DownloadsManager.m */; };
+		892F7CB913C0F94100C4B98C /* FileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CB813C0F94100C4B98C /* FileStore.m */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -63,6 +65,10 @@
 		891DB32613BCCF2100B27C2F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		891DB32813BCD09500B27C2F /* BundlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundlesManager.h; sourceTree = "<group>"; };
 		891DB32913BCD09500B27C2F /* BundlesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundlesManager.m; sourceTree = "<group>"; };
+		892F7CB213C0F78B00C4B98C /* DownloadsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadsManager.h; sourceTree = "<group>"; };
+		892F7CB313C0F78B00C4B98C /* DownloadsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsManager.m; sourceTree = "<group>"; };
+		892F7CB713C0F94100C4B98C /* FileStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileStore.h; sourceTree = "<group>"; };
+		892F7CB813C0F94100C4B98C /* FileStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileStore.m; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -146,6 +152,15 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
+		892F7CB613C0F91D00C4B98C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				892F7CB713C0F94100C4B98C /* FileStore.h */,
+				892F7CB813C0F94100C4B98C /* FileStore.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		894C511713AB7B2900F83A5F = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +201,7 @@
 		894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */ = {
 			isa = PBXGroup;
 			children = (
+				892F7CB613C0F91D00C4B98C /* Utilities */,
 				89D4A51B13B799970051A9F3 /* Protocols */,
 				89099C0213B4AF5200FEE82B /* Config */,
 				89099BF313B4A2AA00FEE82B /* Vendor */,
@@ -240,6 +256,8 @@
 				89DF135913AF9A86005A557A /* Programme.m */,
 				891DB32813BCD09500B27C2F /* BundlesManager.h */,
 				891DB32913BCD09500B27C2F /* BundlesManager.m */,
+				892F7CB213C0F78B00C4B98C /* DownloadsManager.h */,
+				892F7CB313C0F78B00C4B98C /* DownloadsManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -339,6 +357,8 @@
 				89099BFA13B4A2E300FEE82B /* JSONKit.m in Sources */,
 				89099C0513B4AF7B00FEE82B /* Environment.m in Sources */,
 				891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */,
+				892F7CB413C0F78B00C4B98C /* DownloadsManager.m in Sources */,
+				892F7CB913C0F94100C4B98C /* FileStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
