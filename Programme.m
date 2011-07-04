@@ -14,6 +14,7 @@
 @synthesize title=_title;
 @synthesize duration=_duration;
 @synthesize audioUri=_audioUri;
+@synthesize audioType=_audioType;
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri{
     self = [super init];
@@ -32,6 +33,7 @@
     [self.title release];
     [self.duration release];
     [self.audioUri release];
+    [self.audioType release];
     [super dealloc];
 }
 @end

@@ -7,12 +7,14 @@
 //
 
 #import "SuperOwlWeeklyHootsAppDelegate.h"
+#import "WeeklyBundlesNavController.h"
 
 @implementation SuperOwlWeeklyHootsAppDelegate
 
 
 @synthesize window=_window;
 @synthesize tabBarController=_tabBarController;
+@synthesize weeklyBundlesNavController=_weeklyBundlesNavController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -66,6 +68,7 @@
 {
     [_window release];
     [_tabBarController release];
+    [_weeklyBundlesNavController release];
     [super dealloc];
 }
 

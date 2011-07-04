@@ -23,6 +23,9 @@
 		891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DB32913BCD09500B27C2F /* BundlesManager.m */; };
 		892F7CB413C0F78B00C4B98C /* DownloadsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CB313C0F78B00C4B98C /* DownloadsManager.m */; };
 		892F7CB913C0F94100C4B98C /* FileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CB813C0F94100C4B98C /* FileStore.m */; };
+		892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */; };
+		892F7CC013C1E08500C4B98C /* WeeklyBundlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */; };
+		892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -69,6 +72,11 @@
 		892F7CB313C0F78B00C4B98C /* DownloadsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsManager.m; sourceTree = "<group>"; };
 		892F7CB713C0F94100C4B98C /* FileStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileStore.h; sourceTree = "<group>"; };
 		892F7CB813C0F94100C4B98C /* FileStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileStore.m; sourceTree = "<group>"; };
+		892F7CBC13C1E08500C4B98C /* WeeklyBundlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundlesViewController.h; sourceTree = "<group>"; };
+		892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundlesViewController.m; sourceTree = "<group>"; };
+		892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyBundlesView.xib; sourceTree = "<group>"; };
+		892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundlesNavController.h; sourceTree = "<group>"; };
+		892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundlesNavController.m; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,6 +169,26 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		892F7CBA13C1E03C00C4B98C /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				892F7CBB13C1E05000C4B98C /* WeeklyBundles */,
+			);
+			name = Sections;
+			sourceTree = "<group>";
+		};
+		892F7CBB13C1E05000C4B98C /* WeeklyBundles */ = {
+			isa = PBXGroup;
+			children = (
+				892F7CBC13C1E08500C4B98C /* WeeklyBundlesViewController.h */,
+				892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */,
+				892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */,
+				892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */,
+				892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */,
+			);
+			name = WeeklyBundles;
+			sourceTree = "<group>";
+		};
 		894C511713AB7B2900F83A5F = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +229,7 @@
 		894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */ = {
 			isa = PBXGroup;
 			children = (
+				892F7CBA13C1E03C00C4B98C /* Sections */,
 				892F7CB613C0F91D00C4B98C /* Utilities */,
 				89D4A51B13B799970051A9F3 /* Protocols */,
 				89099C0213B4AF5200FEE82B /* Config */,
@@ -336,6 +365,7 @@
 				89099BFB13B4A2E300FEE82B /* README.md in Resources */,
 				89099BFD13B4AB8600FEE82B /* Environments.plist in Resources */,
 				891DB32713BCCF2100B27C2F /* icon.png in Resources */,
+				892F7CC013C1E08500C4B98C /* WeeklyBundlesView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +389,8 @@
 				891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */,
 				892F7CB413C0F78B00C4B98C /* DownloadsManager.m in Sources */,
 				892F7CB913C0F94100C4B98C /* FileStore.m in Sources */,
+				892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */,
+				892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
