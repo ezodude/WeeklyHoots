@@ -11,6 +11,7 @@
 
 @implementation WeeklyBundlesViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,4 +55,22 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark -
+#pragma mark Table View Data Source Methods
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *PlaylistsTableIdentifier = @"PlaylistsTableIdentifier";
+    
+    UITableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:PlaylistsTableIdentifier];
+    if(cell == nil){
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PlaylistsTableIdentifier] autorelease];
+    }
+    
+    NSUInteger row = [indexPath row];
+    cell.textLabel.text = @"Playlists";
+    return cell;
+}
 @end

@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface WeeklyBundlesViewController : UIViewController {
-    
+@interface WeeklyBundlesViewController : UIViewController 
+<UITableViewDataSource, UITableViewDelegate> {
 }
 
 @end
