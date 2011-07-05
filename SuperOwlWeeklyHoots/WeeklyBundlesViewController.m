@@ -11,6 +11,21 @@
 
 @implementation WeeklyBundlesViewController
 
+@synthesize currentOrRecentBundleControl=_currentOrRecentBundleControl;
+
+@synthesize startWeekDayNameLabel=_startWeekDayNameLabel;
+@synthesize endWeekDayNameLabel=_endWeekDayNameLabel;
+@synthesize startDayDateLabel=_startDayDateLabel;
+@synthesize endDayDateLabel=_endDayDateLabel;
+
+@synthesize bundleDurationLabel=_bundleDurationLabel;
+@synthesize syncedDurationLabel=_syncedDurationLabel;
+@synthesize bundleSyncStatusBar=_bundleSyncStatusBar;
+
+@synthesize playlistsMenu=_playlistsMenu;
+
+@synthesize syncButton=_syncButton;
+@synthesize listenButton=_listenButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +38,22 @@
 
 - (void)dealloc
 {
+    [self.currentOrRecentBundleControl release];
+    
+    [self.startWeekDayNameLabel release];
+    [self.endWeekDayNameLabel release];
+    [self.startDayDateLabel release];
+    [self.endDayDateLabel release];
+    
+    [self.bundleDurationLabel release];
+    [self.syncedDurationLabel release];
+    [self.bundleSyncStatusBar release];
+    
+    [self.playlistsMenu release];
+    
+    [self.syncButton release];
+    [self.listenButton release];
+    
     [super dealloc];
 }
 
@@ -38,8 +69,8 @@
 
 - (void)viewDidLoad
 {
+    [self drawViewUsingBundle:nil];
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -56,6 +87,31 @@
 }
 
 #pragma mark -
+#pragma mark Weekly Bundle Drawing Methods
+
+-(IBAction)toggleControls:(id)sender{
+    NSLog(@"Toggel Happened!");
+}
+
+-(void)drawViewUsingBundle:(WeeklyBundle *)bundle{
+    [self drawButtons];
+}
+
+-(void)drawButtons{
+    UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
+    UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
+    
+    UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    
+    [self.syncButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+    [self.syncButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+    
+    [self.listenButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+    [self.listenButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+}
+
+#pragma mark -
 #pragma mark Table View Data Source Methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -69,7 +125,6 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PlaylistsTableIdentifier] autorelease];
     }
     
-    NSUInteger row = [indexPath row];
     cell.textLabel.text = @"Playlists";
     return cell;
 }
