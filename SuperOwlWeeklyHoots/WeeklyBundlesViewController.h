@@ -54,6 +54,7 @@
 -(IBAction)toggleControls:(id)sender;
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator;
+-(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 -(void)drawViewUsingBundle:(WeeklyBundle *)bundle;
 -(void)drawButtons;
 

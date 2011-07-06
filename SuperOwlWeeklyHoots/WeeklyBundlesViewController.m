@@ -107,13 +107,15 @@
     [bundlesManager setupBundlesUsingProgressIndicator:progressIndicator WithCallback:^{
         [self setCurrentBundle:[bundlesManager currentBundle]];
         [self setRecentBundle:[bundlesManager recentBundle]];
-        
-        progressIndicator.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
-        progressIndicator.mode = MBProgressHUDModeCustomView;
-        [progressIndicator hide:YES afterDelay:2];
-        
+        [self cleanUpProgressIndicator:progressIndicator];
         [self drawViewUsingBundle:self.currentBundle];
     }];
+}
+
+-(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator{
+    progressIndicator.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
+    progressIndicator.mode = MBProgressHUDModeCustomView;
+    [progressIndicator hide:YES afterDelay:2];
 }
 
 -(void)drawViewUsingBundle:(WeeklyBundle *)bundle{
