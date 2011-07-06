@@ -61,6 +61,25 @@
    return [result decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"60.00"]];
 }
 
+-(NSUInteger)downloadedDurationInMinutes{
+    if(!self.playlists) return 0;
+    __block NSUInteger result;
+    
+    [self.playlists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+        result = result + [(Playlist *)obj downloadedDurationInMinutes] ;
+    }];
+    
+    
+    return result;
+}
+
+-(NSDecimalNumber *)downloadedDurationInHours{
+    NSUInteger downloadedDurationInMins = [self downloadedDurationInMinutes];
+    
+    NSDecimalNumber *result = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d", downloadedDurationInMins]];
+    return [result decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"60.00"]];
+}
+
 - (void)dealloc {
     [self.guid release];
     [self.startDate release];

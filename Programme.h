@@ -15,6 +15,7 @@
     NSUInteger _duration;
     NSString *_audioUri;
     NSString *_audioType;
+    BOOL _downloaded;
 }
 
 @property (nonatomic, retain) NSString *guid;
@@ -22,6 +23,7 @@
 @property (nonatomic, assign) NSUInteger duration;
 @property (nonatomic, retain) NSString *audioUri;
 @property (nonatomic, retain) NSString *audioType;
+@property (nonatomic, assign) BOOL downloaded;
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri;
 @end

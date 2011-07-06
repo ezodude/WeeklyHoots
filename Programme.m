@@ -15,6 +15,7 @@
 @synthesize duration=_duration;
 @synthesize audioUri=_audioUri;
 @synthesize audioType=_audioType;
+@synthesize downloaded=_downloaded;
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri{
     self = [super init];

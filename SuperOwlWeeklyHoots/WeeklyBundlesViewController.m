@@ -143,6 +143,8 @@
     [formatter setRoundingIncrement:[NSNumber numberWithFloat:0.5]];
 
     self.bundleDurationLabel.text = [NSString stringWithFormat:@"%@ hrs", [formatter stringFromNumber:[self.activeBundle durationInHours]]];
+    
+    self.syncedDurationLabel.text = [NSString stringWithFormat:@"%@ hours downloaded", [formatter stringFromNumber:[self.activeBundle downloadedDurationInHours]]];
 
     [formatter release];
     [self drawButtons];

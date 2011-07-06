@@ -27,5 +27,7 @@
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
 -(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSString *)startDate endDate:(NSString *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
 -(NSDecimalNumber *)durationInHours;
+-(NSUInteger)downloadedDurationInMinutes;
+-(NSDecimalNumber *)downloadedDurationInHours;
 
 @end

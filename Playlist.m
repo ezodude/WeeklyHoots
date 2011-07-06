@@ -42,6 +42,19 @@
     return self;
 }
 
+-(NSUInteger)downloadedDurationInMinutes{
+    if(!self.programmes) return 0;
+    __block NSUInteger result;
+    
+    [self.programmes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+        if ([obj downloaded]) {
+            result = result + [(Programme *)obj duration] ;
+        }
+    }];
+    
+    return result;
+}
+
 - (void)dealloc {
     [self.guid release];
     [self.title release];
