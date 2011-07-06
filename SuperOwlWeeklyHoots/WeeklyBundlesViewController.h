@@ -63,6 +63,7 @@
 
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 -(void)drawViewUsingBundle;
+-(void)drawProgrammesSynced;
 -(void)drawButtons;
 
 @end

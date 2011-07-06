@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^ProgrammeSyncedCallbackBlock)();
 
 @interface AudioDownloadsManager : NSObject {
     
 }
+
+@property (nonatomic, copy) ProgrammeSyncedCallbackBlock programmeSyncedCallbackBlock;
 
 + (id)manager;
 

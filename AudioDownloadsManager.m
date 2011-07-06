@@ -11,9 +11,15 @@
 
 @implementation AudioDownloadsManager
 
+@synthesize programmeSyncedCallbackBlock;
 + (id)manager
 {
 	return [[[self alloc] init] autorelease];
+}
+
+- (void)dealloc {
+    [self.programmeSyncedCallbackBlock release];
+    [super dealloc];
 }
 
 @end

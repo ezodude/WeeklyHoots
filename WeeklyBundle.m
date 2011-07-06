@@ -15,8 +15,7 @@
 @synthesize endDate=_endDate;
 @synthesize durationInMinutes=_durationInMinutes;
 @synthesize playlists=_playlists;
-
-@synthesize syncCompletionCallbackBlock;
+@synthesize totalProgrammesCount=_totalProgrammesCount;
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary{
     return [self initWithGuid:[dictionary objectForKey:@"id"] startDate: [dictionary objectForKey:@"start_date"] endDate:[dictionary objectForKey:@"end_date"] durationInMinutes:[dictionary objectForKey:@"duration"] playlists:(NSArray *)[dictionary objectForKey:@"playlists"]];
@@ -45,7 +44,10 @@
             
             NSString *storyJockey = [(NSDictionary *)[content objectForKey:@"curator"] objectForKey:@"firstname"];
             
-            Playlist *playlist = [[Playlist alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] storyJockey:storyJockey summary:[content objectForKey:@"full_summary"] duration:[content objectForKey:@"duration"] programmes:(NSArray *)[content objectForKey:@"programmes"]];
+            NSArray *programmes = (NSArray *)[content objectForKey:@"programmes"];
+            self.totalProgrammesCount = self.totalProgrammesCount + [programmes count];
+            
+            Playlist *playlist = [[Playlist alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] storyJockey:storyJockey summary:[content objectForKey:@"full_summary"] duration:[content objectForKey:@"duration"] programmes:programmes];
             
             [newPlaylists addObject:playlist];
             [playlist release];
@@ -62,17 +64,6 @@
    return [result decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"60.00"]];
 }
 
--(NSUInteger)totalProgrammesCount{
-    if(!self.playlists) return 0;
-    __block NSUInteger result;
-    
-    [self.playlists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
-        result = result + [(Playlist *)obj totalProgrammesCount] ;
-    }];
-    
-    return result;
-}
-
 -(NSUInteger)downloadedProgrammesCount{
     if(!self.playlists) return 0;
     __block NSUInteger result;
@@ -84,13 +75,20 @@
     return result;
 }
 
--(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(SyncCompletionCallbackBlock)block{
+-(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(ProgrammeSyncedCallbackBlock)block{
     NSLog(@"Weekly Bundle Syncing");
     
 //    AudioDownloadsManager *manager = [AudioDownloadsManager manager];
-//    [manager prepareDownloadContextForBundle:self];
     
-    [self setSyncCompletionCallbackBlock:block];
+    /*
+     - This should setup directories
+     - create Audio Download objects that refer to the bundle, playlist, programme
+        - Referred to programmes in the download objects should all be marked ready for download.
+    */
+
+//    [manager prepareDownloadContextForBundle:self];
+//    
+//    [manager startDownloadsForBundle:self progressView:progressView withCallback:block];    
 }
 
 - (void)dealloc {
@@ -98,7 +96,6 @@
     [self.startDate release];
     [self.endDate release];
     [self.playlists release];
-    [self.syncCompletionCallbackBlock release];
     [super dealloc];
 }
 @end

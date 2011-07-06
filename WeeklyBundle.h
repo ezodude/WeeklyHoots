@@ -11,14 +11,13 @@
 #import "AudioDownloadsManager.h"
 @class Playlist;
 
-typedef void (^SyncCompletionCallbackBlock)();
-
 @interface WeeklyBundle : NSObject {
     NSString *_guid;
     NSDate *_startDate;
     NSDate *_endDate;
     NSUInteger _durationInMinutes;
     NSArray *_playlists;
+    NSUInteger _totalProgrammesCount;
 }
 
 @property (nonatomic, retain) NSString *guid;
@@ -26,16 +25,15 @@ typedef void (^SyncCompletionCallbackBlock)();
 @property (nonatomic, retain) NSDate *endDate;
 @property (nonatomic, assign) NSUInteger durationInMinutes;
 @property (nonatomic, retain) NSArray *playlists;
+@property (nonatomic, assign) NSUInteger totalProgrammesCount;
 
-@property (nonatomic, copy) SyncCompletionCallbackBlock syncCompletionCallbackBlock;
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
 -(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSString *)startDate endDate:(NSString *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
 
 -(NSDecimalNumber *)durationInHours;
--(NSUInteger)totalProgrammesCount;
 -(NSUInteger)downloadedProgrammesCount;
 
--(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(SyncCompletionCallbackBlock)block;
+-(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(ProgrammeSyncedCallbackBlock)block;
 
 @end

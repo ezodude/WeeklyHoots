@@ -144,13 +144,15 @@
 
     self.bundleDurationLabel.text = [NSString stringWithFormat:@"%@ hrs", [formatter stringFromNumber:[self.activeBundle durationInHours]]];
     
-    NSUInteger totalProgrammesCount = [self.activeBundle totalProgrammesCount];
-    NSUInteger downloadedProgrammesCount = [self.activeBundle downloadedProgrammesCount];
-    
-    self.syncedProgrammesLabel.text = [NSString stringWithFormat:@"%d / %d audio stories synced", downloadedProgrammesCount, totalProgrammesCount];
-
     [formatter release];
+    
+    [self drawProgrammesSynced];
     [self drawButtons];
+}
+
+-(void)drawProgrammesSynced{
+    NSUInteger downloadedProgrammesCount = [self.activeBundle downloadedProgrammesCount];
+    self.syncedProgrammesLabel.text = [NSString stringWithFormat:@"%d / %d audio stories synced", downloadedProgrammesCount, [self.activeBundle totalProgrammesCount]];
 }
 
 -(void)drawButtons{
