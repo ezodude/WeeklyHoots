@@ -13,6 +13,7 @@
 
 @synthesize currentBundle=_currentBundle;
 @synthesize recentBundle=_recentBundle;
+@synthesize activeBundle=_activeBundle;
 
 @synthesize currentOrRecentBundleControl=_currentOrRecentBundleControl;
 
@@ -43,6 +44,7 @@
 {
     [self.currentBundle release];
     [self.recentBundle release];
+    [self.activeBundle release];
     [self.currentOrRecentBundleControl release];
     
     [self.startWeekDayNameLabel release];
@@ -98,7 +100,13 @@
 #pragma mark Weekly Bundle Drawing Methods
 
 -(IBAction)toggleControls:(id)sender{
-    NSLog(@"Toggel Happened!");
+    if ([sender selectedSegmentIndex] == kSwitchesSegmentIndex) {
+        self.activeBundle = self.currentBundle;
+    }else{
+        self.activeBundle = self.recentBundle;
+    }
+    [self drawViewUsingBundle];
+    NSLog(@"Toggling Between Bundles!");
 }
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator{
@@ -107,8 +115,10 @@
     [bundlesManager setupBundlesUsingProgressIndicator:progressIndicator WithCallback:^{
         [self setCurrentBundle:[bundlesManager currentBundle]];
         [self setRecentBundle:[bundlesManager recentBundle]];
+        [self setActiveBundle: self.currentBundle];
+        
         [self cleanUpProgressIndicator:progressIndicator];
-        [self drawViewUsingBundle:self.currentBundle];
+        [self drawViewUsingBundle];
     }];
 }
 
@@ -118,21 +128,21 @@
     [progressIndicator hide:YES afterDelay:2];
 }
 
--(void)drawViewUsingBundle:(WeeklyBundle *)bundle{
+-(void)drawViewUsingBundle{
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];  
     [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"E" options:0 locale:[NSLocale currentLocale]]];
-    self.startWeekDayNameLabel.text = [[dateFormatter stringFromDate:[bundle startDate]] uppercaseString];
-    self.endWeekDayNameLabel.text = [[dateFormatter stringFromDate:[bundle endDate]] uppercaseString];
+    self.startWeekDayNameLabel.text = [[dateFormatter stringFromDate:[self.activeBundle startDate]] uppercaseString];
+    self.endWeekDayNameLabel.text = [[dateFormatter stringFromDate:[self.activeBundle endDate]] uppercaseString];
     
     [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dMMMYY" options:0 locale:[NSLocale currentLocale]]];
-    self.startDayDateLabel.text = [dateFormatter stringFromDate:[bundle startDate]];
-    self.endDayDateLabel.text = [dateFormatter stringFromDate:[bundle endDate]];
+    self.startDayDateLabel.text = [dateFormatter stringFromDate:[self.activeBundle startDate]];
+    self.endDayDateLabel.text = [dateFormatter stringFromDate:[self.activeBundle endDate]];
     
     NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
     [formatter setRoundingMode:NSNumberFormatterRoundHalfDown];
     [formatter setRoundingIncrement:[NSNumber numberWithFloat:0.5]];
 
-    self.bundleDurationLabel.text = [NSString stringWithFormat:@"%@ hrs", [formatter stringFromNumber:[self.currentBundle durationInHours]]];
+    self.bundleDurationLabel.text = [NSString stringWithFormat:@"%@ hrs", [formatter stringFromNumber:[self.activeBundle durationInHours]]];
 
     [formatter release];
     [self drawButtons];

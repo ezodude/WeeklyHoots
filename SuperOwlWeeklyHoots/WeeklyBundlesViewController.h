@@ -11,10 +11,13 @@
 #import "MBProgressHUD.h"
 #import "WeeklyBundlesNavController.h"
 
+#define kSwitchesSegmentIndex	0
+
 @interface WeeklyBundlesViewController : UIViewController 
 <UITableViewDataSource, UITableViewDelegate> {
     WeeklyBundle *_currentBundle;
     WeeklyBundle *_recentBundle;
+    WeeklyBundle *_activeBundle;
     
     UISegmentedControl *_currentOrRecentBundleControl;
     
@@ -35,6 +38,7 @@
 
 @property (nonatomic, retain) WeeklyBundle *currentBundle;
 @property (nonatomic, retain) WeeklyBundle *recentBundle;
+@property (nonatomic, retain) WeeklyBundle *activeBundle;
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl *currentOrRecentBundleControl;
 @property (nonatomic, retain) IBOutlet UILabel *startWeekDayNameLabel;
@@ -55,7 +59,7 @@
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator;
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
--(void)drawViewUsingBundle:(WeeklyBundle *)bundle;
+-(void)drawViewUsingBundle;
 -(void)drawButtons;
 
 @end
