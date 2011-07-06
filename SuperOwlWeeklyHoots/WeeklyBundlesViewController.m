@@ -7,9 +7,12 @@
 //
 
 #import "WeeklyBundlesViewController.h"
-
+#import "SuperOwlWeeklyHootsAppDelegate.h"
 
 @implementation WeeklyBundlesViewController
+
+@synthesize currentBundle=_currentBundle;
+@synthesize recentBundle=_recentBundle;
 
 @synthesize currentOrRecentBundleControl=_currentOrRecentBundleControl;
 
@@ -38,6 +41,8 @@
 
 - (void)dealloc
 {
+    [self.currentBundle release];
+    [self.recentBundle release];
     [self.currentOrRecentBundleControl release];
     
     [self.startWeekDayNameLabel release];
@@ -69,7 +74,10 @@
 
 - (void)viewDidLoad
 {
-    [self drawViewUsingBundle:nil];
+    WeeklyBundlesNavController *navController = [[[UIApplication sharedApplication] delegate] weeklyBundlesNavController];
+    
+    MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:navController.view animated:YES] retain];
+    [self loadDataUsingProgressIndicator:HUD];
     [super viewDidLoad];
 }
 
@@ -93,7 +101,29 @@
     NSLog(@"Toggel Happened!");
 }
 
+-(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator{
+    BundlesManager *bundlesManager = [BundlesManager manager];
+    
+    [bundlesManager setupBundlesUsingProgressIndicator:progressIndicator WithCallback:^{
+        [self setCurrentBundle:[bundlesManager currentBundle]];
+        [self setRecentBundle:[bundlesManager recentBundle]];
+        
+        progressIndicator.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
+        progressIndicator.mode = MBProgressHUDModeCustomView;
+        [progressIndicator hide:YES afterDelay:2];
+        
+        [self drawViewUsingBundle:self.currentBundle];
+    }];
+}
+
 -(void)drawViewUsingBundle:(WeeklyBundle *)bundle{
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    [formatter setRoundingMode:NSNumberFormatterRoundHalfDown];
+    [formatter setRoundingIncrement:[NSNumber numberWithFloat:0.5]];
+
+    self.bundleDurationLabel.text = [NSString stringWithFormat:@"%@ hrs", [formatter stringFromNumber:[self.currentBundle durationInHours]]];
+
+    [formatter release];
     [self drawButtons];
 }
 

@@ -14,17 +14,18 @@
     NSString *_guid;
     NSDate *_startDate;
     NSDate *_endDate;
-    NSNumber *_durationInMinutes;
+    NSUInteger _durationInMinutes;
     NSArray *_playlists;
 }
 
 @property (nonatomic, retain) NSString *guid;
 @property (nonatomic, retain) NSDate *startDate;
 @property (nonatomic, retain) NSDate *endDate;
-@property (nonatomic, retain) NSNumber *durationInMinutes;
+@property (nonatomic, assign) NSUInteger durationInMinutes;
 @property (nonatomic, retain) NSArray *playlists;
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
 -(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSDate *)startDate endDate:(NSDate *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
+-(NSDecimalNumber *)durationInHours;
 
 @end

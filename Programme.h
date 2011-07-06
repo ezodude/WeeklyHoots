@@ -12,14 +12,14 @@
 @interface Programme : NSObject {
     NSString *_guid;
     NSString *_title;
-    NSNumber *_duration;
+    NSUInteger _duration;
     NSString *_audioUri;
     NSString *_audioType;
 }
 
 @property (nonatomic, retain) NSString *guid;
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSNumber *duration;
+@property (nonatomic, assign) NSUInteger duration;
 @property (nonatomic, retain) NSString *audioUri;
 @property (nonatomic, retain) NSString *audioType;
 

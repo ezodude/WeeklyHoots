@@ -51,8 +51,12 @@
     [super dealloc];
 }
 
--(void)setupBundlesWithCallback:(BundleSetupSuccessCallbackBlock)block{
+-(void)setupBundlesUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(BundleSetupSuccessCallbackBlock)block{
+    
     [_bundlesRequestQueue cancelAllOperations];
+    if (progressIndicator) {
+        [_bundlesRequestQueue setDownloadProgressDelegate:progressIndicator];
+    }
     [self setBundleSetupSuccessCallbackBlock:block];
     
     [self queueBundle:@"Recent"];

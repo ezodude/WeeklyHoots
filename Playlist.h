@@ -15,7 +15,7 @@
     NSString *_title;
     NSString *_storyJockey;
     NSString *_summary;
-    NSNumber *_duration;
+    NSUInteger _duration;
     NSDate *_publicationDate;
     NSArray *_programmes;
 }
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *storyJockey;
 @property (nonatomic, retain) NSString *summary;
-@property (nonatomic, retain) NSNumber *duration;
+@property (nonatomic, assign) NSUInteger duration;
 @property (nonatomic, retain) NSDate *publicationDate;
 @property (nonatomic, retain) NSArray *programmes;
 

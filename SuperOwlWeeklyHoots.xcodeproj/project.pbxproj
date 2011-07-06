@@ -29,6 +29,9 @@
 		893FBFAE13C23CF2007EE2E7 /* CabinSketch-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFAD13C23CF2007EE2E7 /* CabinSketch-Bold.ttf */; };
 		893FBFB013C35280007EE2E7 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFAF13C35280007EE2E7 /* blueButton.png */; };
 		893FBFB213C352CB007EE2E7 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFB113C352CB007EE2E7 /* whiteButton.png */; };
+		893FBFB613C37047007EE2E7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFB413C37047007EE2E7 /* MBProgressHUD.m */; };
+		893FBFB913C3714E007EE2E7 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFB813C3714E007EE2E7 /* README.mdown */; };
+		893FBFBB13C3784E007EE2E7 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFBA13C3784E007EE2E7 /* 37x-Checkmark.png */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -83,6 +86,10 @@
 		893FBFAD13C23CF2007EE2E7 /* CabinSketch-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CabinSketch-Bold.ttf"; sourceTree = "<group>"; };
 		893FBFAF13C35280007EE2E7 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		893FBFB113C352CB007EE2E7 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
+		893FBFB413C37047007EE2E7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		893FBFB513C37047007EE2E7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		893FBFB813C3714E007EE2E7 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
+		893FBFBA13C3784E007EE2E7 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,6 +148,7 @@
 		89099BF313B4A2AA00FEE82B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				893FBFB713C37132007EE2E7 /* MBProgressHUD */,
 				89099BF413B4A2E300FEE82B /* JSONKit */,
 			);
 			name = Vendor;
@@ -212,6 +220,16 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		893FBFB713C37132007EE2E7 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				893FBFB813C3714E007EE2E7 /* README.mdown */,
+				893FBFB413C37047007EE2E7 /* MBProgressHUD.m */,
+				893FBFB513C37047007EE2E7 /* MBProgressHUD.h */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		894C511713AB7B2900F83A5F = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +295,7 @@
 				893FBFB313C352D1007EE2E7 /* Buttons */,
 				892F7CC713C2383800C4B98C /* Fonts */,
 				891DB32613BCCF2100B27C2F /* icon.png */,
+				893FBFBA13C3784E007EE2E7 /* 37x-Checkmark.png */,
 				894C515613ABACC300F83A5F /* rewind.png */,
 				894C515413ABA9A900F83A5F /* settings.png */,
 				894C515213ABA81300F83A5F /* starred.png */,
@@ -394,6 +413,8 @@
 				893FBFAE13C23CF2007EE2E7 /* CabinSketch-Bold.ttf in Resources */,
 				893FBFB013C35280007EE2E7 /* blueButton.png in Resources */,
 				893FBFB213C352CB007EE2E7 /* whiteButton.png in Resources */,
+				893FBFB913C3714E007EE2E7 /* README.mdown in Resources */,
+				893FBFBB13C3784E007EE2E7 /* 37x-Checkmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +440,7 @@
 				892F7CB913C0F94100C4B98C /* FileStore.m in Sources */,
 				892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */,
 				892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */,
+				893FBFB613C37047007EE2E7 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,7 +24,7 @@
         self.title = title;
         self.storyJockey = storyJockey;
         self.summary = summary;
-        self.duration = duration;
+        self.duration = [duration unsignedIntegerValue];
         
         NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
                                          initWithCapacity:[programmes count]];
@@ -47,7 +47,6 @@
     [self.title release];
     [self.storyJockey release];
     [self.summary release];
-    [self.duration release];
     [self.publicationDate release];
     [self.programmes release];
     [super dealloc];

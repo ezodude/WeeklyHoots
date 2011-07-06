@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WeeklyBundle.h"
+#import "BundlesManager.h"
+#import "MBProgressHUD.h"
+#import "WeeklyBundlesNavController.h"
 
 @interface WeeklyBundlesViewController : UIViewController 
 <UITableViewDataSource, UITableViewDelegate> {
+    WeeklyBundle *_currentBundle;
+    WeeklyBundle *_recentBundle;
+    
     UISegmentedControl *_currentOrRecentBundleControl;
     
     UILabel *_startWeekDayNameLabel;
@@ -28,6 +33,9 @@
     UIButton *_listenButton;
 }
 
+@property (nonatomic, retain) WeeklyBundle *currentBundle;
+@property (nonatomic, retain) WeeklyBundle *recentBundle;
+
 @property (nonatomic, retain) IBOutlet UISegmentedControl *currentOrRecentBundleControl;
 @property (nonatomic, retain) IBOutlet UILabel *startWeekDayNameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *endWeekDayNameLabel;
@@ -44,6 +52,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *listenButton;
 
 -(IBAction)toggleControls:(id)sender;
+
+-(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator;
 -(void)drawViewUsingBundle:(WeeklyBundle *)bundle;
 -(void)drawButtons;
 

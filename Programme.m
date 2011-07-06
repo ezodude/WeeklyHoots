@@ -21,7 +21,7 @@
     if(self){
         self.guid = guid;
         self.title = title;
-        self.duration = duration;
+        self.duration = [duration unsignedIntegerValue];
         self.audioUri = audioUri;
         self.audioType = [[[[audioUri componentsSeparatedByString:@"?"] objectAtIndex:0] pathExtension] lowercaseString];
     }
@@ -31,7 +31,6 @@
 - (void)dealloc {
     [self.guid release];
     [self.title release];
-    [self.duration release];
     [self.audioUri release];
     [self.audioType release];
     [super dealloc];

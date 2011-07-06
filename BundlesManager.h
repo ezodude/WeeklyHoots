@@ -12,6 +12,7 @@
 #import "ASINetworkQueue.h"
 #import "ASIHTTPRequest.h"
 #import "../JSONKit/JSONKit.h"
+#import "MBProgressHUD.h";
 
 @class ASINetworkQueue;
 @class ASIHTTPRequest;
@@ -33,7 +34,7 @@ typedef void (^BundleSetupSuccessCallbackBlock)();
 @property (nonatomic, copy) BundleSetupSuccessCallbackBlock bundleSetupSuccessCallbackBlock;
 
 + (id)manager;
--(void)setupBundlesWithCallback:(BundleSetupSuccessCallbackBlock)block;
+-(void)setupBundlesUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(BundleSetupSuccessCallbackBlock)block;
 -(BOOL)bundlesAreAvailable;
 
 @end

@@ -27,7 +27,7 @@
         self.guid = guid;
         self.startDate = startDate;
         self.endDate = endDate;
-        self.durationInMinutes = durationInMinutes;
+        self.durationInMinutes = [durationInMinutes unsignedIntegerValue];
         
         NSMutableArray *newPlaylists = [[NSMutableArray alloc] 
                                         initWithCapacity:[playlists count]];
@@ -48,11 +48,15 @@
     return self;
 }
 
+-(NSDecimalNumber *)durationInHours{
+    NSDecimalNumber *result = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d", self.durationInMinutes]];
+   return [result decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"60.00"]];
+}
+
 - (void)dealloc {
     [self.guid release];
     [self.startDate release];
     [self.endDate release];
-    [self.durationInMinutes release];
     [self.playlists release];
     [super dealloc];
 }

@@ -33,7 +33,7 @@
 //    NSString *urlPath = [NSString stringWithFormat:@"%@bundles/current.json", programmesAPIURL];
     
     BundlesManager *bundlesManager = [BundlesManager manager];
-    [bundlesManager setupBundlesWithCallback:^{
+    [bundlesManager setupBundlesUsingProgressIndicator:nil WithCallback:^{
         [self setCurrentBundle:[bundlesManager currentBundle]];
         [self.tableView reloadData];
     }];
