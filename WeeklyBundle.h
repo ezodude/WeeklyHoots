@@ -25,7 +25,7 @@
 @property (nonatomic, retain) NSArray *playlists;
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
--(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSDate *)startDate endDate:(NSDate *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
+-(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSString *)startDate endDate:(NSString *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
 -(NSDecimalNumber *)durationInHours;
 
 @end

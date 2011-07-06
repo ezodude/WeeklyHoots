@@ -119,6 +119,15 @@
 }
 
 -(void)drawViewUsingBundle:(WeeklyBundle *)bundle{
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];  
+    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"E" options:0 locale:[NSLocale currentLocale]]];
+    self.startWeekDayNameLabel.text = [[dateFormatter stringFromDate:[bundle startDate]] uppercaseString];
+    self.endWeekDayNameLabel.text = [[dateFormatter stringFromDate:[bundle endDate]] uppercaseString];
+    
+    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dMMMYY" options:0 locale:[NSLocale currentLocale]]];
+    self.startDayDateLabel.text = [dateFormatter stringFromDate:[bundle startDate]];
+    self.endDayDateLabel.text = [dateFormatter stringFromDate:[bundle endDate]];
+    
     NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
     [formatter setRoundingMode:NSNumberFormatterRoundHalfDown];
     [formatter setRoundingIncrement:[NSNumber numberWithFloat:0.5]];

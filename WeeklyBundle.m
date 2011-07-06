@@ -21,12 +21,20 @@
     return [self initWithGuid:[dictionary objectForKey:@"id"] startDate: [dictionary objectForKey:@"start_date"] endDate:[dictionary objectForKey:@"end_date"] durationInMinutes:[dictionary objectForKey:@"duration"] playlists:(NSArray *)[dictionary objectForKey:@"playlists"]];
 }
 
--(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSDate *)startDate endDate:(NSDate *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists{
+-(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSString *)startDate endDate:(NSString *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists{
     self = [super init];
     if(self){
         self.guid = guid;
-        self.startDate = startDate;
-        self.endDate = endDate;
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
+        self.startDate = [dateFormatter dateFromString:startDate];
+        self.endDate = [dateFormatter dateFromString:endDate];
+        
+        [dateFormatter release];
+        
         self.durationInMinutes = [durationInMinutes unsignedIntegerValue];
         
         NSMutableArray *newPlaylists = [[NSMutableArray alloc] 
