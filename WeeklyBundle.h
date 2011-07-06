@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Playlist.h"
+#import "AudioDownloadsManager.h"
 @class Playlist;
+
+typedef void (^SyncCompletionCallbackBlock)();
 
 @interface WeeklyBundle : NSObject {
     NSString *_guid;
@@ -24,10 +27,15 @@
 @property (nonatomic, assign) NSUInteger durationInMinutes;
 @property (nonatomic, retain) NSArray *playlists;
 
+@property (nonatomic, copy) SyncCompletionCallbackBlock syncCompletionCallbackBlock;
+
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
 -(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSString *)startDate endDate:(NSString *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
+
 -(NSDecimalNumber *)durationInHours;
--(NSUInteger)downloadedDurationInMinutes;
--(NSDecimalNumber *)downloadedDurationInHours;
+-(NSUInteger)totalProgrammesCount;
+-(NSUInteger)downloadedProgrammesCount;
+
+-(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(SyncCompletionCallbackBlock)block;
 
 @end

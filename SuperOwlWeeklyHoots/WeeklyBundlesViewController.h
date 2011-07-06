@@ -47,7 +47,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *endDayDateLabel;
 
 @property (nonatomic, retain) IBOutlet UILabel *bundleDurationLabel;
-@property (nonatomic, retain) IBOutlet UILabel *syncedDurationLabel;
+@property (nonatomic, retain) IBOutlet UILabel *syncedProgrammesLabel;
 @property (nonatomic, retain) IBOutlet UIProgressView *bundleSyncStatusBar;
 
 @property (nonatomic, retain) IBOutlet UITableView *playlistsMenu;
@@ -56,8 +56,11 @@
 @property (nonatomic, retain) IBOutlet UIButton *listenButton;
 
 -(IBAction)toggleControls:(id)sender;
+-(IBAction)startSyncing:(id)sender;
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator;
+-(void)startSyncingUsingProgressView:(UIProgressView *)progressView;
+
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 -(void)drawViewUsingBundle;
 -(void)drawButtons;

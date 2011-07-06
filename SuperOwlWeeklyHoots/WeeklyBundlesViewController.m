@@ -23,7 +23,7 @@
 @synthesize endDayDateLabel=_endDayDateLabel;
 
 @synthesize bundleDurationLabel=_bundleDurationLabel;
-@synthesize syncedDurationLabel=_syncedDurationLabel;
+@synthesize syncedProgrammesLabel=_syncedDurationLabel;
 @synthesize bundleSyncStatusBar=_bundleSyncStatusBar;
 
 @synthesize playlistsMenu=_playlistsMenu;
@@ -53,7 +53,7 @@
     [self.endDayDateLabel release];
     
     [self.bundleDurationLabel release];
-    [self.syncedDurationLabel release];
+    [self.syncedProgrammesLabel release];
     [self.bundleSyncStatusBar release];
     
     [self.playlistsMenu release];
@@ -144,7 +144,10 @@
 
     self.bundleDurationLabel.text = [NSString stringWithFormat:@"%@ hrs", [formatter stringFromNumber:[self.activeBundle durationInHours]]];
     
-    self.syncedDurationLabel.text = [NSString stringWithFormat:@"%@ hours downloaded", [formatter stringFromNumber:[self.activeBundle downloadedDurationInHours]]];
+    NSUInteger totalProgrammesCount = [self.activeBundle totalProgrammesCount];
+    NSUInteger downloadedProgrammesCount = [self.activeBundle downloadedProgrammesCount];
+    
+    self.syncedProgrammesLabel.text = [NSString stringWithFormat:@"%d / %d audio stories synced", downloadedProgrammesCount, totalProgrammesCount];
 
     [formatter release];
     [self drawButtons];
@@ -162,6 +165,22 @@
     
     [self.listenButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
     [self.listenButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+}
+
+#pragma mark -
+#pragma mark Sync Operations Methods
+-(IBAction)startSyncing:(id)sender{
+    if ([[[sender titleLabel] text] isEqualToString:@"Sync"]) {
+        [sender setTitle:@"Cancel" forState:UIControlStateNormal];
+        [sender setTitle:@"Cancel" forState:UIControlStateHighlighted];
+        [self startSyncingUsingProgressView:nil];
+    }
+}
+
+-(void)startSyncingUsingProgressView:(UIProgressView *)progressView{
+    [[self activeBundle] syncUsingProgressView:progressView WithCallback:^{
+        [self drawViewUsingBundle];
+    }];
 }
 
 #pragma mark -

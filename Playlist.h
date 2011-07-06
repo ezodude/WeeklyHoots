@@ -32,5 +32,7 @@
                 storyJockey:(NSString *)storyJockey 
                 summary:(NSString *)summary duration:(NSNumber *)duration
                 programmes:(NSArray *)programmes;
--(NSUInteger)downloadedDurationInMinutes;
+
+-(NSUInteger)totalProgrammesCount;
+-(NSUInteger)downloadedProgrammesCount;
 @end

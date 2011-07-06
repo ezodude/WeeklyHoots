@@ -16,6 +16,7 @@
 @synthesize durationInMinutes=_durationInMinutes;
 @synthesize playlists=_playlists;
 
+@synthesize syncCompletionCallbackBlock;
 
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary{
     return [self initWithGuid:[dictionary objectForKey:@"id"] startDate: [dictionary objectForKey:@"start_date"] endDate:[dictionary objectForKey:@"end_date"] durationInMinutes:[dictionary objectForKey:@"duration"] playlists:(NSArray *)[dictionary objectForKey:@"playlists"]];
@@ -61,23 +62,35 @@
    return [result decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"60.00"]];
 }
 
--(NSUInteger)downloadedDurationInMinutes{
+-(NSUInteger)totalProgrammesCount{
     if(!self.playlists) return 0;
     __block NSUInteger result;
     
     [self.playlists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
-        result = result + [(Playlist *)obj downloadedDurationInMinutes] ;
+        result = result + [(Playlist *)obj totalProgrammesCount] ;
     }];
-    
     
     return result;
 }
 
--(NSDecimalNumber *)downloadedDurationInHours{
-    NSUInteger downloadedDurationInMins = [self downloadedDurationInMinutes];
+-(NSUInteger)downloadedProgrammesCount{
+    if(!self.playlists) return 0;
+    __block NSUInteger result;
     
-    NSDecimalNumber *result = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d", downloadedDurationInMins]];
-    return [result decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"60.00"]];
+    [self.playlists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+        result = result + [(Playlist *)obj downloadedProgrammesCount] ;
+    }];
+    
+    return result;
+}
+
+-(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(SyncCompletionCallbackBlock)block{
+    NSLog(@"Weekly Bundle Syncing");
+    
+//    AudioDownloadsManager *manager = [AudioDownloadsManager manager];
+//    [manager prepareDownloadContextForBundle:self];
+    
+    [self setSyncCompletionCallbackBlock:block];
 }
 
 - (void)dealloc {
@@ -85,6 +98,7 @@
     [self.startDate release];
     [self.endDate release];
     [self.playlists release];
+    [self.syncCompletionCallbackBlock release];
     [super dealloc];
 }
 @end
