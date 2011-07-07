@@ -75,22 +75,6 @@
     return result;
 }
 
--(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(ProgrammeSyncedCallbackBlock)block{
-    NSLog(@"Weekly Bundle Syncing");
-    
-//    AudioDownloadsManager *manager = [AudioDownloadsManager manager];
-    
-    /*
-     - This should setup directories
-     - create Audio Download objects that refer to the bundle, playlist, programme
-        - Referred to programmes in the download objects should all be marked ready for download.
-    */
-
-//    [manager prepareDownloadContextForBundle:self];
-//    
-//    [manager startDownloadsForBundle:self progressView:progressView withCallback:block];    
-}
-
 - (void)dealloc {
     [self.guid release];
     [self.startDate release];

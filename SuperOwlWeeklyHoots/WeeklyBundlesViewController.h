@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "BundlesManager.h"
+#import "AudioDownloadsManager.h"
+
 #import "MBProgressHUD.h"
 #import "WeeklyBundlesNavController.h"
 
 #define kSwitchesSegmentIndex	0
+
+@class AudioDownloadsManager;
 
 @interface WeeklyBundlesViewController : UIViewController 
 <UITableViewDataSource, UITableViewDelegate> {

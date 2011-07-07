@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WeeklyBundle.h"
+#import "FileStore.h"
+
+@class WeeklyBundle;
 
 typedef void (^ProgrammeSyncedCallbackBlock)();
 
@@ -16,6 +20,9 @@ typedef void (^ProgrammeSyncedCallbackBlock)();
 
 @property (nonatomic, copy) ProgrammeSyncedCallbackBlock programmeSyncedCallbackBlock;
 
-+ (id)manager;
++(id)manager;
+
+-(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle;
+-(void)startDownloadsForBundle:(WeeklyBundle *)bundle progressView:(UIProgressView *)progressView withCallback:(ProgrammeSyncedCallbackBlock)block; 
 
 @end

@@ -8,7 +8,6 @@
 
 #import "AudioDownloadsManager.h"
 
-
 @implementation AudioDownloadsManager
 
 @synthesize programmeSyncedCallbackBlock;
@@ -22,4 +21,14 @@
     [super dealloc];
 }
 
+-(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle{
+    NSLog(@"prepareDownloadContextForBundle");
+    NSString *basePath = [FileStore applicationDocumentsDirectory];
+    if(!basePath) return;    
+}
+
+-(void)startDownloadsForBundle:(WeeklyBundle *)bundle progressView:(UIProgressView *)progressView withCallback:(ProgrammeSyncedCallbackBlock)block{
+    NSLog(@"startDownloadsForBundle");
+    [self setProgrammeSyncedCallbackBlock:block];
+}
 @end

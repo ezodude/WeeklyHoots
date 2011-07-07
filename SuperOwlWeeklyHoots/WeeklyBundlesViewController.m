@@ -175,13 +175,23 @@
     if ([[[sender titleLabel] text] isEqualToString:@"Sync"]) {
         [sender setTitle:@"Cancel" forState:UIControlStateNormal];
         [sender setTitle:@"Cancel" forState:UIControlStateHighlighted];
-        [self startSyncingUsingProgressView:nil];
+        [self startSyncingUsingProgressView:self.bundleSyncStatusBar];
     }
 }
 
 -(void)startSyncingUsingProgressView:(UIProgressView *)progressView{
-    [[self activeBundle] syncUsingProgressView:progressView WithCallback:^{
-        [self drawViewUsingBundle];
+    NSLog(@"startSyncingUsingProgressView");
+    AudioDownloadsManager *manager = [AudioDownloadsManager manager];
+    
+    /*
+     - This should setup directories
+     - create Audio Download objects that refer to the bundle, playlist, programme
+     - Referred to programmes in the download objects should all be marked ready for download.
+     */
+    
+    [manager prepareDownloadContextForBundle:self.activeBundle];
+    [manager startDownloadsForBundle:self.activeBundle progressView:progressView withCallback:^{
+        [self drawProgrammesSynced];
     }];
 }
 

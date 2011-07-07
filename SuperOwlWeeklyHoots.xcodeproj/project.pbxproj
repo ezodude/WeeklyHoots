@@ -32,6 +32,7 @@
 		893FBFB913C3714E007EE2E7 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFB813C3714E007EE2E7 /* README.mdown */; };
 		893FBFBB13C3784E007EE2E7 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFBA13C3784E007EE2E7 /* 37x-Checkmark.png */; };
 		893FBFBE13C4C083007EE2E7 /* AudioDownloadsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */; };
+		893FBFC113C4D4D3007EE2E7 /* AudioDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -88,8 +89,10 @@
 		893FBFB513C37047007EE2E7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		893FBFB813C3714E007EE2E7 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
 		893FBFBA13C3784E007EE2E7 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
-		893FBFBC13C4C083007EE2E7 /* AudioDownloadsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; path = AudioDownloadsManager.h; sourceTree = "<group>"; };
+		893FBFBC13C4C083007EE2E7 /* AudioDownloadsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDownloadsManager.h; sourceTree = "<group>"; };
 		893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDownloadsManager.m; sourceTree = "<group>"; };
+		893FBFBF13C4D4D3007EE2E7 /* AudioDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDownload.h; sourceTree = "<group>"; };
+		893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDownload.m; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -323,14 +326,16 @@
 			children = (
 				89DF135213AF9351005A557A /* WeeklyBundle.h */,
 				89DF135313AF9351005A557A /* WeeklyBundle.m */,
+				893FBFBC13C4C083007EE2E7 /* AudioDownloadsManager.h */,
+				893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */,
 				89DF135513AF9941005A557A /* Playlist.h */,
 				89DF135613AF9941005A557A /* Playlist.m */,
 				89DF135813AF9A86005A557A /* Programme.h */,
 				89DF135913AF9A86005A557A /* Programme.m */,
 				891DB32813BCD09500B27C2F /* BundlesManager.h */,
 				891DB32913BCD09500B27C2F /* BundlesManager.m */,
-				893FBFBC13C4C083007EE2E7 /* AudioDownloadsManager.h */,
-				893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */,
+				893FBFBF13C4D4D3007EE2E7 /* AudioDownload.h */,
+				893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */,
 				893FBFB613C37047007EE2E7 /* MBProgressHUD.m in Sources */,
 				893FBFBE13C4C083007EE2E7 /* AudioDownloadsManager.m in Sources */,
+				893FBFC113C4D4D3007EE2E7 /* AudioDownload.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

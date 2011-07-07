@@ -15,10 +15,7 @@
 @synthesize duration=_duration;
 @synthesize audioUri=_audioUri;
 @synthesize audioType=_audioType;
-
-@synthesize downloaded=_downloaded;
-@synthesize downloading=_downloading;
-@synthesize markedFordownloaded=_markedFordownloaded;
+@synthesize downloadedFilePath=_downloadedFilePath;
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri{
     self = [super init];
@@ -29,7 +26,36 @@
         self.audioUri = audioUri;
         self.audioType = [[[[audioUri componentsSeparatedByString:@"?"] objectAtIndex:0] pathExtension] lowercaseString];
     }
+    [self setToUnavailableOffline];
     return self;
+}
+
+-(void)setToDownloadingStatus{
+    _downloadStatus =  kDownloading;
+}
+
+-(void)setToDownloadedStatus{
+    _downloadStatus =  kDownloaded;
+}
+
+-(void)setToUnavailableOffline{
+    _downloadStatus =  kUnavailableOffline;
+}
+
+-(void)setToMarkedForDownload{
+    _downloadStatus =  kMarkedFordownload;
+}
+
+-(BOOL)downloaded{
+    return _downloadStatus == kDownloaded;
+}
+
+-(BOOL)downloading{
+    return _downloadStatus == kDownloading;
+}
+
+-(BOOL)markedForDownload{
+    return _downloadStatus == kMarkedFordownload;
 }
 
 - (void)dealloc {
@@ -37,6 +63,7 @@
     [self.title release];
     [self.audioUri release];
     [self.audioType release];
+    [self.downloadedFilePath release];
     [super dealloc];
 }
 @end

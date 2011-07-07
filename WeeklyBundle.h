@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Playlist.h"
-#import "AudioDownloadsManager.h"
+
 @class Playlist;
 
 @interface WeeklyBundle : NSObject {
@@ -27,13 +27,10 @@
 @property (nonatomic, retain) NSArray *playlists;
 @property (nonatomic, assign) NSUInteger totalProgrammesCount;
 
-
 -(WeeklyBundle *)initFromDictionary:(NSDictionary *)dictionary;
 -(WeeklyBundle *)initWithGuid:(NSString *)guid startDate:(NSString *)startDate endDate:(NSString *)endDate durationInMinutes:(NSNumber *)durationInMinutes playlists:(NSArray *)playlists;
 
 -(NSDecimalNumber *)durationInHours;
 -(NSUInteger)downloadedProgrammesCount;
-
--(void)syncUsingProgressView:(UIProgressView *)progressView WithCallback:(ProgrammeSyncedCallbackBlock)block;
 
 @end

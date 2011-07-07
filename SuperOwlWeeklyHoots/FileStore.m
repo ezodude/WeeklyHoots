@@ -16,4 +16,11 @@
 	return ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
 }
 
++(NSString *)createDirectoryNamed:(NSString *)name inDir:(NSString *)path{
+    NSString *directory = [path stringByAppendingFormat:@"/%@",name];
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
+    [manager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:nil];
+    return directory;
+}
+
 @end
