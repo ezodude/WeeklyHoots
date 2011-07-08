@@ -79,6 +79,7 @@
     WeeklyBundlesNavController *navController = [[[UIApplication sharedApplication] delegate] weeklyBundlesNavController];
     
     MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:navController.view animated:YES] retain];
+    [self.bundleSyncStatusBar setProgress:0.0];
     [self loadDataUsingProgressIndicator:HUD];
     [super viewDidLoad];
 }
@@ -181,17 +182,14 @@
 
 -(void)startSyncingUsingProgressView:(UIProgressView *)progressView{
     NSLog(@"startSyncingUsingProgressView");
-    AudioDownloadsManager *manager = [AudioDownloadsManager manager];
+    AudioDownloadsManager *manager = [[AudioDownloadsManager manager] retain];
     
-    /*
-     - This should setup directories
-     - create Audio Download objects that refer to the bundle, playlist, programme
-     - Referred to programmes in the download objects should all be marked ready for download.
-     */
-    
-    [manager prepareDownloadContextForBundle:self.activeBundle];
-    [manager startDownloadsForBundle:self.activeBundle progressView:progressView withCallback:^{
+    [manager prepareDownloadContextForBundle:self.activeBundle progressView:progressView withProgressCallback:^{
         [self drawProgrammesSynced];
+    }];
+    
+    [manager startDownloadsForBundle:self.activeBundle withCompletionCallback:^{
+        [manager release];
     }];
 }
 

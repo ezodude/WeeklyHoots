@@ -326,14 +326,14 @@
 			children = (
 				89DF135213AF9351005A557A /* WeeklyBundle.h */,
 				89DF135313AF9351005A557A /* WeeklyBundle.m */,
-				893FBFBC13C4C083007EE2E7 /* AudioDownloadsManager.h */,
-				893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */,
 				89DF135513AF9941005A557A /* Playlist.h */,
 				89DF135613AF9941005A557A /* Playlist.m */,
 				89DF135813AF9A86005A557A /* Programme.h */,
 				89DF135913AF9A86005A557A /* Programme.m */,
 				891DB32813BCD09500B27C2F /* BundlesManager.h */,
 				891DB32913BCD09500B27C2F /* BundlesManager.m */,
+				893FBFBC13C4C083007EE2E7 /* AudioDownloadsManager.h */,
+				893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */,
 				893FBFBF13C4D4D3007EE2E7 /* AudioDownload.h */,
 				893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */,
 			);

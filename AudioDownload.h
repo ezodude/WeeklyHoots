@@ -17,6 +17,8 @@
 
 #define AUDIO_DIR @"/Audio"
 
+typedef void (^RequestFinishedCallbackBlock)();
+
 @interface AudioDownload : NSObject {
     WeeklyBundle *_bundle;
     Playlist *_playlist;
@@ -35,7 +37,9 @@
 @property (nonatomic, retain) NSString *downloadFile;
 @property (nonatomic, retain) NSString *tempDownloadFile;
 
--(AudioDownload *)initWithBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist programme:(Programme *)programme;
+@property (nonatomic, copy) RequestFinishedCallbackBlock requestFinishedCallbackBlock;
+
+-(AudioDownload *)initWithBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist programme:(Programme *)programme withRequestFinishedCallback:(RequestFinishedCallbackBlock)block;
 
 -(ASIHTTPRequest *)generateRequest;
 -(void)createDownloadPathOnDisk;

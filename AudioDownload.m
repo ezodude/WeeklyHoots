@@ -18,7 +18,9 @@
 @synthesize downloadFile=_downloadFile;
 @synthesize tempDownloadFile=_tempDownloadFile;
 
--(AudioDownload *)initWithBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist programme:(Programme *)programme{
+@synthesize requestFinishedCallbackBlock;
+
+-(AudioDownload *)initWithBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist programme:(Programme *)programme withRequestFinishedCallback:(RequestFinishedCallbackBlock)block{
     
     self = [super init];
     if (self) {
@@ -31,6 +33,8 @@
         self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [[self.programme guid] stringByAppendingFormat:@".%@", [self.programme audioType]]];
         
         self.tempDownloadFile = [NSString stringWithFormat:@"%@.download", self.downloadFile];
+        
+        [self setRequestFinishedCallbackBlock:block];
     }
     
     [self.programme setToMarkedForDownload];
@@ -39,7 +43,7 @@
 }
 
 -(ASIHTTPRequest *)generateRequest{
-    NSLog(@"Downloading file: [%@]", [self.programme audioUri]);
+    NSLog(@"Generate Request for: [%@]", [self.programme audioUri]);
     NSURL *url = [NSURL URLWithString:[self.programme audioUri]];
     
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -57,6 +61,8 @@
         NSLog(@"Starting setCompletionBlock for Bundle [%@], Playlist [%@], [%@]", [self.bundle startDate], [self.playlist title], [self.programme audioUri]);
         [self.programme setToDownloadedStatus];
         self.programme.downloadedFilePath = self.downloadFile;
+        
+        self.requestFinishedCallbackBlock();
     }];
     
     [request setFailedBlock:^{
@@ -79,6 +85,7 @@
     [self.downloadPath release];
     [self.downloadFile release];
     [self.tempDownloadFile release];
+    [self.requestFinishedCallbackBlock release];
     [super dealloc];
 }
 @end

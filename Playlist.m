@@ -21,6 +21,7 @@
 -(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title storyJockey:(NSString *)storyJockey summary:(NSString *)summary duration:(NSNumber *)duration programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
+        self.guid = guid;
         self.title = title;
         self.storyJockey = storyJockey;
         self.summary = summary;

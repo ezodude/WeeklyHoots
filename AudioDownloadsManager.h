@@ -8,21 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import "WeeklyBundle.h"
+#import "AudioDownload.h"
+#import "ASINetworkQueue.h"
+#import "ASIHTTPRequest.h"
 #import "FileStore.h"
 
+@class ASINetworkQueue;
+@class ASIHTTPRequest;
 @class WeeklyBundle;
+@class AudioDownload;
 
-typedef void (^ProgrammeSyncedCallbackBlock)();
+typedef void (^CompletionCallbackBlock)();
 
 @interface AudioDownloadsManager : NSObject {
-    
+    ASINetworkQueue *_audioDownloadsQueue;
 }
 
-@property (nonatomic, copy) ProgrammeSyncedCallbackBlock programmeSyncedCallbackBlock;
+@property (nonatomic, copy) CompletionCallbackBlock allDownloadsCompleteBlock;
 
 +(id)manager;
 
--(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle;
--(void)startDownloadsForBundle:(WeeklyBundle *)bundle progressView:(UIProgressView *)progressView withCallback:(ProgrammeSyncedCallbackBlock)block; 
+-(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle progressView:(UIProgressView *)progressView withProgressCallback:(CompletionCallbackBlock)block;
+
+-(void)startDownloadsForBundle:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block; 
 
 @end
