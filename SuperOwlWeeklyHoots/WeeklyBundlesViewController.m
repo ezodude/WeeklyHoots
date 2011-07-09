@@ -47,6 +47,8 @@
     [self.activeBundle release];
     [self.currentOrRecentBundleControl release];
     
+    [_audioDownloadsManager release];
+    
     [self.startWeekDayNameLabel release];
     [self.endWeekDayNameLabel release];
     [self.startDayDateLabel release];
@@ -172,24 +174,60 @@
 
 #pragma mark -
 #pragma mark Sync Operations Methods
--(IBAction)startSyncing:(id)sender{
-    if ([[[sender titleLabel] text] isEqualToString:@"Sync"]) {
-        [sender setTitle:@"Cancel" forState:UIControlStateNormal];
-        [sender setTitle:@"Cancel" forState:UIControlStateHighlighted];
-        [self startSyncingUsingProgressView:self.bundleSyncStatusBar];
+-(IBAction)processSyncing:(id)sender{
+    NSString *buttonTitle = [[[sender titleLabel] text] lowercaseString];
+    
+    if ([buttonTitle isEqualToString:@"sync"]){
+        [self startSyncing:(UIButton *)sender];
+    }
+    else if([buttonTitle isEqualToString:@"pause"]){
+        [self pauseSyncing:(UIButton *)sender];
+    }
+    else if([buttonTitle isEqualToString:@"resume"]){
+        [self resumeSyncing:(UIButton *)sender];
     }
 }
 
--(void)startSyncingUsingProgressView:(UIProgressView *)progressView{
-    NSLog(@"startSyncingUsingProgressView");
-    AudioDownloadsManager *manager = [[AudioDownloadsManager manager] retain];
+-(void)startSyncing:(UIButton *)button{
+    [button setTitle:@"Pause" forState:UIControlStateNormal];
+    [button setTitle:@"Pause" forState:UIControlStateHighlighted];
+    [self syncUsingProgressView:self.bundleSyncStatusBar];
+}
+
+-(void)pauseSyncing:(UIButton *)button{
+    [button setTitle:@"Resume" forState:UIControlStateNormal];
+    [button setTitle:@"Resume" forState:UIControlStateHighlighted];
     
-    [manager prepareDownloadContextForBundle:self.activeBundle progressView:progressView withProgressCallback:^{
+    if(!_audioDownloadsManager) return;
+    [_audioDownloadsManager pauseSyncing:self.activeBundle withCompletionCallback:^{
+    }];
+}
+
+-(void)resumeSyncing:(UIButton *)button{
+    [button setTitle:@"Pause" forState:UIControlStateNormal];
+    [button setTitle:@"Pause" forState:UIControlStateHighlighted];
+    
+    [self syncUsingProgressView:self.bundleSyncStatusBar];
+}
+
+-(void)signalSyncCompleted{
+    [self.syncButton setTitle:@"Synced" forState:UIControlStateNormal];
+    [self.syncButton setTitle:@"Synced" forState:UIControlStateHighlighted];
+    [self.syncButton setEnabled:NO];
+}
+
+-(void)syncUsingProgressView:(UIProgressView *)progressView{
+    NSLog(@"startSyncingUsingProgressView");
+    if(!_audioDownloadsManager){
+        _audioDownloadsManager = [AudioDownloadsManager manager];
+    }
+    
+    [_audioDownloadsManager prepareDownloadContextForBundle:self.activeBundle progressView:progressView withProgressCallback:^{
         [self drawProgrammesSynced];
     }];
     
-    [manager startDownloadsForBundle:self.activeBundle withCompletionCallback:^{
-        [manager release];
+    [_audioDownloadsManager startDownloadsForBundle:self.activeBundle withCompletionCallback:^{
+        [self signalSyncCompleted];
     }];
 }
 

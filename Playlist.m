@@ -60,6 +60,13 @@
     return result;
 }
 
+-(NSArray *)programmesAwaitingDownload{
+    NSPredicate *notDownloadedPredicate = 
+    [NSPredicate predicateWithFormat:@"downloaded == NO"];
+    
+    return [self.programmes filteredArrayUsingPredicate:notDownloadedPredicate];
+}
+
 - (void)dealloc {
     [self.guid release];
     [self.title release];

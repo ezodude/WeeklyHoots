@@ -54,12 +54,12 @@
     [request setStartedBlock:^{
         NSLog(@"Request starting!");
         [self createDownloadPathOnDisk];
-        [self.programme setToDownloadingStatus];
+        [self.programme setToDownloading];
     }];
     
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for Bundle [%@], Playlist [%@], [%@]", [self.bundle startDate], [self.playlist title], [self.programme audioUri]);
-        [self.programme setToDownloadedStatus];
+        [self.programme setToDownloaded];
         self.programme.downloadedFilePath = self.downloadFile;
         
         self.requestFinishedCallbackBlock();
@@ -67,7 +67,7 @@
     
     [request setFailedBlock:^{
         NSLog(@"Starting **setFailedBlock** for Bundle [%@], Playlist [%@], [%@]", [self.bundle startDate], [self.playlist title], [self.programme audioUri]);
-        [self.programme setToUnavailableOffline]; /* Or Failed Download? */
+        [self.programme setToNotDownloaded]; /* Or Failed Download? */
     }];
     
     return request;

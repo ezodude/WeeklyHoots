@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    kUnavailableOffline,
+    kNotDownloaded,
     kMarkedFordownload,
     kDownloaded,
     kDownloading
@@ -35,10 +35,10 @@ typedef enum {
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri;
 
--(void)setToUnavailableOffline;
+-(void)setToNotDownloaded;
 -(void)setToMarkedForDownload;
--(void)setToDownloadingStatus;
--(void)setToDownloadedStatus;
+-(void)setToDownloading;
+-(void)setToDownloaded;
 
 -(BOOL)downloaded;
 -(BOOL)downloading;

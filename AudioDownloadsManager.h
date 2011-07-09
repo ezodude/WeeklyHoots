@@ -25,11 +25,14 @@ typedef void (^CompletionCallbackBlock)();
 }
 
 @property (nonatomic, copy) CompletionCallbackBlock allDownloadsCompleteBlock;
+@property (nonatomic, copy) CompletionCallbackBlock pauseDownloadsCompleteBlock;
 
 +(id)manager;
 
 -(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle progressView:(UIProgressView *)progressView withProgressCallback:(CompletionCallbackBlock)block;
 
--(void)startDownloadsForBundle:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block; 
+-(void)startDownloadsForBundle:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block;
+
+-(void)pauseSyncing:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block;
 
 @end

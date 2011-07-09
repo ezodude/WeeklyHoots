@@ -24,6 +24,8 @@
     WeeklyBundle *_recentBundle;
     WeeklyBundle *_activeBundle;
     
+    AudioDownloadsManager *_audioDownloadsManager;
+    
     UISegmentedControl *_currentOrRecentBundleControl;
     
     UILabel *_startWeekDayNameLabel;
@@ -61,10 +63,15 @@
 @property (nonatomic, retain) IBOutlet UIButton *listenButton;
 
 -(IBAction)toggleControls:(id)sender;
--(IBAction)startSyncing:(id)sender;
+
+-(IBAction)processSyncing:(id)sender;
+-(void)startSyncing:(UIButton *)button;
+-(void)pauseSyncing:(UIButton *)button;
+-(void)resumeSyncing:(UIButton *)button;
+-(void)signalSyncCompleted;
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator;
--(void)startSyncingUsingProgressView:(UIProgressView *)progressView;
+-(void)syncUsingProgressView:(UIProgressView *)progressView;
 
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 -(void)drawViewUsingBundle;

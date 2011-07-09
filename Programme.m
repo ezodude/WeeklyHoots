@@ -26,20 +26,20 @@
         self.audioUri = audioUri;
         self.audioType = [[[[audioUri componentsSeparatedByString:@"?"] objectAtIndex:0] pathExtension] lowercaseString];
     }
-    [self setToUnavailableOffline];
+    [self setToNotDownloaded];
     return self;
 }
 
--(void)setToDownloadingStatus{
+-(void)setToDownloading{
     _downloadStatus =  kDownloading;
 }
 
--(void)setToDownloadedStatus{
+-(void)setToDownloaded{
     _downloadStatus =  kDownloaded;
 }
 
--(void)setToUnavailableOffline{
-    _downloadStatus =  kUnavailableOffline;
+-(void)setToNotDownloaded{
+    _downloadStatus =  kNotDownloaded;
 }
 
 -(void)setToMarkedForDownload{

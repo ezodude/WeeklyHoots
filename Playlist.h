@@ -35,4 +35,5 @@
 
 -(NSUInteger)totalProgrammesCount;
 -(NSUInteger)downloadedProgrammesCount;
+-(NSArray *)programmesAwaitingDownload;
 @end

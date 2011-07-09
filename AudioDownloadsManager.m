@@ -11,29 +11,32 @@
 @implementation AudioDownloadsManager
 
 @synthesize allDownloadsCompleteBlock;
+@synthesize pauseDownloadsCompleteBlock;
 
 -(id)init {
     self = [super init];
     
     if (self) {
-        _audioDownloadsQueue = [ASINetworkQueue queue];
+        _audioDownloadsQueue = [[ASINetworkQueue alloc] init];
         
         [_audioDownloadsQueue setDelegate:self];
         [_audioDownloadsQueue setMaxConcurrentOperationCount:3];
         [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
         [_audioDownloadsQueue setQueueDidFinishSelector:@selector(allDownloadsCompleted)];
-        [_audioDownloadsQueue setShowAccurateProgress:YES];
+        [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
+//        [_audioDownloadsQueue setShowAccurateProgress:YES];
     }
     return self;
 }
 
 +(id)manager{
-	return [[[self alloc] init] autorelease];
+	return [[self alloc] init];
 }
 
 -(void)dealloc {
     [_audioDownloadsQueue release];
     [self.allDownloadsCompleteBlock release];
+    [self.pauseDownloadsCompleteBlock release];
     [super dealloc];
 }
 
@@ -44,7 +47,7 @@
     __block NSMutableArray *audioDownloads = [[NSMutableArray alloc] init];
     
     [bundle.playlists enumerateObjectsUsingBlock:^(id playlist, NSUInteger idx, BOOL *stop) {
-        [[playlist programmes] enumerateObjectsUsingBlock:^(id prog, NSUInteger idx, BOOL *stop) {
+        [[playlist programmesAwaitingDownload] enumerateObjectsUsingBlock:^(id prog, NSUInteger idx, BOOL *stop) {
             [audioDownloads addObject:[[[AudioDownload alloc] initWithBundle:bundle playlist:playlist programme:prog withRequestFinishedCallback:^{
                     block();
             }] autorelease]];
@@ -63,8 +66,18 @@
     [_audioDownloadsQueue go];
 }
 
+
+-(void)pauseSyncing:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block{
+    NSLog(@"pause Syncing for bundle");
+    
+    [self setAllDownloadsCompleteBlock:nil];
+    [self setPauseDownloadsCompleteBlock:block];
+    
+    [_audioDownloadsQueue cancelAllOperations];
+}
+
 -(void)allDownloadsCompleted{
-    self.allDownloadsCompleteBlock();
+    if(self.allDownloadsCompleteBlock) self.allDownloadsCompleteBlock();
 }
 
 @end
