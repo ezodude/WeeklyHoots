@@ -33,9 +33,10 @@
     UILabel *_startDayDateLabel;
     UILabel *_endDayDateLabel;
     
+    UIView *_bundleDownloadDetailsView;
     UILabel *_bundleDurationLabel;
     UILabel *_syncedDurationLabel;
-    UIProgressView *_bundleSyncStatusBar;
+    MBProgressHUD *_syncProgressStatus;
     
     UITableView *_playlistsMenu;
     
@@ -53,9 +54,10 @@
 @property (nonatomic, retain) IBOutlet UILabel *startDayDateLabel;
 @property (nonatomic, retain) IBOutlet UILabel *endDayDateLabel;
 
+@property (nonatomic, retain) IBOutlet UIView *bundleDownloadDetailsView;
 @property (nonatomic, retain) IBOutlet UILabel *bundleDurationLabel;
 @property (nonatomic, retain) IBOutlet UILabel *syncedProgrammesLabel;
-@property (nonatomic, retain) IBOutlet UIProgressView *bundleSyncStatusBar;
+@property (nonatomic, retain) IBOutlet MBProgressHUD *syncProgressStatus;
 
 @property (nonatomic, retain) IBOutlet UITableView *playlistsMenu;
 
@@ -71,11 +73,11 @@
 -(void)signalSyncCompleted;
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator;
--(void)syncUsingProgressView:(UIProgressView *)progressView;
+-(void)syncUsingProgressView:(MBProgressHUD *)progressView;
 
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 -(void)drawViewUsingBundle;
--(void)drawProgrammesSynced;
+-(void)drawProgrammesSyncedProgress;
 -(void)drawButtons;
 
 @end

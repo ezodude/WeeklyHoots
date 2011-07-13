@@ -32,5 +32,6 @@
 
 -(NSDecimalNumber *)durationInHours;
 -(NSUInteger)downloadedProgrammesCount;
+-(NSUInteger)programmesAwaitingDownloadCount;
 
 @end

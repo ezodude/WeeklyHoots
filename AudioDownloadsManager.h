@@ -12,6 +12,7 @@
 #import "ASINetworkQueue.h"
 #import "ASIHTTPRequest.h"
 #import "FileStore.h"
+#import "MBProgressHUD.h";
 
 @class ASINetworkQueue;
 @class ASIHTTPRequest;
@@ -29,10 +30,10 @@ typedef void (^CompletionCallbackBlock)();
 
 +(id)manager;
 
--(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle progressView:(UIProgressView *)progressView withProgressCallback:(CompletionCallbackBlock)block;
+-(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle progressView:(MBProgressHUD *)progressView withProgressCallback:(CompletionCallbackBlock)block;
 
 -(void)startDownloadsForBundle:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block;
 
--(void)pauseSyncing:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block;
+-(void)pauseSyncing:(WeeklyBundle *)bundle;
 
 @end

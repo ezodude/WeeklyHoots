@@ -40,7 +40,7 @@
     [super dealloc];
 }
 
--(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle progressView:(UIProgressView *)progressView withProgressCallback:(CompletionCallbackBlock)block{
+-(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle progressView:(MBProgressHUD *)progressView withProgressCallback:(CompletionCallbackBlock)block{
     NSLog(@"prepareDownloadContextForBundle");
     
     [_audioDownloadsQueue setDownloadProgressDelegate:progressView];
@@ -67,12 +67,10 @@
 }
 
 
--(void)pauseSyncing:(WeeklyBundle *)bundle withCompletionCallback:(CompletionCallbackBlock)block{
+-(void)pauseSyncing:(WeeklyBundle *)bundle{
     NSLog(@"pause Syncing for bundle");
     
     [self setAllDownloadsCompleteBlock:nil];
-    [self setPauseDownloadsCompleteBlock:block];
-    
     [_audioDownloadsQueue cancelAllOperations];
 }
 

@@ -22,9 +22,10 @@
 @synthesize startDayDateLabel=_startDayDateLabel;
 @synthesize endDayDateLabel=_endDayDateLabel;
 
+@synthesize bundleDownloadDetailsView=_bundleDownloadDetailsView;
 @synthesize bundleDurationLabel=_bundleDurationLabel;
 @synthesize syncedProgrammesLabel=_syncedDurationLabel;
-@synthesize bundleSyncStatusBar=_bundleSyncStatusBar;
+@synthesize syncProgressStatus=_syncProgressStatus;
 
 @synthesize playlistsMenu=_playlistsMenu;
 
@@ -54,9 +55,10 @@
     [self.startDayDateLabel release];
     [self.endDayDateLabel release];
     
+    [self.bundleDownloadDetailsView release];
     [self.bundleDurationLabel release];
     [self.syncedProgrammesLabel release];
-    [self.bundleSyncStatusBar release];
+    [self.syncProgressStatus release];
     
     [self.playlistsMenu release];
     
@@ -81,7 +83,8 @@
     WeeklyBundlesNavController *navController = [[[UIApplication sharedApplication] delegate] weeklyBundlesNavController];
     
     MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:navController.view animated:YES] retain];
-    [self.bundleSyncStatusBar setProgress:0.0];
+    HUD.labelText = @"Loading bundles";
+    
     [self loadDataUsingProgressIndicator:HUD];
     [super viewDidLoad];
 }
@@ -123,6 +126,7 @@
         [self cleanUpProgressIndicator:progressIndicator];
         [self drawViewUsingBundle];
     }];
+    
 }
 
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator{
@@ -149,13 +153,16 @@
     
     [formatter release];
     
-    [self drawProgrammesSynced];
+    [self drawProgrammesSyncedProgress];
     [self drawButtons];
 }
 
--(void)drawProgrammesSynced{
-    NSUInteger downloadedProgrammesCount = [self.activeBundle downloadedProgrammesCount];
-    self.syncedProgrammesLabel.text = [NSString stringWithFormat:@"%d / %d audio stories synced", downloadedProgrammesCount, [self.activeBundle totalProgrammesCount]];
+-(void)drawProgrammesSyncedProgress{
+   self.syncedProgrammesLabel.text = [NSString stringWithFormat:@"%d of %d", 
+                                      [self.activeBundle downloadedProgrammesCount], 
+                                      [self.activeBundle totalProgrammesCount]];
+    
+    [self.syncProgressStatus setDetailsLabelText:[NSString stringWithFormat:@"%d", [[self activeBundle] programmesAwaitingDownloadCount]]];
 }
 
 -(void)drawButtons{
@@ -191,7 +198,8 @@
 -(void)startSyncing:(UIButton *)button{
     [button setTitle:@"Pause" forState:UIControlStateNormal];
     [button setTitle:@"Pause" forState:UIControlStateHighlighted];
-    [self syncUsingProgressView:self.bundleSyncStatusBar];
+    
+    [self syncUsingProgressView:nil];
 }
 
 -(void)pauseSyncing:(UIButton *)button{
@@ -199,15 +207,16 @@
     [button setTitle:@"Resume" forState:UIControlStateHighlighted];
     
     if(!_audioDownloadsManager) return;
-    [_audioDownloadsManager pauseSyncing:self.activeBundle withCompletionCallback:^{
-    }];
+    
+    [_audioDownloadsManager pauseSyncing:self.activeBundle];
+    [self.syncProgressStatus hide:YES afterDelay:0];
 }
 
 -(void)resumeSyncing:(UIButton *)button{
     [button setTitle:@"Pause" forState:UIControlStateNormal];
     [button setTitle:@"Pause" forState:UIControlStateHighlighted];
     
-    [self syncUsingProgressView:self.bundleSyncStatusBar];
+    [self syncUsingProgressView:nil];
 }
 
 -(void)signalSyncCompleted{
@@ -216,17 +225,23 @@
     [self.syncButton setEnabled:NO];
 }
 
--(void)syncUsingProgressView:(UIProgressView *)progressView{
+-(void)syncUsingProgressView:(MBProgressHUD *)progressView{
     NSLog(@"startSyncingUsingProgressView");
     if(!_audioDownloadsManager){
         _audioDownloadsManager = [AudioDownloadsManager manager];
     }
     
-    [_audioDownloadsManager prepareDownloadContextForBundle:self.activeBundle progressView:progressView withProgressCallback:^{
-        [self drawProgrammesSynced];
+    self.syncProgressStatus = [MBProgressHUD showHUDAddedTo:self.bundleDownloadDetailsView animated:YES];
+    
+    [self.syncProgressStatus setLabelText:@"Syncing"];
+    [self.syncProgressStatus setDetailsLabelText:[NSString stringWithFormat:@"%d", [[self activeBundle] programmesAwaitingDownloadCount]]];
+    
+    [_audioDownloadsManager prepareDownloadContextForBundle:self.activeBundle progressView:self.syncProgressStatus withProgressCallback:^{
+        [self drawProgrammesSyncedProgress];
     }];
     
     [_audioDownloadsManager startDownloadsForBundle:self.activeBundle withCompletionCallback:^{
+        [self.syncProgressStatus hide:YES afterDelay:0];
         [self signalSyncCompleted];
     }];
 }

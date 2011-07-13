@@ -53,7 +53,7 @@
             [playlist release];
         }];       
         
-        self.playlists = newPlaylists;
+        self.playlists = [newPlaylists sortedArrayUsingSelector:@selector(duration)];
         [newPlaylists release];
     }
     return self;
@@ -73,6 +73,17 @@
     }];
     
     return result;
+}
+
+-(NSUInteger)programmesAwaitingDownloadCount{
+    if(!self.playlists) return 0;
+    __block NSUInteger result;
+    
+    [self.playlists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+        result = result + [[(Playlist *)obj programmesAwaitingDownload] count] ;
+    }];
+    
+    return result;    
 }
 
 - (void)dealloc {
