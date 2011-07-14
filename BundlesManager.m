@@ -13,6 +13,7 @@
 -(void)bundleSetupComplete;
 -(void)queueBundle:(NSString *)bundleType;
 -(void)processBundle:(NSString *)bundleType fromRequest:(ASIHTTPRequest *)request;
+-(void)synchronizeBundleWithExistingDownloadedAudio:(WeeklyBundle *)bundle;
 -(void)processFailureForBundle:(NSString *)bundleType fromRequest:(ASIHTTPRequest *)request;
 @end
 
@@ -99,8 +100,27 @@
     NSDictionary *dictionary = (NSDictionary *)[responseString objectFromJSONString];
     
     WeeklyBundle *bundle = [[WeeklyBundle alloc] initFromDictionary:dictionary];
+    [self synchronizeBundleWithExistingDownloadedAudio:bundle];
+    
     [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"set%@Bundle:", bundleType]) withObject:bundle];
     [bundle release];
+}
+
+-(void)synchronizeBundleWithExistingDownloadedAudio:(WeeklyBundle *)bundle{
+    NSLog(@"Synchronizing Bundle for: [%@]", [bundle startDate]);
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
+    
+    [bundle.playlists enumerateObjectsUsingBlock:^(id playlist, NSUInteger idx, BOOL *stop) {
+        [[playlist programmes] enumerateObjectsUsingBlock:^(id prog, NSUInteger idx, BOOL *stop) {
+            NSString *audioDownloadPath = [AudioDownload audioDownloadPathFromBundle:bundle playlist:playlist];
+            NSString *audioDownloadFile = [audioDownloadPath stringByAppendingFormat:@"/%@", [AudioDownload audioDownloadFilenameFromProgramme:prog]];
+            
+            if([manager fileExistsAtPath:audioDownloadFile]){
+                [prog setToDownloaded];
+                [prog setDownloadedFilePath:audioDownloadFile];
+            }
+        }];
+    }];
 }
 
 -(void)processFailureForBundle:(NSString *)bundleType fromRequest:(ASIHTTPRequest *)request{

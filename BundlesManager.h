@@ -13,6 +13,8 @@
 #import "ASIHTTPRequest.h"
 #import "../JSONKit/JSONKit.h"
 #import "MBProgressHUD.h";
+#import "FileStore.h"
+#import "AudioDownload.h"
 
 @class ASINetworkQueue;
 @class ASIHTTPRequest;
