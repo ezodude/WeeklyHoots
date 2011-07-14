@@ -39,6 +39,9 @@ typedef void (^RequestFinishedCallbackBlock)();
 
 @property (nonatomic, copy) RequestFinishedCallbackBlock requestFinishedCallbackBlock;
 
++(NSString *)audioDownloadPathFromBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist;
++(NSString *)audioDownloadFilenameFromProgramme:(Programme *)programme;
+
 -(AudioDownload *)initWithBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist programme:(Programme *)programme withRequestFinishedCallback:(RequestFinishedCallbackBlock)block;
 
 -(ASIHTTPRequest *)generateRequest;

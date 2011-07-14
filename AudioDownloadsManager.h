@@ -12,7 +12,7 @@
 #import "ASINetworkQueue.h"
 #import "ASIHTTPRequest.h"
 #import "FileStore.h"
-#import "MBProgressHUD.h";
+#import "MBProgressHUD.h"
 
 @class ASINetworkQueue;
 @class ASIHTTPRequest;

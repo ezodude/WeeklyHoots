@@ -20,6 +20,14 @@
 
 @synthesize requestFinishedCallbackBlock;
 
++(NSString *)audioDownloadPathFromBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist {
+    return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, [bundle guid], [playlist guid]];
+}
+
++(NSString *)audioDownloadFilenameFromProgramme:(Programme *)programme {
+    return [NSString stringWithFormat:@"%@.%@", [programme guid], [programme audioType]];
+}
+
 -(AudioDownload *)initWithBundle:(WeeklyBundle *)bundle playlist:(Playlist *)playlist programme:(Programme *)programme withRequestFinishedCallback:(RequestFinishedCallbackBlock)block{
     
     self = [super init];
@@ -28,9 +36,9 @@
         self.playlist = playlist;
         self.programme = programme;
         
-        self.downloadPath = [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, [self.bundle guid], [self.playlist guid]];
+        self.downloadPath = [AudioDownload audioDownloadPathFromBundle:bundle playlist:playlist];
 
-        self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [[self.programme guid] stringByAppendingFormat:@".%@", [self.programme audioType]]];
+        self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [AudioDownload audioDownloadFilenameFromProgramme:programme]];
         
         self.tempDownloadFile = [NSString stringWithFormat:@"%@.download", self.downloadFile];
         
