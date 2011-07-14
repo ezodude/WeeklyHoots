@@ -14,5 +14,6 @@
 }
 
 +(NSString *)applicationDocumentsDirectory;
++(NSString *)createDirectoryPath:(NSString *)path;
 +(NSString *)createDirectoryNamed:(NSString *)name inDir:(NSString *)path;
 @end

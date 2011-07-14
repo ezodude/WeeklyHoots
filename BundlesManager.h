@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Environment.h"
 #import "WeeklyBundle.h"
+
 #import "ASINetworkQueue.h"
 #import "ASIHTTPRequest.h"
+#import "ASIDownloadCache.h"
+
 #import "../JSONKit/JSONKit.h"
 #import "MBProgressHUD.h";
 #import "FileStore.h"
@@ -18,12 +21,17 @@
 
 @class ASINetworkQueue;
 @class ASIHTTPRequest;
+@class ASIDownloadCache;
 
 typedef void (^BundleSetupSuccessCallbackBlock)();
 
+#define CACHE_DIR @"/RemoteDataCache"
+
 @interface BundlesManager : NSObject {
     NSString *_programmesAPIURL;
+    
     ASINetworkQueue *_bundlesRequestQueue;
+    ASIDownloadCache *_remoteDataCache;
     
     WeeklyBundle *_currentBundle;
     WeeklyBundle *_recentBundle;
@@ -36,6 +44,7 @@ typedef void (^BundleSetupSuccessCallbackBlock)();
 @property (nonatomic, copy) BundleSetupSuccessCallbackBlock bundleSetupSuccessCallbackBlock;
 
 + (id)manager;
+
 -(void)setupBundlesUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(BundleSetupSuccessCallbackBlock)block;
 -(BOOL)bundlesAreAvailable;
 

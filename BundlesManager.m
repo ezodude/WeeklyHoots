@@ -10,6 +10,7 @@
 
 // Private stuff
 @interface BundlesManager ()
+-(void)setupRemoteDataCaching;
 -(void)bundleSetupComplete;
 -(void)queueBundle:(NSString *)bundleType;
 -(void)processBundle:(NSString *)bundleType fromRequest:(ASIHTTPRequest *)request;
@@ -29,6 +30,8 @@
     if (self) {
         _programmesAPIURL = [[Environment sharedInstance] programmesAPIURL];
         
+        [self setupRemoteDataCaching];
+        
         _bundlesRequestQueue = [ASINetworkQueue queue];
         [_bundlesRequestQueue setDelegate:self];
         [_bundlesRequestQueue setQueueDidFinishSelector:@selector(bundleSetupComplete)];
@@ -41,9 +44,18 @@
 	return [[[self alloc] init] autorelease];
 }
 
+-(void)setupRemoteDataCaching{
+    NSString *cachePath = [FileStore createDirectoryPath:[NSString stringWithFormat:@"%@/%@", [FileStore applicationDocumentsDirectory], CACHE_DIR]];
+    
+    _remoteDataCache = [[ASIDownloadCache alloc] init]  ;
+    [_remoteDataCache setStoragePath:cachePath];    
+}
+
 - (void)dealloc {
     [_programmesAPIURL release];
+    
     [_bundlesRequestQueue release];
+    [_remoteDataCache release];
     
     [self.bundleSetupSuccessCallbackBlock release];
     [self.recentBundle release];
@@ -79,6 +91,13 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@bundles/%@.json", _programmesAPIURL, [bundleType lowercaseString]]];
     
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    
+    [request setDownloadCache:_remoteDataCache];
+    
+    // Simplest Cache Policy, optimised for when user is offline.
+    [request setCachePolicy:ASIAskServerIfModifiedCachePolicy|ASIFallbackToCacheIfLoadFailsCachePolicy];
+    
+    [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
     
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for: [%@]", bundleType);
