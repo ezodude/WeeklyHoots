@@ -48,6 +48,7 @@
     [self.activeBundle release];
     [self.currentOrRecentBundleControl release];
     
+    [_internetReachable release];
     [_audioDownloadsManager release];
     
     [self.startWeekDayNameLabel release];
@@ -78,6 +79,15 @@
 
 #pragma mark - View lifecycle
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    // check for internet connection
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    
+    _internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+    [_internetReachable startNotifier];    
+}
+
 - (void)viewDidLoad
 {
     WeeklyBundlesNavController *navController = [[[UIApplication sharedApplication] delegate] weeklyBundlesNavController];
@@ -96,10 +106,24 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark -
+#pragma mark Internet Reachability Methods
+
+- (void) checkNetworkStatus:(NSNotification *)notice
+{
+    NetworkStatus internetStatus = [_internetReachable currentReachabilityStatus];
+    _wifiConnected = (internetStatus == ReachableViaWiFi);
 }
 
 #pragma mark -
@@ -182,6 +206,11 @@
 #pragma mark -
 #pragma mark Sync Operations Methods
 -(IBAction)processSyncing:(id)sender{
+    if(!_wifiConnected){
+        [self flagLackOfWifiConnection];
+        return;
+    }
+    
     NSString *buttonTitle = [[[sender titleLabel] text] lowercaseString];
     
     if ([buttonTitle isEqualToString:@"sync"]){
@@ -225,8 +254,14 @@
     [self.syncButton setEnabled:NO];
 }
 
+-(void)flagLackOfWifiConnection{
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"No Wifi Detected!" message:@"Please switch on wifi to enable syncing." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
+    [alert show];
+}
+
 -(void)syncUsingProgressView:(MBProgressHUD *)progressView{
     NSLog(@"startSyncingUsingProgressView");
+    
     if(!_audioDownloadsManager){
         _audioDownloadsManager = [AudioDownloadsManager manager];
     }

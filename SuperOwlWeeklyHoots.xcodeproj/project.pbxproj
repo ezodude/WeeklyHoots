@@ -513,6 +513,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Prefix.pch";
 				INFOPLIST_FILE = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -569,6 +570,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Prefix.pch";
 				INFOPLIST_FILE = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -587,6 +589,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Prefix.pch";
 				INFOPLIST_FILE = "SuperOwlWeeklyHoots/SuperOwlWeeklyHoots-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

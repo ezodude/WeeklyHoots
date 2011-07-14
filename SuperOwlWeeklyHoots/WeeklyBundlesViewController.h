@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BundlesManager.h"
+#import "Reachability.h"
 #import "AudioDownloadsManager.h"
 
 #import "MBProgressHUD.h"
@@ -16,6 +17,7 @@
 
 #define kSwitchesSegmentIndex	0
 
+@class Reachability;
 @class AudioDownloadsManager;
 
 @interface WeeklyBundlesViewController : UIViewController 
@@ -23,6 +25,9 @@
     WeeklyBundle *_currentBundle;
     WeeklyBundle *_recentBundle;
     WeeklyBundle *_activeBundle;
+    
+    Reachability *_internetReachable;
+    BOOL _wifiConnected;
     
     AudioDownloadsManager *_audioDownloadsManager;
     
@@ -64,6 +69,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *syncButton;
 @property (nonatomic, retain) IBOutlet UIButton *listenButton;
 
+-(void)checkNetworkStatus:(NSNotification *)notice;
+
 -(IBAction)toggleControls:(id)sender;
 
 -(IBAction)processSyncing:(id)sender;
@@ -73,6 +80,7 @@
 -(void)signalSyncCompleted;
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator;
+-(void)flagLackOfWifiConnection;
 -(void)syncUsingProgressView:(MBProgressHUD *)progressView;
 
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
