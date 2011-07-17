@@ -15,6 +15,7 @@
 @synthesize recentBundle=_recentBundle;
 @synthesize activeBundle=_activeBundle;
 
+@synthesize bundlesTable;
 @synthesize currentOrRecentBundleControl=_currentOrRecentBundleControl;
 
 @synthesize startWeekDayNameLabel=_startWeekDayNameLabel;
@@ -47,6 +48,8 @@
     [self.recentBundle release];
     [self.activeBundle release];
     [self.currentOrRecentBundleControl release];
+    
+    [self.bundlesTable release];
     
     [_internetReachable release];
     [_audioDownloadsManager release];
@@ -90,6 +93,10 @@
 
 - (void)viewDidLoad
 {
+    bundlesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    bundlesTable.rowHeight = 184;
+    bundlesTable.backgroundColor = [UIColor clearColor];
+    
     WeeklyBundlesNavController *navController = [[[UIApplication sharedApplication] delegate] weeklyBundlesNavController];
     
     MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:navController.view animated:YES] retain];
@@ -285,6 +292,10 @@
 #pragma mark Table View Data Source Methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

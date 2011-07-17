@@ -33,6 +33,14 @@
 		893FBFBB13C3784E007EE2E7 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFBA13C3784E007EE2E7 /* 37x-Checkmark.png */; };
 		893FBFBE13C4C083007EE2E7 /* AudioDownloadsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */; };
 		893FBFC113C4D4D3007EE2E7 /* AudioDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */; };
+		8948138513D32F28004C7D37 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138013D32F28004C7D37 /* UIImage+Alpha.m */; };
+		8948138613D32F28004C7D37 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138213D32F28004C7D37 /* UIImage+Resize.m */; };
+		8948138713D32F28004C7D37 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138413D32F28004C7D37 /* UIImage+RoundedCorner.m */; };
+		8948138C13D3314D004C7D37 /* BundleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138A13D3314D004C7D37 /* BundleCell.m */; };
+		8948138D13D3314D004C7D37 /* BundleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8948138B13D3314D004C7D37 /* BundleCell.xib */; };
+		8948139613D345CF004C7D37 /* sync-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8948139413D345CE004C7D37 /* sync-highlight.png */; };
+		8948139713D345CF004C7D37 /* sync-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8948139513D345CE004C7D37 /* sync-normal.png */; };
+		8948139913D34737004C7D37 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8948139813D34736004C7D37 /* QuartzCore.framework */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -93,6 +101,18 @@
 		893FBFBD13C4C083007EE2E7 /* AudioDownloadsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDownloadsManager.m; sourceTree = "<group>"; };
 		893FBFBF13C4D4D3007EE2E7 /* AudioDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDownload.h; sourceTree = "<group>"; };
 		893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDownload.m; sourceTree = "<group>"; };
+		8948137F13D32F28004C7D37 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		8948138013D32F28004C7D37 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		8948138113D32F28004C7D37 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		8948138213D32F28004C7D37 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		8948138313D32F28004C7D37 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		8948138413D32F28004C7D37 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		8948138913D3314D004C7D37 /* BundleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleCell.h; sourceTree = "<group>"; };
+		8948138A13D3314D004C7D37 /* BundleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleCell.m; sourceTree = "<group>"; };
+		8948138B13D3314D004C7D37 /* BundleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BundleCell.xib; sourceTree = "<group>"; };
+		8948139413D345CE004C7D37 /* sync-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-highlight.png"; sourceTree = "<group>"; };
+		8948139513D345CE004C7D37 /* sync-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-normal.png"; sourceTree = "<group>"; };
+		8948139813D34736004C7D37 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -132,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8948139913D34737004C7D37 /* QuartzCore.framework in Frameworks */,
 				8904F36E13B8E18400D0B9BE /* AudioToolbox.framework in Frameworks */,
 				8904F36F13B8E18400D0B9BE /* AVFoundation.framework in Frameworks */,
 				89099BF213B49F5A00FEE82B /* libz.1.2.3.dylib in Frameworks */,
@@ -151,6 +172,7 @@
 		89099BF313B4A2AA00FEE82B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8948137D13D32F0E004C7D37 /* UIImage-categories */,
 				893FBFB713C37132007EE2E7 /* MBProgressHUD */,
 				89099BF413B4A2E300FEE82B /* JSONKit */,
 			);
@@ -217,6 +239,8 @@
 		893FBFB313C352D1007EE2E7 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				8948139413D345CE004C7D37 /* sync-highlight.png */,
+				8948139513D345CE004C7D37 /* sync-normal.png */,
 				893FBFB113C352CB007EE2E7 /* whiteButton.png */,
 				893FBFAF13C35280007EE2E7 /* blueButton.png */,
 			);
@@ -231,6 +255,29 @@
 				893FBFB513C37047007EE2E7 /* MBProgressHUD.h */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		8948137D13D32F0E004C7D37 /* UIImage-categories */ = {
+			isa = PBXGroup;
+			children = (
+				8948137F13D32F28004C7D37 /* UIImage+Alpha.h */,
+				8948138013D32F28004C7D37 /* UIImage+Alpha.m */,
+				8948138113D32F28004C7D37 /* UIImage+Resize.h */,
+				8948138213D32F28004C7D37 /* UIImage+Resize.m */,
+				8948138313D32F28004C7D37 /* UIImage+RoundedCorner.h */,
+				8948138413D32F28004C7D37 /* UIImage+RoundedCorner.m */,
+			);
+			name = "UIImage-categories";
+			sourceTree = "<group>";
+		};
+		8948138813D3304B004C7D37 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8948138913D3314D004C7D37 /* BundleCell.h */,
+				8948138A13D3314D004C7D37 /* BundleCell.m */,
+				8948138B13D3314D004C7D37 /* BundleCell.xib */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		894C511713AB7B2900F83A5F = {
@@ -255,6 +302,7 @@
 		894C512513AB7B2900F83A5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8948139813D34736004C7D37 /* QuartzCore.framework */,
 				89099BF113B49F5A00FEE82B /* libz.1.2.3.dylib */,
 				8904F36C13B8E18400D0B9BE /* AudioToolbox.framework */,
 				8904F36D13B8E18400D0B9BE /* AVFoundation.framework */,
@@ -273,6 +321,7 @@
 		894C512C13AB7B2900F83A5F /* SuperOwlWeeklyHoots */ = {
 			isa = PBXGroup;
 			children = (
+				8948138813D3304B004C7D37 /* Custom Cells */,
 				892F7CBA13C1E03C00C4B98C /* Sections */,
 				892F7CB613C0F91D00C4B98C /* Utilities */,
 				89D4A51B13B799970051A9F3 /* Protocols */,
@@ -420,6 +469,9 @@
 				893FBFB213C352CB007EE2E7 /* whiteButton.png in Resources */,
 				893FBFB913C3714E007EE2E7 /* README.mdown in Resources */,
 				893FBFBB13C3784E007EE2E7 /* 37x-Checkmark.png in Resources */,
+				8948138D13D3314D004C7D37 /* BundleCell.xib in Resources */,
+				8948139613D345CF004C7D37 /* sync-highlight.png in Resources */,
+				8948139713D345CF004C7D37 /* sync-normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +499,10 @@
 				893FBFB613C37047007EE2E7 /* MBProgressHUD.m in Sources */,
 				893FBFBE13C4C083007EE2E7 /* AudioDownloadsManager.m in Sources */,
 				893FBFC113C4D4D3007EE2E7 /* AudioDownload.m in Sources */,
+				8948138513D32F28004C7D37 /* UIImage+Alpha.m in Sources */,
+				8948138613D32F28004C7D37 /* UIImage+Resize.m in Sources */,
+				8948138713D32F28004C7D37 /* UIImage+RoundedCorner.m in Sources */,
+				8948138C13D3314D004C7D37 /* BundleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

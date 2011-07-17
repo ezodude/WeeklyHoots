@@ -329,6 +329,7 @@
 							<reference ref="420226692"/>
 						</object>
 						<reference key="parent" ref="366466208"/>
+						<string key="objectName">Weekly Bundles View Controller</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">145</int>

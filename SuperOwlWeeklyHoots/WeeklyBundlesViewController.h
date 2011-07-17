@@ -53,6 +53,8 @@
 @property (nonatomic, retain) WeeklyBundle *recentBundle;
 @property (nonatomic, retain) WeeklyBundle *activeBundle;
 
+@property (nonatomic, retain) IBOutlet UITableView *bundlesTable;
+
 @property (nonatomic, retain) IBOutlet UISegmentedControl *currentOrRecentBundleControl;
 @property (nonatomic, retain) IBOutlet UILabel *startWeekDayNameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *endWeekDayNameLabel;
