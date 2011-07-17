@@ -33,8 +33,9 @@
 @property (nonatomic, retain) IBOutlet UIButton *syncButton;
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
 
--(void)setupWithBackgroundImage:(NSString *)imagePath;
+-(void)setupWithBackgroundImage:(NSString *)imagePath startDate:(NSString *)startDate listeningHoursTotal:(NSString *)listeningHoursTotal audioStoriesSyncedCount:(NSString *)audioStoriesSyncedCount;
 -(void)setupBundleBackgroundImage:(NSString *)imagePath;
 -(void)setupButtons;
+-(void)setupLabelsForStartDate:(NSString *)startDate listeningHoursTotal:(NSString *)listeningHoursTotal audioStoriesSyncedCount:(NSString *)audioStoriesSyncedCount;
 
 @end

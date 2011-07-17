@@ -14,6 +14,7 @@
 
 #import "MBProgressHUD.h"
 #import "WeeklyBundlesNavController.h"
+#import "BundleCell.h"
 
 #define kSwitchesSegmentIndex	0
 

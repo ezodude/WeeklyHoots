@@ -38,9 +38,16 @@
 		8948138713D32F28004C7D37 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138413D32F28004C7D37 /* UIImage+RoundedCorner.m */; };
 		8948138C13D3314D004C7D37 /* BundleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138A13D3314D004C7D37 /* BundleCell.m */; };
 		8948138D13D3314D004C7D37 /* BundleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8948138B13D3314D004C7D37 /* BundleCell.xib */; };
-		8948139613D345CF004C7D37 /* sync-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8948139413D345CE004C7D37 /* sync-highlight.png */; };
-		8948139713D345CF004C7D37 /* sync-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8948139513D345CE004C7D37 /* sync-normal.png */; };
 		8948139913D34737004C7D37 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8948139813D34736004C7D37 /* QuartzCore.framework */; };
+		894813A013D34907004C7D37 /* bus_window_240x163.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139B13D34907004C7D37 /* bus_window_240x163.jpg */; };
+		894813A113D34907004C7D37 /* london_double_decker_240x160.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139C13D34907004C7D37 /* london_double_decker_240x160.jpg */; };
+		894813A213D34907004C7D37 /* rush_hour_240x160.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139D13D34907004C7D37 /* rush_hour_240x160.jpg */; };
+		894813A313D34907004C7D37 /* story_road_240x180.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139E13D34907004C7D37 /* story_road_240x180.jpg */; };
+		894813A413D34907004C7D37 /* urban_commute_240x180.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139F13D34907004C7D37 /* urban_commute_240x180.jpg */; };
+		894813BB13D35EC3004C7D37 /* sync-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 894813B913D35EC3004C7D37 /* sync-highlight.png */; };
+		894813BC13D35EC3004C7D37 /* sync-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 894813BA13D35EC3004C7D37 /* sync-normal.png */; };
+		894813BF13D35FD6004C7D37 /* stop-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 894813BD13D35FD6004C7D37 /* stop-highlight.png */; };
+		894813C013D35FD6004C7D37 /* stop-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 894813BE13D35FD6004C7D37 /* stop-normal.png */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -110,9 +117,16 @@
 		8948138913D3314D004C7D37 /* BundleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleCell.h; sourceTree = "<group>"; };
 		8948138A13D3314D004C7D37 /* BundleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleCell.m; sourceTree = "<group>"; };
 		8948138B13D3314D004C7D37 /* BundleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BundleCell.xib; sourceTree = "<group>"; };
-		8948139413D345CE004C7D37 /* sync-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-highlight.png"; sourceTree = "<group>"; };
-		8948139513D345CE004C7D37 /* sync-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-normal.png"; sourceTree = "<group>"; };
 		8948139813D34736004C7D37 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8948139B13D34907004C7D37 /* bus_window_240x163.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bus_window_240x163.jpg; sourceTree = "<group>"; };
+		8948139C13D34907004C7D37 /* london_double_decker_240x160.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_double_decker_240x160.jpg; sourceTree = "<group>"; };
+		8948139D13D34907004C7D37 /* rush_hour_240x160.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rush_hour_240x160.jpg; sourceTree = "<group>"; };
+		8948139E13D34907004C7D37 /* story_road_240x180.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = story_road_240x180.jpg; sourceTree = "<group>"; };
+		8948139F13D34907004C7D37 /* urban_commute_240x180.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = urban_commute_240x180.jpg; sourceTree = "<group>"; };
+		894813B913D35EC3004C7D37 /* sync-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-highlight.png"; sourceTree = "<group>"; };
+		894813BA13D35EC3004C7D37 /* sync-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-normal.png"; sourceTree = "<group>"; };
+		894813BD13D35FD6004C7D37 /* stop-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-highlight.png"; sourceTree = "<group>"; };
+		894813BE13D35FD6004C7D37 /* stop-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-normal.png"; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -239,8 +253,10 @@
 		893FBFB313C352D1007EE2E7 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				8948139413D345CE004C7D37 /* sync-highlight.png */,
-				8948139513D345CE004C7D37 /* sync-normal.png */,
+				894813BD13D35FD6004C7D37 /* stop-highlight.png */,
+				894813BE13D35FD6004C7D37 /* stop-normal.png */,
+				894813B913D35EC3004C7D37 /* sync-highlight.png */,
+				894813BA13D35EC3004C7D37 /* sync-normal.png */,
 				893FBFB113C352CB007EE2E7 /* whiteButton.png */,
 				893FBFAF13C35280007EE2E7 /* blueButton.png */,
 			);
@@ -278,6 +294,18 @@
 				8948138B13D3314D004C7D37 /* BundleCell.xib */,
 			);
 			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		8948139A13D348CB004C7D37 /* Bundle Background Images */ = {
+			isa = PBXGroup;
+			children = (
+				8948139B13D34907004C7D37 /* bus_window_240x163.jpg */,
+				8948139C13D34907004C7D37 /* london_double_decker_240x160.jpg */,
+				8948139D13D34907004C7D37 /* rush_hour_240x160.jpg */,
+				8948139E13D34907004C7D37 /* story_road_240x180.jpg */,
+				8948139F13D34907004C7D37 /* urban_commute_240x180.jpg */,
+			);
+			name = "Bundle Background Images";
 			sourceTree = "<group>";
 		};
 		894C511713AB7B2900F83A5F = {
@@ -344,6 +372,7 @@
 		894C512D13AB7B2900F83A5F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8948139A13D348CB004C7D37 /* Bundle Background Images */,
 				893FBFB313C352D1007EE2E7 /* Buttons */,
 				892F7CC713C2383800C4B98C /* Fonts */,
 				891DB32613BCCF2100B27C2F /* icon.png */,
@@ -470,8 +499,15 @@
 				893FBFB913C3714E007EE2E7 /* README.mdown in Resources */,
 				893FBFBB13C3784E007EE2E7 /* 37x-Checkmark.png in Resources */,
 				8948138D13D3314D004C7D37 /* BundleCell.xib in Resources */,
-				8948139613D345CF004C7D37 /* sync-highlight.png in Resources */,
-				8948139713D345CF004C7D37 /* sync-normal.png in Resources */,
+				894813A013D34907004C7D37 /* bus_window_240x163.jpg in Resources */,
+				894813A113D34907004C7D37 /* london_double_decker_240x160.jpg in Resources */,
+				894813A213D34907004C7D37 /* rush_hour_240x160.jpg in Resources */,
+				894813A313D34907004C7D37 /* story_road_240x180.jpg in Resources */,
+				894813A413D34907004C7D37 /* urban_commute_240x180.jpg in Resources */,
+				894813BB13D35EC3004C7D37 /* sync-highlight.png in Resources */,
+				894813BC13D35EC3004C7D37 /* sync-normal.png in Resources */,
+				894813BF13D35FD6004C7D37 /* stop-highlight.png in Resources */,
+				894813C013D35FD6004C7D37 /* stop-normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

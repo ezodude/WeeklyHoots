@@ -137,13 +137,13 @@
 #pragma mark Weekly Bundle Drawing Methods
 
 -(IBAction)toggleControls:(id)sender{
-    if ([sender selectedSegmentIndex] == kSwitchesSegmentIndex) {
-        self.activeBundle = self.currentBundle;
-    }else{
-        self.activeBundle = self.recentBundle;
-    }
-    [self drawViewUsingBundle];
-    NSLog(@"Toggling Between Bundles!");
+//    if ([sender selectedSegmentIndex] == kSwitchesSegmentIndex) {
+//        self.activeBundle = self.currentBundle;
+//    }else{
+//        self.activeBundle = self.recentBundle;
+//    }
+//    [self drawViewUsingBundle];
+//    NSLog(@"Toggling Between Bundles!");
 }
 
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator{
@@ -155,7 +155,9 @@
         [self setActiveBundle: self.currentBundle];
         
         [self cleanUpProgressIndicator:progressIndicator];
-        [self drawViewUsingBundle];
+        [bundlesTable setHidden:NO];
+        [bundlesTable reloadData];
+//        [self drawViewUsingBundle];
     }];
     
 }
@@ -185,7 +187,7 @@
     [formatter release];
     
     [self drawProgrammesSyncedProgress];
-    [self drawButtons];
+//    [self drawButtons];
 }
 
 -(void)drawProgrammesSyncedProgress{
@@ -197,17 +199,17 @@
 }
 
 -(void)drawButtons{
-    UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
-    UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
-    
-    UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:10 topCapHeight:0];
-    UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:10 topCapHeight:0];
-    
-    [self.syncButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-    [self.syncButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
-    
-    [self.listenButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-    [self.listenButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+//    UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
+//    UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
+//    
+//    UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+//    UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+//    
+//    [self.syncButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+//    [self.syncButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+//    
+//    [self.listenButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+//    [self.listenButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 }
 
 #pragma mark -
@@ -299,14 +301,45 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *PlaylistsTableIdentifier = @"PlaylistsTableIdentifier";
     
-    UITableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:PlaylistsTableIdentifier];
+    NSUInteger sectionIndex = [indexPath section];
+    WeeklyBundle *bundle = (sectionIndex == 0 ? self.currentBundle : self.recentBundle);
+//    if(!bundle) return nil;
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    BundleCell *cell = (BundleCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if(cell == nil){
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PlaylistsTableIdentifier] autorelease];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"BundleCell"
+                                                     owner:self options:nil];
+        for (id oneObject in nib)
+            if([oneObject isKindOfClass:[BundleCell class]])
+                cell = (BundleCell *)oneObject;
     }
     
-    cell.textLabel.text = @"Playlists";
+    NSString *imageName = (sectionIndex == 0 ? 
+                           @"london_double_decker_240x160.jpg" : 
+                           @"rush_hour_240x160.jpg");
+    
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];    
+    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dMMMYY" options:0 locale:[NSLocale currentLocale]]];
+    NSString *startDate = [dateFormatter stringFromDate:[bundle startDate]];
+    
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    [formatter setRoundingMode:NSNumberFormatterRoundHalfDown];
+    [formatter setRoundingIncrement:[NSNumber numberWithFloat:0.5]];
+    
+    NSString *listeningHoursTotal = [NSString stringWithFormat:@"%@ Hrs Listening", [formatter stringFromNumber:[self.activeBundle durationInHours]]];
+    [formatter release];
+    
+    NSString *audioStoriesSyncedCount = [NSString stringWithFormat:@"%d of %d", 
+                                         [bundle downloadedProgrammesCount], 
+                                         [bundle totalProgrammesCount]];
+    
+    [cell setupWithBackgroundImage:imageName startDate:startDate listeningHoursTotal:listeningHoursTotal audioStoriesSyncedCount:audioStoriesSyncedCount];
+    
+    [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     return cell;
 }
 @end

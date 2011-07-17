@@ -27,9 +27,10 @@
     return self;
 }
 
--(void)setupWithBackgroundImage:(NSString *)imagePath{
+-(void)setupWithBackgroundImage:(NSString *)imagePath startDate:(NSString *)startDate listeningHoursTotal:(NSString *)listeningHoursTotal audioStoriesSyncedCount:(NSString *)audioStoriesSyncedCount{
     [self setupBundleBackgroundImage:imagePath];
     [self setupButtons];
+    [self setupLabelsForStartDate:startDate listeningHoursTotal:listeningHoursTotal audioStoriesSyncedCount:audioStoriesSyncedCount];
 }
 
 -(void)setupBundleBackgroundImage:(NSString *)imagePath{
@@ -44,7 +45,7 @@
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
     [imageView.layer setBorderColor:[[UIColor darkGrayColor]CGColor]];
-    [imageView.layer setBorderWidth:1.0];
+    [imageView.layer setBorderWidth:2.0];
     [imageView setContentMode:UIViewContentModeCenter];
     
     self.bundleDetailsBackgroundImage = imageView;
@@ -56,9 +57,15 @@
 }
 
 -(void)setupButtons{
-    [self.syncButton setImage:[UIImage imageNamed:@"sync-normal.png"] forState:UIControlStateNormal];
+    [self.syncButton setImage:[UIImage imageNamed:@"stop-normal.png"] forState:UIControlStateNormal];
     
-    [self.syncButton setImage:[UIImage imageNamed:@"sync-highlight.png"] forState:UIControlStateHighlighted];
+    [self.syncButton setImage:[UIImage imageNamed:@"stop-highlight.png"] forState:UIControlStateHighlighted];
+}
+
+-(void)setupLabelsForStartDate:(NSString *)startDate listeningHoursTotal:(NSString *)listeningHoursTotal audioStoriesSyncedCount:(NSString *)audioStoriesSyncedCount{
+    self.startDate.text = startDate;
+    self.listeningHoursTotal.text = listeningHoursTotal;
+    self.audioStoriesSyncedCount.text = audioStoriesSyncedCount;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
