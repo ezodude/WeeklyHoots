@@ -57,9 +57,9 @@
 }
 
 -(void)setupButtons{
-    [self.syncButton setImage:[UIImage imageNamed:@"stop-normal.png"] forState:UIControlStateNormal];
+    [self.syncButton setImage:[UIImage imageNamed:@"sync-normal.png"] forState:UIControlStateNormal];
     
-    [self.syncButton setImage:[UIImage imageNamed:@"stop-highlight.png"] forState:UIControlStateHighlighted];
+    [self.syncButton setImage:[UIImage imageNamed:@"sync-highlight.png"] forState:UIControlStateHighlighted];
 }
 
 -(void)setupLabelsForStartDate:(NSString *)startDate listeningHoursTotal:(NSString *)listeningHoursTotal audioStoriesSyncedCount:(NSString *)audioStoriesSyncedCount{

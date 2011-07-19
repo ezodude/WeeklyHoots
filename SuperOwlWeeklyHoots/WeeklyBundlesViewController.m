@@ -16,19 +16,8 @@
 @synthesize activeBundle=_activeBundle;
 
 @synthesize bundlesTable;
-@synthesize currentOrRecentBundleControl=_currentOrRecentBundleControl;
 
-@synthesize startWeekDayNameLabel=_startWeekDayNameLabel;
-@synthesize endWeekDayNameLabel=_endWeekDayNameLabel;
-@synthesize startDayDateLabel=_startDayDateLabel;
-@synthesize endDayDateLabel=_endDayDateLabel;
-
-@synthesize bundleDownloadDetailsView=_bundleDownloadDetailsView;
-@synthesize bundleDurationLabel=_bundleDurationLabel;
-@synthesize syncedProgrammesLabel=_syncedDurationLabel;
 @synthesize syncProgressStatus=_syncProgressStatus;
-
-@synthesize playlistsMenu=_playlistsMenu;
 
 @synthesize syncButton=_syncButton;
 @synthesize listenButton=_listenButton;
@@ -47,24 +36,13 @@
     [self.currentBundle release];
     [self.recentBundle release];
     [self.activeBundle release];
-    [self.currentOrRecentBundleControl release];
     
     [self.bundlesTable release];
     
     [_internetReachable release];
     [_audioDownloadsManager release];
-    
-    [self.startWeekDayNameLabel release];
-    [self.endWeekDayNameLabel release];
-    [self.startDayDateLabel release];
-    [self.endDayDateLabel release];
-    
-    [self.bundleDownloadDetailsView release];
-    [self.bundleDurationLabel release];
-    [self.syncedProgrammesLabel release];
+        
     [self.syncProgressStatus release];
-    
-    [self.playlistsMenu release];
     
     [self.syncButton release];
     [self.listenButton release];
@@ -136,16 +114,6 @@
 #pragma mark -
 #pragma mark Weekly Bundle Drawing Methods
 
--(IBAction)toggleControls:(id)sender{
-//    if ([sender selectedSegmentIndex] == kSwitchesSegmentIndex) {
-//        self.activeBundle = self.currentBundle;
-//    }else{
-//        self.activeBundle = self.recentBundle;
-//    }
-//    [self drawViewUsingBundle];
-//    NSLog(@"Toggling Between Bundles!");
-}
-
 -(void)loadDataUsingProgressIndicator:(MBProgressHUD *)progressIndicator{
     BundlesManager *bundlesManager = [BundlesManager manager];
     
@@ -166,50 +134,6 @@
     progressIndicator.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
     progressIndicator.mode = MBProgressHUDModeCustomView;
     [progressIndicator hide:YES afterDelay:2];
-}
-
--(void)drawViewUsingBundle{
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];  
-    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"E" options:0 locale:[NSLocale currentLocale]]];
-    self.startWeekDayNameLabel.text = [[dateFormatter stringFromDate:[self.activeBundle startDate]] uppercaseString];
-    self.endWeekDayNameLabel.text = [[dateFormatter stringFromDate:[self.activeBundle endDate]] uppercaseString];
-    
-    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dMMMYY" options:0 locale:[NSLocale currentLocale]]];
-    self.startDayDateLabel.text = [dateFormatter stringFromDate:[self.activeBundle startDate]];
-    self.endDayDateLabel.text = [dateFormatter stringFromDate:[self.activeBundle endDate]];
-    
-    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
-    [formatter setRoundingMode:NSNumberFormatterRoundHalfDown];
-    [formatter setRoundingIncrement:[NSNumber numberWithFloat:0.5]];
-
-    self.bundleDurationLabel.text = [NSString stringWithFormat:@"%@ hrs", [formatter stringFromNumber:[self.activeBundle durationInHours]]];
-    
-    [formatter release];
-    
-    [self drawProgrammesSyncedProgress];
-//    [self drawButtons];
-}
-
--(void)drawProgrammesSyncedProgress{
-   self.syncedProgrammesLabel.text = [NSString stringWithFormat:@"%d of %d", 
-                                      [self.activeBundle downloadedProgrammesCount], 
-                                      [self.activeBundle totalProgrammesCount]];
-    
-    [self.syncProgressStatus setDetailsLabelText:[NSString stringWithFormat:@"%d", [[self activeBundle] programmesAwaitingDownloadCount]]];
-}
-
--(void)drawButtons{
-//    UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
-//    UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
-//    
-//    UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:10 topCapHeight:0];
-//    UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:10 topCapHeight:0];
-//    
-//    [self.syncButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-//    [self.syncButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
-//    
-//    [self.listenButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-//    [self.listenButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 }
 
 #pragma mark -
@@ -275,13 +199,13 @@
         _audioDownloadsManager = [AudioDownloadsManager manager];
     }
     
-    self.syncProgressStatus = [MBProgressHUD showHUDAddedTo:self.bundleDownloadDetailsView animated:YES];
+    self.syncProgressStatus = [MBProgressHUD showHUDAddedTo:nil animated:YES];
     
     [self.syncProgressStatus setLabelText:@"Syncing"];
     [self.syncProgressStatus setDetailsLabelText:[NSString stringWithFormat:@"%d", [[self activeBundle] programmesAwaitingDownloadCount]]];
     
     [_audioDownloadsManager prepareDownloadContextForBundle:self.activeBundle progressView:self.syncProgressStatus withProgressCallback:^{
-        [self drawProgrammesSyncedProgress];
+//        [self drawProgrammesSyncedProgress];
     }];
     
     [_audioDownloadsManager startDownloadsForBundle:self.activeBundle withCompletionCallback:^{
@@ -323,7 +247,8 @@
                            @"rush_hour_240x160.jpg");
     
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];    
-    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dMMMYY" options:0 locale:[NSLocale currentLocale]]];
+    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"EdMMMYY" options:0 locale:[NSLocale currentLocale]]];
+    
     NSString *startDate = [dateFormatter stringFromDate:[bundle startDate]];
     
     NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
