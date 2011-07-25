@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WeeklyBundlesNavController;
+#import "StoryboxNavController.h"
+
+@class StoryboxNavController;
 
 @interface SuperOwlWeeklyHootsAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 
@@ -15,5 +17,8 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet WeeklyBundlesNavController *weeklyBundlesNavController;
+
+//@property (nonatomic, retain) IBOutlet WeeklyBundlesNavController *weeklyBundlesNavController;
+
+@property (nonatomic, retain) IBOutlet StoryboxNavController *storyboxNavController;
 @end

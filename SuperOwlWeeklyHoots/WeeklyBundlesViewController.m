@@ -40,7 +40,7 @@
     [self.bundlesTable release];
     
     [_internetReachable release];
-    [_audioDownloadsManager release];
+    [_audioDownloadsRunner release];
         
     [self.syncProgressStatus release];
     
@@ -168,9 +168,9 @@
     [button setTitle:@"Resume" forState:UIControlStateNormal];
     [button setTitle:@"Resume" forState:UIControlStateHighlighted];
     
-    if(!_audioDownloadsManager) return;
+    if(!_audioDownloadsRunner) return;
     
-    [_audioDownloadsManager pauseSyncing:self.activeBundle];
+    [_audioDownloadsRunner pauseSyncing:self.activeBundle];
     [self.syncProgressStatus hide:YES afterDelay:0];
 }
 
@@ -182,9 +182,10 @@
 }
 
 -(void)signalSyncCompleted{
-    [self.syncButton setTitle:@"Synced" forState:UIControlStateNormal];
-    [self.syncButton setTitle:@"Synced" forState:UIControlStateHighlighted];
-    [self.syncButton setEnabled:NO];
+    NSLog(@"Sync Completed!");
+//    [self.syncButton setTitle:@"Synced" forState:UIControlStateNormal];
+//    [self.syncButton setTitle:@"Synced" forState:UIControlStateHighlighted];
+//    [self.syncButton setEnabled:NO];
 }
 
 -(void)flagLackOfWifiConnection{
@@ -195,8 +196,8 @@
 -(void)syncUsingProgressView:(MBProgressHUD *)progressView{
     NSLog(@"startSyncingUsingProgressView");
     
-    if(!_audioDownloadsManager){
-        _audioDownloadsManager = [AudioDownloadsManager manager];
+    if(!_audioDownloadsRunner){
+        _audioDownloadsRunner = [AudioDownloadsRunner runner];
     }
     
     self.syncProgressStatus = [MBProgressHUD showHUDAddedTo:nil animated:YES];
@@ -204,14 +205,16 @@
     [self.syncProgressStatus setLabelText:@"Syncing"];
     [self.syncProgressStatus setDetailsLabelText:[NSString stringWithFormat:@"%d", [[self activeBundle] programmesAwaitingDownloadCount]]];
     
-    [_audioDownloadsManager prepareDownloadContextForBundle:self.activeBundle progressView:self.syncProgressStatus withProgressCallback:^{
-//        [self drawProgrammesSyncedProgress];
-    }];
+//    [_audioDownloadsRunner startDownloadingBundleAudio:self.activeBundle progressView:self.syncProgressStatus];
     
-    [_audioDownloadsManager startDownloadsForBundle:self.activeBundle withCompletionCallback:^{
-        [self.syncProgressStatus hide:YES afterDelay:0];
-        [self signalSyncCompleted];
-    }];
+//    [_audioDownloadsRunner prepareDownloadContextForBundle:self.activeBundle progressView:self.syncProgressStatus withProgressCallback:^{
+////        [self drawProgrammesSyncedProgress];
+//    }];
+//    
+//    [_audioDownloadsRunner startDownloadsForBundle:self.activeBundle withCompletionCallback:^{
+//        [self.syncProgressStatus hide:YES afterDelay:0];
+//        [self signalSyncCompleted];
+//    }];
 }
 
 #pragma mark -
@@ -258,9 +261,7 @@
     NSString *listeningHoursTotal = [NSString stringWithFormat:@"%@ Hrs Listening", [formatter stringFromNumber:[self.activeBundle durationInHours]]];
     [formatter release];
     
-    NSString *audioStoriesSyncedCount = [NSString stringWithFormat:@"%d of %d", 
-                                         [bundle downloadedProgrammesCount], 
-                                         [bundle totalProgrammesCount]];
+    NSString *audioStoriesSyncedCount = [NSString stringWithFormat:@"%d of %d Audio Stories", [bundle downloadedProgrammesCount], [bundle totalProgrammesCount]];
     
     [cell setupWithBackgroundImage:imageName startDate:startDate listeningHoursTotal:listeningHoursTotal audioStoriesSyncedCount:audioStoriesSyncedCount];
     

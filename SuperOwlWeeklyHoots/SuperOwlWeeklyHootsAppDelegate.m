@@ -14,7 +14,8 @@
 
 @synthesize window=_window;
 @synthesize tabBarController=_tabBarController;
-@synthesize weeklyBundlesNavController=_weeklyBundlesNavController;
+//@synthesize weeklyBundlesNavController=_weeklyBundlesNavController;
+@synthesize storyboxNavController=_storyboxNavController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -68,7 +69,8 @@
 {
     [_window release];
     [_tabBarController release];
-    [_weeklyBundlesNavController release];
+//    [_weeklyBundlesNavController release];
+    [_storyboxNavController release];
     [super dealloc];
 }
 

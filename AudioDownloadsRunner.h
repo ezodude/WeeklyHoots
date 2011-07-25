@@ -21,14 +21,14 @@
 
 typedef void (^CompletionCallbackBlock)();
 
-@interface AudioDownloadsManager : NSObject {
+@interface AudioDownloadsRunner : NSObject {
     ASINetworkQueue *_audioDownloadsQueue;
 }
 
 @property (nonatomic, copy) CompletionCallbackBlock allDownloadsCompleteBlock;
 @property (nonatomic, copy) CompletionCallbackBlock pauseDownloadsCompleteBlock;
 
-+(id)manager;
++(id)runner;
 
 -(void)prepareDownloadContextForBundle:(WeeklyBundle *)bundle progressView:(MBProgressHUD *)progressView withProgressCallback:(CompletionCallbackBlock)block;
 

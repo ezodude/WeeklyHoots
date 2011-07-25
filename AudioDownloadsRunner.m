@@ -6,9 +6,9 @@
 //  Copyright 2011 Said.fm Ltd. All rights reserved.
 //
 
-#import "AudioDownloadsManager.h"
+#import "AudioDownloadsRunner.h"
 
-@implementation AudioDownloadsManager
+@implementation AudioDownloadsRunner
 
 @synthesize allDownloadsCompleteBlock;
 @synthesize pauseDownloadsCompleteBlock;
@@ -20,7 +20,7 @@
         _audioDownloadsQueue = [[ASINetworkQueue alloc] init];
         
         [_audioDownloadsQueue setDelegate:self];
-        [_audioDownloadsQueue setMaxConcurrentOperationCount:3];
+        [_audioDownloadsQueue setMaxConcurrentOperationCount:1];
         [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
         [_audioDownloadsQueue setQueueDidFinishSelector:@selector(allDownloadsCompleted)];
         [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
@@ -29,7 +29,7 @@
     return self;
 }
 
-+(id)manager{
++(id)runner{
 	return [[self alloc] init];
 }
 

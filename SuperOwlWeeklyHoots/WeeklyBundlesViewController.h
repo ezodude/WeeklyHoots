@@ -10,7 +10,7 @@
 
 #import "BundlesManager.h"
 #import "Reachability.h"
-#import "AudioDownloadsManager.h"
+#import "AudioDownloadsRunner.h"
 
 #import "MBProgressHUD.h"
 #import "WeeklyBundlesNavController.h"
@@ -19,7 +19,8 @@
 #define kSwitchesSegmentIndex	0
 
 @class Reachability;
-@class AudioDownloadsManager;
+@class AudioDownloadsCoordinator;
+@class AudioDownloadsRunner;
 
 @interface WeeklyBundlesViewController : UIViewController 
 <UITableViewDataSource, UITableViewDelegate> {
@@ -30,7 +31,7 @@
     Reachability *_internetReachable;
     BOOL _wifiConnected;
     
-    AudioDownloadsManager *_audioDownloadsManager;
+    AudioDownloadsRunner *_audioDownloadsRunner;
     
     MBProgressHUD *_syncProgressStatus;
     

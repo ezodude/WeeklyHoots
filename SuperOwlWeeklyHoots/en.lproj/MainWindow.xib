@@ -73,9 +73,9 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="366466208">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="1044472539">
-						<string key="IBUITitle">Hoots</string>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="805233715">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="558301259">
+						<string key="IBUITitle">Storybox</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">hoots.png</string>
@@ -90,7 +90,7 @@
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					<bool key="IBUIHorizontal">NO</bool>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="17497504">
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="661744848">
 						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{0, 0}</string>
@@ -101,13 +101,13 @@
 					</object>
 					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="IBUIViewController" id="148051383">
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="420226692">
-								<string key="IBUITitle">Latest</string>
+						<object class="IBUIViewController" id="531973402">
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="1034963099">
+								<string key="IBUITitle">Storybox</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<reference key="IBUIParentViewController" ref="366466208"/>
-							<string key="IBUINibName">WeeklyBundlesView</string>
+							<reference key="IBUIParentViewController" ref="805233715"/>
+							<string key="IBUINibName">StoryBoxView</string>
 							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 								<int key="IBUIInterfaceOrientation">1</int>
 								<int key="interfaceOrientation">1</int>
@@ -119,7 +119,7 @@
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<reference ref="366466208"/>
+					<reference ref="805233715"/>
 					<object class="IBUIViewController" id="978465050">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="308607278">
 							<string key="IBUITitle">Settings</string>
@@ -183,11 +183,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">weeklyBundlesNavController</string>
+						<string key="label">storyboxNavController</string>
 						<reference key="source" ref="664661524"/>
-						<reference key="destination" ref="366466208"/>
+						<reference key="destination" ref="805233715"/>
 					</object>
-					<int key="connectionID">147</int>
+					<int key="connectionID">156</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -225,7 +225,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="795333663"/>
 							<reference ref="978465050"/>
-							<reference ref="366466208"/>
+							<reference ref="805233715"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -254,44 +254,40 @@
 						<reference key="parent" ref="978465050"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">142</int>
-						<reference key="object" ref="366466208"/>
+						<int key="objectID">151</int>
+						<reference key="object" ref="805233715"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="17497504"/>
-							<reference ref="148051383"/>
-							<reference ref="1044472539"/>
+							<reference ref="661744848"/>
+							<reference ref="531973402"/>
+							<reference ref="558301259"/>
 						</object>
 						<reference key="parent" ref="1034742383"/>
-						<string key="objectName">Navigation Controller - Item</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">143</int>
-						<reference key="object" ref="17497504"/>
-						<reference key="parent" ref="366466208"/>
+						<int key="objectID">152</int>
+						<reference key="object" ref="661744848"/>
+						<reference key="parent" ref="805233715"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">144</int>
-						<reference key="object" ref="148051383"/>
+						<int key="objectID">153</int>
+						<reference key="object" ref="531973402"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="420226692"/>
+							<reference ref="1034963099"/>
 						</object>
-						<reference key="parent" ref="366466208"/>
-						<string key="objectName">Weekly Bundles View Controller</string>
+						<reference key="parent" ref="805233715"/>
+						<string key="objectName">Storybox View Controller - Storybox</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">145</int>
-						<reference key="object" ref="420226692"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="148051383"/>
+						<int key="objectID">154</int>
+						<reference key="object" ref="1034963099"/>
+						<reference key="parent" ref="531973402"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">146</int>
-						<reference key="object" ref="1044472539"/>
-						<reference key="parent" ref="366466208"/>
+						<int key="objectID">155</int>
+						<reference key="object" ref="558301259"/>
+						<reference key="parent" ref="805233715"/>
 					</object>
 				</object>
 			</object>
@@ -305,12 +301,12 @@
 					<string>106.IBPluginDependency</string>
 					<string>107.IBPluginDependency</string>
 					<string>129.IBPluginDependency</string>
-					<string>142.CustomClassName</string>
-					<string>142.IBPluginDependency</string>
-					<string>143.IBPluginDependency</string>
-					<string>144.CustomClassName</string>
-					<string>144.IBPluginDependency</string>
-					<string>146.IBPluginDependency</string>
+					<string>151.CustomClassName</string>
+					<string>151.IBPluginDependency</string>
+					<string>152.IBPluginDependency</string>
+					<string>153.CustomClassName</string>
+					<string>153.IBPluginDependency</string>
+					<string>155.IBPluginDependency</string>
 					<string>2.IBAttributePlaceholdersKey</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
@@ -325,10 +321,10 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>WeeklyBundlesNavController</string>
+					<string>StoryboxNavController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>WeeklyBundlesViewController</string>
+					<string>StoryboxViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSMutableDictionary">
@@ -354,7 +350,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">150</int>
+			<int key="maxID">156</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
