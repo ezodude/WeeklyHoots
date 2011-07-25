@@ -74,6 +74,8 @@
 		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
 		89DF135D13B0A046005A557A /* WeeklyHootSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */; };
 		89DF136013B0A27D005A557A /* WeeklyHootSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135F13B0A27D005A557A /* WeeklyHootSectionHeader.m */; };
+		89E1F08513DDFF2300D381E2 /* london_double_decker_500x333.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */; };
+		89E1F08813DDFFDB00D381E2 /* bus_window_500 x 339.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +175,8 @@
 		89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyHootSectionHeaderView.xib; sourceTree = "<group>"; };
 		89DF135E13B0A27D005A557A /* WeeklyHootSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyHootSectionHeader.h; sourceTree = "<group>"; };
 		89DF135F13B0A27D005A557A /* WeeklyHootSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyHootSectionHeader.m; sourceTree = "<group>"; };
+		89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_double_decker_500x333.jpg; sourceTree = "<group>"; };
+		89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bus_window_500 x 339.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +318,8 @@
 		8948139A13D348CB004C7D37 /* Bundle Background Images */ = {
 			isa = PBXGroup;
 			children = (
+				89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */,
+				89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */,
 				8948139B13D34907004C7D37 /* bus_window_240x163.jpg */,
 				8948139C13D34907004C7D37 /* london_double_decker_240x160.jpg */,
 				8948139D13D34907004C7D37 /* rush_hour_240x160.jpg */,
@@ -540,6 +546,8 @@
 				894813BF13D35FD6004C7D37 /* stop-highlight.png in Resources */,
 				894813C013D35FD6004C7D37 /* stop-normal.png in Resources */,
 				896C0C3713DC6B0E007F1B3F /* StoryboxView.xib in Resources */,
+				89E1F08513DDFF2300D381E2 /* london_double_decker_500x333.jpg in Resources */,
+				89E1F08813DDFFDB00D381E2 /* bus_window_500 x 339.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
