@@ -255,8 +255,8 @@
 				892F7CBC13C1E08500C4B98C /* WeeklyBundlesViewController.h */,
 				892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */,
 				892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */,
-				892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */,
 				892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */,
+				892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */,
 			);
 			name = WeeklyBundles;
 			sourceTree = "<group>";

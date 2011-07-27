@@ -14,6 +14,8 @@
 @synthesize storyboxImageView=_storyboxImageView;
 @synthesize startDateDayLabel=_startDateDayLabel;
 @synthesize startDateMonthYearLabel=_startDateMonthYearLabel;
+@synthesize storyboxPlaylistsQueueCount=_storyboxPlaylistsQueueCount;
+@synthesize storyboxPlaylistsCollectedCount=_storyboxPlaylistsCollectedCount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +31,8 @@
     [self.storyboxImageView release];
     [self.startDateDayLabel release];
     [self.startDateMonthYearLabel release];
+    [self.storyboxPlaylistsQueueCount release];
+    [self.storyboxPlaylistsCollectedCount release];
     [_storyboxContent release];
     [super dealloc];
 }
@@ -105,10 +109,12 @@
     self.startDateDayLabel.text = [dateFormatter 
                                 stringFromDate:_storyboxContent.startDate];
     
-    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"EEEEMMMYY" options:0 locale:[NSLocale currentLocale]]];
+    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"MMMYY" options:0 locale:[NSLocale currentLocale]]];
     self.startDateMonthYearLabel.text = [dateFormatter 
                                 stringFromDate:_storyboxContent.startDate];
     [dateFormatter release];
+    self.storyboxPlaylistsQueueCount.text = [NSString stringWithFormat:@"%d",  [_storyboxContent.playlistGuids count]];
+    self.storyboxPlaylistsCollectedCount.text = @"0";
 }
 
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator{

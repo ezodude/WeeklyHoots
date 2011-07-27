@@ -24,12 +24,16 @@
     UIImageView *_storyboxImageView;
     UILabel *_startDateDayLabel;
     UILabel *_startDateMonthYearLabel;
+    UILabel *_storyboxPlaylistsQueueCount;
+    UILabel *_storyboxPlaylistsCollectedCount;
     PlaylistsQueue *_storyboxContent;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *storyboxImageView;
 @property (nonatomic, retain) IBOutlet UILabel *startDateDayLabel;
 @property (nonatomic, retain) IBOutlet UILabel *startDateMonthYearLabel;
+@property (nonatomic, retain) IBOutlet UILabel *storyboxPlaylistsQueueCount;
+@property (nonatomic, retain) IBOutlet UILabel *storyboxPlaylistsCollectedCount;
 
 -(void)loadLatestStoryboxContent;
 -(void)loadStoryboxImage;
