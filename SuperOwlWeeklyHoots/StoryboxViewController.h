@@ -26,7 +26,7 @@
     UILabel *_startDateMonthYearLabel;
     UILabel *_storyboxPlaylistsQueueCount;
     UILabel *_storyboxPlaylistsCollectedCount;
-    PlaylistsQueue *_storyboxContent;
+    Storybox *_storybox;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *storyboxImageView;

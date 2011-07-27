@@ -33,7 +33,7 @@
     [self.startDateMonthYearLabel release];
     [self.storyboxPlaylistsQueueCount release];
     [self.storyboxPlaylistsCollectedCount release];
-    [_storyboxContent release];
+    [_storybox release];
     [super dealloc];
 }
 
@@ -75,9 +75,9 @@
     MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:navController.view animated:YES] retain];
     StoryboxManager *manager = [StoryboxManager manager];
     
-    [manager setupPlaylistsQueueUsingProgressIndicator:HUD 
+    [manager setupStoryboxUsingProgressIndicator:HUD 
         WithCallback:^{
-            _storyboxContent = [manager playlistsQueue];
+            _storybox = [manager storybox];
             [self loadStoryboxImage];
             [self loadStoryboxLabels];
             [self cleanUpProgressIndicator:HUD];
@@ -89,9 +89,9 @@
     static int ContentViewWidth = 320;
     static int BackgroundImageTargetHeight = 132;
     
-    NSLog(@"Setting up image: [%@]", _storyboxContent.imageUri);
+    NSLog(@"Setting up image: [%@]", [[_storybox playlistsQueue] imageUri]);
     
-    UIImage *image = [UIImage imageNamed:_storyboxContent.imageUri];
+    UIImage *image = [UIImage imageNamed:[[_storybox playlistsQueue] imageUri]];
     
     image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(ContentViewWidth, BackgroundImageTargetHeight ) interpolationQuality:kCGInterpolationHigh];
     
@@ -107,13 +107,13 @@
     [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dd" options:0 locale:[NSLocale currentLocale]]];
     
     self.startDateDayLabel.text = [dateFormatter 
-                                stringFromDate:_storyboxContent.startDate];
+                                stringFromDate:[[_storybox playlistsQueue] startDate]];
     
     [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"MMMYY" options:0 locale:[NSLocale currentLocale]]];
     self.startDateMonthYearLabel.text = [dateFormatter 
-                                stringFromDate:_storyboxContent.startDate];
+                                stringFromDate:[[_storybox playlistsQueue] startDate]];
     [dateFormatter release];
-    self.storyboxPlaylistsQueueCount.text = [NSString stringWithFormat:@"%d",  [_storyboxContent.playlistGuids count]];
+    self.storyboxPlaylistsQueueCount.text = [NSString stringWithFormat:@"%d",  [[[_storybox playlistsQueue] playlistGuids] count]];
     self.storyboxPlaylistsCollectedCount.text = @"0";
 }
 

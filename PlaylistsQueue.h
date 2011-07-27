@@ -26,4 +26,7 @@
 - (BOOL)isFresh;
 - (NSUInteger)downloadedPlaylistsCount;
 
+-(NSString *)nextPlaylistGuidToCollect;
+-(NSArray *)downloadedPlaylistGuids;
+
 @end

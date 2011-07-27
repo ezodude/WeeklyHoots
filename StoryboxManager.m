@@ -11,6 +11,7 @@
 
 @implementation StoryboxManager
 
+@synthesize storybox=_storybox;
 @synthesize playlistsQueue=_playlistsQueue;
 
 - (id)init {
@@ -31,7 +32,7 @@
 	return [[[self alloc] init] autorelease];
 }
 
--(void)setupPlaylistsQueueUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(StoryboxSetupSuccessCallbackBlock)block{
+-(void)setupStoryboxUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(StoryboxSetupSuccessCallbackBlock)block{
     NSLog(@"setting up Playlists Queue");
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@playlists/queue.json", _programmesAPIURL]];
@@ -47,19 +48,19 @@
     
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock");
-        [self completePlaylistsQueueSetupFromRequest:request];
+        [self completeSetupFromRequest:request];
         block();
     }];
     
     [request setFailedBlock:^{
         NSLog(@"Starting setFailedBlock");
-        [self processFailureForPlaylistsQueueFromRequest:request];
+        [self processFailureFromRequest:request];
     }];
     
     [request startAsynchronous];
 }
 
--(void)completePlaylistsQueueSetupFromRequest:(ASIHTTPRequest *)request{
+-(void)completeSetupFromRequest:(ASIHTTPRequest *)request{
     NSLog(@"Completing Playlists Queue Setup");
     
     NSString *responseString = [request responseString];
@@ -68,10 +69,15 @@
     PlaylistsQueue *newPlaylistsQueue = [[PlaylistsQueue alloc] initFromDictionary:dictionary];
     self.playlistsQueue = newPlaylistsQueue;
     
+    Storybox *newStorybox = [[Storybox alloc] init];
+    [newStorybox loadAndsetupWithPlaylistsQueue:newPlaylistsQueue];
+    self.storybox = newStorybox;
+    
     [newPlaylistsQueue release];
+    [newStorybox release];
 }
 
--(void)processFailureForPlaylistsQueueFromRequest:(ASIHTTPRequest *)request{
+-(void)processFailureFromRequest:(ASIHTTPRequest *)request{
     NSError *error = [request error];
     NSLog(@"Error processing Playlists Queue: %@",[error localizedDescription]);
 }
@@ -79,6 +85,7 @@
 - (void)dealloc {
     [_programmesAPIURL release];
     [_remoteDataCache release];
+    [self.storybox release];
     [self.playlistsQueue release];
     [super dealloc];
 }

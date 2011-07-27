@@ -18,6 +18,9 @@
     NSUInteger _duration;
     NSDate *_publicationDate;
     NSArray *_programmes;
+    
+    NSDate *_dateQueued;
+    NSDate *_expiryDate;
 }
 
 @property (nonatomic, retain) NSString *guid;
@@ -27,11 +30,17 @@
 @property (nonatomic, assign) NSUInteger duration;
 @property (nonatomic, retain) NSDate *publicationDate;
 @property (nonatomic, retain) NSArray *programmes;
+@property (nonatomic, retain) NSDate *expiryDate;
 
 -(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
                 storyJockey:(NSString *)storyJockey 
                 summary:(NSString *)summary duration:(NSNumber *)duration
                 programmes:(NSArray *)programmes;
+
+-(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
+              storyJockey:(NSString *)storyJockey 
+                  summary:(NSString *)summary duration:(NSNumber *)duration
+               programmes:(NSArray *)programmes expiryDate:(NSDate *)expiryDate;
 
 -(NSUInteger)totalProgrammesCount;
 -(NSUInteger)downloadedProgrammesCount;

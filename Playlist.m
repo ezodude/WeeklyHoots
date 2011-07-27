@@ -17,6 +17,7 @@
 @synthesize duration=_duration;
 @synthesize publicationDate=_publicationDate;
 @synthesize programmes=_programmes;
+@synthesize expiryDate=_expiryDate;
 
 -(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title storyJockey:(NSString *)storyJockey summary:(NSString *)summary duration:(NSNumber *)duration programmes:(NSArray *)programmes{
     self = [super init];
@@ -74,6 +75,7 @@
     [self.summary release];
     [self.publicationDate release];
     [self.programmes release];
+    [self.expiryDate release];
     [super dealloc];
 }
 @end

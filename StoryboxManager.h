@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Environment.h"
 #import "FileStore.h"
+#import "Storybox.h"
 #import "PlaylistsQueue.h"
 
 #import "ASIHTTPRequest.h"
@@ -27,16 +28,18 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
 @interface StoryboxManager : NSObject {
     NSString *_programmesAPIURL;
     ASIDownloadCache *_remoteDataCache;
+    Storybox *_storybox;
     PlaylistsQueue *_playlistsQueue;
 }
 
+@property (nonatomic, retain) Storybox *storybox;
 @property (nonatomic, retain) PlaylistsQueue *playlistsQueue;
 
 + (id)manager;
 
--(void)setupPlaylistsQueueUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(StoryboxSetupSuccessCallbackBlock)block;
+-(void)setupStoryboxUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(StoryboxSetupSuccessCallbackBlock)block;
 
--(void)completePlaylistsQueueSetupFromRequest:(ASIHTTPRequest *)request;
--(void)processFailureForPlaylistsQueueFromRequest:(ASIHTTPRequest *)request;
+-(void)completeSetupFromRequest:(ASIHTTPRequest *)request;
+-(void)processFailureFromRequest:(ASIHTTPRequest *)request;
 
 @end

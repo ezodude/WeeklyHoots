@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Playlist.h"
 
+#import "FileStore.h"
+
 @class Playlist;
 
 @interface WeeklyBundle : NSObject {

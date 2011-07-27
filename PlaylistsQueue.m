@@ -45,6 +45,14 @@
     return 0;
 }
 
+-(NSString *)nextPlaylistGuidToCollect{
+    return nil;
+}
+
+-(NSArray *)downloadedPlaylistGuids{
+    return nil;
+}
+
 - (void)dealloc {
     [self.guid release];
     [self.startDate release];

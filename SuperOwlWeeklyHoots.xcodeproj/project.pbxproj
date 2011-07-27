@@ -25,6 +25,7 @@
 		892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */; };
 		892F7CC013C1E08500C4B98C /* WeeklyBundlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */; };
 		892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */; };
+		893B471C13E094C700852710 /* Storybox.m in Sources */ = {isa = PBXBuildFile; fileRef = 893B471B13E094C700852710 /* Storybox.m */; };
 		893FBFAE13C23CF2007EE2E7 /* CabinSketch-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFAD13C23CF2007EE2E7 /* CabinSketch-Bold.ttf */; };
 		893FBFB013C35280007EE2E7 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFAF13C35280007EE2E7 /* blueButton.png */; };
 		893FBFB213C352CB007EE2E7 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFB113C352CB007EE2E7 /* whiteButton.png */; };
@@ -104,6 +105,8 @@
 		892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyBundlesView.xib; sourceTree = "<group>"; };
 		892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundlesNavController.h; sourceTree = "<group>"; };
 		892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundlesNavController.m; sourceTree = "<group>"; };
+		893B471A13E094C700852710 /* Storybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storybox.h; sourceTree = "<group>"; };
+		893B471B13E094C700852710 /* Storybox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storybox.m; sourceTree = "<group>"; };
 		893FBFAD13C23CF2007EE2E7 /* CabinSketch-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CabinSketch-Bold.ttf"; sourceTree = "<group>"; };
 		893FBFAF13C35280007EE2E7 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		893FBFB113C352CB007EE2E7 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
@@ -437,8 +440,6 @@
 			children = (
 				89DF135213AF9351005A557A /* WeeklyBundle.h */,
 				89DF135313AF9351005A557A /* WeeklyBundle.m */,
-				89DF135513AF9941005A557A /* Playlist.h */,
-				89DF135613AF9941005A557A /* Playlist.m */,
 				89DF135813AF9A86005A557A /* Programme.h */,
 				89DF135913AF9A86005A557A /* Programme.m */,
 				891DB32813BCD09500B27C2F /* BundlesManager.h */,
@@ -451,6 +452,10 @@
 				896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */,
 				896C0C3B13DC944F007F1B3F /* StoryboxManager.h */,
 				896C0C3C13DC944F007F1B3F /* StoryboxManager.m */,
+				893B471A13E094C700852710 /* Storybox.h */,
+				893B471B13E094C700852710 /* Storybox.m */,
+				89DF135513AF9941005A557A /* Playlist.h */,
+				89DF135613AF9941005A557A /* Playlist.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 				896C0C3A13DC8732007F1B3F /* PlaylistsQueue.m in Sources */,
 				896C0C3D13DC944F007F1B3F /* StoryboxManager.m in Sources */,
 				896C0C4513DCA3B0007F1B3F /* StoryboxNavController.m in Sources */,
+				893B471C13E094C700852710 /* Storybox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
