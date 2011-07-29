@@ -12,7 +12,6 @@
 @implementation StoryboxManager
 
 @synthesize storybox=_storybox;
-@synthesize playlistsQueue=_playlistsQueue;
 
 - (id)init {
     self = [super init];
@@ -67,7 +66,6 @@
     NSDictionary *dictionary = (NSDictionary *)[responseString objectFromJSONString];
     
     PlaylistsQueue *newPlaylistsQueue = [[PlaylistsQueue alloc] initFromDictionary:dictionary];
-    self.playlistsQueue = newPlaylistsQueue;
     
     Storybox *newStorybox = [[Storybox alloc] init];
     [newStorybox loadAndsetupWithPlaylistsQueue:newPlaylistsQueue];
@@ -82,11 +80,28 @@
     NSLog(@"Error processing Playlists Queue: %@",[error localizedDescription]);
 }
 
+-(void)appendPlaylistsToStorybox:(Storybox *)storybox forGuids:(NSArray *)playlistGuids{
+    
+    // loop through playlists guids
+        // initialise a queue for processing playlists
+        // Add playlist processing object to the queue
+        // ---- QUEUE should process one playlist at a time ---- 
+        // QUEUE PROCESSING:
+            // Get playlist details + create playlist
+            // store playlist details on disk as json
+            // Inject playlist guid into storybox's processing list
+            // Inform storybox's delegate of new playlist
+            // Create audio downloads for playlist and them to the audio downloads runner queue.
+            // Use storybox's delegate playlist processing progress view to showcase progress for playlist audio downloads
+            // kick off downloads
+            // when audio downloads complete clear queue
+        // Start processing next playlist until interrupted or all playlists complete.
+}
+
 - (void)dealloc {
     [_programmesAPIURL release];
     [_remoteDataCache release];
     [self.storybox release];
-    [self.playlistsQueue release];
     [super dealloc];
 }
 

@@ -18,6 +18,7 @@
 #import "../JSONKit/JSONKit.h"
 #import "MBProgressHUD.h";
 
+@class Storybox;
 @class ASIHTTPRequest;
 @class ASIDownloadCache;
 
@@ -29,11 +30,9 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
     NSString *_programmesAPIURL;
     ASIDownloadCache *_remoteDataCache;
     Storybox *_storybox;
-    PlaylistsQueue *_playlistsQueue;
 }
 
 @property (nonatomic, retain) Storybox *storybox;
-@property (nonatomic, retain) PlaylistsQueue *playlistsQueue;
 
 + (id)manager;
 
@@ -41,5 +40,7 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
 
 -(void)completeSetupFromRequest:(ASIHTTPRequest *)request;
 -(void)processFailureFromRequest:(ASIHTTPRequest *)request;
+
+-(void)appendPlaylistsToStorybox:(Storybox *)storybox forGuids:(NSArray *)playlistGuids;
 
 @end

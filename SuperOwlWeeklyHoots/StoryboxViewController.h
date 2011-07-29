@@ -39,4 +39,6 @@
 -(void)loadStoryboxImage;
 -(void)loadStoryboxLabels;
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
+
+-(IBAction)startCollectingPlaylists;
 @end

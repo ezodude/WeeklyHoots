@@ -121,4 +121,11 @@
     [progressIndicator hide:YES afterDelay:1];
 }
 
+#pragma mark -
+#pragma mark Collect Playlists Methods
+
+-(IBAction)startCollectingPlaylists{
+    [_storybox startCollectingPlaylistsUsingDelegate:self];
+}
+
 @end
