@@ -16,6 +16,7 @@
 @interface Storybox : NSObject {
     PlaylistsQueue *_playlistsQueue;
     NSMutableArray *_availablePlaylists;
+    NSMutableArray *_processingPlaylists;
     
     StoryboxManager *_storyboxManager;
     id _playlistsCollectionDelegate;
@@ -26,9 +27,13 @@
 
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue;
 
+-(NSString *)currentPlaylistsQueueGuid;
+
 -(NSArray *)playlistGuidsToCollect;
 -(void)loadUpAvailablePlaylistsFromDisk;
 -(void)cleanUpExpiredPlaylists;
 
 -(void)startCollectingPlaylistsUsingDelegate:(id)delegate;
+-(void)startedCollectingPlaylists;
+-(void)finishedCollectingPlaylists;
 @end

@@ -41,4 +41,6 @@
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 
 -(IBAction)startCollectingPlaylists;
+-(void)startedCollectingPlaylists;
+-(void)finishedCollectingPlaylists;
 @end

@@ -16,6 +16,7 @@
 
 - (void)dealloc {
     [_availablePlaylists release];
+    [_processingPlaylists release];
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
     [_storyboxManager release];
@@ -27,6 +28,10 @@
         
     [self loadUpAvailablePlaylistsFromDisk];
     [self cleanUpExpiredPlaylists];
+}
+
+-(NSString *)currentPlaylistsQueueGuid{
+    return [self.playlistsQueue guid];
 }
 
 -(NSArray *)playlistGuidsToCollect{
@@ -56,13 +61,23 @@
 }
 
 -(void)startCollectingPlaylistsUsingDelegate:(id)delegate{
+    NSLog(@"Setting b4 kicking off collection!");
+    
     self.playlistsCollectionDelegate = delegate;
     
     if(!_storyboxManager){
         _storyboxManager = [[StoryboxManager alloc] init];
     }
     
-    [_storyboxManager appendPlaylistsToStorybox:self forGuids:[self playlistGuidsToCollect] ];
+    [_storyboxManager appendPlaylistsToStorybox:self forGuids:[self playlistGuidsToCollect]];
+}
+
+-(void)startedCollectingPlaylists{
+    [self.playlistsCollectionDelegate startedCollectingPlaylists];
+}
+
+-(void)finishedCollectingPlaylists{
+    [self.playlistsCollectionDelegate finishedCollectingPlaylists];
 }
 
 @end

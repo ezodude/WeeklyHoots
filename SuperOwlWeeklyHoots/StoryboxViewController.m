@@ -77,7 +77,7 @@
     
     [manager setupStoryboxUsingProgressIndicator:HUD 
         WithCallback:^{
-            _storybox = [manager storybox];
+            _storybox = [[manager storybox] retain];
             [self loadStoryboxImage];
             [self loadStoryboxLabels];
             [self cleanUpProgressIndicator:HUD];
@@ -125,7 +125,16 @@
 #pragma mark Collect Playlists Methods
 
 -(IBAction)startCollectingPlaylists{
+    NSLog(@"startCollectingPlaylists");
     [_storybox startCollectingPlaylistsUsingDelegate:self];
+}
+
+-(void)startedCollectingPlaylists{
+    NSLog(@"Started Collecting Playlists");
+}
+
+-(void)finishedCollectingPlaylists{
+    NSLog(@"Finished Collecting Playlists");
 }
 
 @end

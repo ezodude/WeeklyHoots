@@ -70,6 +70,7 @@
 		896C0C3A13DC8732007F1B3F /* PlaylistsQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */; };
 		896C0C3D13DC944F007F1B3F /* StoryboxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3C13DC944F007F1B3F /* StoryboxManager.m */; };
 		896C0C4513DCA3B0007F1B3F /* StoryboxNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C4413DCA3B0007F1B3F /* StoryboxNavController.m */; };
+		896E5A6E13E4046000319C45 /* PlaylistDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 896E5A6D13E4046000319C45 /* PlaylistDownload.m */; };
 		89DF135413AF9351005A557A /* WeeklyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135313AF9351005A557A /* WeeklyBundle.m */; };
 		89DF135713AF9941005A557A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135613AF9941005A557A /* Playlist.m */; };
 		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
@@ -168,6 +169,8 @@
 		896C0C3C13DC944F007F1B3F /* StoryboxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxManager.m; sourceTree = "<group>"; };
 		896C0C4313DCA3B0007F1B3F /* StoryboxNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboxNavController.h; sourceTree = "<group>"; };
 		896C0C4413DCA3B0007F1B3F /* StoryboxNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxNavController.m; sourceTree = "<group>"; };
+		896E5A6C13E4046000319C45 /* PlaylistDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistDownload.h; sourceTree = "<group>"; };
+		896E5A6D13E4046000319C45 /* PlaylistDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistDownload.m; sourceTree = "<group>"; };
 		89D4A51D13B799EF0051A9F3 /* SuperOwlAudioNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperOwlAudioNotifications.h; sourceTree = "<group>"; };
 		89DF135213AF9351005A557A /* WeeklyBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundle.h; sourceTree = "<group>"; };
 		89DF135313AF9351005A557A /* WeeklyBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundle.m; sourceTree = "<group>"; };
@@ -456,6 +459,8 @@
 				893B471B13E094C700852710 /* Storybox.m */,
 				89DF135513AF9941005A557A /* Playlist.h */,
 				89DF135613AF9941005A557A /* Playlist.m */,
+				896E5A6C13E4046000319C45 /* PlaylistDownload.h */,
+				896E5A6D13E4046000319C45 /* PlaylistDownload.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				896C0C3D13DC944F007F1B3F /* StoryboxManager.m in Sources */,
 				896C0C4513DCA3B0007F1B3F /* StoryboxNavController.m in Sources */,
 				893B471C13E094C700852710 /* Storybox.m in Sources */,
+				896E5A6E13E4046000319C45 /* PlaylistDownload.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

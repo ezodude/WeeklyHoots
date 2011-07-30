@@ -37,10 +37,10 @@
                 summary:(NSString *)summary duration:(NSNumber *)duration
                 programmes:(NSArray *)programmes;
 
--(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
-              storyJockey:(NSString *)storyJockey 
-                  summary:(NSString *)summary duration:(NSNumber *)duration
-               programmes:(NSArray *)programmes expiryDate:(NSDate *)expiryDate;
+//-(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
+//              storyJockey:(NSString *)storyJockey 
+//                  summary:(NSString *)summary duration:(NSNumber *)duration
+//               programmes:(NSArray *)programmes expiryDate:(NSDate *)expiryDate;
 
 -(NSUInteger)totalProgrammesCount;
 -(NSUInteger)downloadedProgrammesCount;

@@ -81,9 +81,8 @@
 }
 
 -(void)appendPlaylistsToStorybox:(Storybox *)storybox forGuids:(NSArray *)playlistGuids{
-    
     // loop through playlists guids
-        // initialise a queue for processing playlists
+        // initialise a NSOpertaionQueue for processing playlists
         // Add playlist processing object to the queue
         // ---- QUEUE should process one playlist at a time ---- 
         // QUEUE PROCESSING:
@@ -96,11 +95,33 @@
             // kick off downloads
             // when audio downloads complete clear queue
         // Start processing next playlist until interrupted or all playlists complete.
+    
+    NSLog(@"Kicking off Playlists Download!");
+    
+    _playlistsProcessingQueue = [[NSOperationQueue alloc] init];
+    
+    [_playlistsProcessingQueue setMaxConcurrentOperationCount:1.0];
+    
+    __block NSInteger pendingGuids = [playlistGuids count];
+    
+    [playlistGuids enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *guid = (NSString *)obj;
+        PlaylistDownload *playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:storybox playlistGuid:guid baseURL:_programmesAPIURL] autorelease];
+        
+        [_playlistsProcessingQueue addOperationWithBlock:^(void) {
+            if ([playlistDownload getPlaylist]) {
+                pendingGuids = pendingGuids - 1;
+                if(pendingGuids == 0) [storybox finishedCollectingPlaylists];
+            }
+        }];
+    }];
+    [storybox startedCollectingPlaylists];
 }
 
 - (void)dealloc {
     [_programmesAPIURL release];
     [_remoteDataCache release];
+    [_playlistsProcessingQueue release];
     [self.storybox release];
     [super dealloc];
 }

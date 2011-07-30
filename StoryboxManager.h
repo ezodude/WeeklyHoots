@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Environment.h"
 #import "FileStore.h"
+
 #import "Storybox.h"
 #import "PlaylistsQueue.h"
+
+#import "PlaylistDownload.h"
 
 #import "ASIHTTPRequest.h"
 #import "ASIDownloadCache.h"
@@ -30,6 +33,8 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
     NSString *_programmesAPIURL;
     ASIDownloadCache *_remoteDataCache;
     Storybox *_storybox;
+    
+    NSOperationQueue *_playlistsProcessingQueue;
 }
 
 @property (nonatomic, retain) Storybox *storybox;
