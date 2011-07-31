@@ -15,7 +15,6 @@
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
 
 - (void)dealloc {
-    [_availablePlaylists release];
     [_processingPlaylists release];
     
     [_tempPlaylistProcessing release];
@@ -121,10 +120,10 @@
         isCurrent ? [currentSlot addObject:obj] : [olderSlot addObject:obj];
     }];
     
-    _currentPlaylistsSlot = [NSArray arrayWithArray:currentSlot];
+    _currentPlaylistsSlot = [[NSArray arrayWithArray:currentSlot] retain];
     NSLog(@"_currentPlaylistsSlot: [%@]", [_currentPlaylistsSlot description]);
     
-    _olderPlaylistsSlot = [NSArray arrayWithArray:olderSlot];
+    _olderPlaylistsSlot = [[NSArray arrayWithArray:olderSlot] retain];
     NSLog(@"_olderPlaylistsSlot: [%@]", [_olderPlaylistsSlot description]);
 }
 
@@ -133,11 +132,11 @@
 }
 
 -(NSArray *)playlistGuidsToCollect{
+    NSLog(@"_currentPlaylistsSlot: [%@]", [_currentPlaylistsSlot description]);
     
-    NSMutableArray *availableGuids = [NSMutableArray arrayWithCapacity:[_availablePlaylists count]];
-    [_availablePlaylists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSString *guid = [(Playlist *)obj guid];
-        [availableGuids addObject:guid];
+    NSMutableArray *availableGuids = [NSMutableArray arrayWithCapacity:[_currentPlaylistsSlot count]];
+    [_currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [availableGuids addObject:[(Playlist *)obj guid]];
     }];
     
     NSMutableArray *pendingGuids = [NSMutableArray arrayWithCapacity:[[self.playlistsQueue playlistGuids] count]];
@@ -147,6 +146,9 @@
             [pendingGuids addObject:guid];
         }
     }];
+    
+    NSLog(@"Pending Guids: [%@]", pendingGuids);
+    
     return pendingGuids;
 }
 
