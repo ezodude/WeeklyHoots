@@ -32,6 +32,7 @@
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue;
 -(void)synchronizeWithLocalStorage;
 -(void)processLocalPlaylists;
+-(void)removeExpiredPlaylists;
 
 -(NSString *)currentPlaylistsQueueGuid;
 
