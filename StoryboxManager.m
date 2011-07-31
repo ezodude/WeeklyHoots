@@ -69,6 +69,8 @@
     
     Storybox *newStorybox = [[Storybox alloc] init];
     [newStorybox loadAndsetupWithPlaylistsQueue:newPlaylistsQueue];
+    
+    [newStorybox synchronizeWithLocalStorage];
     self.storybox = newStorybox;
     
     [newPlaylistsQueue release];

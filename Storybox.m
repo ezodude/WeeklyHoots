@@ -23,12 +23,27 @@
     [super dealloc];
 }
 
++(NSString *)allPlaylistsPath{
+    return [NSString stringWithFormat:@"%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists"];
+}
+
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue{
     self.playlistsQueue = playlistsQueue;
-        
-    [self loadUpAvailablePlaylistsFromDisk];
-    [self cleanUpExpiredPlaylists];
 }
+
+-(void)synchronizeWithLocalStorage{
+    //Print all playlist guids stored locally
+    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+    NSArray *localPlaylistGuids = [fileManager contentsOfDirectoryAtPath:[Storybox allPlaylistsPath] error:nil];
+    if(localPlaylistGuids){
+        [localPlaylistGuids enumerateObjectsUsingBlock:^(id guid, NSUInteger idx, BOOL *stop) {
+            if(![guid isEqualToString:@".DS_Store"]){
+                NSLog(@"Playlisy guid: [%@]", guid);
+            }
+        }];
+    }
+}
+
 
 -(NSString *)currentPlaylistsQueueGuid{
     return [self.playlistsQueue guid];
@@ -50,14 +65,6 @@
         }
     }];
     return pendingGuids;
-}
-
--(void)loadUpAvailablePlaylistsFromDisk{
-    
-}
-
--(void)cleanUpExpiredPlaylists{
-    
 }
 
 -(void)startCollectingPlaylistsUsingDelegate:(id)delegate{

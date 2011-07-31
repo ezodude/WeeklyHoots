@@ -10,6 +10,7 @@
 #import "StoryboxManager.h"
 #import "PlaylistsQueue.h"
 #import "Playlist.h"
+#import "FileStore.h"
 
 @class StoryboxManager;
 
@@ -25,13 +26,14 @@
 @property (nonatomic, retain) PlaylistsQueue *playlistsQueue;
 @property (nonatomic, retain) id playlistsCollectionDelegate;
 
++(NSString *)allPlaylistsPath;
+
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue;
+-(void)synchronizeWithLocalStorage;
 
 -(NSString *)currentPlaylistsQueueGuid;
 
 -(NSArray *)playlistGuidsToCollect;
--(void)loadUpAvailablePlaylistsFromDisk;
--(void)cleanUpExpiredPlaylists;
 
 -(void)startCollectingPlaylistsUsingDelegate:(id)delegate;
 -(void)startedCollectingPlaylists;
