@@ -50,7 +50,7 @@
                 storyJockey:(NSString *)storyJockey 
                 summary:(NSString *)summary 
                 duration:(NSNumber *)duration 
-                dateQueued:(NSDate *) dateQueued
+                dateQueued:(NSString *) dateQueued
                 programmes:(NSArray *)programmes;
 
 -(NSUInteger)totalProgrammesCount;

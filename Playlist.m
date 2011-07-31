@@ -21,7 +21,6 @@
 @synthesize expiryDate=_expiryDate;
 
 -(Playlist *)initFromDictionary:(NSDictionary *)dictionary{
-    
     return [self initWithGuid:[dictionary objectForKey:@"id"] title:[dictionary objectForKey:@"title"] storyJockey:[dictionary objectForKey:@"storyJockey"] summary:[dictionary objectForKey:@"summary"] duration:[dictionary objectForKey:@"duration"] dateQueued:[dictionary objectForKey:@"dateQueued"]
                    programmes:(NSArray *)[dictionary objectForKey:@"programmes"]];
 }
@@ -31,7 +30,7 @@
               storyJockey:(NSString *)storyJockey 
                   summary:(NSString *)summary 
                  duration:(NSNumber *)duration 
-               dateQueued:(NSDate *) dateQueued
+               dateQueued:(NSString *) dateQueued
                programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
@@ -40,10 +39,17 @@
         self.storyJockey = storyJockey;
         self.summary = summary;
         self.duration = [duration unsignedIntegerValue];
-        NSLog(@"Duration: [%d]", self.duration);
-        self.dateQueued = dateQueued;
+//        NSLog(@"Duration: [%d]", self.duration);
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
+        self.dateQueued = [dateFormatter dateFromString:dateQueued];
+        [dateFormatter release];
+        
         self.expiryDate = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:self.dateQueued];
-        NSLog(@"Expires on [%@]", [self.expiryDate description]);
+//        NSLog(@"Expires on [%@]", [self.expiryDate description]);
         
         NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
                                          initWithCapacity:[programmes count]];

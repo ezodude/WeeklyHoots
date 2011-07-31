@@ -17,6 +17,7 @@
 - (void)dealloc {
     [_availablePlaylists release];
     [_processingPlaylists release];
+    [_tempPlaylistProcessing release];
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
     [_storyboxManager release];
@@ -32,16 +33,34 @@
 }
 
 -(void)synchronizeWithLocalStorage{
-    //Print all playlist guids stored locally
+    NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
+    
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-    NSArray *localPlaylistGuids = [fileManager contentsOfDirectoryAtPath:[Storybox allPlaylistsPath] error:nil];
+    NSArray *localPlaylistGuids = [fileManager contentsOfDirectoryAtPath:localPlaylistsPath error:nil];
+    
     if(localPlaylistGuids){
+        _tempPlaylistProcessing = [NSMutableArray arrayWithCapacity:[localPlaylistGuids count]];
+        
         [localPlaylistGuids enumerateObjectsUsingBlock:^(id guid, NSUInteger idx, BOOL *stop) {
             if(![guid isEqualToString:@".DS_Store"]){
-                NSLog(@"Playlisy guid: [%@]", guid);
+                NSLog(@"Playlist guid: [%@]", guid);
+                
+                NSString *localJsonPath = [NSString stringWithFormat:@"%@/%@/%@.json", localPlaylistsPath, guid, guid];
+                NSData *jsonContent = [fileManager contentsAtPath:localJsonPath];
+                NSDictionary *dictionary = [jsonContent objectFromJSONData];
+                Playlist *localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
+                
+                NSLog(@"localPlaylist date queued: [%@]", [[localPlaylist dateQueued] description]);
+                NSLog(@"localPlaylist programmes count: [%d]", [[localPlaylist programmes] count]);
+                NSLog(@"localPlaylist 1st programme title: [%@]", [[[localPlaylist programmes] objectAtIndex:1] title]);
+                [localPlaylist release];
             }
         }];
+        [self processLocalPlaylists];
     }
+}
+
+-(void)processLocalPlaylists{
 }
 
 

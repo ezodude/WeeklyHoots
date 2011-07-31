@@ -18,6 +18,7 @@
     PlaylistsQueue *_playlistsQueue;
     NSMutableArray *_availablePlaylists;
     NSMutableArray *_processingPlaylists;
+    NSMutableArray *_tempPlaylistProcessing;
     
     StoryboxManager *_storyboxManager;
     id _playlistsCollectionDelegate;
@@ -30,6 +31,7 @@
 
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue;
 -(void)synchronizeWithLocalStorage;
+-(void)processLocalPlaylists;
 
 -(NSString *)currentPlaylistsQueueGuid;
 

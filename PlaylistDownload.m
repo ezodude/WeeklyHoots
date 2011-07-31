@@ -74,10 +74,17 @@
         NSString *storyJockey = [[dictionary objectForKey:@"curator"] objectForKey:@"firstname"];
         NSString *summary = [dictionary objectForKey:@"full_summary"];
         
-        [dictionary setObject:[[self.storybox playlistsQueue] startDate] forKey:@"dateQueued"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
+        NSString *dateQueuedAsString = [dateFormatter stringFromDate:[[self.storybox playlistsQueue] startDate]];
+        
+        [dateFormatter release];
+        
+        [dictionary setObject:dateQueuedAsString forKey:@"dateQueued"];
         [dictionary setObject:storyJockey forKey:@"storyJockey"];
         [dictionary setObject:summary forKey:@"summary"];
-
         
         Playlist *newPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
         NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
