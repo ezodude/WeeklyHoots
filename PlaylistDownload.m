@@ -20,7 +20,7 @@
 @synthesize tempDownloadFile = _tempDownloadFile;
 
 +(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid {
-    return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, queueGuid, playlistGuid];
+    return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists", playlistGuid];
 }
 
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid {
@@ -59,9 +59,6 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@playlists/%@.json", self.programmesAPIURL, self.playlistGuid]];
     
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDownloadDestinationPath:self.downloadFile];
-    [request setTemporaryFileDownloadPath:self.tempDownloadFile];
-    [request setAllowResumeForFileDownloads:YES];
         
     [request setStartedBlock:^{
         NSLog(@"Request starting!");
@@ -70,6 +67,22 @@
     
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for Playlist [%@]", _playlistGuid);
+        
+        NSString *responseString = [request responseString];
+        NSMutableDictionary *dictionary = (NSMutableDictionary *)[responseString mutableObjectFromJSONString];
+        
+        NSString *storyJockey = [[dictionary objectForKey:@"curator"] objectForKey:@"firstname"];
+        NSString *summary = [dictionary objectForKey:@"full_summary"];
+        
+        [dictionary setObject:[[self.storybox playlistsQueue] startDate] forKey:@"dateQueued"];
+        [dictionary setObject:storyJockey forKey:@"storyJockey"];
+        [dictionary setObject:summary forKey:@"summary"];
+
+        
+        Playlist *newPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
+        NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+        [fileManager createFileAtPath:self.downloadFile contents:[newPlaylist JSONData] attributes:nil];
+        [newPlaylist release];
     }];
     
     [request startSynchronous];

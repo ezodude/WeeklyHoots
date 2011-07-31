@@ -58,6 +58,12 @@
     return _downloadStatus == kMarkedFordownload;
 }
 
+-(NSDictionary *)dictionaryFromObject{
+    NSNumber *durationAsNumber = [NSNumber numberWithUnsignedInt:self.duration];
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:self.guid, @"id", self.title, @"title", durationAsNumber, @"duration", self.audioUri, @"audioURI", nil];
+}
+
 - (void)dealloc {
     [self.guid release];
     [self.title release];

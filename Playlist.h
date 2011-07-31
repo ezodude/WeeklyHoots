@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Programme.h"
+#import "../JSONKit/JSONKit.h"
+
 @class Programme;
+
+#define REFRESH_FREQUENCY 1
 
 @interface Playlist : NSObject {
     NSString *_guid;
@@ -30,19 +34,28 @@
 @property (nonatomic, assign) NSUInteger duration;
 @property (nonatomic, retain) NSDate *publicationDate;
 @property (nonatomic, retain) NSArray *programmes;
+@property (nonatomic, retain) NSDate *dateQueued;
 @property (nonatomic, retain) NSDate *expiryDate;
 
--(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
-                storyJockey:(NSString *)storyJockey 
-                summary:(NSString *)summary duration:(NSNumber *)duration
-                programmes:(NSArray *)programmes;
+
+-(Playlist *)initFromDictionary:(NSDictionary *)dictionary;
 
 //-(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
-//              storyJockey:(NSString *)storyJockey 
-//                  summary:(NSString *)summary duration:(NSNumber *)duration
-//               programmes:(NSArray *)programmes expiryDate:(NSDate *)expiryDate;
+//                storyJockey:(NSString *)storyJockey 
+//                summary:(NSString *)summary duration:(NSNumber *)duration
+//                programmes:(NSArray *)programmes;
+
+-(Playlist *)initWithGuid:(NSString *)guid 
+                title:(NSString *)title 
+                storyJockey:(NSString *)storyJockey 
+                summary:(NSString *)summary 
+                duration:(NSNumber *)duration 
+                dateQueued:(NSDate *) dateQueued
+                programmes:(NSArray *)programmes;
 
 -(NSUInteger)totalProgrammesCount;
 -(NSUInteger)downloadedProgrammesCount;
 -(NSArray *)programmesAwaitingDownload;
+
+-(NSData *)JSONData;
 @end

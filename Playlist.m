@@ -17,9 +17,22 @@
 @synthesize duration=_duration;
 @synthesize publicationDate=_publicationDate;
 @synthesize programmes=_programmes;
+@synthesize dateQueued=_dateQueued;
 @synthesize expiryDate=_expiryDate;
 
--(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title storyJockey:(NSString *)storyJockey summary:(NSString *)summary duration:(NSNumber *)duration programmes:(NSArray *)programmes{
+-(Playlist *)initFromDictionary:(NSDictionary *)dictionary{
+    
+    return [self initWithGuid:[dictionary objectForKey:@"id"] title:[dictionary objectForKey:@"title"] storyJockey:[dictionary objectForKey:@"storyJockey"] summary:[dictionary objectForKey:@"summary"] duration:[dictionary objectForKey:@"duration"] dateQueued:[dictionary objectForKey:@"dateQueued"]
+                   programmes:(NSArray *)[dictionary objectForKey:@"programmes"]];
+}
+
+-(Playlist *)initWithGuid:(NSString *)guid 
+                    title:(NSString *)title 
+              storyJockey:(NSString *)storyJockey 
+                  summary:(NSString *)summary 
+                 duration:(NSNumber *)duration 
+               dateQueued:(NSDate *) dateQueued
+               programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
         self.guid = guid;
@@ -27,6 +40,10 @@
         self.storyJockey = storyJockey;
         self.summary = summary;
         self.duration = [duration unsignedIntegerValue];
+        NSLog(@"Duration: [%d]", self.duration);
+        self.dateQueued = dateQueued;
+        self.expiryDate = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:self.dateQueued];
+        NSLog(@"Expires on [%@]", [self.expiryDate description]);
         
         NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
                                          initWithCapacity:[programmes count]];
@@ -42,6 +59,7 @@
         [newProgrammes release];
     }
     return self;
+    
 }
 
 -(NSUInteger)totalProgrammesCount{
@@ -68,6 +86,29 @@
     return [self.programmes filteredArrayUsingPredicate:notDownloadedPredicate];
 }
 
+-(NSData *)JSONData{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *dateQueuedAsString = [dateFormatter stringFromDate:self.dateQueued];
+    NSString *expiryDateAsString = [dateFormatter stringFromDate:self.expiryDate];
+    
+    __block NSMutableArray *playlistProgrammesAsDictionaries = [NSMutableArray arrayWithCapacity:[self.programmes count]];
+    [self.programmes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        Programme *prog = (Programme *)obj;
+        [playlistProgrammesAsDictionaries addObject:[prog dictionaryFromObject]];
+    }];
+    
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.guid, @"id", self.title, @"title", self.storyJockey, @"storyJockey", self.summary, @"summary", [NSNumber numberWithUnsignedInt: self.duration], @"duration", dateQueuedAsString, @"dateQueued", expiryDateAsString, @"expiryDate", playlistProgrammesAsDictionaries, @"programmes", nil];
+    
+    [dateFormatter release];
+    
+    NSLog(@"JSON: [%@]", [dictionary JSONString]);
+    
+    return [dictionary JSONData];
+}
+
 - (void)dealloc {
     [self.guid release];
     [self.title release];
@@ -75,6 +116,7 @@
     [self.summary release];
     [self.publicationDate release];
     [self.programmes release];
+    [self.dateQueued release];
     [self.expiryDate release];
     [super dealloc];
 }

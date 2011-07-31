@@ -43,4 +43,6 @@ typedef enum {
 -(BOOL)downloaded;
 -(BOOL)downloading;
 -(BOOL)markedForDownload;
+
+-(NSDictionary *)dictionaryFromObject;
 @end
