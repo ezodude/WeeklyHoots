@@ -92,6 +92,13 @@
     return [self.programmes filteredArrayUsingPredicate:notDownloadedPredicate];
 }
 
+-(BOOL)isExpired{
+    NSDate *today = [NSDate date];
+    NSComparisonResult comparison = [self.expiryDate compare:today];
+    
+    return comparison == NSOrderedSame || comparison == NSOrderedAscending;
+}
+
 -(NSData *)JSONData{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];

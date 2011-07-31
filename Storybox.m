@@ -65,20 +65,16 @@
 
 -(void)processLocalPlaylists{
     [self removeExpiredPlaylists];
+    [self removePlaylistsWithIncompleteDownloads];
 }
 
 -(void)removeExpiredPlaylists{
     NSLog(@"**Before** Removing Expired content count is: [%d]", [_tempPlaylistProcessing count]);
     
-    NSMutableArray *expiredPlaylists = [NSMutableArray arrayWithCapacity:[_tempPlaylistProcessing count]];
-    [_tempPlaylistProcessing enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSDate *today = [NSDate date];
-        NSDate *expiryDate = [obj expiryDate];
-        NSComparisonResult comparison = [expiryDate compare:today];
-        if(comparison == NSOrderedSame || comparison == NSOrderedAscending){
-            [expiredPlaylists addObject:obj];
-        }
-    }];
+    NSPredicate *isExpiredPredicate = 
+    [NSPredicate predicateWithFormat:@"isExpired == YES"];
+    
+    NSArray *expiredPlaylists = [[NSArray arrayWithArray:_tempPlaylistProcessing] filteredArrayUsingPredicate:isExpiredPredicate];
     
     if([expiredPlaylists count] == 0){
         NSLog(@"Nothing Expired!!");
@@ -97,6 +93,15 @@
     }];
     
     NSLog(@"**After** Removing Expired content count is: [%d]", [_tempPlaylistProcessing count]);
+}
+
+-(void)removePlaylistsWithIncompleteDownloads{
+    NSLog(@"**Before** Removing Incomplete Downloads count is: [%d]", [_tempPlaylistProcessing count]);
+    //Downloads incomplete if:
+    // - number of audio files less than playlist programmes count.
+    // - Has at least 1 audio file with extension '.download'
+    
+    NSLog(@"**After** Removing Incomplete Downloads count is: [%d]", [_tempPlaylistProcessing count]);
 }
 
 -(NSString *)currentPlaylistsQueueGuid{

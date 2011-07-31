@@ -57,5 +57,7 @@
 -(NSUInteger)downloadedProgrammesCount;
 -(NSArray *)programmesAwaitingDownload;
 
+-(BOOL)isExpired;
+
 -(NSData *)JSONData;
 @end
