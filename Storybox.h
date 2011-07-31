@@ -18,7 +18,10 @@
     PlaylistsQueue *_playlistsQueue;
     NSMutableArray *_availablePlaylists;
     NSMutableArray *_processingPlaylists;
+    
     NSMutableArray *_tempPlaylistProcessing;
+    NSArray *_currentPlaylistsSlot;
+    NSArray *_olderPlaylistsSlot;
     
     StoryboxManager *_storyboxManager;
     id _playlistsCollectionDelegate;
@@ -30,10 +33,12 @@
 +(NSString *)allPlaylistsPath;
 
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue;
+
 -(void)synchronizeWithLocalStorage;
 -(void)processLocalPlaylists;
 -(void)removeExpiredPlaylists;
 -(void)removePlaylistsWithIncompleteDownloads;
+-(void)partitionPlaylistsIntoSlots;
 
 -(NSString *)currentPlaylistsQueueGuid;
 

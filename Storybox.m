@@ -17,7 +17,11 @@
 - (void)dealloc {
     [_availablePlaylists release];
     [_processingPlaylists release];
+    
     [_tempPlaylistProcessing release];
+    [_currentPlaylistsSlot release];
+    [_olderPlaylistsSlot release];
+    
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
     [_storyboxManager release];
@@ -38,34 +42,36 @@
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
     NSArray *localPlaylistGuids = [fileManager contentsOfDirectoryAtPath:localPlaylistsPath error:nil];
     
-    if(localPlaylistGuids){
-        _tempPlaylistProcessing = [NSMutableArray arrayWithCapacity:[localPlaylistGuids count]];
-        
-        [localPlaylistGuids enumerateObjectsUsingBlock:^(id guid, NSUInteger idx, BOOL *stop) {
-            if(![guid isEqualToString:@".DS_Store"]){
-                NSLog(@"Playlist guid: [%@]", guid);
-                
-                NSString *localJsonPath = [NSString stringWithFormat:@"%@/%@/%@.json", localPlaylistsPath, guid, guid];
-                NSData *jsonContent = [fileManager contentsAtPath:localJsonPath];
-                NSDictionary *dictionary = [jsonContent objectFromJSONData];
-                Playlist *localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
-                
-                NSLog(@"localPlaylist date queued: [%@]", [[localPlaylist dateQueued] description]);
-                NSLog(@"localPlaylist expiry date: [%@]", [[localPlaylist expiryDate] description]);
+    if(!localPlaylistGuids) return;
+    
+    _tempPlaylistProcessing = [NSMutableArray arrayWithCapacity:[localPlaylistGuids count]];
+    
+    [localPlaylistGuids enumerateObjectsUsingBlock:^(id guid, NSUInteger idx, BOOL *stop) {
+        if(![guid isEqualToString:@".DS_Store"]){
+            NSLog(@"Playlist guid: [%@]", guid);
+            
+            NSString *localJsonPath = [NSString stringWithFormat:@"%@/%@/%@.json", localPlaylistsPath, guid, guid];
+            NSData *jsonContent = [fileManager contentsAtPath:localJsonPath];
+            NSDictionary *dictionary = [jsonContent objectFromJSONData];
+            Playlist *localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
+            
+            NSLog(@"localPlaylist date queued: [%@]", [[localPlaylist dateQueued] description]);
+            NSLog(@"localPlaylist expiry date: [%@]", [[localPlaylist expiryDate] description]);
 //                NSLog(@"localPlaylist programmes count: [%d]", [[localPlaylist programmes] count]);
 //                NSLog(@"localPlaylist 1st programme title: [%@]", [[[localPlaylist programmes] objectAtIndex:1] title]);
-                
-                [_tempPlaylistProcessing addObject:localPlaylist];
-                [localPlaylist release];
-            }
-        }];
-        [self processLocalPlaylists];
-    }
+            
+            [_tempPlaylistProcessing addObject:localPlaylist];
+            [localPlaylist release];
+        }
+    }];
+    
+    [self processLocalPlaylists];
 }
 
 -(void)processLocalPlaylists{
     [self removeExpiredPlaylists];
     [self removePlaylistsWithIncompleteDownloads];
+    [self partitionPlaylistsIntoSlots];
 }
 
 -(void)removeExpiredPlaylists{
@@ -103,6 +109,23 @@
     [_tempPlaylistProcessing filterUsingPredicate:hasIncompleteDownloadsPredicate];
     
     NSLog(@"**After** Removing Incomplete Downloads count is: [%d]", [_tempPlaylistProcessing count]);
+}
+
+-(void)partitionPlaylistsIntoSlots{
+    __block NSMutableArray *currentSlot = [NSMutableArray arrayWithCapacity:[_tempPlaylistProcessing count]];
+    
+    __block NSMutableArray *olderSlot = [NSMutableArray arrayWithCapacity:[_tempPlaylistProcessing count]];
+    
+    [_tempPlaylistProcessing enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        BOOL isCurrent = [[obj dateQueued] isEqualToDate:[self.playlistsQueue startDate]];
+        isCurrent ? [currentSlot addObject:obj] : [olderSlot addObject:obj];
+    }];
+    
+    _currentPlaylistsSlot = [NSArray arrayWithArray:currentSlot];
+    NSLog(@"_currentPlaylistsSlot: [%@]", [_currentPlaylistsSlot description]);
+    
+    _olderPlaylistsSlot = [NSArray arrayWithArray:olderSlot];
+    NSLog(@"_olderPlaylistsSlot: [%@]", [_olderPlaylistsSlot description]);
 }
 
 -(NSString *)currentPlaylistsQueueGuid{
