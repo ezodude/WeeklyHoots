@@ -97,9 +97,10 @@
 
 -(void)removePlaylistsWithIncompleteDownloads{
     NSLog(@"**Before** Removing Incomplete Downloads count is: [%d]", [_tempPlaylistProcessing count]);
-    //Downloads incomplete if:
-    // - number of audio files less than playlist programmes count.
-    // - Has at least 1 audio file with extension '.download'
+    
+    NSPredicate *hasIncompleteDownloadsPredicate = 
+    [NSPredicate predicateWithFormat:@"hasCompleteDownloads == YES"];    
+    [_tempPlaylistProcessing filterUsingPredicate:hasIncompleteDownloadsPredicate];
     
     NSLog(@"**After** Removing Incomplete Downloads count is: [%d]", [_tempPlaylistProcessing count]);
 }

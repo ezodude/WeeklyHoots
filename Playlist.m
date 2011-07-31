@@ -39,7 +39,6 @@
         self.storyJockey = storyJockey;
         self.summary = summary;
         self.duration = [duration unsignedIntegerValue];
-//        NSLog(@"Duration: [%d]", self.duration);
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -49,7 +48,6 @@
         [dateFormatter release];
         
         self.expiryDate = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:self.dateQueued];
-//        NSLog(@"Expires on [%@]", [self.expiryDate description]);
         
         NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
                                          initWithCapacity:[programmes count]];
@@ -97,6 +95,23 @@
     NSComparisonResult comparison = [self.expiryDate compare:today];
     
     return comparison == NSOrderedSame || comparison == NSOrderedAscending;
+}
+
+-(BOOL)hasCompleteDownloads{
+    NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
+    NSString *downloadsPath = [NSString stringWithFormat:@"%@/%@/programmes", localPlaylistsPath, self.guid];
+    
+    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+    NSArray *downloadFilenames = [fileManager contentsOfDirectoryAtPath:downloadsPath error:nil];
+    
+    BOOL noProgrammesDownloadedYet = downloadFilenames == nil;
+    BOOL lessDownloadsThanPlaylistProgs = [downloadFilenames count] < [self.programmes count];
+    if (noProgrammesDownloadedYet || lessDownloadsThanPlaylistProgs) return NO;
+    for (NSString *filename in downloadFilenames){
+        BOOL partialDownload = [[filename pathExtension] isEqualToString:@"download"];
+        if (partialDownload) return NO;
+    }
+    return YES;
 }
 
 -(NSData *)JSONData{

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Programme.h"
+#import "Storybox.h"
 #import "../JSONKit/JSONKit.h"
 
 @class Programme;
@@ -58,6 +59,7 @@
 -(NSArray *)programmesAwaitingDownload;
 
 -(BOOL)isExpired;
+-(BOOL)hasCompleteDownloads;
 
 -(NSData *)JSONData;
 @end
