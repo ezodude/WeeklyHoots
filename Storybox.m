@@ -13,6 +13,7 @@
 
 @synthesize playlistsQueue=_playlistsQueue;
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
+@synthesize collectionMode=_collectionMode;
 
 - (void)dealloc {
     [_tempPlaylistProcessing release];
@@ -127,7 +128,7 @@
     return [self.playlistsQueue guid];
 }
 
--(NSArray *)playlistGuidsToCollect{
+-(NSString *)nextPlaylistGuidToCollect{
     NSLog(@"_currentPlaylistsSlot: [%@]", [_currentPlaylistsSlot description]);
     
     NSMutableArray *availableGuids = [NSMutableArray arrayWithCapacity:[_currentPlaylistsSlot count]];
@@ -145,19 +146,25 @@
     
     NSLog(@"Pending Guids: [%@]", pendingGuids);
     
-    return pendingGuids;
+    return [pendingGuids count] == 0 ? nil : [pendingGuids objectAtIndex:0];
 }
 
--(void)startCollectingPlaylistsUsingDelegate:(id)delegate{
+-(void)collectPlaylistsUsingDelegate:(id)delegate{
     NSLog(@"Setting b4 kicking off collection!");
     
-    self.playlistsCollectionDelegate = delegate;
+    if(!self.playlistsCollectionDelegate && !_collectionMode) 
+        self.playlistsCollectionDelegate = delegate;
     
-    if(!_storyboxManager){
+    if(!_storyboxManager) 
         _storyboxManager = [[StoryboxManager alloc] init];
-    }
     
-    [_storyboxManager appendPlaylistsToStorybox:self forGuids:[self playlistGuidsToCollect]];
+    NSString *playlistGuidToCollect = [self nextPlaylistGuidToCollect];
+    if (playlistGuidToCollect) {
+        [_storyboxManager appendPlaylistToStorybox:self forGuid:playlistGuidToCollect];
+        self.collectionMode = YES;
+    }else{
+        self.collectionMode = NO;
+    }
 }
 
 -(void)startedCollectingPlaylists{
@@ -168,8 +175,20 @@
     [self.playlistsCollectionDelegate addPlaylistUndergoingDownload:playlist];
 }
 
+-(void)playlistCompletedDownloading:(Playlist *)playlist{
+    NSLog(@"Playlist [%@] Completed Downloading!", [playlist title]);
+    NSLog(@"Collection Mode! [%d]", self.collectionMode);
+    
+    NSMutableArray *newCurrentPlaylistsSlot = [NSMutableArray arrayWithArray:_currentPlaylistsSlot];
+    [newCurrentPlaylistsSlot addObject:playlist];
+    _currentPlaylistsSlot = [[NSArray arrayWithArray:newCurrentPlaylistsSlot] retain];
+    
+    if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
+}
+
 -(void)finishedCollectingPlaylists{
     [self.playlistsCollectionDelegate finishedCollectingPlaylists];
+//    self.collectionMode = NO;
 }
 
 @end

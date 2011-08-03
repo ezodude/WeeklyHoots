@@ -46,6 +46,6 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
 -(void)completeSetupFromRequest:(ASIHTTPRequest *)request;
 -(void)processFailureFromRequest:(ASIHTTPRequest *)request;
 
--(void)appendPlaylistsToStorybox:(Storybox *)storybox forGuids:(NSArray *)playlistGuids;
+-(void)appendPlaylistToStorybox:(Storybox *)storybox forGuid:(NSString *)playlistGuid;
 
 @end

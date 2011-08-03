@@ -22,12 +22,14 @@
     NSArray *_currentPlaylistsSlot;
     NSArray *_olderPlaylistsSlot;
     
+    BOOL _collectionMode;
     StoryboxManager *_storyboxManager;
     id _playlistsCollectionDelegate;
 }
 
 @property (nonatomic, retain) PlaylistsQueue *playlistsQueue;
 @property (nonatomic, retain) id playlistsCollectionDelegate;
+@property (nonatomic, assign) BOOL collectionMode;
 
 +(NSString *)allPlaylistsPath;
 
@@ -41,11 +43,12 @@
 
 -(NSString *)currentPlaylistsQueueGuid;
 
--(NSArray *)playlistGuidsToCollect;
+-(NSString *)nextPlaylistGuidToCollect;
 
--(void)startCollectingPlaylistsUsingDelegate:(id)delegate;
+-(void)collectPlaylistsUsingDelegate:(id)delegate;
 -(void)startedCollectingPlaylists;
 -(void)finishedCollectingPlaylists;
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
+-(void)playlistCompletedDownloading:(Playlist *)playlist;
 @end

@@ -33,7 +33,6 @@
     NSString *_downloadFile;
     
     ASINetworkQueue *_audioDownloadsQueue;
-    BOOL _audioDownloadsCompleted;
 }
 
 @property (nonatomic, retain) NSString *programmesAPIURL;
@@ -43,8 +42,6 @@
 
 @property (nonatomic, retain) NSString *downloadPath;
 @property (nonatomic, retain) NSString *downloadFile;
-
-@property (nonatomic, assign) BOOL audioDownloadsCompleted;
 
 +(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid;
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid;

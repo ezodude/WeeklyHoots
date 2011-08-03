@@ -19,7 +19,6 @@
 @synthesize downloadPath = _downloadPath;
 @synthesize downloadFile = _downloadFile;
 
-@synthesize audioDownloadsCompleted=_audioDownloadsCompleted;
 
 +(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid {
     return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists", playlistGuid];
@@ -47,8 +46,6 @@
         self.downloadPath = [PlaylistDownload downloadPathUsingPlaylistsQueueGuid:[self.storybox currentPlaylistsQueueGuid] playlistGuid:self.playlistGuid];
         
         self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [PlaylistDownload playlistJsonFilename:self.playlistGuid]];
-        
-        self.audioDownloadsCompleted = NO;
     }
     return self;
 }
@@ -73,18 +70,22 @@
         [self mapAndStorePlaylistFromRequest:request];
         [self.storybox addPlaylistUndergoingDownload:self.playlist];
         [self downloadPlaylistProgrammes];
-        while (self.audioDownloadsCompleted == NO) {
-            sleep(1.0);
-        }
     }];
     
-    [request startSynchronous];
+    [request setFailedBlock:^{
+        NSLog(@"Starting setFailedBlock");
+        NSLog(@"ERROR: %@", [[request error] description]);
+    }];
     
-    NSError *error = [request error];
-    if (error) {
-        NSLog(@"ERROR: %@", [error description]);
-        return NO;
-    }
+    [request startAsynchronous];
+    
+//    [request startSynchronous];
+//    
+//    NSError *error = [request error];
+//    if (error) {
+//        NSLog(@"ERROR: %@", [error description]);
+//        return NO;
+//    }
     
     return YES;
 }
@@ -127,7 +128,7 @@
         _audioDownloadsQueue = [[ASINetworkQueue alloc] init];
         
         [_audioDownloadsQueue setDelegate:self];
-        [_audioDownloadsQueue setMaxConcurrentOperationCount:1];
+        [_audioDownloadsQueue setMaxConcurrentOperationCount:3];
         [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
         [_audioDownloadsQueue setQueueDidFinishSelector:@selector(allDownloadsCompleted)];
         [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
@@ -143,8 +144,8 @@
 }
 
 -(void)allDownloadsCompleted{
-    self.audioDownloadsCompleted = YES;
-//    [self.storybox playlistCompletedDownloading:self.playlist];
+    NSLog(@"ALL DOWNLOADS COMPLETE!");
+    [self.storybox playlistCompletedDownloading:self.playlist];
 }
 
 - (void)dealloc {

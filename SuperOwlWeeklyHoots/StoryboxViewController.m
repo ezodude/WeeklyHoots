@@ -126,7 +126,7 @@
 
 -(IBAction)startCollectingPlaylists{
     NSLog(@"startCollectingPlaylists");
-    [_storybox startCollectingPlaylistsUsingDelegate:self];
+    [_storybox collectPlaylistsUsingDelegate:self];
 }
 
 -(void)startedCollectingPlaylists{
