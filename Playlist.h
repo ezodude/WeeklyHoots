@@ -58,6 +58,7 @@
 -(NSUInteger)downloadedProgrammesCount;
 -(NSArray *)programmesAwaitingDownload;
 
+-(NSString *)audioDownloadsPath;
 -(BOOL)isExpired;
 -(BOOL)hasCompleteDownloads;
 

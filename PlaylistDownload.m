@@ -19,6 +19,8 @@
 @synthesize downloadPath = _downloadPath;
 @synthesize downloadFile = _downloadFile;
 
+@synthesize audioDownloadsCompleted=_audioDownloadsCompleted;
+
 +(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid {
     return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists", playlistGuid];
 }
@@ -45,6 +47,8 @@
         self.downloadPath = [PlaylistDownload downloadPathUsingPlaylistsQueueGuid:[self.storybox currentPlaylistsQueueGuid] playlistGuid:self.playlistGuid];
         
         self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [PlaylistDownload playlistJsonFilename:self.playlistGuid]];
+        
+        self.audioDownloadsCompleted = NO;
     }
     return self;
 }
@@ -69,6 +73,9 @@
         [self mapAndStorePlaylistFromRequest:request];
         [self.storybox addPlaylistUndergoingDownload:self.playlist];
         [self downloadPlaylistProgrammes];
+        while (self.audioDownloadsCompleted == NO) {
+            sleep(1.0);
+        }
     }];
     
     [request startSynchronous];
@@ -115,10 +122,37 @@
     [newPlaylist release];
 }
 
+-(void)downloadPlaylistProgrammes{
+    if (!_audioDownloadsQueue) {
+        _audioDownloadsQueue = [[ASINetworkQueue alloc] init];
+        
+        [_audioDownloadsQueue setDelegate:self];
+        [_audioDownloadsQueue setMaxConcurrentOperationCount:1];
+        [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
+        [_audioDownloadsQueue setQueueDidFinishSelector:@selector(allDownloadsCompleted)];
+        [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
+    }
+    
+    NSString *audioDownloadsPath = [self.playlist audioDownloadsPath];
+    [[self.playlist programmes] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        ProgrammeDownload *progDownload = [[[ProgrammeDownload alloc] initWithProgramme:(Programme *)obj downloadPath:audioDownloadsPath delegate:self] autorelease];
+        
+        [_audioDownloadsQueue addOperation:[progDownload generateRequest]];
+    }];
+    [_audioDownloadsQueue go];
+}
+
+-(void)allDownloadsCompleted{
+    self.audioDownloadsCompleted = YES;
+//    [self.storybox playlistCompletedDownloading:self.playlist];
+}
+
 - (void)dealloc {
     [self.downloadPath release];
     [self.downloadFile release];
 
+    [_audioDownloadsQueue release];
+    
     [self.playlist release];
     [self.playlistGuid release];
     [self.storybox release];

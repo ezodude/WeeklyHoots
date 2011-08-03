@@ -90,6 +90,11 @@
     return [self.programmes filteredArrayUsingPredicate:notDownloadedPredicate];
 }
 
+-(NSString *)audioDownloadsPath{
+    NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
+    return [NSString stringWithFormat:@"%@/%@/programmes", localPlaylistsPath, self.guid];
+}
+
 -(BOOL)isExpired{
     NSDate *today = [NSDate date];
     NSComparisonResult comparison = [self.expiryDate compare:today];
@@ -98,8 +103,7 @@
 }
 
 -(BOOL)hasCompleteDownloads{
-    NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
-    NSString *downloadsPath = [NSString stringWithFormat:@"%@/%@/programmes", localPlaylistsPath, self.guid];
+    NSString *downloadsPath = [self audioDownloadsPath];
     
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
     NSArray *downloadFilenames = [fileManager contentsOfDirectoryAtPath:downloadsPath error:nil];
