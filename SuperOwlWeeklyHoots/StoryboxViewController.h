@@ -42,5 +42,6 @@
 
 -(IBAction)startCollectingPlaylists;
 -(void)startedCollectingPlaylists;
+-(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)finishedCollectingPlaylists;
 @end

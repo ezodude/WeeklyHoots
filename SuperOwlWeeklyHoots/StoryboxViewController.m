@@ -133,6 +133,10 @@
     NSLog(@"Started Collecting Playlists");
 }
 
+-(void)addPlaylistUndergoingDownload:(Playlist *)playlist{
+    NSLog(@"Add playlist undergoing download");
+}
+
 -(void)finishedCollectingPlaylists{
     NSLog(@"Finished Collecting Playlists");
 }

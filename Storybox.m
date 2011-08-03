@@ -15,8 +15,6 @@
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
 
 - (void)dealloc {
-    [_processingPlaylists release];
-    
     [_tempPlaylistProcessing release];
     [_currentPlaylistsSlot release];
     [_olderPlaylistsSlot release];
@@ -56,8 +54,6 @@
             
             NSLog(@"localPlaylist date queued: [%@]", [[localPlaylist dateQueued] description]);
             NSLog(@"localPlaylist expiry date: [%@]", [[localPlaylist expiryDate] description]);
-//                NSLog(@"localPlaylist programmes count: [%d]", [[localPlaylist programmes] count]);
-//                NSLog(@"localPlaylist 1st programme title: [%@]", [[[localPlaylist programmes] objectAtIndex:1] title]);
             
             [_tempPlaylistProcessing addObject:localPlaylist];
             [localPlaylist release];
@@ -166,6 +162,10 @@
 
 -(void)startedCollectingPlaylists{
     [self.playlistsCollectionDelegate startedCollectingPlaylists];
+}
+
+-(void)addPlaylistUndergoingDownload:(Playlist *)playlist{
+    [self.playlistsCollectionDelegate addPlaylistUndergoingDownload:playlist];
 }
 
 -(void)finishedCollectingPlaylists{

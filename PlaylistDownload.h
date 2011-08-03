@@ -15,6 +15,7 @@
 #import "ASIHTTPRequest.h"
 
 @class Storybox;
+@class Playlist;
 
 #define AUDIO_DIR @"/Audio"
 
@@ -22,24 +23,26 @@
     NSString *_programmesAPIURL;
     Storybox *_storybox;
     NSString *_playlistGuid;
+    Playlist *_playlist;
     
     NSString *_downloadPath;
     NSString *_downloadFile;
-    NSString *_tempDownloadFile;
 }
 
 @property (nonatomic, retain) NSString *programmesAPIURL;
 @property (nonatomic, retain) Storybox *storybox;
 @property (nonatomic, retain) NSString *playlistGuid;
+@property (nonatomic, retain) Playlist *playlist;
 
 @property (nonatomic, retain) NSString *downloadPath;
 @property (nonatomic, retain) NSString *downloadFile;
-@property (nonatomic, retain) NSString *tempDownloadFile;
 
 +(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid;
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid;
 
 -(id)initWithStorybox:(Storybox *)storybox playlistGuid:(NSString *)playlistGuid baseURL:(NSString *)baseURL;
+
 -(BOOL)getPlaylist;
 -(void)createDownloadPathOnDisk;
+-(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request;
 @end

@@ -13,10 +13,10 @@
 #import "FileStore.h"
 
 @class StoryboxManager;
+@class Playlist;
 
 @interface Storybox : NSObject {
     PlaylistsQueue *_playlistsQueue;
-    NSMutableArray *_processingPlaylists;
     
     NSMutableArray *_tempPlaylistProcessing;
     NSArray *_currentPlaylistsSlot;
@@ -46,4 +46,6 @@
 -(void)startCollectingPlaylistsUsingDelegate:(id)delegate;
 -(void)startedCollectingPlaylists;
 -(void)finishedCollectingPlaylists;
+
+-(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 @end

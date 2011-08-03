@@ -14,10 +14,10 @@
 @synthesize programmesAPIURL=_programmesAPIURL;
 @synthesize storybox=_storybox;
 @synthesize playlistGuid=_playlistGuid;
+@synthesize playlist=_playlist;
 
 @synthesize downloadPath = _downloadPath;
 @synthesize downloadFile = _downloadFile;
-@synthesize tempDownloadFile = _tempDownloadFile;
 
 +(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid {
     return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists", playlistGuid];
@@ -45,8 +45,6 @@
         self.downloadPath = [PlaylistDownload downloadPathUsingPlaylistsQueueGuid:[self.storybox currentPlaylistsQueueGuid] playlistGuid:self.playlistGuid];
         
         self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [PlaylistDownload playlistJsonFilename:self.playlistGuid]];
-        
-        self.tempDownloadFile = [NSString stringWithFormat:@"%@.download", self.downloadFile];
     }
     return self;
 }
@@ -68,28 +66,9 @@
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for Playlist [%@]", _playlistGuid);
         
-        NSString *responseString = [request responseString];
-        NSMutableDictionary *dictionary = (NSMutableDictionary *)[responseString mutableObjectFromJSONString];
-        
-        NSString *storyJockey = [[dictionary objectForKey:@"curator"] objectForKey:@"firstname"];
-        NSString *summary = [dictionary objectForKey:@"full_summary"];
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-        
-        NSString *dateQueuedAsString = [dateFormatter stringFromDate:[[self.storybox playlistsQueue] startDate]];
-        
-        [dateFormatter release];
-        
-        [dictionary setObject:dateQueuedAsString forKey:@"dateQueued"];
-        [dictionary setObject:storyJockey forKey:@"storyJockey"];
-        [dictionary setObject:summary forKey:@"summary"];
-        
-        Playlist *newPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
-        NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-        [fileManager createFileAtPath:self.downloadFile contents:[newPlaylist JSONData] attributes:nil];
-        [newPlaylist release];
+        [self mapAndStorePlaylistFromRequest:request];
+        [self.storybox addPlaylistUndergoingDownload:self.playlist];
+        [self downloadPlaylistProgrammes];
     }];
     
     [request startSynchronous];
@@ -108,13 +87,41 @@
     [manager createDirectoryAtPath:self.downloadPath withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
+-(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request{
+    NSString *responseString = [request responseString];
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[responseString mutableObjectFromJSONString];
+    
+    NSString *storyJockey = [[dictionary objectForKey:@"curator"] objectForKey:@"firstname"];
+    NSString *summary = [dictionary objectForKey:@"full_summary"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *dateQueuedAsString = [dateFormatter stringFromDate:[[self.storybox playlistsQueue] startDate]];
+    
+    [dateFormatter release];
+    
+    [dictionary setObject:dateQueuedAsString forKey:@"dateQueued"];
+    [dictionary setObject:storyJockey forKey:@"storyJockey"];
+    [dictionary setObject:summary forKey:@"summary"];
+    
+    Playlist *newPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
+    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+    [fileManager createFileAtPath:self.downloadFile contents:[newPlaylist JSONData] attributes:nil];
+    
+    self.playlist = newPlaylist;
+    
+    [newPlaylist release];
+}
+
 - (void)dealloc {
     [self.downloadPath release];
     [self.downloadFile release];
-    [self.tempDownloadFile release];
 
-    [self.storybox release];
+    [self.playlist release];
     [self.playlistGuid release];
+    [self.storybox release];
     [self.programmesAPIURL release];
     
     [super dealloc];
