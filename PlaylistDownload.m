@@ -28,18 +28,10 @@
     return [NSString stringWithFormat:@"%@.json", playlistGuid];
 }
 
--(id)initWithStorybox:(Storybox *)storybox playlistGuid:(NSString *)playlistGuid baseURL:(NSString *)baseURL{
+-(id)initWithStorybox:(Storybox *)storybox playlistGuid:(NSString *)playlistGuid apiBaseURL:(NSString *)apiBaseURL{
     self = [super init];
     if(self){
-        self.programmesAPIURL = @"http://0.0.0.0:5000/";
-//        if([Environment sharedInstance] == nil){
-//            NSLog(@"Can't read environment...");
-//            self.programmesAPIURL = @"http://0.0.0.0:5000/";
-//        }
-//        else{
-//            self.programmesAPIURL = [[Environment sharedInstance] programmesAPIURL];
-//        }
-        
+        self.programmesAPIURL = apiBaseURL;
         self.storybox = storybox;
         self.playlistGuid = playlistGuid;
         
@@ -78,14 +70,6 @@
     }];
     
     [request startAsynchronous];
-    
-//    [request startSynchronous];
-//    
-//    NSError *error = [request error];
-//    if (error) {
-//        NSLog(@"ERROR: %@", [error description]);
-//        return NO;
-//    }
     
     return YES;
 }
@@ -138,7 +122,8 @@
     [[self.playlist programmes] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         ProgrammeDownload *progDownload = [[[ProgrammeDownload alloc] initWithProgramme:(Programme *)obj downloadPath:audioDownloadsPath delegate:self] autorelease];
         
-        [_audioDownloadsQueue addOperation:[progDownload generateRequest]];
+        if([progDownload hasNotBeenDownloaded])
+            [_audioDownloadsQueue addOperation:[progDownload generateRequest]];
     }];
     [_audioDownloadsQueue go];
 }

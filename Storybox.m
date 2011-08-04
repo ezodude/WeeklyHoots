@@ -22,12 +22,21 @@
     
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
-    [_storyboxManager release];
+    [_programmesAPIURL release];
     [super dealloc];
 }
 
 +(NSString *)allPlaylistsPath{
     return [NSString stringWithFormat:@"%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists"];
+}
+
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        _programmesAPIURL = [[[Environment sharedInstance] programmesAPIURL] retain];
+    }
+    return self;
 }
 
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue{
@@ -155,12 +164,14 @@
     if(!self.playlistsCollectionDelegate && !_collectionMode) 
         self.playlistsCollectionDelegate = delegate;
     
-    if(!_storyboxManager) 
-        _storyboxManager = [[StoryboxManager alloc] init];
-    
     NSString *playlistGuidToCollect = [self nextPlaylistGuidToCollect];
     if (playlistGuidToCollect) {
-        [_storyboxManager appendPlaylistToStorybox:self forGuid:playlistGuidToCollect];
+        PlaylistDownload *playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] autorelease];
+        
+        [playlistDownload getPlaylist];
+        
+        if(!self.collectionMode) [self startedCollectingPlaylists];
+        
         self.collectionMode = YES;
     }else{
         self.collectionMode = NO;

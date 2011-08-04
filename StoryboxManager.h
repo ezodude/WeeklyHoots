@@ -33,8 +33,6 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
     NSString *_programmesAPIURL;
     ASIDownloadCache *_remoteDataCache;
     Storybox *_storybox;
-    
-    NSOperationQueue *_playlistsProcessingQueue;
 }
 
 @property (nonatomic, retain) Storybox *storybox;
@@ -45,7 +43,5 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
 
 -(void)completeSetupFromRequest:(ASIHTTPRequest *)request;
 -(void)processFailureFromRequest:(ASIHTTPRequest *)request;
-
--(void)appendPlaylistToStorybox:(Storybox *)storybox forGuid:(NSString *)playlistGuid;
 
 @end

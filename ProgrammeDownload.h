@@ -30,7 +30,11 @@
 @property (nonatomic, retain) id downloadDelegate;
 
 -(ProgrammeDownload *)initWithProgramme:(Programme *)programme downloadPath:(NSString *)downloadPath delegate:(id)delegate;
+
+-(BOOL)hasNotBeenDownloaded;
+
 -(ASIHTTPRequest *)generateRequest;
+
 -(void)createDownloadPathOnDisk;
 
 @end

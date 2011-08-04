@@ -38,6 +38,11 @@
     return self;
 }
 
+-(BOOL)hasNotBeenDownloaded{
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
+    return ![manager fileExistsAtPath:self.downloadFile];;
+}
+
 -(ASIHTTPRequest *)generateRequest{
     NSLog(@"Generate Audio Download Request for: [%@]", [self.programme audioUri]);
     NSURL *url = [NSURL URLWithString:[self.programme audioUri]];

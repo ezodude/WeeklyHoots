@@ -82,29 +82,9 @@
     NSLog(@"Error processing Playlists Queue: %@",[error localizedDescription]);
 }
 
--(void)appendPlaylistToStorybox:(Storybox *)storybox forGuid:(NSString *)playlistGuid{
-    NSLog(@"Kicking off Playlists Download!");
-    
-//    _playlistsProcessingQueue = [[NSOperationQueue alloc] init];
-//    [_playlistsProcessingQueue setMaxConcurrentOperationCount:1.0];
-    
-//    PlaylistDownload *playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:storybox playlistGuid:playlistGuid baseURL:_programmesAPIURL] autorelease];
-    
-//    [_playlistsProcessingQueue addOperationWithBlock:^(void) {
-//        [playlistDownload getPlaylist];
-//    }];
-    
-    PlaylistDownload *playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:storybox playlistGuid:playlistGuid baseURL:_programmesAPIURL] autorelease];
-    
-    [playlistDownload getPlaylist];
-
-    [storybox startedCollectingPlaylists];
-}
-
 - (void)dealloc {
     [_programmesAPIURL release];
     [_remoteDataCache release];
-    [_playlistsProcessingQueue release];
     [self.storybox release];
     [super dealloc];
 }

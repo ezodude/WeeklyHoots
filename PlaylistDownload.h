@@ -46,7 +46,7 @@
 +(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid;
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid;
 
--(id)initWithStorybox:(Storybox *)storybox playlistGuid:(NSString *)playlistGuid baseURL:(NSString *)baseURL;
+-(id)initWithStorybox:(Storybox *)storybox playlistGuid:(NSString *)playlistGuid apiBaseURL:(NSString *)apiBaseURL;
 
 -(BOOL)getPlaylist;
 -(void)createDownloadPathOnDisk;

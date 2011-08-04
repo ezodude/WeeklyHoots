@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Environment.h"
 #import "StoryboxManager.h"
 #import "PlaylistsQueue.h"
 #import "Playlist.h"
@@ -16,6 +17,8 @@
 @class Playlist;
 
 @interface Storybox : NSObject {
+    NSString *_programmesAPIURL;
+    
     PlaylistsQueue *_playlistsQueue;
     
     NSMutableArray *_tempPlaylistProcessing;
@@ -23,7 +26,6 @@
     NSArray *_olderPlaylistsSlot;
     
     BOOL _collectionMode;
-    StoryboxManager *_storyboxManager;
     id _playlistsCollectionDelegate;
 }
 
