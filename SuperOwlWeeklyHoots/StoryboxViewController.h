@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-#import "StoryboxManager.h"
+#import "StoryboxLoader.h"
 #import "PlaylistsQueue.h"
 #import "StoryboxNavController.h"
 
@@ -17,7 +17,7 @@
 #import "UIImage+Resize.h"
 #import "UIImage+RoundedCorner.h"
 
-@class StoryboxManager;
+@class StoryboxLoader;
 @class StoryboxNavController;
 
 @interface StoryboxViewController : UIViewController {

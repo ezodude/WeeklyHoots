@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Environment.h"
-#import "StoryboxManager.h"
+#import "StoryboxLoader.h"
 #import "PlaylistsQueue.h"
 #import "Playlist.h"
 #import "FileStore.h"
 
-@class StoryboxManager;
+@class StoryboxLoader;
 @class Playlist;
 
 @interface Storybox : NSObject {

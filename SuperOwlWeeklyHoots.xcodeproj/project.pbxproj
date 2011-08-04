@@ -68,7 +68,7 @@
 		896C0C3613DC6B0E007F1B3F /* StoryboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3413DC6B0E007F1B3F /* StoryboxViewController.m */; };
 		896C0C3713DC6B0E007F1B3F /* StoryboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896C0C3513DC6B0E007F1B3F /* StoryboxView.xib */; };
 		896C0C3A13DC8732007F1B3F /* PlaylistsQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */; };
-		896C0C3D13DC944F007F1B3F /* StoryboxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3C13DC944F007F1B3F /* StoryboxManager.m */; };
+		896C0C3D13DC944F007F1B3F /* StoryboxLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3C13DC944F007F1B3F /* StoryboxLoader.m */; };
 		896C0C4513DCA3B0007F1B3F /* StoryboxNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C4413DCA3B0007F1B3F /* StoryboxNavController.m */; };
 		896E5A6E13E4046000319C45 /* PlaylistDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 896E5A6D13E4046000319C45 /* PlaylistDownload.m */; };
 		89C0779813E9337F00DDAB6E /* ProgrammeDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C0779713E9337F00DDAB6E /* ProgrammeDownload.m */; };
@@ -166,8 +166,8 @@
 		896C0C3513DC6B0E007F1B3F /* StoryboxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryboxView.xib; sourceTree = "<group>"; };
 		896C0C3813DC8732007F1B3F /* PlaylistsQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistsQueue.h; sourceTree = "<group>"; };
 		896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistsQueue.m; sourceTree = "<group>"; };
-		896C0C3B13DC944F007F1B3F /* StoryboxManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboxManager.h; sourceTree = "<group>"; };
-		896C0C3C13DC944F007F1B3F /* StoryboxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxManager.m; sourceTree = "<group>"; };
+		896C0C3B13DC944F007F1B3F /* StoryboxLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; path = StoryboxLoader.h; sourceTree = "<group>"; };
+		896C0C3C13DC944F007F1B3F /* StoryboxLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxLoader.m; sourceTree = "<group>"; };
 		896C0C4313DCA3B0007F1B3F /* StoryboxNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboxNavController.h; sourceTree = "<group>"; };
 		896C0C4413DCA3B0007F1B3F /* StoryboxNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxNavController.m; sourceTree = "<group>"; };
 		896E5A6C13E4046000319C45 /* PlaylistDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistDownload.h; sourceTree = "<group>"; };
@@ -456,8 +456,8 @@
 				893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */,
 				896C0C3813DC8732007F1B3F /* PlaylistsQueue.h */,
 				896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */,
-				896C0C3B13DC944F007F1B3F /* StoryboxManager.h */,
-				896C0C3C13DC944F007F1B3F /* StoryboxManager.m */,
+				896C0C3B13DC944F007F1B3F /* StoryboxLoader.h */,
+				896C0C3C13DC944F007F1B3F /* StoryboxLoader.m */,
 				893B471A13E094C700852710 /* Storybox.h */,
 				893B471B13E094C700852710 /* Storybox.m */,
 				89DF135513AF9941005A557A /* Playlist.h */,
@@ -596,7 +596,7 @@
 				8948138C13D3314D004C7D37 /* BundleCell.m in Sources */,
 				896C0C3613DC6B0E007F1B3F /* StoryboxViewController.m in Sources */,
 				896C0C3A13DC8732007F1B3F /* PlaylistsQueue.m in Sources */,
-				896C0C3D13DC944F007F1B3F /* StoryboxManager.m in Sources */,
+				896C0C3D13DC944F007F1B3F /* StoryboxLoader.m in Sources */,
 				896C0C4513DCA3B0007F1B3F /* StoryboxNavController.m in Sources */,
 				893B471C13E094C700852710 /* Storybox.m in Sources */,
 				896E5A6E13E4046000319C45 /* PlaylistDownload.m in Sources */,

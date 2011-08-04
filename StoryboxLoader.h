@@ -29,7 +29,7 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
 
 #define CACHE_DIR @"/RemoteDataCache"
 
-@interface StoryboxManager : NSObject {
+@interface StoryboxLoader : NSObject {
     NSString *_programmesAPIURL;
     ASIDownloadCache *_remoteDataCache;
     Storybox *_storybox;
@@ -37,7 +37,7 @@ typedef void (^StoryboxSetupSuccessCallbackBlock)();
 
 @property (nonatomic, retain) Storybox *storybox;
 
-+ (id)manager;
++ (id)loader;
 
 -(void)setupStoryboxUsingProgressIndicator:(MBProgressHUD *)progressIndicator WithCallback:(StoryboxSetupSuccessCallbackBlock)block;
 

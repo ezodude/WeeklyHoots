@@ -73,11 +73,11 @@
     StoryboxNavController *navController = [[[UIApplication sharedApplication] delegate] storyboxNavController];
     
     MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:navController.view animated:YES] retain];
-    StoryboxManager *manager = [StoryboxManager manager];
+    StoryboxLoader *loader = [StoryboxLoader loader];
     
-    [manager setupStoryboxUsingProgressIndicator:HUD 
+    [loader setupStoryboxUsingProgressIndicator:HUD 
         WithCallback:^{
-            _storybox = [[manager storybox] retain];
+            _storybox = [[loader storybox] retain];
             [self loadStoryboxImage];
             [self loadStoryboxLabels];
             [self cleanUpProgressIndicator:HUD];

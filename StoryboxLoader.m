@@ -6,10 +6,10 @@
 //  Copyright 2011 Said.fm Ltd. All rights reserved.
 //
 
-#import "StoryboxManager.h"
+#import "StoryboxLoader.h"
 
 
-@implementation StoryboxManager
+@implementation StoryboxLoader
 
 @synthesize storybox=_storybox;
 
@@ -26,7 +26,7 @@
     return self;
 }
 
-+ (id)manager
++ (id)loader
 {
 	return [[[self alloc] init] autorelease];
 }
