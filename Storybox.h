@@ -30,6 +30,10 @@
 }
 
 @property (nonatomic, retain) PlaylistsQueue *playlistsQueue;
+
+@property (nonatomic, retain) NSArray *currentPlaylistsSlot;
+@property (nonatomic, retain) NSArray *olderPlaylistsSlot;
+
 @property (nonatomic, retain) id playlistsCollectionDelegate;
 @property (nonatomic, assign) BOOL collectionMode;
 

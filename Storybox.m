@@ -12,13 +12,18 @@
 @implementation Storybox
 
 @synthesize playlistsQueue=_playlistsQueue;
+
+@synthesize currentPlaylistsSlot=_currentPlaylistsSlot;
+@synthesize olderPlaylistsSlot=_olderPlaylistsSlot;
+
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
 @synthesize collectionMode=_collectionMode;
 
 - (void)dealloc {
     [_tempPlaylistProcessing release];
-    [_currentPlaylistsSlot release];
-    [_olderPlaylistsSlot release];
+    
+    [self.currentPlaylistsSlot release];
+    [self.olderPlaylistsSlot release];
     
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
@@ -126,11 +131,11 @@
         isCurrent ? [currentSlot addObject:obj] : [olderSlot addObject:obj];
     }];
     
-    _currentPlaylistsSlot = [[NSArray arrayWithArray:currentSlot] retain];
-    NSLog(@"_currentPlaylistsSlot: [%@]", [_currentPlaylistsSlot description]);
+    self.currentPlaylistsSlot = [NSArray arrayWithArray:currentSlot];
+    NSLog(@"self.currentPlaylistsSlot: [%@]", [self.currentPlaylistsSlot description]);
     
-    _olderPlaylistsSlot = [[NSArray arrayWithArray:olderSlot] retain];
-    NSLog(@"_olderPlaylistsSlot: [%@]", [_olderPlaylistsSlot description]);
+    self.olderPlaylistsSlot = [NSArray arrayWithArray:olderSlot];
+    NSLog(@"self.olderPlaylistsSlot: [%@]", [self.olderPlaylistsSlot description]);
 }
 
 -(NSString *)currentPlaylistsQueueGuid{
@@ -138,10 +143,10 @@
 }
 
 -(NSString *)nextPlaylistGuidToCollect{
-    NSLog(@"_currentPlaylistsSlot: [%@]", [_currentPlaylistsSlot description]);
+    NSLog(@"self.currentPlaylistsSlot: [%@]", [self.currentPlaylistsSlot description]);
     
-    NSMutableArray *availableGuids = [NSMutableArray arrayWithCapacity:[_currentPlaylistsSlot count]];
-    [_currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    NSMutableArray *availableGuids = [NSMutableArray arrayWithCapacity:[self.currentPlaylistsSlot count]];
+    [self.currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [availableGuids addObject:[(Playlist *)obj guid]];
     }];
     
@@ -190,9 +195,9 @@
     NSLog(@"Playlist [%@] Completed Downloading!", [playlist title]);
     NSLog(@"Collection Mode! [%d]", self.collectionMode);
     
-    NSMutableArray *newCurrentPlaylistsSlot = [NSMutableArray arrayWithArray:_currentPlaylistsSlot];
+    NSMutableArray *newCurrentPlaylistsSlot = [NSMutableArray arrayWithArray:self.currentPlaylistsSlot];
     [newCurrentPlaylistsSlot addObject:playlist];
-    _currentPlaylistsSlot = [[NSArray arrayWithArray:newCurrentPlaylistsSlot] retain];
+    self.currentPlaylistsSlot = [NSArray arrayWithArray:newCurrentPlaylistsSlot];
     
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }

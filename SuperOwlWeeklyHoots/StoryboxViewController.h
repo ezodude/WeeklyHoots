@@ -26,6 +26,9 @@
     UILabel *_startDateMonthYearLabel;
     UILabel *_storyboxPlaylistsQueueCount;
     UILabel *_storyboxPlaylistsCollectedCount;
+
+    UIButton *_collectPlaylistsButton;
+
     Storybox *_storybox;
 }
 
@@ -35,12 +38,14 @@
 @property (nonatomic, retain) IBOutlet UILabel *storyboxPlaylistsQueueCount;
 @property (nonatomic, retain) IBOutlet UILabel *storyboxPlaylistsCollectedCount;
 
+@property (nonatomic, retain) IBOutlet UIButton *collectPlaylistsButton;
+
 -(void)loadLatestStoryboxContent;
 -(void)loadStoryboxImage;
 -(void)loadStoryboxLabels;
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 
--(IBAction)startCollectingPlaylists;
+-(IBAction)collectPlaylists:(id)sender;
 -(void)startedCollectingPlaylists;
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)finishedCollectingPlaylists;

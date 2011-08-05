@@ -16,6 +16,7 @@
 @synthesize startDateMonthYearLabel=_startDateMonthYearLabel;
 @synthesize storyboxPlaylistsQueueCount=_storyboxPlaylistsQueueCount;
 @synthesize storyboxPlaylistsCollectedCount=_storyboxPlaylistsCollectedCount;
+@synthesize collectPlaylistsButton=_collectPlaylistsButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +34,9 @@
     [self.startDateMonthYearLabel release];
     [self.storyboxPlaylistsQueueCount release];
     [self.storyboxPlaylistsCollectedCount release];
+    
+    [self.collectPlaylistsButton release];
+    
     [_storybox release];
     [super dealloc];
 }
@@ -80,6 +84,7 @@
             _storybox = [[loader storybox] retain];
             [self loadStoryboxImage];
             [self loadStoryboxLabels];
+//            [self loadStoryboxPlaylists];
             [self cleanUpProgressIndicator:HUD];
         }
      ];
@@ -124,9 +129,22 @@
 #pragma mark -
 #pragma mark Collect Playlists Methods
 
--(IBAction)startCollectingPlaylists{
+-(IBAction)collectPlaylists:(id)sender{
     NSLog(@"startCollectingPlaylists");
-    [_storybox collectPlaylistsUsingDelegate:self];
+    
+    BOOL previouslyInCollectionMode = [_storybox collectionMode];
+    
+    if (previouslyInCollectionMode){
+        NSLog(@"**Collect**");
+        
+        [self.collectPlaylistsButton setTitle:@"Collect" forState:UIControlStateNormal];
+    }
+    else{
+        NSLog(@"**Stop**");
+        
+        [self.collectPlaylistsButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [_storybox collectPlaylistsUsingDelegate:self];
+    }
 }
 
 -(void)startedCollectingPlaylists{

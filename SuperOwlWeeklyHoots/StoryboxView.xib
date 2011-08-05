@@ -65,6 +65,7 @@
 						<string key="NSFrame">{{0, 154}, {320, 213}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="806547982">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -390,12 +391,20 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">startCollectingPlaylists</string>
+						<string key="label">collectPlaylists:</string>
 						<reference key="source" ref="183807250"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">36</int>
+					<int key="connectionID">40</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">collectPlaylistsButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="183807250"/>
+					</object>
+					<int key="connectionID">41</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -562,7 +571,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">41</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -571,13 +580,13 @@
 					<string key="className">StoryboxViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">startCollectingPlaylists</string>
+						<string key="NS.key.0">collectPlaylists:</string>
 						<string key="NS.object.0">id</string>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">startCollectingPlaylists</string>
+						<string key="NS.key.0">collectPlaylists:</string>
 						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">startCollectingPlaylists</string>
+							<string key="name">collectPlaylists:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</object>
@@ -585,6 +594,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>collectPlaylistsButton</string>
 							<string>startDateDayLabel</string>
 							<string>startDateMonthYearLabel</string>
 							<string>storyboxImageView</string>
@@ -593,6 +603,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIImageView</string>
@@ -604,6 +615,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>collectPlaylistsButton</string>
 							<string>startDateDayLabel</string>
 							<string>startDateMonthYearLabel</string>
 							<string>storyboxImageView</string>
@@ -612,6 +624,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">collectPlaylistsButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">startDateDayLabel</string>
 								<string key="candidateClassName">UILabel</string>
