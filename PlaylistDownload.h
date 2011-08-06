@@ -55,6 +55,8 @@
 -(void)createDownloadPathOnDisk;
 -(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request;
 -(void)downloadPlaylistProgrammes;
+
+-(void)downloadErrorForProgrammeDownload:(ProgrammeDownload *)programmeDownload error:(NSError *)error;
 -(void)allDownloadsCompleted;
 
 @end

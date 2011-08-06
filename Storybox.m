@@ -15,6 +15,7 @@
 
 @synthesize currentPlaylistsSlot=_currentPlaylistsSlot;
 @synthesize olderPlaylistsSlot=_olderPlaylistsSlot;
+@synthesize playlistsErringDuringDownloads=_playlistsErringDuringDownloads;
 
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
 @synthesize collectionMode=_collectionMode;
@@ -24,6 +25,7 @@
     
     [self.currentPlaylistsSlot release];
     [self.olderPlaylistsSlot release];
+    [self.playlistsErringDuringDownloads release];
     
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
@@ -150,8 +152,13 @@
     [self.currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [availableGuids addObject:[(Playlist *)obj guid]];
     }];
+
+    [self.playlistsErringDuringDownloads enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [availableGuids addObject:[(Playlist *)obj guid]];
+    }];
     
     NSMutableArray *pendingGuids = [NSMutableArray arrayWithCapacity:[[self.playlistsQueue playlistGuids] count]];
+    
     [[self.playlistsQueue playlistGuids] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSString *guid = obj;
         if (![availableGuids containsObject:guid]) {
@@ -211,6 +218,24 @@
     
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }
+
+-(void)playlistErredWhileDownloading:(Playlist *)playlist error:(NSError *)error{
+    NSLog(@"Playlist [%@] Erred While Downloading!, error: [%@]", [playlist guid], [error description]);
+
+    if (!self.playlistsErringDuringDownloads) {
+        self.playlistsErringDuringDownloads = [NSArray arrayWithObject:playlist];
+    }else{
+        NSMutableArray *tempErringPlaylists = [NSMutableArray arrayWithArray:self.playlistsErringDuringDownloads];
+        
+        [tempErringPlaylists addObject:playlist];
+        self.playlistsErringDuringDownloads = [NSArray arrayWithArray:tempErringPlaylists];
+    }    
+    
+    [_playlistDownload release];
+    
+    if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
+}
+
 
 -(void)finishedCollectingPlaylists{
     NSLog(@"******FINISHED COLLECTING ALL PLAYLISTS******");

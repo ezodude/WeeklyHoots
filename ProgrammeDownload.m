@@ -64,8 +64,10 @@
     }];
     
     [request setFailedBlock:^{
-        NSLog(@"Starting **setFailedBlock** for programme title: [%@] uri: [%@]", [self.programme title], [self.programme audioUri]);
+        NSLog(@"Starting **setFailedBlock** for programme title: [%@] uri: [%@], Error: [%@]", [self.programme title], [self.programme audioUri], [[request error] description]);
+        
         [self.programme setToNotDownloaded]; /* Or Failed Download? */
+        [self.downloadDelegate downloadErrorForProgrammeDownload:self error:[request error]];
     }];
     
     return request;

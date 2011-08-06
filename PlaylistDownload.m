@@ -135,6 +135,11 @@
     [_audioDownloadsQueue go];
 }
 
+-(void)downloadErrorForProgrammeDownload:(ProgrammeDownload *)programmeDownload error:(NSError *)error{
+    [self stop];
+    [self.storybox playlistErredWhileDownloading:self.playlist error:error];
+}
+
 -(void)allDownloadsCompleted{
     NSLog(@"ALL DOWNLOADS COMPLETE!");
     [self.storybox playlistCompletedDownloading:self.playlist];
