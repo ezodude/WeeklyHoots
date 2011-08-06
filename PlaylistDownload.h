@@ -32,6 +32,7 @@
     NSString *_downloadPath;
     NSString *_downloadFile;
     
+    ASIHTTPRequest *_request;
     ASINetworkQueue *_audioDownloadsQueue;
 }
 
@@ -49,6 +50,8 @@
 -(id)initWithStorybox:(Storybox *)storybox playlistGuid:(NSString *)playlistGuid apiBaseURL:(NSString *)apiBaseURL;
 
 -(BOOL)getPlaylist;
+-(void)stop;
+
 -(void)createDownloadPathOnDisk;
 -(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request;
 -(void)downloadPlaylistProgrammes;

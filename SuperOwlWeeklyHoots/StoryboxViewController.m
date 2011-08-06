@@ -138,6 +138,7 @@
         NSLog(@"**Collect**");
         
         [self.collectPlaylistsButton setTitle:@"Collect" forState:UIControlStateNormal];
+        [_storybox stopCollectingPlaylists];
     }
     else{
         NSLog(@"**Stop**");

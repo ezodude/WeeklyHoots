@@ -14,6 +14,7 @@
 #import "FileStore.h"
 
 @class StoryboxLoader;
+@class PlaylistDownload;
 @class Playlist;
 
 @interface Storybox : NSObject {
@@ -26,6 +27,7 @@
     NSArray *_olderPlaylistsSlot;
     
     BOOL _collectionMode;
+    PlaylistDownload *_playlistDownload;
     id _playlistsCollectionDelegate;
 }
 
@@ -52,6 +54,8 @@
 -(NSString *)nextPlaylistGuidToCollect;
 
 -(void)collectPlaylistsUsingDelegate:(id)delegate;
+-(void)stopCollectingPlaylists;
+
 -(void)startedCollectingPlaylists;
 -(void)finishedCollectingPlaylists;
 

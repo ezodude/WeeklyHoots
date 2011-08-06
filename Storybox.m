@@ -27,6 +27,7 @@
     
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
+    [_playlistDownload release];
     [_programmesAPIURL release];
     [super dealloc];
 }
@@ -171,14 +172,23 @@
     
     NSString *playlistGuidToCollect = [self nextPlaylistGuidToCollect];
     if (playlistGuidToCollect) {
-        PlaylistDownload *playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] autorelease];
+//        PlaylistDownload *playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] autorelease];
         
-        [playlistDownload getPlaylist];
+        _playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] retain];
+        
+        [_playlistDownload getPlaylist];
         
         if(!self.collectionMode) [self startedCollectingPlaylists];
         
         self.collectionMode = YES;
     }else{
+        self.collectionMode = NO;
+    }
+}
+
+-(void)stopCollectingPlaylists{
+    if (self.collectionMode){
+        [_playlistDownload stop];
         self.collectionMode = NO;
     }
 }
@@ -198,6 +208,8 @@
     NSMutableArray *newCurrentPlaylistsSlot = [NSMutableArray arrayWithArray:self.currentPlaylistsSlot];
     [newCurrentPlaylistsSlot addObject:playlist];
     self.currentPlaylistsSlot = [NSArray arrayWithArray:newCurrentPlaylistsSlot];
+    
+    [_playlistDownload release];
     
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }

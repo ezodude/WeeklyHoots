@@ -49,29 +49,36 @@
 -(BOOL)getPlaylist{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@playlists/%@.json", self.programmesAPIURL, self.playlistGuid]];
     
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+//    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    _request = [[ASIHTTPRequest requestWithURL:url] retain];
         
-    [request setStartedBlock:^{
+    [_request setStartedBlock:^{
         NSLog(@"Request starting!");
         [self createDownloadPathOnDisk];
     }];
     
-    [request setCompletionBlock:^{
+    [_request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for Playlist [%@]", _playlistGuid);
         
-        [self mapAndStorePlaylistFromRequest:request];
+        [self mapAndStorePlaylistFromRequest:_request];
         [self.storybox addPlaylistUndergoingDownload:self.playlist];
         [self downloadPlaylistProgrammes];
     }];
     
-    [request setFailedBlock:^{
+    [_request setFailedBlock:^{
         NSLog(@"Starting setFailedBlock");
-        NSLog(@"ERROR: %@", [[request error] description]);
+        NSLog(@"ERROR: %@", [[_request error] description]);
     }];
     
-    [request startAsynchronous];
+    [_request startAsynchronous];
     
     return YES;
+}
+
+-(void)stop{
+    [_request clearDelegatesAndCancel];
+    if (_audioDownloadsQueue && ![_audioDownloadsQueue isSuspended])
+        [_audioDownloadsQueue reset];
 }
 
 -(void)createDownloadPathOnDisk{
@@ -136,7 +143,8 @@
 - (void)dealloc {
     [self.downloadPath release];
     [self.downloadFile release];
-
+    
+    [_request release];
     [_audioDownloadsQueue release];
     
     [self.playlist release];
