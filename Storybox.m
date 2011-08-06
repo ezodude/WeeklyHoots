@@ -172,8 +172,6 @@
     
     NSString *playlistGuidToCollect = [self nextPlaylistGuidToCollect];
     if (playlistGuidToCollect) {
-//        PlaylistDownload *playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] autorelease];
-        
         _playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] retain];
         
         [_playlistDownload getPlaylist];
@@ -182,7 +180,7 @@
         
         self.collectionMode = YES;
     }else{
-        self.collectionMode = NO;
+        [self finishedCollectingPlaylists];
     }
 }
 
@@ -215,8 +213,10 @@
 }
 
 -(void)finishedCollectingPlaylists{
+    NSLog(@"******FINISHED COLLECTING ALL PLAYLISTS******");
+    
+    self.collectionMode = NO;
     [self.playlistsCollectionDelegate finishedCollectingPlaylists];
-//    self.collectionMode = NO;
 }
 
 @end

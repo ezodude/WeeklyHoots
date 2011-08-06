@@ -106,12 +106,19 @@
     NSString *downloadsPath = [self audioDownloadsPath];
     
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-    NSArray *downloadFilenames = [fileManager contentsOfDirectoryAtPath:downloadsPath error:nil];
+    NSArray *downloadedFilenamesWithOSIndexes = [fileManager contentsOfDirectoryAtPath:downloadsPath error:nil];
     
-    BOOL noProgrammesDownloadedYet = downloadFilenames == nil;
-    BOOL lessDownloadsThanPlaylistProgs = [downloadFilenames count] < [self.programmes count];
-    if (noProgrammesDownloadedYet || lessDownloadsThanPlaylistProgs) return NO;
-    for (NSString *filename in downloadFilenames){
+    BOOL noProgrammesDownloadedYet = downloadedFilenamesWithOSIndexes == nil;
+    if (noProgrammesDownloadedYet) return NO;
+    
+    NSPredicate *OSIndexPredicate = 
+    [NSPredicate predicateWithFormat:@"SELF != %@", @".DS_Store"];
+    NSArray *cleansedDownloadedFilenames = [downloadedFilenamesWithOSIndexes filteredArrayUsingPredicate:OSIndexPredicate];
+    
+    BOOL lessDownloadsThanPlaylistProgs = [self.programmes count] > [cleansedDownloadedFilenames count];
+    if (lessDownloadsThanPlaylistProgs) return NO;
+    
+    for (NSString *filename in cleansedDownloadedFilenames){
         BOOL partialDownload = [[filename pathExtension] isEqualToString:@"download"];
         if (partialDownload) return NO;
     }

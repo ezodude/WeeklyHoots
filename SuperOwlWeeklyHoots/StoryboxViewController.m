@@ -158,6 +158,8 @@
 
 -(void)finishedCollectingPlaylists{
     NSLog(@"Finished Collecting Playlists");
+    [self.collectPlaylistsButton setTitle:@"Collected" forState:UIControlStateNormal];
+    self.collectPlaylistsButton.enabled = NO;
 }
 
 @end
