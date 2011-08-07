@@ -97,7 +97,8 @@
             _storybox = [[loader storybox] retain];
             [self loadStoryboxImage];
             [self configureCollectionButton];
-            [self loadStoryboxLabels];
+            [self loadStoryboxDateLabel];
+            [self loadStoryboxCollectionLabels];
             [self loadStoryboxPlaylists];
             [self cleanUpProgressIndicator:HUD];
         }
@@ -126,7 +127,7 @@
     [self finishedCollectingPlaylists];
 }
 
--(void)loadStoryboxLabels{
+-(void)loadStoryboxDateLabel{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];    
     [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dd" options:0 locale:[NSLocale currentLocale]]];
     
@@ -137,6 +138,9 @@
     self.startDateMonthYearLabel.text = [dateFormatter 
                                 stringFromDate:[[_storybox playlistsQueue] startDate]];
     [dateFormatter release];
+}
+
+-(void)loadStoryboxCollectionLabels{
     self.storyboxPlaylistsQueueCount.text = [NSString stringWithFormat:@"%d",  [[[_storybox playlistsQueue] playlistGuids] count]];
     self.storyboxPlaylistsCollectedCount.text = [NSString stringWithFormat:@"%d",  [[_storybox currentPlaylistsSlot] count]];
 }
@@ -176,12 +180,42 @@
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist{
     NSLog(@"Add playlist undergoing download");
+    
+    NSMutableArray *newCurrentPlaylists = [NSMutableArray arrayWithArray:self.storyboxCurrentPlaylists];
+    
+    playlist.title = [NSString stringWithFormat:@"* %@", playlist.title];
+    [newCurrentPlaylists insertObject:playlist atIndex:0];
+    
+    self.storyboxCurrentPlaylists = [NSArray arrayWithArray:newCurrentPlaylists];
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.allPlaylistsTableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)playlistCompletedDownloading:(Playlist *)playlist{
+    NSLog(@"Add playlist completed downloading");
+    
+    self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
+    
+    playlist.title = [playlist.title substringFromIndex:2];
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.allPlaylistsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self loadStoryboxCollectionLabels];
 }
 
 -(void)finishedCollectingPlaylists{
     NSLog(@"Finished Collecting Playlists");
     [self.collectPlaylistsButton setTitle:@"Collected" forState:UIControlStateNormal];
     self.collectPlaylistsButton.enabled = NO;
+}
+
+-(void)stopCollectingPlaylists{
+    self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
+    [self.allPlaylistsTableView reloadData];
+
+    [self loadStoryboxCollectionLabels];
 }
 
 #pragma mark -
@@ -215,5 +249,8 @@
     
     return cell;
 }
+
+#pragma mark -
+#pragma mark TableView Delegate Methods
 
 @end

@@ -197,6 +197,8 @@
     if (self.collectionMode){
         [_playlistDownload stop];
         self.collectionMode = NO;
+        
+        [self.playlistsCollectionDelegate stopCollectingPlaylists];
     }
 }
 
@@ -209,8 +211,11 @@
     NSLog(@"Collection Mode! [%d]", self.collectionMode);
     
     NSMutableArray *newCurrentPlaylistsSlot = [NSMutableArray arrayWithArray:self.currentPlaylistsSlot];
-    [newCurrentPlaylistsSlot addObject:playlist];
+    [newCurrentPlaylistsSlot insertObject:playlist atIndex:0];
     self.currentPlaylistsSlot = [NSArray arrayWithArray:newCurrentPlaylistsSlot];
+    
+    if(self.playlistsCollectionDelegate)
+        [self.playlistsCollectionDelegate playlistCompletedDownloading:playlist];
     
     [_playlistDownload release];
     

@@ -53,11 +53,14 @@
 -(void)loadLatestStoryboxContent;
 -(void)loadStoryboxImage;
 -(void)configureCollectionButton;
--(void)loadStoryboxLabels;
+-(void)loadStoryboxDateLabel;
+-(void)loadStoryboxCollectionLabels;
 -(void)loadStoryboxPlaylists;
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 
 -(IBAction)collectPlaylists:(id)sender;
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
+-(void)playlistCompletedDownloading:(Playlist *)playlist;
 -(void)finishedCollectingPlaylists;
+-(void)stopCollectingPlaylists;
 @end
