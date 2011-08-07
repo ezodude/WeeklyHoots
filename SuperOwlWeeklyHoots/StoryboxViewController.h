@@ -20,7 +20,8 @@
 @class StoryboxLoader;
 @class StoryboxNavController;
 
-@interface StoryboxViewController : UIViewController {
+@interface StoryboxViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    
     UIImageView *_storyboxImageView;
     UILabel *_startDateDayLabel;
     UILabel *_startDateMonthYearLabel;
@@ -28,8 +29,12 @@
     UILabel *_storyboxPlaylistsCollectedCount;
 
     UIButton *_collectPlaylistsButton;
-
+    
+    UITableView *_allPlaylistsTableView;
+    
     Storybox *_storybox;
+    NSArray *_storyboxCurrentPlaylists;
+    NSArray *_storyboxOlderPlaylists;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *storyboxImageView;
@@ -40,10 +45,16 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *collectPlaylistsButton;
 
+@property (nonatomic, retain) IBOutlet UITableView *allPlaylistsTableView;
+
+@property (nonatomic, retain) NSArray *storyboxCurrentPlaylists;
+@property (nonatomic, retain) NSArray *storyboxOlderPlaylists;
+
 -(void)loadLatestStoryboxContent;
 -(void)loadStoryboxImage;
 -(void)configureCollectionButton;
 -(void)loadStoryboxLabels;
+-(void)loadStoryboxPlaylists;
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 
 -(IBAction)collectPlaylists:(id)sender;

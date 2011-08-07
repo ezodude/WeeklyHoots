@@ -18,6 +18,11 @@
 @synthesize storyboxPlaylistsCollectedCount=_storyboxPlaylistsCollectedCount;
 @synthesize collectPlaylistsButton=_collectPlaylistsButton;
 
+@synthesize allPlaylistsTableView=_allPlaylistsTableView;
+
+@synthesize storyboxCurrentPlaylists=_storyboxCurrentPlaylists;
+@synthesize storyboxOlderPlaylists=_storyboxOlderPlaylists;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,7 +42,12 @@
     
     [self.collectPlaylistsButton release];
     
+    [self.allPlaylistsTableView release];
+    
     [_storybox release];
+    [self.storyboxCurrentPlaylists release];
+    [self.storyboxOlderPlaylists release];
+    
     [super dealloc];
 }
 
@@ -51,9 +61,12 @@
 
 #pragma mark - View lifecycle
 
+-(void) viewWillAppear:(BOOL)animated{
+    [self loadLatestStoryboxContent];
+}
+
 - (void)viewDidLoad
 {
-    [self loadLatestStoryboxContent];
     [super viewDidLoad];
 }
 
@@ -85,7 +98,7 @@
             [self loadStoryboxImage];
             [self configureCollectionButton];
             [self loadStoryboxLabels];
-//            [self loadStoryboxPlaylists];
+            [self loadStoryboxPlaylists];
             [self cleanUpProgressIndicator:HUD];
         }
      ];
@@ -128,6 +141,13 @@
     self.storyboxPlaylistsCollectedCount.text = [NSString stringWithFormat:@"%d",  [[_storybox currentPlaylistsSlot] count]];
 }
 
+-(void)loadStoryboxPlaylists{
+    self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
+    self.storyboxOlderPlaylists = [NSArray arrayWithArray:[_storybox olderPlaylistsSlot]];
+    
+    [self.allPlaylistsTableView reloadData];
+}
+
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator{
     [progressIndicator hide:YES afterDelay:1];
 }
@@ -162,6 +182,38 @@
     NSLog(@"Finished Collecting Playlists");
     [self.collectPlaylistsButton setTitle:@"Collected" forState:UIControlStateNormal];
     self.collectPlaylistsButton.enabled = NO;
+}
+
+#pragma mark -
+#pragma mark TableView DataSource Methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if([self.storyboxOlderPlaylists count] > 0) return 2;
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return section == 0 ? [self.storyboxCurrentPlaylists count] : [self.storyboxOlderPlaylists count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(cell == nil){
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+
+    NSUInteger section = [indexPath section];
+    NSUInteger row = [indexPath row];
+    
+    Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
+    
+    cell.textLabel.text = playlist.title;
+    
+    return cell;
 }
 
 @end
