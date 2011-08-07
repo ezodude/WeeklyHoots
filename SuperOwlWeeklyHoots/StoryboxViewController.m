@@ -62,6 +62,7 @@
 #pragma mark - View lifecycle
 
 -(void) viewWillAppear:(BOOL)animated{
+    if (_storybox) return;
     [self loadLatestStoryboxContent];
 }
 
@@ -222,12 +223,17 @@
 #pragma mark TableView DataSource Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    NSLog(@"self.storyboxOlderPlaylists count: [%d]", [self.storyboxOlderPlaylists count]);
     if([self.storyboxOlderPlaylists count] > 0) return 2;
     return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return section == 0 ? [self.storyboxCurrentPlaylists count] : [self.storyboxOlderPlaylists count];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return section == 0 ? nil : @"Previous Storybox Collection...";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
