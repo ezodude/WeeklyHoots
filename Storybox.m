@@ -171,6 +171,10 @@
     return [pendingGuids count] == 0 ? nil : [pendingGuids objectAtIndex:0];
 }
 
+-(BOOL)allPlaylistsCollected{
+    return [self nextPlaylistGuidToCollect] == nil;
+}
+
 -(void)collectPlaylistsUsingDelegate:(id)delegate{
     NSLog(@"Setting b4 kicking off collection!");
     

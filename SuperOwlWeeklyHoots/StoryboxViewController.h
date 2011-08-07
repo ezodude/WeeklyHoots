@@ -42,6 +42,7 @@
 
 -(void)loadLatestStoryboxContent;
 -(void)loadStoryboxImage;
+-(void)configureCollectionButton;
 -(void)loadStoryboxLabels;
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 

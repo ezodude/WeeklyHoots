@@ -53,6 +53,7 @@
 
 -(NSString *)currentPlaylistsQueueGuid;
 
+-(BOOL)allPlaylistsCollected;
 -(NSString *)nextPlaylistGuidToCollect;
 
 -(void)collectPlaylistsUsingDelegate:(id)delegate;

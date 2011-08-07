@@ -83,6 +83,7 @@
         WithCallback:^{
             _storybox = [[loader storybox] retain];
             [self loadStoryboxImage];
+            [self configureCollectionButton];
             [self loadStoryboxLabels];
 //            [self loadStoryboxPlaylists];
             [self cleanUpProgressIndicator:HUD];
@@ -107,6 +108,11 @@
     [self.storyboxImageView setContentMode:UIViewContentModeCenter];
 }
 
+-(void)configureCollectionButton{
+    if(![_storybox allPlaylistsCollected]) return;
+    [self finishedCollectingPlaylists];
+}
+
 -(void)loadStoryboxLabels{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];    
     [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dd" options:0 locale:[NSLocale currentLocale]]];
@@ -119,7 +125,7 @@
                                 stringFromDate:[[_storybox playlistsQueue] startDate]];
     [dateFormatter release];
     self.storyboxPlaylistsQueueCount.text = [NSString stringWithFormat:@"%d",  [[[_storybox playlistsQueue] playlistGuids] count]];
-    self.storyboxPlaylistsCollectedCount.text = @"0";
+    self.storyboxPlaylistsCollectedCount.text = [NSString stringWithFormat:@"%d",  [[_storybox currentPlaylistsSlot] count]];
 }
 
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator{
