@@ -64,10 +64,13 @@
     }];
     
     [request setFailedBlock:^{
-        NSLog(@"Starting **setFailedBlock** for programme title: [%@] uri: [%@], Error: [%@]", [self.programme title], [self.programme audioUri], [[request error] description]);
+        NSError *error = [request error];
+        NSLog(@"Starting **setFailedBlock** for programme title: [%@] uri: [%@], Error: [%@]", [self.programme title], [self.programme audioUri], [error description]);
         
         [self.programme setToNotDownloaded]; /* Or Failed Download? */
-        [self.downloadDelegate downloadErrorForProgrammeDownload:self error:[request error]];
+        
+        if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && [error code] != 4)
+            [self.downloadDelegate downloadErrorForProgrammeDownload:self error:[request error]];
     }];
     
     return request;
