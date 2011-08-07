@@ -182,9 +182,7 @@
         _playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] retain];
         
         [_playlistDownload getPlaylist];
-        
-        if(!self.collectionMode) [self startedCollectingPlaylists];
-        
+                
         self.collectionMode = YES;
     }else{
         [self finishedCollectingPlaylists];
@@ -196,10 +194,6 @@
         [_playlistDownload stop];
         self.collectionMode = NO;
     }
-}
-
--(void)startedCollectingPlaylists{
-    [self.playlistsCollectionDelegate startedCollectingPlaylists];
 }
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist{

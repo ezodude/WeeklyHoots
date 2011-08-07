@@ -58,7 +58,6 @@
 -(void)collectPlaylistsUsingDelegate:(id)delegate;
 -(void)stopCollectingPlaylists;
 
--(void)startedCollectingPlaylists;
 -(void)finishedCollectingPlaylists;
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;

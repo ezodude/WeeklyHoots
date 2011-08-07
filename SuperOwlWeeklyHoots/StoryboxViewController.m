@@ -135,21 +135,17 @@
     BOOL previouslyInCollectionMode = [_storybox collectionMode];
     
     if (previouslyInCollectionMode){
-        NSLog(@"**Collect**");
+        NSLog(@"**Stop**");
         
         [self.collectPlaylistsButton setTitle:@"Collect" forState:UIControlStateNormal];
         [_storybox stopCollectingPlaylists];
     }
     else{
-        NSLog(@"**Stop**");
+        NSLog(@"**Collect**");
         
         [self.collectPlaylistsButton setTitle:@"Stop" forState:UIControlStateNormal];
         [_storybox collectPlaylistsUsingDelegate:self];
     }
-}
-
--(void)startedCollectingPlaylists{
-    NSLog(@"Started Collecting Playlists");
 }
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist{
