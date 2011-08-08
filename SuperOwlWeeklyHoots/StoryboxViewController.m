@@ -259,4 +259,28 @@
 #pragma mark -
 #pragma mark TableView Delegate Methods
 
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSInteger section = [indexPath section];
+    NSUInteger row = [indexPath row];
+    
+    Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
+    
+    
+    return ([[playlist.title substringToIndex:2] isEqualToString:@"* "]) ? nil : indexPath;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSInteger section = [indexPath section];
+    NSUInteger row = [indexPath row];
+    
+    Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
+
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Playlist Selected!" message:[NSString stringWithFormat:@"You selected: [%@]", [playlist title]] delegate:nil cancelButtonTitle:@"Done" otherButtonTitles:nil] autorelease];
+    
+    [alert show];
+}
 @end
