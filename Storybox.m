@@ -66,8 +66,10 @@
             NSLog(@"Playlist guid: [%@]", guid);
             
             NSString *localJsonPath = [NSString stringWithFormat:@"%@/%@/%@.json", localPlaylistsPath, guid, guid];
+            
             NSData *jsonContent = [fileManager contentsAtPath:localJsonPath];
             NSDictionary *dictionary = [jsonContent objectFromJSONData];
+            
             Playlist *localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
             
             NSLog(@"localPlaylist date queued: [%@]", [[localPlaylist dateQueued] description]);

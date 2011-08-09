@@ -41,24 +41,21 @@
 
 -(Playlist *)initFromDictionary:(NSDictionary *)dictionary;
 
-//-(Playlist *)initWithGuid:(NSString *)guid title:(NSString *)title 
-//                storyJockey:(NSString *)storyJockey 
-//                summary:(NSString *)summary duration:(NSNumber *)duration
-//                programmes:(NSArray *)programmes;
-
 -(Playlist *)initWithGuid:(NSString *)guid 
                 title:(NSString *)title 
                 storyJockey:(NSString *)storyJockey 
                 summary:(NSString *)summary 
                 duration:(NSNumber *)duration 
                 dateQueued:(NSString *) dateQueued
-                programmes:(NSArray *)programmes;
+                programmes:(NSMutableArray *)programmes;
 
 -(NSUInteger)totalProgrammesCount;
 -(NSUInteger)downloadedProgrammesCount;
 -(NSArray *)programmesAwaitingDownload;
 
 -(NSString *)audioDownloadsPath;
+-(NSArray *)downloadFilepathsForProgrammes;
+
 -(BOOL)isExpired;
 -(BOOL)hasCompleteDownloads;
 

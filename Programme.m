@@ -15,7 +15,7 @@
 @synthesize duration=_duration;
 @synthesize audioUri=_audioUri;
 @synthesize audioType=_audioType;
-@synthesize downloadedFilePath=_downloadedFilePath;
+@synthesize downloadFilename=_downloadFilename;
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri{
     self = [super init];
@@ -23,8 +23,10 @@
         self.guid = guid;
         self.title = title;
         self.duration = [duration unsignedIntegerValue];
-        self.audioUri = audioUri;
+        self.audioUri = audioUri; 
+        NSLog(@"audioUri: [%@]", audioUri);
         self.audioType = [[[[audioUri componentsSeparatedByString:@"?"] objectAtIndex:0] pathExtension] lowercaseString];
+        self.downloadFilename = [NSString stringWithFormat:@"%@.%@", self.guid, self.audioType];
     }
     [self setToNotDownloaded];
     return self;
@@ -69,7 +71,7 @@
     [self.title release];
     [self.audioUri release];
     [self.audioType release];
-    [self.downloadedFilePath release];
+    [self.downloadFilename release];
     [super dealloc];
 }
 @end

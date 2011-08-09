@@ -21,7 +21,7 @@ typedef enum {
     NSUInteger _duration;
     NSString *_audioUri;
     NSString *_audioType;
-    NSString *_downloadedFilePath;
+    NSString *_downloadFilename;
     
     DownloadStatus _downloadStatus;
 }
@@ -31,7 +31,7 @@ typedef enum {
 @property (nonatomic, assign) NSUInteger duration;
 @property (nonatomic, retain) NSString *audioUri;
 @property (nonatomic, retain) NSString *audioType;
-@property (nonatomic, retain) NSString *downloadedFilePath;
+@property (nonatomic, retain) NSString *downloadFilename;
 
 -(Programme *)initWithGuid:(NSString *)guid title:(NSString *)title duration:(NSNumber *)duration audioURI:(NSString *)audioUri;
 

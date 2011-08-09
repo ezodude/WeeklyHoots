@@ -21,7 +21,7 @@
 @class Playlist;
 @class ASINetworkQueue;
 
-#define AUDIO_DIR @"/Audio"
+#define AUDIO_DIR @"Audio"
 
 @interface PlaylistDownload : NSObject {
     NSString *_programmesAPIURL;

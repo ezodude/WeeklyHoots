@@ -17,10 +17,6 @@
 @synthesize tempDownloadFile=_tempDownloadFile;
 @synthesize downloadDelegate=_downloadDelegate;
 
-+(NSString *)audioDownloadFilenameFromProgramme:(Programme *)programme {
-    return [NSString stringWithFormat:@"%@.%@", [programme guid], [programme audioType]];
-}
-
 -(ProgrammeDownload *)initWithProgramme:(Programme *)programme downloadPath:(NSString *)downloadPath delegate:(id)delegate{
     self = [super init];
     if (self) {
@@ -28,7 +24,7 @@
         self.downloadPath = downloadPath;
         self.downloadDelegate = delegate;
         
-        self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [ProgrammeDownload audioDownloadFilenameFromProgramme:programme]];
+        self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", programme.downloadFilename];
         
         self.tempDownloadFile = [NSString stringWithFormat:@"%@.download", self.downloadFile];
     }

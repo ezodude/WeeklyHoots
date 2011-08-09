@@ -17,10 +17,16 @@
 #import "UIImage+Resize.h"
 #import "UIImage+RoundedCorner.h"
 
+#import "MDAudioFile.h"
+#import "MDAudioPlayerController.h"
+
 @class StoryboxLoader;
 @class StoryboxNavController;
+@class MDAudioFile;
+@class MDAudioPlayerController;
 
 @interface StoryboxViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    StoryboxNavController *_navController;
     
     UIImageView *_storyboxImageView;
     UILabel *_startDateDayLabel;
@@ -36,6 +42,8 @@
     NSArray *_storyboxCurrentPlaylists;
     NSArray *_storyboxOlderPlaylists;
 }
+
+@property (nonatomic, retain) StoryboxNavController *navController;
 
 @property (nonatomic, retain) IBOutlet UIImageView *storyboxImageView;
 @property (nonatomic, retain) IBOutlet UILabel *startDateDayLabel;

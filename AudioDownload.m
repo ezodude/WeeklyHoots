@@ -68,7 +68,7 @@
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for Bundle [%@], Playlist [%@], [%@]", [self.bundle startDate], [self.playlist title], [self.programme audioUri]);
         [self.programme setToDownloaded];
-        self.programme.downloadedFilePath = self.downloadFile;
+        self.programme.downloadFilename = self.downloadFile;
         
         self.requestFinishedCallbackBlock();
     }];

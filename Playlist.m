@@ -21,8 +21,13 @@
 @synthesize expiryDate=_expiryDate;
 
 -(Playlist *)initFromDictionary:(NSDictionary *)dictionary{
-    return [self initWithGuid:[dictionary objectForKey:@"id"] title:[dictionary objectForKey:@"title"] storyJockey:[dictionary objectForKey:@"storyJockey"] summary:[dictionary objectForKey:@"summary"] duration:[dictionary objectForKey:@"duration"] dateQueued:[dictionary objectForKey:@"dateQueued"]
-                   programmes:(NSArray *)[dictionary objectForKey:@"programmes"]];
+    return [self initWithGuid:[dictionary objectForKey:@"id"] 
+                        title:[dictionary objectForKey:@"title"] 
+                  storyJockey:[dictionary objectForKey:@"storyJockey"] 
+                      summary:[dictionary objectForKey:@"summary"] 
+                     duration:[dictionary objectForKey:@"duration"] 
+                   dateQueued:[dictionary objectForKey:@"dateQueued"]
+                   programmes:[dictionary objectForKey:@"programmes"]];
 }
 
 -(Playlist *)initWithGuid:(NSString *)guid 
@@ -31,7 +36,7 @@
                   summary:(NSString *)summary 
                  duration:(NSNumber *)duration 
                dateQueued:(NSString *) dateQueued
-               programmes:(NSArray *)programmes{
+               programmes:(NSMutableArray *)programmes{
     self = [super init];
     if(self){
         self.guid = guid;
@@ -51,10 +56,12 @@
         
         NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
                                          initWithCapacity:[programmes count]];
-        [programmes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSDictionary *content = (NSDictionary *)obj;
+        [programmes enumerateObjectsUsingBlock:^(id content, NSUInteger idx, BOOL *stop) {
+            NSLog(@"[content objectForKey:@audioURI]: [%@]", [content objectForKey:@"audioURI"]);
             
-            Programme *prog = [[Programme alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] duration:[content objectForKey:@"duration"] audioURI:[content objectForKey:@"audio_uri"]];
+            NSString *audioUri = [content objectForKey:@"audioURI"] == nil ? [content objectForKey:@"audio_uri"] : [content objectForKey:@"audioURI"];
+            
+            Programme *prog = [[Programme alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] duration:[content objectForKey:@"duration"] audioURI:audioUri];
             
             [newProgrammes addObject:prog];
             [prog release];
@@ -93,6 +100,17 @@
 -(NSString *)audioDownloadsPath{
     NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
     return [NSString stringWithFormat:@"%@/%@/programmes", localPlaylistsPath, self.guid];
+}
+
+-(NSArray *)downloadFilepathsForProgrammes{
+    __block NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self.programmes count]];
+    
+    [self.programmes enumerateObjectsUsingBlock:^(id prog, NSUInteger idx, BOOL *stop) {
+        NSString *filepath = [NSString stringWithFormat:@"%@/%@", [self audioDownloadsPath ], [prog  downloadFilename]];
+        [result addObject:filepath];
+    }];
+    
+    return result;
 }
 
 -(BOOL)isExpired{

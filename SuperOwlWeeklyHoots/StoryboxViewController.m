@@ -8,8 +8,9 @@
 
 #import "StoryboxViewController.h"
 
-
 @implementation StoryboxViewController
+
+@synthesize navController=_navController;
 
 @synthesize storyboxImageView=_storyboxImageView;
 @synthesize startDateDayLabel=_startDateDayLabel;
@@ -34,6 +35,7 @@
 
 - (void)dealloc
 {
+    [self.navController release];
     [self.storyboxImageView release];
     [self.startDateDayLabel release];
     [self.startDateMonthYearLabel release];
@@ -88,9 +90,9 @@
 #pragma mark Refresh Storybox Content Methods
 
 -(void)loadLatestStoryboxContent{
-    StoryboxNavController *navController = [[[UIApplication sharedApplication] delegate] storyboxNavController];
+    self.navController = [[[UIApplication sharedApplication] delegate] storyboxNavController];
     
-    MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:navController.view animated:YES] retain];
+    MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:self.navController.view animated:YES] retain];
     StoryboxLoader *loader = [StoryboxLoader loader];
     
     [loader setupStoryboxUsingProgressIndicator:HUD 
@@ -278,9 +280,20 @@
     NSUInteger row = [indexPath row];
     
     Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
-
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Playlist Selected!" message:[NSString stringWithFormat:@"You selected: [%@]", [playlist title]] delegate:nil cancelButtonTitle:@"Done" otherButtonTitles:nil] autorelease];
     
-    [alert show];
+    NSArray *programmeDownloadFilepaths = [playlist downloadFilepathsForProgrammes];
+    
+    __block NSMutableArray *playable = [NSMutableArray arrayWithCapacity:[programmeDownloadFilepaths count]];
+    [programmeDownloadFilepaths enumerateObjectsUsingBlock:^(id filepath, NSUInteger idx, BOOL *stop) {
+        NSLog(@"Filepath: [%@]", filepath);
+        
+        MDAudioFile *audioFile = [[[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:filepath]] autorelease];
+        [playable addObject:audioFile];
+    }];
+    
+	MDAudioPlayerController *audioPlayer = [[MDAudioPlayerController alloc] initWithSoundFiles:playable atPath:[playlist audioDownloadsPath] andSelectedIndex:0];
+    
+	[self.navController presentModalViewController:audioPlayer animated:YES];
+	[audioPlayer release];
 }
 @end
