@@ -63,13 +63,9 @@
 
 #pragma mark - View lifecycle
 
--(void) viewWillAppear:(BOOL)animated{
-    if (_storybox) return;
-    [self loadLatestStoryboxContent];
-}
-
 - (void)viewDidLoad
 {
+    [self loadLatestStoryboxContent];
     [super viewDidLoad];
 }
 
