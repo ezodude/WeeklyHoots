@@ -49,7 +49,6 @@
 -(BOOL)getPlaylist{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@playlists/%@.json", self.programmesAPIURL, self.playlistGuid]];
     
-//    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     _request = [[ASIHTTPRequest requestWithURL:url] retain];
         
     [_request setStartedBlock:^{
