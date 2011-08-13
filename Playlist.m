@@ -36,7 +36,7 @@
                   summary:(NSString *)summary 
                  duration:(NSNumber *)duration 
                dateQueued:(NSString *) dateQueued
-               programmes:(NSMutableArray *)programmes{
+               programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
         self.guid = guid;
@@ -143,7 +143,7 @@
     return YES;
 }
 
--(NSData *)JSONData{
+-(NSDictionary *)dictionaryFromObject{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
@@ -151,19 +151,20 @@
     NSString *dateQueuedAsString = [dateFormatter stringFromDate:self.dateQueued];
     NSString *expiryDateAsString = [dateFormatter stringFromDate:self.expiryDate];
     
+    [dateFormatter release];
+    
     __block NSMutableArray *playlistProgrammesAsDictionaries = [NSMutableArray arrayWithCapacity:[self.programmes count]];
+    
     [self.programmes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Programme *prog = (Programme *)obj;
         [playlistProgrammesAsDictionaries addObject:[prog dictionaryFromObject]];
     }];
     
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.guid, @"id", self.title, @"title", self.storyJockey, @"storyJockey", self.summary, @"summary", [NSNumber numberWithUnsignedInt: self.duration], @"duration", dateQueuedAsString, @"dateQueued", expiryDateAsString, @"expiryDate", playlistProgrammesAsDictionaries, @"programmes", nil];
-    
-    [dateFormatter release];
-    
-    NSLog(@"JSON: [%@]", [dictionary JSONString]);
-    
-    return [dictionary JSONData];
+    return [NSDictionary dictionaryWithObjectsAndKeys:self.guid, @"id", self.title, @"title", self.storyJockey, @"storyJockey", self.summary, @"summary", [NSNumber numberWithUnsignedInt: self.duration], @"duration", dateQueuedAsString, @"dateQueued", expiryDateAsString, @"expiryDate", playlistProgrammesAsDictionaries, @"programmes", nil];
+}
+
+-(NSData *)JSONData{
+    return [[self dictionaryFromObject] JSONData];
 }
 
 - (void)dealloc {

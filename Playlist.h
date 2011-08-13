@@ -47,7 +47,7 @@
                 summary:(NSString *)summary 
                 duration:(NSNumber *)duration 
                 dateQueued:(NSString *) dateQueued
-                programmes:(NSMutableArray *)programmes;
+                programmes:(NSArray *)programmes;
 
 -(NSUInteger)totalProgrammesCount;
 -(NSUInteger)downloadedProgrammesCount;
@@ -59,5 +59,6 @@
 -(BOOL)isExpired;
 -(BOOL)hasCompleteDownloads;
 
+-(NSDictionary *)dictionaryFromObject;
 -(NSData *)JSONData;
 @end
