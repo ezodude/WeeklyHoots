@@ -110,18 +110,16 @@
 
 -(void)loadStoryboxImage{
     static int ContentViewWidth = 320;
-    static int BackgroundImageTargetHeight = 132;
+    static int BackgroundImageTargetHeight = 150;
     
     NSLog(@"Setting up image: [%@]", [[_storybox playlistsQueue] imageUri]);
     
     UIImage *image = [UIImage imageNamed:[[_storybox playlistsQueue] imageUri]];
-    
     image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(ContentViewWidth, BackgroundImageTargetHeight ) interpolationQuality:kCGInterpolationHigh];
     
-    image = [image croppedImage:CGRectMake(0, 0, ContentViewWidth, BackgroundImageTargetHeight)];
+//    image = [image croppedImage:CGRectMake(0, 0, ContentViewWidth, BackgroundImageTargetHeight)];
     
     [self.storyboxImageView setImage:image];
-    [self.storyboxImageView.layer setBorderColor:[[UIColor darkGrayColor]CGColor]];
     [self.storyboxImageView setContentMode:UIViewContentModeCenter];
 }
 
@@ -170,13 +168,21 @@
     if (previouslyInCollectionMode){
         NSLog(@"**Stop**");
         
-        [self.collectPlaylistsButton setTitle:@"Collect" forState:UIControlStateNormal];
+//        [self.collectPlaylistsButton setTitle:@"Collect" forState:UIControlStateNormal];
+        
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect@2x.png"] forState:UIControlStateNormal];
+        
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted@2x.png"] forState:UIControlStateHighlighted];
+        
         [_storybox stopCollectingPlaylists];
     }
     else{
         NSLog(@"**Collect**");
         
-        [self.collectPlaylistsButton setTitle:@"Stop" forState:UIControlStateNormal];
+//        [self.collectPlaylistsButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop@2x.png"] forState:UIControlStateNormal];
+        
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-highlighted@2x.png"] forState:UIControlStateHighlighted];
         [_storybox collectPlaylistsUsingDelegate:self];
     }
 }
@@ -210,7 +216,8 @@
 
 -(void)finishedCollectingPlaylists{
     NSLog(@"Finished Collecting Playlists");
-    [self.collectPlaylistsButton setTitle:@"Collected" forState:UIControlStateNormal];
+//    [self.collectPlaylistsButton setTitle:@"Collected" forState:UIControlStateNormal];
+    [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collected@2x.png"] forState:UIControlStateNormal];
     self.collectPlaylistsButton.enabled = NO;
 }
 
