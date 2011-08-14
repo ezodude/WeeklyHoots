@@ -7,6 +7,10 @@
 //
 
 #import "StoryboxViewController.h"
+#import "StoryboxLoader.h"
+#import "PlaylistsQueue.h"
+#import "Storybox.h"
+#import "Playlist.h"
 
 @implementation StoryboxViewController
 

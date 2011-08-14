@@ -23,10 +23,6 @@
 
 - (id)initFromDictionary:(NSDictionary *)dictionary;
 - (PlaylistsQueue *)initWithGuid:(NSString *)guid startDate:(NSString *)startDate imageUri:(NSString *)imageUri playlistGuids:(NSArray *)playlistGuids;
-- (BOOL)isFresh;
-- (NSUInteger)downloadedPlaylistsCount;
 
--(NSString *)nextPlaylistGuidToCollect;
--(NSArray *)downloadedPlaylistGuids;
-
+-(NSString *)startDateAsString;
 @end

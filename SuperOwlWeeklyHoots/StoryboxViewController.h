@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-#import "StoryboxLoader.h"
-#import "PlaylistsQueue.h"
 #import "StoryboxNavController.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -22,6 +20,8 @@
 
 @class StoryboxLoader;
 @class StoryboxNavController;
+@class Storybox;
+@class Playlist;
 @class MDAudioFile;
 @class MDAudioPlayerController;
 

@@ -37,20 +37,15 @@
     return self;
 }
 
-- (BOOL)isFresh{
-    return YES;
-}
-
-- (NSUInteger)downloadedPlaylistsCount{
-    return 0;
-}
-
--(NSString *)nextPlaylistGuidToCollect{
-    return nil;
-}
-
--(NSArray *)downloadedPlaylistGuids{
-    return nil;
+-(NSString *)startDateAsString{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *result = [dateFormatter stringFromDate:self.startDate];
+    [dateFormatter release];
+    
+    return result;
 }
 
 - (void)dealloc {

@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Playlist.h"
 
-@class Playlist;
-
 @interface FailedPlaylist : Playlist {
     NSString *_localizedErrorDescription;
 }

@@ -10,7 +10,6 @@
 #import "Environment.h"
 #import "StoryboxLoader.h"
 #import "PlaylistsQueue.h"
-#import "Playlist.h"
 #import "FileStore.h"
 
 @class StoryboxLoader;

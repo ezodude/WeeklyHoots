@@ -7,7 +7,7 @@
 //
 
 #import "Storybox.h"
-
+#import "Playlist.h"
 
 @implementation Storybox
 

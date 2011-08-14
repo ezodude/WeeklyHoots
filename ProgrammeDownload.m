@@ -65,7 +65,8 @@
         
         [self.programme setToNotDownloaded]; /* Or Failed Download? */
         
-        if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && [error code] != 4)
+        BOOL wasRequestCancelledByUser = [error code] == 4;
+        if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && !wasRequestCancelledByUser)
             [self.downloadDelegate downloadErrorForProgrammeDownload:self error:[request error]];
     }];
     

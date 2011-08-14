@@ -7,21 +7,30 @@
 //
 
 #import "PlaylistDownload.h"
-
+#import "Storybox.h"
+#import "Playlist.h"
+#import "FailedPlaylist.h"
 
 @implementation PlaylistDownload
 
 @synthesize programmesAPIURL=_programmesAPIURL;
 @synthesize storybox=_storybox;
 @synthesize playlistGuid=_playlistGuid;
+@synthesize dataQueuedAsString=_dataQueuedAsString;
 @synthesize playlist=_playlist;
 
 @synthesize downloadPath = _downloadPath;
 @synthesize downloadFile = _downloadFile;
 
+@synthesize failedDownloadPath=_failedDownloadPath;
+@synthesize failedDownloadFile=_failedDownloadFile;
 
-+(NSString *)downloadPathUsingPlaylistsQueueGuid:(NSString *)queueGuid playlistGuid:(NSString *)playlistGuid {
++(NSString *)downloadPathUsingPlaylistGuid:(NSString *)playlistGuid {
     return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists", playlistGuid];
+}
+
++(NSString *)failedPlaylistsDownloadPathUsingPlaylistGuid:(NSString *)playlistGuid {
+    return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"failed-playlists", playlistGuid];
 }
 
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid {
@@ -34,10 +43,13 @@
         self.programmesAPIURL = apiBaseURL;
         self.storybox = storybox;
         self.playlistGuid = playlistGuid;
+        self.dataQueuedAsString = [[self.storybox playlistsQueue] startDateAsString];
         
-        self.downloadPath = [PlaylistDownload downloadPathUsingPlaylistsQueueGuid:[self.storybox currentPlaylistsQueueGuid] playlistGuid:self.playlistGuid];
-        
+        self.downloadPath = [PlaylistDownload downloadPathUsingPlaylistGuid:self.playlistGuid];        
         self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [PlaylistDownload playlistJsonFilename:self.playlistGuid]];
+        
+        self.failedDownloadPath = [PlaylistDownload failedPlaylistsDownloadPathUsingPlaylistGuid:self.playlistGuid];
+        self.failedDownloadFile = [self.failedDownloadPath stringByAppendingFormat:@"/%@", [PlaylistDownload playlistJsonFilename:self.playlistGuid]];
     }
     return self;
 }
@@ -53,20 +65,33 @@
         
     [_request setStartedBlock:^{
         NSLog(@"Request starting!");
-        [self createDownloadPathOnDisk];
     }];
     
     [_request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for Playlist [%@]", _playlistGuid);
         
+        [self createDownloadPathOnDisk];
         [self mapAndStorePlaylistFromRequest:_request];
         [self.storybox addPlaylistUndergoingDownload:self.playlist];
         [self downloadPlaylistProgrammes];
     }];
     
     [_request setFailedBlock:^{
-        NSLog(@"Starting setFailedBlock");
-        NSLog(@"ERROR: %@", [[_request error] description]);
+        NSError *error = [_request error];
+        NSLog(@"Starting setFailedBlock when attempting to retrieve playlist metadata for guid [%@], error is [%@]", self.playlistGuid, [error localizedDescription]);
+        
+        [self createFailureDownloadPathOnDisk];
+        BOOL wasRequestCancelledByUser = [error code] == 4;
+        if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && !wasRequestCancelledByUser){
+            
+            NSDictionary *failedPlaylistDictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.playlistGuid, @"id", self.dataQueuedAsString, @"dateQueued", nil];
+            
+            FailedPlaylist *failedPlaylist = [[FailedPlaylist alloc] initFromDictionary:failedPlaylistDictionary withLocalizedErrorDescription:[error localizedDescription]];
+            
+            NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+            [fileManager createFileAtPath:self.failedDownloadFile contents:[failedPlaylist JSONData] attributes:nil];
+        }
+        
     }];
     
     [_request startAsynchronous];
@@ -85,6 +110,11 @@
     [manager createDirectoryAtPath:self.downloadPath withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
+-(void)createFailureDownloadPathOnDisk{
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
+    [manager createDirectoryAtPath:self.failedDownloadPath withIntermediateDirectories:YES attributes:nil error:nil];
+}
+
 -(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request{
     NSString *responseString = [request responseString];
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[responseString mutableObjectFromJSONString];
@@ -92,15 +122,17 @@
     NSString *storyJockey = [[dictionary objectForKey:@"curator"] objectForKey:@"firstname"];
     NSString *summary = [dictionary objectForKey:@"full_summary"];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+//    
+//    NSString *dateQueuedAsString = [dateFormatter stringFromDate:[[self.storybox playlistsQueue] startDate]];
+//    
+//    [dateFormatter release];
     
-    NSString *dateQueuedAsString = [dateFormatter stringFromDate:[[self.storybox playlistsQueue] startDate]];
+//    NSString *dateQueuedAsString = [[self.storybox playlistsQueue] startDateAsString];
     
-    [dateFormatter release];
-    
-    [dictionary setObject:dateQueuedAsString forKey:@"dateQueued"];
+    [dictionary setObject:self.dataQueuedAsString forKey:@"dateQueued"];
     [dictionary setObject:storyJockey forKey:@"storyJockey"];
     [dictionary setObject:summary forKey:@"summary"];
     
@@ -148,11 +180,15 @@
     [self.downloadPath release];
     [self.downloadFile release];
     
+    [self.failedDownloadPath release];
+    [self.failedDownloadFile release];
+    
     [_request release];
     [_audioDownloadsQueue release];
     
     [self.playlist release];
     [self.playlistGuid release];
+    [self.dataQueuedAsString release];
     [self.storybox release];
     [self.programmesAPIURL release];
     
