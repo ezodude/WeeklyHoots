@@ -20,7 +20,7 @@
 @synthesize dateQueued=_dateQueued;
 @synthesize expiryDate=_expiryDate;
 
--(Playlist *)initFromDictionary:(NSDictionary *)dictionary{
+-(id)initFromDictionary:(NSDictionary *)dictionary{
     return [self initWithGuid:[dictionary objectForKey:@"id"] 
                         title:[dictionary objectForKey:@"title"] 
                   storyJockey:[dictionary objectForKey:@"storyJockey"] 
@@ -30,7 +30,7 @@
                    programmes:[dictionary objectForKey:@"programmes"]];
 }
 
--(Playlist *)initWithGuid:(NSString *)guid 
+-(id)initWithGuid:(NSString *)guid 
                     title:(NSString *)title 
               storyJockey:(NSString *)storyJockey 
                   summary:(NSString *)summary 
@@ -40,10 +40,10 @@
     self = [super init];
     if(self){
         self.guid = guid;
-        self.title = title;
-        self.storyJockey = storyJockey;
-        self.summary = summary;
-        self.duration = [duration unsignedIntegerValue];
+        if(title) self.title = title;
+        if(storyJockey) self.storyJockey = storyJockey;
+        if(summary) self.summary = summary;
+        if(duration) self.duration = [duration unsignedIntegerValue];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -54,23 +54,22 @@
         
         self.expiryDate = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:self.dateQueued];
         
-        NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
-                                         initWithCapacity:[programmes count]];
-        [programmes enumerateObjectsUsingBlock:^(id content, NSUInteger idx, BOOL *stop) {
-            NSLog(@"[content objectForKey:@audioURI]: [%@]", [content objectForKey:@"audioURI"]);
-            
-            NSString *audioUri = [content objectForKey:@"audioURI"] == nil ? [content objectForKey:@"audio_uri"] : [content objectForKey:@"audioURI"];
-            
-            Programme *prog = [[Programme alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] duration:[content objectForKey:@"duration"] audioURI:audioUri];
-            
-            [newProgrammes addObject:prog];
-            [prog release];
-        }];
-        self.programmes = newProgrammes;
-        [newProgrammes release];
+        if (programmes) {
+            NSMutableArray *newProgrammes = [[NSMutableArray alloc] 
+                                             initWithCapacity:[programmes count]];
+            [programmes enumerateObjectsUsingBlock:^(id content, NSUInteger idx, BOOL *stop) {
+                NSString *audioUri = [content objectForKey:@"audioURI"] == nil ? [content objectForKey:@"audio_uri"] : [content objectForKey:@"audioURI"];
+                
+                Programme *prog = [[Programme alloc] initWithGuid:[content objectForKey:@"id"] title:[content objectForKey:@"title"] duration:[content objectForKey:@"duration"] audioURI:audioUri];
+                
+                [newProgrammes addObject:prog];
+                [prog release];
+            }];
+            self.programmes = newProgrammes;
+            [newProgrammes release];
+        }
     }
     return self;
-    
 }
 
 -(NSUInteger)totalProgrammesCount{

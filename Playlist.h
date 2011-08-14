@@ -39,9 +39,9 @@
 @property (nonatomic, retain) NSDate *expiryDate;
 
 
--(Playlist *)initFromDictionary:(NSDictionary *)dictionary;
+-(id)initFromDictionary:(NSDictionary *)dictionary;
 
--(Playlist *)initWithGuid:(NSString *)guid 
+-(id)initWithGuid:(NSString *)guid 
                 title:(NSString *)title 
                 storyJockey:(NSString *)storyJockey 
                 summary:(NSString *)summary 

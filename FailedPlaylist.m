@@ -8,14 +8,20 @@
 
 #import "FailedPlaylist.h"
 
-
 @implementation FailedPlaylist
 
-@synthesize error=_error;
+@synthesize localizedErrorDescription=_localizedErrorDescription;
 
-- (void)dealloc {
-    [self.error release];
-    [super dealloc];
+-(id)initFromDictionary:(NSDictionary *)dictionary withLocalizedErrorDescription:(NSString *)localizedErrorDescription{
+    self = [super initFromDictionary:dictionary];
+    if (self) {
+        self.localizedErrorDescription = localizedErrorDescription;
+    }
+    return self;
+}
+
+-(id)initFromDictionary:(NSDictionary *)dictionary{
+    return [self initFromDictionary:dictionary withLocalizedErrorDescription:[dictionary objectForKey:@"error"]];
 }
 
 -(BOOL)hasContent{
@@ -24,6 +30,17 @@
 
 -(BOOL)isDisplayable{
     return [self hasContent];
+}
+
+-(NSDictionary *)dictionaryFromObject{
+    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryFromObject]];
+    [result setObject:self.localizedErrorDescription forKey:@"error"];
+    return result;
+}
+
+- (void)dealloc {
+    [self.localizedErrorDescription release];
+    [super dealloc];
 }
 
 @end

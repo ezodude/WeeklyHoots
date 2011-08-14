@@ -12,10 +12,13 @@
 @class Playlist;
 
 @interface FailedPlaylist : Playlist {
-    NSError *_error;
+    NSString *_localizedErrorDescription;
 }
 
-@property (nonatomic, retain) NSError *error;
+@property (nonatomic, retain) NSString *localizedErrorDescription;
+
+-(id)initFromDictionary:(NSDictionary *)dictionary withLocalizedErrorDescription:(NSString *)localizedErrorDescription;
+-(id)initFromDictionary:(NSDictionary *)dictionary;
 
 -(BOOL)hasContent;
 -(BOOL)isDisplayable;
