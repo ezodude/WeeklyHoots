@@ -35,6 +35,7 @@
     UILabel *_storyboxPlaylistsCollectedCount;
 
     UIButton *_collectPlaylistsButton;
+    UILabel *_collectPlaylistsButtonCaption;
     
     UITableView *_allPlaylistsTableView;
     
@@ -52,6 +53,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *storyboxPlaylistsCollectedCount;
 
 @property (nonatomic, retain) IBOutlet UIButton *collectPlaylistsButton;
+@property (nonatomic, retain) IBOutlet UILabel *collectPlaylistsButtonCaption;
 
 @property (nonatomic, retain) IBOutlet UITableView *allPlaylistsTableView;
 

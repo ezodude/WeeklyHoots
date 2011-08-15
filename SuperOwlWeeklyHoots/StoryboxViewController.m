@@ -22,6 +22,7 @@
 @synthesize storyboxPlaylistsQueueCount=_storyboxPlaylistsQueueCount;
 @synthesize storyboxPlaylistsCollectedCount=_storyboxPlaylistsCollectedCount;
 @synthesize collectPlaylistsButton=_collectPlaylistsButton;
+@synthesize collectPlaylistsButtonCaption=_collectPlaylistsButtonCaption;
 
 @synthesize allPlaylistsTableView=_allPlaylistsTableView;
 
@@ -47,6 +48,7 @@
     [self.storyboxPlaylistsCollectedCount release];
     
     [self.collectPlaylistsButton release];
+    [self.collectPlaylistsButtonCaption release];
     
     [self.allPlaylistsTableView release];
     
@@ -170,9 +172,11 @@
         
 //        [self.collectPlaylistsButton setTitle:@"Collect" forState:UIControlStateNormal];
         
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect@2x.png"] forState:UIControlStateNormal];
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-normal"] forState:UIControlStateNormal];
         
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted@2x.png"] forState:UIControlStateHighlighted];
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
+        
+        self.collectPlaylistsButtonCaption.text = @"pull stories";
         
         [_storybox stopCollectingPlaylists];
     }
@@ -180,9 +184,12 @@
         NSLog(@"**Collect**");
         
 //        [self.collectPlaylistsButton setTitle:@"Stop" forState:UIControlStateNormal];
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop@2x.png"] forState:UIControlStateNormal];
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-normal"] forState:UIControlStateNormal];
         
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-highlighted@2x.png"] forState:UIControlStateHighlighted];
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
+        
+        self.collectPlaylistsButtonCaption.text = @"stop";
+        
         [_storybox collectPlaylistsUsingDelegate:self];
     }
 }

@@ -96,6 +96,8 @@
 		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
 		89DF135D13B0A046005A557A /* WeeklyHootSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */; };
 		89DF136013B0A27D005A557A /* WeeklyHootSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135F13B0A27D005A557A /* WeeklyHootSectionHeader.m */; };
+		89E1D6FD13F9407900A40099 /* collect-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E1D6FB13F9407900A40099 /* collect-highlighted@2x.png */; };
+		89E1D6FE13F9407900A40099 /* collect-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E1D6FC13F9407900A40099 /* collect-normal@2x.png */; };
 		89E1F08513DDFF2300D381E2 /* london_double_decker_500x333.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */; };
 		89E1F08813DDFFDB00D381E2 /* bus_window_500 x 339.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */; };
 /* End PBXBuildFile section */
@@ -226,6 +228,8 @@
 		89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyHootSectionHeaderView.xib; sourceTree = "<group>"; };
 		89DF135E13B0A27D005A557A /* WeeklyHootSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyHootSectionHeader.h; sourceTree = "<group>"; };
 		89DF135F13B0A27D005A557A /* WeeklyHootSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyHootSectionHeader.m; sourceTree = "<group>"; };
+		89E1D6FB13F9407900A40099 /* collect-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect-highlighted@2x.png"; sourceTree = "<group>"; };
+		89E1D6FC13F9407900A40099 /* collect-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect-normal@2x.png"; sourceTree = "<group>"; };
 		89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_double_decker_500x333.jpg; sourceTree = "<group>"; };
 		89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bus_window_500 x 339.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,6 +339,8 @@
 		893FBFB313C352D1007EE2E7 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				89E1D6FB13F9407900A40099 /* collect-highlighted@2x.png */,
+				89E1D6FC13F9407900A40099 /* collect-normal@2x.png */,
 				894813BD13D35FD6004C7D37 /* stop-highlight.png */,
 				894813BE13D35FD6004C7D37 /* stop-normal.png */,
 				894813B913D35EC3004C7D37 /* sync-highlight.png */,
@@ -667,6 +673,8 @@
 				890D0BE613F85D65007125E1 /* storybox@2x.png in Resources */,
 				890D0BE913F85E8A007125E1 /* gear.png in Resources */,
 				890D0BEA13F85E8A007125E1 /* gear@2x.png in Resources */,
+				89E1D6FD13F9407900A40099 /* collect-highlighted@2x.png in Resources */,
+				89E1D6FE13F9407900A40099 /* collect-normal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
