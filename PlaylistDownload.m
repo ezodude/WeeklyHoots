@@ -80,18 +80,7 @@
         NSError *error = [_request error];
         NSLog(@"Starting setFailedBlock when attempting to retrieve playlist metadata for guid [%@], error is [%@]", self.playlistGuid, [error localizedDescription]);
         
-        [self createFailureDownloadPathOnDisk];
-        BOOL wasRequestCancelledByUser = [error code] == 4;
-        if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && !wasRequestCancelledByUser){
-            
-            NSDictionary *failedPlaylistDictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.playlistGuid, @"id", self.dataQueuedAsString, @"dateQueued", nil];
-            
-            FailedPlaylist *failedPlaylist = [[FailedPlaylist alloc] initFromDictionary:failedPlaylistDictionary withLocalizedErrorDescription:[error localizedDescription]];
-            
-            NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-            [fileManager createFileAtPath:self.failedDownloadFile contents:[failedPlaylist JSONData] attributes:nil];
-        }
-        
+        [self handleFailureforError:error fromProgrammeDownload:NO];
     }];
     
     [_request startAsynchronous];
@@ -122,16 +111,6 @@
     NSString *storyJockey = [[dictionary objectForKey:@"curator"] objectForKey:@"firstname"];
     NSString *summary = [dictionary objectForKey:@"full_summary"];
     
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-//    
-//    NSString *dateQueuedAsString = [dateFormatter stringFromDate:[[self.storybox playlistsQueue] startDate]];
-//    
-//    [dateFormatter release];
-    
-//    NSString *dateQueuedAsString = [[self.storybox playlistsQueue] startDateAsString];
-    
     [dictionary setObject:self.dataQueuedAsString forKey:@"dateQueued"];
     [dictionary setObject:storyJockey forKey:@"storyJockey"];
     [dictionary setObject:summary forKey:@"summary"];
@@ -151,9 +130,8 @@
         
         [_audioDownloadsQueue setDelegate:self];
         [_audioDownloadsQueue setMaxConcurrentOperationCount:3];
-        [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
+        [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:YES];
         [_audioDownloadsQueue setQueueDidFinishSelector:@selector(allDownloadsCompleted)];
-        [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:NO];
     }
     
     NSString *audioDownloadsPath = [self.playlist audioDownloadsPath];
@@ -169,6 +147,26 @@
 -(void)downloadErrorForProgrammeDownload:(ProgrammeDownload *)programmeDownload error:(NSError *)error{
     [self stop];
     [self.storybox playlistErredWhileDownloading:self.playlist error:error];
+}
+
+-(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(BOOL)wasDownloading{
+    BOOL wasRequestCancelledByUser = [error code] == 4;
+    if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && wasRequestCancelledByUser) return;
+    
+    if(wasDownloading) [self stop];
+    
+    [self createFailureDownloadPathOnDisk];
+    
+    NSDictionary *failedPlaylistDictionary = self.playlist ? 
+                                            [self.playlist dictionaryFromObject] : 
+                                            [NSDictionary dictionaryWithObjectsAndKeys:self.playlistGuid, @"id", self.dataQueuedAsString, @"dateQueued", nil];
+    
+    FailedPlaylist *failedPlaylist = [[[FailedPlaylist alloc] initFromDictionary:failedPlaylistDictionary withLocalizedErrorDescription:[error localizedDescription]] autorelease];
+    
+    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+    [fileManager createFileAtPath:self.failedDownloadFile contents:[failedPlaylist JSONData] attributes:nil];
+    
+    [self.storybox handleFailedPlaylist:failedPlaylist];
 }
 
 -(void)allDownloadsCompleted{

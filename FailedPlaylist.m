@@ -28,10 +28,6 @@
     return self.title != nil && self.storyJockey != nil && self.duration != 0 && self.dateQueued != nil && self.programmes != nil;
 }
 
--(BOOL)isDisplayable{
-    return [self hasContent];
-}
-
 -(NSDictionary *)dictionaryFromObject{
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryFromObject]];
     [result setObject:self.localizedErrorDescription forKey:@"error"];

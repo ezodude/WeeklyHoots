@@ -61,4 +61,7 @@
 
 -(NSDictionary *)dictionaryFromObject;
 -(NSData *)JSONData;
+
+-(BOOL)hasContent;
+-(BOOL)isDisplayable;
 @end

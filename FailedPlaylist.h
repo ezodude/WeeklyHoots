@@ -19,5 +19,4 @@
 -(id)initFromDictionary:(NSDictionary *)dictionary;
 
 -(BOOL)hasContent;
--(BOOL)isDisplayable;
 @end

@@ -15,6 +15,7 @@
 @class StoryboxLoader;
 @class PlaylistDownload;
 @class Playlist;
+@class FailedPlaylist;
 
 @interface Storybox : NSObject {
     NSString *_programmesAPIURL;
@@ -24,6 +25,7 @@
     NSMutableArray *_tempPlaylistProcessing;
     NSArray *_currentPlaylistsSlot;
     NSArray *_olderPlaylistsSlot;
+    NSArray *_failedPlaylistsSlot;
     NSArray *_playlistsErringDuringDownloads;
     
     BOOL _collectionMode;
@@ -35,6 +37,7 @@
 
 @property (nonatomic, retain) NSArray *currentPlaylistsSlot;
 @property (nonatomic, retain) NSArray *olderPlaylistsSlot;
+@property (nonatomic, retain) NSArray *failedPlaylistsSlot;
 @property (nonatomic, retain) NSArray *playlistsErringDuringDownloads;
 
 @property (nonatomic, retain) id playlistsCollectionDelegate;
@@ -63,4 +66,5 @@
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
 -(void)playlistErredWhileDownloading:(Playlist *)playlist error:(NSError *)error;
+-(void)handleFailedPlaylist:(FailedPlaylist *)failedPlaylist;
 @end

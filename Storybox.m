@@ -15,6 +15,7 @@
 
 @synthesize currentPlaylistsSlot=_currentPlaylistsSlot;
 @synthesize olderPlaylistsSlot=_olderPlaylistsSlot;
+@synthesize failedPlaylistsSlot=_failedPlaylistsSlot;
 @synthesize playlistsErringDuringDownloads=_playlistsErringDuringDownloads;
 
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
@@ -25,6 +26,7 @@
     
     [self.currentPlaylistsSlot release];
     [self.olderPlaylistsSlot release];
+    [self.failedPlaylistsSlot release];
     [self.playlistsErringDuringDownloads release];
     
     [self.playlistsQueue release];
@@ -241,6 +243,10 @@
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }
 
+
+-(void)handleFailedPlaylist:(FailedPlaylist *)failedPlaylist{
+    NSLog(@"!!!Handling Failed Playlist!!!");
+}
 
 -(void)finishedCollectingPlaylists{
     NSLog(@"******FINISHED COLLECTING ALL PLAYLISTS******");

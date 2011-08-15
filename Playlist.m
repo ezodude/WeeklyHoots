@@ -159,11 +159,29 @@
         [playlistProgrammesAsDictionaries addObject:[prog dictionaryFromObject]];
     }];
     
-    return [NSDictionary dictionaryWithObjectsAndKeys:self.guid, @"id", self.title, @"title", self.storyJockey, @"storyJockey", self.summary, @"summary", [NSNumber numberWithUnsignedInt: self.duration], @"duration", dateQueuedAsString, @"dateQueued", expiryDateAsString, @"expiryDate", playlistProgrammesAsDictionaries, @"programmes", nil];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:8];
+    [dictionary setObject:self.guid forKey:@"id"];
+    [dictionary setObject:dateQueuedAsString forKey:@"dateQueued"];
+    [dictionary setObject:expiryDateAsString forKey:@"expiryDate"];
+    if (self.title) [dictionary setObject:self.title forKey:@"title"];
+    if (self.storyJockey) [dictionary setObject:self.storyJockey forKey:@"storyJockey"];
+    if (self.summary) [dictionary setObject:self.summary forKey:@"summary"];
+    if (self.duration) [dictionary setObject:[NSNumber numberWithUnsignedInt: self.duration] forKey:@"duration"];
+    if(self.programmes) [dictionary setObject:playlistProgrammesAsDictionaries forKey:@"programmes"];
+    
+    return dictionary;
 }
 
 -(NSData *)JSONData{
     return [[self dictionaryFromObject] JSONData];
+}
+
+-(BOOL)hasContent{
+    return YES;
+}
+
+-(BOOL)isDisplayable{
+    return [self hasContent];
 }
 
 - (void)dealloc {
