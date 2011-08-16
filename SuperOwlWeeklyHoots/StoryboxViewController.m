@@ -170,8 +170,6 @@
     if (previouslyInCollectionMode){
         NSLog(@"**Stop**");
         
-//        [self.collectPlaylistsButton setTitle:@"Collect" forState:UIControlStateNormal];
-        
         [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-normal"] forState:UIControlStateNormal];
         
         [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
@@ -183,10 +181,9 @@
     else{
         NSLog(@"**Collect**");
         
-//        [self.collectPlaylistsButton setTitle:@"Stop" forState:UIControlStateNormal];
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-normal"] forState:UIControlStateNormal];
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-normal"] forState:UIControlStateNormal];
         
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
+        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-highlighted"] forState:UIControlStateHighlighted];
         
         self.collectPlaylistsButtonCaption.text = @"stop";
         
@@ -223,9 +220,12 @@
 
 -(void)finishedCollectingPlaylists{
     NSLog(@"Finished Collecting Playlists");
-//    [self.collectPlaylistsButton setTitle:@"Collected" forState:UIControlStateNormal];
-    [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collected@2x.png"] forState:UIControlStateNormal];
+    
     self.collectPlaylistsButton.enabled = NO;
+    
+    [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"done"] forState:UIControlStateDisabled];
+
+    self.collectPlaylistsButtonCaption.text = @"done!";
 }
 
 -(void)stopCollectingPlaylists{
