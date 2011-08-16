@@ -58,6 +58,7 @@
 -(NSString *)currentPlaylistsQueueGuid;
 
 -(BOOL)allPlaylistsCollected;
+-(NSArray *)getGuidsToIgnoreFromCollection;
 -(NSString *)nextPlaylistGuidToCollect;
 
 -(void)collectPlaylistsUsingDelegate:(id)delegate;

@@ -168,30 +168,27 @@
     return [self.playlistsQueue guid];
 }
 
+-(NSArray *)getGuidsToIgnoreFromCollection{
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self.currentPlaylistsSlot count]];
+    [self.currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [result addObject:[obj guid]];
+    }];
+    
+    [self.failedPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [result addObject:[obj guid]];
+    }];
+    
+    return result;
+}
+
 -(NSString *)nextPlaylistGuidToCollect{
     NSLog(@"self.currentPlaylistsSlot: [%@]", [self.currentPlaylistsSlot description]);
     
-    NSMutableArray *availableGuids = [NSMutableArray arrayWithCapacity:[self.currentPlaylistsSlot count]];
-    [self.currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [availableGuids addObject:[(Playlist *)obj guid]];
-    }];
-
-    [self.playlistsErringDuringDownloads enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [availableGuids addObject:[(Playlist *)obj guid]];
-    }];
-    
-    NSMutableArray *pendingGuids = [NSMutableArray arrayWithCapacity:[[self.playlistsQueue playlistGuids] count]];
-    
-    [[self.playlistsQueue playlistGuids] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSString *guid = obj;
-        if (![availableGuids containsObject:guid]) {
-            [pendingGuids addObject:guid];
-        }
-    }];
-    
-    NSLog(@"Pending Guids: [%@]", pendingGuids);
-    
-    return [pendingGuids count] == 0 ? nil : [pendingGuids objectAtIndex:0];
+    NSMutableArray *guidsToCollect = [NSMutableArray arrayWithArray:[self.playlistsQueue playlistGuids]];
+    [guidsToCollect removeObjectsInArray:[self getGuidsToIgnoreFromCollection]];
+        
+    NSLog(@"Guids To Collect: [%@]", guidsToCollect);
+    return [guidsToCollect count] == 0 ? nil : [guidsToCollect objectAtIndex:0];
 }
 
 -(BOOL)allPlaylistsCollected{
