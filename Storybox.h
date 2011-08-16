@@ -44,10 +44,12 @@
 @property (nonatomic, assign) BOOL collectionMode;
 
 +(NSString *)allPlaylistsPath;
++(NSString *)failedPlaylistsPath;
 
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue;
 
 -(void)synchronizeWithLocalStorage;
+-(void)synchronizePlaylistsAtPath:(NSString *)path;
 -(void)processLocalPlaylists;
 -(void)removeExpiredPlaylists;
 -(void)removePlaylistsWithIncompleteDownloads;

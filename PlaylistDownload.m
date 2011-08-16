@@ -165,6 +165,7 @@
     
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
     [fileManager createFileAtPath:self.failedDownloadFile contents:[failedPlaylist JSONData] attributes:nil];
+    [fileManager removeItemAtPath:self.downloadPath error:nil];
     
     [self.storybox handleFailedPlaylist:failedPlaylist];
 }

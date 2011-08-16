@@ -96,9 +96,13 @@
     return [self.programmes filteredArrayUsingPredicate:notDownloadedPredicate];
 }
 
--(NSString *)audioDownloadsPath{
+-(NSString *)pathOnDisk{
     NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
-    return [NSString stringWithFormat:@"%@/%@/programmes", localPlaylistsPath, self.guid];
+    return [NSString stringWithFormat:@"%@/%@", localPlaylistsPath, self.guid];
+}
+
+-(NSString *)audioDownloadsPath{
+    return [NSString stringWithFormat:@"%@/programmes", [self pathOnDisk]];
 }
 
 -(NSArray *)downloadFilepathsForProgrammes{
@@ -182,6 +186,10 @@
 
 -(BOOL)isDisplayable{
     return [self hasContent];
+}
+
+-(BOOL)hasErrors{
+    return NO;
 }
 
 - (void)dealloc {

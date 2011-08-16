@@ -34,6 +34,19 @@
     return result;
 }
 
+-(NSString *)pathOnDisk{
+    NSString *localFailedPlaylistsPath = [Storybox failedPlaylistsPath];
+    return [NSString stringWithFormat:@"%@/%@", localFailedPlaylistsPath, self.guid];
+}
+
+-(BOOL)hasCompleteDownloads{
+    return YES;
+}
+
+-(BOOL)hasErrors{
+    return YES;
+}
+
 - (void)dealloc {
     [self.localizedErrorDescription release];
     [super dealloc];

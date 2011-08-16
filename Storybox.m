@@ -8,6 +8,7 @@
 
 #import "Storybox.h"
 #import "Playlist.h"
+#import "FailedPlaylist.h"
 
 @implementation Storybox
 
@@ -40,6 +41,10 @@
     return [NSString stringWithFormat:@"%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists"];
 }
 
++(NSString *)failedPlaylistsPath{
+    return [NSString stringWithFormat:@"%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"failed-playlists"];
+}
+
 - (id)init {
     self = [super init];
     
@@ -55,34 +60,44 @@
 
 -(void)synchronizeWithLocalStorage{
     NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
+    NSString *localFailedPlaylistsPath = [Storybox failedPlaylistsPath];
     
+    const int MinCapacity = 10;
+    _tempPlaylistProcessing = [NSMutableArray arrayWithCapacity:MinCapacity];
+    
+    [self synchronizePlaylistsAtPath:localPlaylistsPath];
+    [self synchronizePlaylistsAtPath:localFailedPlaylistsPath];
+    
+    NSLog(@"[_tempPlaylistProcessing count]: [%d]", [_tempPlaylistProcessing count]);
+    if([_tempPlaylistProcessing count] > 0) [self processLocalPlaylists];
+}
+
+-(void)synchronizePlaylistsAtPath:(NSString *)path{
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-    NSArray *localPlaylistGuids = [fileManager contentsOfDirectoryAtPath:localPlaylistsPath error:nil];
+    NSArray *localGuids = [fileManager contentsOfDirectoryAtPath:path error:nil];
     
-    if(!localPlaylistGuids) return;
+    if(!localGuids) return;
     
-    _tempPlaylistProcessing = [NSMutableArray arrayWithCapacity:[localPlaylistGuids count]];
-    
-    [localPlaylistGuids enumerateObjectsUsingBlock:^(id guid, NSUInteger idx, BOOL *stop) {
+    [localGuids enumerateObjectsUsingBlock:^(id guid, NSUInteger idx, BOOL *stop) {
         if(![guid isEqualToString:@".DS_Store"]){
             NSLog(@"Playlist guid: [%@]", guid);
             
-            NSString *localJsonPath = [NSString stringWithFormat:@"%@/%@/%@.json", localPlaylistsPath, guid, guid];
+            NSString *localJsonPath = [NSString stringWithFormat:@"%@/%@/%@.json", path, guid, guid];
             
             NSData *jsonContent = [fileManager contentsAtPath:localJsonPath];
             NSDictionary *dictionary = [jsonContent objectFromJSONData];
             
-            Playlist *localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
+            id localPlaylist = nil;
             
-            NSLog(@"localPlaylist date queued: [%@]", [[localPlaylist dateQueued] description]);
-            NSLog(@"localPlaylist expiry date: [%@]", [[localPlaylist expiryDate] description]);
+            if ([dictionary objectForKey:@"error"])
+                localPlaylist = [[FailedPlaylist alloc] initFromDictionary:dictionary];
+            else
+                localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
             
             [_tempPlaylistProcessing addObject:localPlaylist];
             [localPlaylist release];
         }
     }];
-    
-    [self processLocalPlaylists];
 }
 
 -(void)processLocalPlaylists{
@@ -104,13 +119,12 @@
         return;
     }
     
-    NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
     
     [expiredPlaylists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSLog(@"Removing Expired object with guid: [%@]", [obj guid]);
-        NSString *expiredPlaylistPath = [NSString stringWithFormat:@"%@/%@", localPlaylistsPath, [obj guid]];
-        if ([fileManager removeItemAtPath:expiredPlaylistPath error:nil]) {
+
+        if ([fileManager removeItemAtPath:[obj pathOnDisk] error:nil]) {
             [_tempPlaylistProcessing removeObject:obj];
         }
     }];
@@ -128,11 +142,16 @@
     NSLog(@"**After** Removing Incomplete Downloads count is: [%d]", [_tempPlaylistProcessing count]);
 }
 
--(void)partitionPlaylistsIntoSlots{
+-(void)partitionPlaylistsIntoSlots{    
+    self.failedPlaylistsSlot = [_tempPlaylistProcessing filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"hasErrors == YES"]];
+    NSLog(@"self.failedPlaylistsSlot: [%@]", [self.failedPlaylistsSlot description]);
+    
+    [_tempPlaylistProcessing filterUsingPredicate:[NSPredicate predicateWithFormat:@"hasErrors == NO"]];
+    
     __block NSMutableArray *currentSlot = [NSMutableArray arrayWithCapacity:[_tempPlaylistProcessing count]];
     
     __block NSMutableArray *olderSlot = [NSMutableArray arrayWithCapacity:[_tempPlaylistProcessing count]];
-    
+        
     [_tempPlaylistProcessing enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         BOOL isCurrent = [[obj dateQueued] isEqualToDate:[self.playlistsQueue startDate]];
         isCurrent ? [currentSlot addObject:obj] : [olderSlot addObject:obj];
@@ -201,7 +220,7 @@
     if (self.collectionMode){
         [_playlistDownload stop];
         self.collectionMode = NO;
-        
+            
         [self.playlistsCollectionDelegate stopCollectingPlaylists];
     }
 }

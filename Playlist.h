@@ -53,6 +53,7 @@
 -(NSUInteger)downloadedProgrammesCount;
 -(NSArray *)programmesAwaitingDownload;
 
+-(NSString *)pathOnDisk;
 -(NSString *)audioDownloadsPath;
 -(NSArray *)downloadFilepathsForProgrammes;
 
@@ -64,4 +65,5 @@
 
 -(BOOL)hasContent;
 -(BOOL)isDisplayable;
+-(BOOL)hasErrors;
 @end
