@@ -64,6 +64,5 @@
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
--(void)playlistErredWhileDownloading:(Playlist *)playlist error:(NSError *)error;
 -(void)handleFailedPlaylist:(FailedPlaylist *)failedPlaylist;
 @end

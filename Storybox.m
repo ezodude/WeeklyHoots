@@ -151,26 +151,23 @@
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }
 
--(void)playlistErredWhileDownloading:(Playlist *)playlist error:(NSError *)error{
-    NSLog(@"Playlist [%@] Erred While Downloading!, error: [%@]", [playlist guid], [error description]);
-
-    if (!self.playlistsErringDuringDownloads) {
-        self.playlistsErringDuringDownloads = [NSArray arrayWithObject:playlist];
-    }else{
-        NSMutableArray *tempErringPlaylists = [NSMutableArray arrayWithArray:self.playlistsErringDuringDownloads];
-        
-        [tempErringPlaylists addObject:playlist];
-        self.playlistsErringDuringDownloads = [NSArray arrayWithArray:tempErringPlaylists];
-    }    
+-(void)handleFailedPlaylist:(FailedPlaylist *)failedPlaylist{
+    NSLog(@"!!!Handling Failed Playlist!!!");
+    
+    NSMutableArray *tempFailedPlaylists = [NSMutableArray arrayWithArray:self.failedPlaylistsSlot];
+    [tempFailedPlaylists addObject:failedPlaylist];
+    self.failedPlaylistsSlot = [NSArray arrayWithArray:tempFailedPlaylists];
+    
+    NSLog(@"self.failedPlaylistsSlot: [%@]", [self.failedPlaylistsSlot description]);
     
     [_playlistDownload release];
     
-    if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
-}
-
-
--(void)handleFailedPlaylist:(FailedPlaylist *)failedPlaylist{
-    NSLog(@"!!!Handling Failed Playlist!!!");
+    if ([[failedPlaylist localizedErrorDescription] isEqualToString:@"A connection failure occurred"]){
+        [self.playlistsCollectionDelegate playlistHasFailed:failedPlaylist];
+        [self stopCollectingPlaylists];
+    }else{
+        if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
+    }
 }
 
 -(void)finishedCollectingPlaylists{

@@ -22,10 +22,11 @@
 @class StoryboxNavController;
 @class Storybox;
 @class Playlist;
+@class FailedPlaylist;
 @class MDAudioFile;
 @class MDAudioPlayerController;
 
-@interface StoryboxViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface StoryboxViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> {
     StoryboxNavController *_navController;
     
     UIImageView *_storyboxImageView;
@@ -69,8 +70,11 @@
 -(void)cleanUpProgressIndicator:(MBProgressHUD *)progressIndicator;
 
 -(IBAction)collectPlaylists:(id)sender;
+-(void)drawStopCollectionState;
+-(void)drawStartCollectionState;
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
+-(void)playlistHasFailed:(FailedPlaylist *)playlist;
 -(void)finishedCollectingPlaylists;
 -(void)stopCollectingPlaylists;
 @end

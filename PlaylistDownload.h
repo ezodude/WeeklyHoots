@@ -65,7 +65,6 @@
 -(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request;
 -(void)downloadPlaylistProgrammes;
 
--(void)downloadErrorForProgrammeDownload:(ProgrammeDownload *)programmeDownload error:(NSError *)error;
 -(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(BOOL)wasDownloading;
 
 -(void)allDownloadsCompleted;

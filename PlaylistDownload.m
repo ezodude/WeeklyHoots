@@ -58,7 +58,7 @@
     [self getPlaylist];
 }
 
--(BOOL)getPlaylist{
+-(BOOL)getPlaylist{    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@playlists/%@.json", self.programmesAPIURL, self.playlistGuid]];
     
     _request = [[ASIHTTPRequest requestWithURL:url] retain];
@@ -142,11 +142,6 @@
             [_audioDownloadsQueue addOperation:[progDownload generateRequest]];
     }];
     [_audioDownloadsQueue go];
-}
-
--(void)downloadErrorForProgrammeDownload:(ProgrammeDownload *)programmeDownload error:(NSError *)error{
-    [self stop];
-    [self.storybox playlistErredWhileDownloading:self.playlist error:error];
 }
 
 -(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(BOOL)wasDownloading{

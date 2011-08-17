@@ -11,6 +11,7 @@
 #import "PlaylistsQueue.h"
 #import "Storybox.h"
 #import "Playlist.h"
+#import "FailedPlaylist.h"
 
 @implementation StoryboxViewController
 
@@ -169,26 +170,29 @@
     
     if (previouslyInCollectionMode){
         NSLog(@"**Stop**");
-        
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-normal"] forState:UIControlStateNormal];
-        
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
-        
-        self.collectPlaylistsButtonCaption.text = @"pull stories";
-        
         [_storybox stopCollectingPlaylists];
     }
     else{
         NSLog(@"**Collect**");
-        
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-normal"] forState:UIControlStateNormal];
-        
-        [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-highlighted"] forState:UIControlStateHighlighted];
-        
-        self.collectPlaylistsButtonCaption.text = @"stop";
-        
+        [self drawStartCollectionState];
         [_storybox collectPlaylistsUsingDelegate:self];
     }
+}
+
+-(void)drawStopCollectionState{
+    [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-normal"] forState:UIControlStateNormal];
+    
+    [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
+    
+    self.collectPlaylistsButtonCaption.text = @"pull stories";
+}
+
+-(void)drawStartCollectionState{
+    [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-normal"] forState:UIControlStateNormal];
+    
+    [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-highlighted"] forState:UIControlStateHighlighted];
+    
+    self.collectPlaylistsButtonCaption.text = @"stop";
 }
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist{
@@ -218,6 +222,12 @@
     [self loadStoryboxCollectionLabels];
 }
 
+-(void)playlistHasFailed:(FailedPlaylist *)playlist{
+    NSString *message = @"The internet connection was lost so you  can no longer pull any audio stories. Try again when you have wifi.";
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Pull Cancelled" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
+    [alert show];
+}
+
 -(void)finishedCollectingPlaylists{
     NSLog(@"Finished Collecting Playlists");
     
@@ -232,6 +242,7 @@
     self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
     [self.allPlaylistsTableView reloadData];
 
+    [self drawStopCollectionState];
     [self loadStoryboxCollectionLabels];
 }
 
