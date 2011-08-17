@@ -29,6 +29,7 @@
 		892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */; };
 		892F7CC013C1E08500C4B98C /* WeeklyBundlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */; };
 		892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */; };
+		8938566F13FB0C2A004BFE90 /* FileStoreSyncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8938566E13FB0C2A004BFE90 /* FileStoreSyncer.m */; };
 		8938BF8913F994F200A32873 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8938BF8613F994F200A32873 /* done@2x.png */; };
 		8938BF8A13F994F200A32873 /* stop-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8938BF8713F994F200A32873 /* stop-highlighted@2x.png */; };
 		8938BF8B13F994F200A32873 /* stop-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8938BF8813F994F200A32873 /* stop-normal@2x.png */; };
@@ -136,6 +137,8 @@
 		892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyBundlesView.xib; sourceTree = "<group>"; };
 		892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundlesNavController.h; sourceTree = "<group>"; };
 		892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundlesNavController.m; sourceTree = "<group>"; };
+		8938566D13FB0C2A004BFE90 /* FileStoreSyncer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FileStoreSyncer.h; sourceTree = "<group>"; };
+		8938566E13FB0C2A004BFE90 /* FileStoreSyncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileStoreSyncer.m; sourceTree = "<group>"; };
 		8938BF8613F994F200A32873 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
 		8938BF8713F994F200A32873 /* stop-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-highlighted@2x.png"; sourceTree = "<group>"; };
 		8938BF8813F994F200A32873 /* stop-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-normal@2x.png"; sourceTree = "<group>"; };
@@ -558,6 +561,8 @@
 				896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */,
 				896C0C3B13DC944F007F1B3F /* StoryboxLoader.h */,
 				896C0C3C13DC944F007F1B3F /* StoryboxLoader.m */,
+				8938566D13FB0C2A004BFE90 /* FileStoreSyncer.h */,
+				8938566E13FB0C2A004BFE90 /* FileStoreSyncer.m */,
 				893B471A13E094C700852710 /* Storybox.h */,
 				893B471B13E094C700852710 /* Storybox.m */,
 				89DF135513AF9941005A557A /* Playlist.h */,
@@ -729,6 +734,7 @@
 				89A41A5113F06E4900769CAD /* MDAudioPlayerController.m in Sources */,
 				89A41A5213F06E4900769CAD /* MDAudioPlayerTableViewCell.m in Sources */,
 				891DDBC813F6BE0F006E50CE /* FailedPlaylist.m in Sources */,
+				8938566F13FB0C2A004BFE90 /* FileStoreSyncer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

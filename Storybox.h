@@ -13,6 +13,7 @@
 #import "FileStore.h"
 
 @class StoryboxLoader;
+@class FileStoreSyncer;
 @class PlaylistDownload;
 @class Playlist;
 @class FailedPlaylist;
@@ -49,11 +50,6 @@
 -(void)loadAndsetupWithPlaylistsQueue:(PlaylistsQueue *)playlistsQueue;
 
 -(void)synchronizeWithLocalStorage;
--(void)synchronizePlaylistsAtPath:(NSString *)path;
--(void)processLocalPlaylists;
--(void)removeExpiredPlaylists;
--(void)removePlaylistsWithIncompleteDownloads;
--(void)partitionPlaylistsIntoSlots;
 
 -(NSString *)currentPlaylistsQueueGuid;
 
