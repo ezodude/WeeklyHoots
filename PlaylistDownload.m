@@ -129,12 +129,22 @@
 }
 
 -(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(BOOL)wasDownloading{
-    BOOL wasRequestCancelledByUser = [error code] == 4;
+    BOOL wasRequestCancelledByUser = [error code] == ASIRequestCancelledErrorType;
     if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && wasRequestCancelledByUser) return;
     
-    if(wasDownloading) [self stop];
-    
-    [self.storybox handleFailedPlaylist:self.playlist];
+    switch ([error code]) {
+        case ASIConnectionFailureErrorType:
+            NSLog(@"ASIConnectionFailureErrorType");
+            
+            if(wasDownloading) [self stop];
+            
+            NSString *errorMsg = @"Oops we lost wifi, re-connect and try again!";
+            [self.storybox handleFailedPlaylist:self.playlist erorrMsg:errorMsg abortCollection:YES];
+            
+            break;
+        default:
+            break;
+    }
 }
 
 -(void)allDownloadsCompleted{

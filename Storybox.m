@@ -137,13 +137,13 @@
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }
 
--(void)handleFailedPlaylist:(Playlist *)playlist{
+-(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort{
     NSLog(@"!!!Handling Failed Playlist!!!");
         
     [_playlistDownload release];
     
-    [self.playlistsCollectionDelegate playlistHasFailed:playlist];
-    [self stopCollectingPlaylists];
+    [self.playlistsCollectionDelegate playlistHasFailed:playlist errorMsg:msg];
+    if(shouldAbort) [self stopCollectingPlaylists];
 }
 
 -(void)finishedCollectingPlaylists{

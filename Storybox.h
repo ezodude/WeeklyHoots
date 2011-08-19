@@ -58,5 +58,6 @@
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
--(void)handleFailedPlaylist:(Playlist *)playlist;
+
+-(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort;
 @end

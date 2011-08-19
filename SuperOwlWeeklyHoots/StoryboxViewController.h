@@ -73,7 +73,7 @@
 -(void)drawStartCollectionState;
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
--(void)playlistHasFailed:(Playlist *)playlist;
+-(void)playlistHasFailed:(Playlist *)playlist errorMsg:(NSString *)msg;
 -(void)finishedCollectingPlaylists;
 -(void)stopCollectingPlaylists;
 @end

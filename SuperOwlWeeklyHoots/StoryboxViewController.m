@@ -221,9 +221,8 @@
     [self loadStoryboxCollectionLabels];
 }
 
--(void)playlistHasFailed:(Playlist *)playlist{
-    NSString *message = @"The internet connection was lost so you  can no longer pull any audio stories. Try again when you have wifi.";
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Pull Cancelled" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
+-(void)playlistHasFailed:(Playlist *)playlist errorMsg:(NSString *)msg{
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Pull Cancelled" message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
     [alert show];
 }
 
