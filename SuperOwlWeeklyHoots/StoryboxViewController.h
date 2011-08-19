@@ -22,7 +22,6 @@
 @class StoryboxNavController;
 @class Storybox;
 @class Playlist;
-@class FailedPlaylist;
 @class MDAudioFile;
 @class MDAudioPlayerController;
 
@@ -74,7 +73,7 @@
 -(void)drawStartCollectionState;
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
--(void)playlistHasFailed:(FailedPlaylist *)playlist;
+-(void)playlistHasFailed:(Playlist *)playlist;
 -(void)finishedCollectingPlaylists;
 -(void)stopCollectingPlaylists;
 @end

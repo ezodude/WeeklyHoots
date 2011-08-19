@@ -9,7 +9,6 @@
 #import "PlaylistDownload.h"
 #import "Storybox.h"
 #import "Playlist.h"
-#import "FailedPlaylist.h"
 
 @implementation PlaylistDownload
 
@@ -22,15 +21,8 @@
 @synthesize downloadPath = _downloadPath;
 @synthesize downloadFile = _downloadFile;
 
-@synthesize failedDownloadPath=_failedDownloadPath;
-@synthesize failedDownloadFile=_failedDownloadFile;
-
 +(NSString *)downloadPathUsingPlaylistGuid:(NSString *)playlistGuid {
     return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists", playlistGuid];
-}
-
-+(NSString *)failedPlaylistsDownloadPathUsingPlaylistGuid:(NSString *)playlistGuid {
-    return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"failed-playlists", playlistGuid];
 }
 
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid {
@@ -47,9 +39,6 @@
         
         self.downloadPath = [PlaylistDownload downloadPathUsingPlaylistGuid:self.playlistGuid];        
         self.downloadFile = [self.downloadPath stringByAppendingFormat:@"/%@", [PlaylistDownload playlistJsonFilename:self.playlistGuid]];
-        
-        self.failedDownloadPath = [PlaylistDownload failedPlaylistsDownloadPathUsingPlaylistGuid:self.playlistGuid];
-        self.failedDownloadFile = [self.failedDownloadPath stringByAppendingFormat:@"/%@", [PlaylistDownload playlistJsonFilename:self.playlistGuid]];
     }
     return self;
 }
@@ -99,11 +88,6 @@
     [manager createDirectoryAtPath:self.downloadPath withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
--(void)createFailureDownloadPathOnDisk{
-    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
-    [manager createDirectoryAtPath:self.failedDownloadPath withIntermediateDirectories:YES attributes:nil error:nil];
-}
-
 -(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request{
     NSString *responseString = [request responseString];
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[responseString mutableObjectFromJSONString];
@@ -150,19 +134,7 @@
     
     if(wasDownloading) [self stop];
     
-    [self createFailureDownloadPathOnDisk];
-    
-    NSDictionary *failedPlaylistDictionary = self.playlist ? 
-                                            [self.playlist dictionaryFromObject] : 
-                                            [NSDictionary dictionaryWithObjectsAndKeys:self.playlistGuid, @"id", self.dataQueuedAsString, @"dateQueued", nil];
-    
-    FailedPlaylist *failedPlaylist = [[[FailedPlaylist alloc] initFromDictionary:failedPlaylistDictionary withLocalizedErrorDescription:[error localizedDescription]] autorelease];
-    
-    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-    [fileManager createFileAtPath:self.failedDownloadFile contents:[failedPlaylist JSONData] attributes:nil];
-    [fileManager removeItemAtPath:self.downloadPath error:nil];
-    
-    [self.storybox handleFailedPlaylist:failedPlaylist];
+    [self.storybox handleFailedPlaylist:self.playlist];
 }
 
 -(void)allDownloadsCompleted{
@@ -173,9 +145,6 @@
 - (void)dealloc {
     [self.downloadPath release];
     [self.downloadFile release];
-    
-    [self.failedDownloadPath release];
-    [self.failedDownloadFile release];
     
     [_request release];
     [_audioDownloadsQueue release];

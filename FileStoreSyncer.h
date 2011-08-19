@@ -11,7 +11,6 @@
 
 @class Storybox;
 @class Playlist;
-@class FailedPlaylist;
 
 @interface FileStoreSyncer : NSObject {
     Storybox *_storybox;

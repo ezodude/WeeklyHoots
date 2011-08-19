@@ -17,7 +17,6 @@
 @class Storybox;
 @class ASINetworkQueue;
 @class Playlist;
-@class FailedPlaylist;
 
 #define AUDIO_DIR @"Audio"
 
@@ -30,10 +29,7 @@
     
     NSString *_downloadPath;
     NSString *_downloadFile;
-    
-    NSString *_failedDownloadPath;
-    NSString *_failedDownloadFile;
-    
+        
     ASIHTTPRequest *_request;
     ASINetworkQueue *_audioDownloadsQueue;
 }
@@ -47,11 +43,7 @@
 @property (nonatomic, retain) NSString *downloadPath;
 @property (nonatomic, retain) NSString *downloadFile;
 
-@property (nonatomic, retain) NSString *failedDownloadPath;
-@property (nonatomic, retain) NSString *failedDownloadFile;
-
 +(NSString *)downloadPathUsingPlaylistGuid:(NSString *)playlistGuid;
-+(NSString *)failedPlaylistsDownloadPathUsingPlaylistGuid:(NSString *)playlistGuid;
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid;
 
 -(id)initWithStorybox:(Storybox *)storybox playlistGuid:(NSString *)playlistGuid apiBaseURL:(NSString *)apiBaseURL;
@@ -60,7 +52,6 @@
 -(void)stop;
 
 -(void)createDownloadPathOnDisk;
--(void)createFailureDownloadPathOnDisk;
 
 -(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request;
 -(void)downloadPlaylistProgrammes;

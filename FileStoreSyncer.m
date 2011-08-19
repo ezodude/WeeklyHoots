@@ -9,7 +9,6 @@
 #import "FileStoreSyncer.h"
 #import "Storybox.h"
 #import "Playlist.h"
-#import "FailedPlaylist.h"
 
 @implementation FileStoreSyncer
 
@@ -27,11 +26,7 @@
 
 -(void)extractPlaylists{
     NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
-    NSString *localFailedPlaylistsPath = [Storybox failedPlaylistsPath];
-    
-    [self extractPlaylistsAtPath:localPlaylistsPath];
-    [self extractPlaylistsAtPath:localFailedPlaylistsPath];
-    
+    [self extractPlaylistsAtPath:localPlaylistsPath];    
     NSLog(@"self.playlistsUnderProcess count is: [%d]", [self.playlistsUnderProcess count]);
 }
 
@@ -50,12 +45,7 @@
             NSData *jsonContent = [fileManager contentsAtPath:localJsonPath];
             NSDictionary *dictionary = [jsonContent objectFromJSONData];
             
-            id localPlaylist = nil;
-            
-            if ([dictionary objectForKey:@"error"])
-                localPlaylist = [[FailedPlaylist alloc] initFromDictionary:dictionary];
-            else
-                localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
+            Playlist *localPlaylist = [[Playlist alloc] initFromDictionary:dictionary];
             
             [self.playlistsUnderProcess addObject:localPlaylist];
             [localPlaylist release];
@@ -105,9 +95,6 @@
 
 -(void)categorisePlaylists{
     if([self.playlistsUnderProcess count] == 0) return;
-    
-    self.storybox.failedPlaylistsSlot = [self.playlistsUnderProcess filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"hasErrors == YES"]];
-    NSLog(@"self.storybox.failedPlaylistsSlot: [%@]", [self.storybox.failedPlaylistsSlot description]);
     
     [self.playlistsUnderProcess filterUsingPredicate:[NSPredicate predicateWithFormat:@"hasErrors == NO"]];
     

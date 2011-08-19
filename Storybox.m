@@ -9,7 +9,6 @@
 #import "Storybox.h"
 #import "FileStoreSyncer.h"
 #import "Playlist.h"
-#import "FailedPlaylist.h"
 
 @implementation Storybox
 
@@ -17,8 +16,6 @@
 
 @synthesize currentPlaylistsSlot=_currentPlaylistsSlot;
 @synthesize olderPlaylistsSlot=_olderPlaylistsSlot;
-@synthesize failedPlaylistsSlot=_failedPlaylistsSlot;
-@synthesize playlistsErringDuringDownloads=_playlistsErringDuringDownloads;
 
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
 @synthesize collectionMode=_collectionMode;
@@ -28,8 +25,6 @@
     
     [self.currentPlaylistsSlot release];
     [self.olderPlaylistsSlot release];
-    [self.failedPlaylistsSlot release];
-    [self.playlistsErringDuringDownloads release];
     
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
@@ -42,10 +37,6 @@
     return [NSString stringWithFormat:@"%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists"];
 }
 
-+(NSString *)failedPlaylistsPath{
-    return [NSString stringWithFormat:@"%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"failed-playlists"];
-}
-
 - (id)init {
     self = [super init];
     
@@ -53,7 +44,6 @@
         _programmesAPIURL = [[[Environment sharedInstance] programmesAPIURL] retain];
         self.currentPlaylistsSlot = [NSArray array];
         self.olderPlaylistsSlot = [NSArray array];
-        self.failedPlaylistsSlot = [NSArray array];
     }
     return self;
 }
@@ -80,10 +70,6 @@
 -(NSArray *)getGuidsToIgnoreFromCollection{
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self.currentPlaylistsSlot count]];
     [self.currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [result addObject:[obj guid]];
-    }];
-    
-    [self.failedPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [result addObject:[obj guid]];
     }];
     
@@ -151,23 +137,13 @@
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }
 
--(void)handleFailedPlaylist:(FailedPlaylist *)failedPlaylist{
+-(void)handleFailedPlaylist:(Playlist *)playlist{
     NSLog(@"!!!Handling Failed Playlist!!!");
-    
-    NSMutableArray *tempFailedPlaylists = [NSMutableArray arrayWithArray:self.failedPlaylistsSlot];
-    [tempFailedPlaylists addObject:failedPlaylist];
-    self.failedPlaylistsSlot = [NSArray arrayWithArray:tempFailedPlaylists];
-    
-    NSLog(@"self.failedPlaylistsSlot: [%@]", [self.failedPlaylistsSlot description]);
-    
+        
     [_playlistDownload release];
     
-    if ([[failedPlaylist localizedErrorDescription] isEqualToString:@"A connection failure occurred"]){
-        [self.playlistsCollectionDelegate playlistHasFailed:failedPlaylist];
-        [self stopCollectingPlaylists];
-    }else{
-        if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
-    }
+    [self.playlistsCollectionDelegate playlistHasFailed:playlist];
+    [self stopCollectingPlaylists];
 }
 
 -(void)finishedCollectingPlaylists{
