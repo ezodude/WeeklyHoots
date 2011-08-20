@@ -50,7 +50,10 @@
 -(BOOL)getPlaylist{    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@playlists/%@.json", self.programmesAPIURL, self.playlistGuid]];
     
-    _request = [[ASIHTTPRequest requestWithURL:url] retain];
+    if (_request)
+        _request = [[_request copy] retain];
+    else
+        _request = [[ASIHTTPRequest requestWithURL:url] retain];
         
     [_request setStartedBlock:^{
         NSLog(@"Request starting!");
@@ -132,16 +135,42 @@
     BOOL wasRequestCancelledByUser = [error code] == ASIRequestCancelledErrorType;
     if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && wasRequestCancelledByUser) return;
     
+    NSString *errorMsg = nil;
+    
     switch ([error code]) {
         case ASIConnectionFailureErrorType:
             NSLog(@"ASIConnectionFailureErrorType");
             
             if(wasDownloading) [self stop];
             
-            NSString *errorMsg = @"Oops we lost wifi, re-connect and try again!";
-            [self.storybox handleFailedPlaylist:self.playlist erorrMsg:errorMsg abortCollection:YES];
+            errorMsg = @"Oops! we lost wifi, re-connect and try again.";
+            [self.storybox handleFailedPlaylist:(wasDownloading ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
             
             break;
+        
+        case ASIRequestTimedOutErrorType:
+            NSLog(@"ASIRequestTimedOutErrorType");
+            
+            if (!wasDownloading && _playlistMetadataRequestRetryCount < 3) {
+                NSLog(@"wasDownloading: [%d], _playlistMetadataRequestRetryCount[%d]", wasDownloading, _playlistMetadataRequestRetryCount);
+                
+                _playlistMetadataRequestRetryCount++;
+                [self getPlaylist];
+                return;
+            }
+            
+            if (wasDownloading && _playlistDownloadProgrammesRetryCount < 3) {
+                NSLog(@"wasDownloading: [%d], _playlistDownloadProgrammesRetryCount[%d]", wasDownloading, _playlistDownloadProgrammesRetryCount);
+                
+                _playlistDownloadProgrammesRetryCount++;
+                [self downloadPlaylistProgrammes];
+                return;
+            }
+            
+            errorMsg = @"Oops! seems like we hit a a slow connection. Try pulling again later.";
+            [self.storybox handleFailedPlaylist:(wasDownloading ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
+            break;
+            
         default:
             break;
     }

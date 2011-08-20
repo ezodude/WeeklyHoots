@@ -32,6 +32,8 @@
         
     ASIHTTPRequest *_request;
     ASINetworkQueue *_audioDownloadsQueue;
+    NSInteger _playlistMetadataRequestRetryCount;
+    NSInteger _playlistDownloadProgrammesRetryCount;
 }
 
 @property (nonatomic, retain) NSString *programmesAPIURL;
