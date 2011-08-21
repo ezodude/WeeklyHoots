@@ -32,8 +32,10 @@
         
     ASIHTTPRequest *_request;
     ASINetworkQueue *_audioDownloadsQueue;
+ 
     NSInteger _playlistMetadataRequestRetryCount;
-    NSInteger _playlistDownloadProgrammesRetryCount;
+    
+    NSError *_failure;
 }
 
 @property (nonatomic, retain) NSString *programmesAPIURL;
@@ -44,6 +46,8 @@
 
 @property (nonatomic, retain) NSString *downloadPath;
 @property (nonatomic, retain) NSString *downloadFile;
+
+@property (nonatomic, retain) NSError *failure;
 
 +(NSString *)downloadPathUsingPlaylistGuid:(NSString *)playlistGuid;
 +(NSString *)playlistJsonFilename:(NSString *)playlistGuid;
@@ -58,8 +62,11 @@
 -(void)mapAndStorePlaylistFromRequest:(ASIHTTPRequest *)request;
 -(void)downloadPlaylistProgrammes;
 
--(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(BOOL)wasDownloading;
+-(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(ProgrammeDownload *)progDownload;
 
 -(void)allDownloadsCompleted;
+
+-(void)registerFailure:(NSError *)error;
+-(BOOL)isFailureAlreadyHandled:(NSError *)error;
 
 @end

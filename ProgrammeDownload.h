@@ -20,6 +20,8 @@
     NSString *_tempDownloadFile;
     
     id _downloadDelegate;
+    
+    NSInteger _downloadRetryCount;
 }
 
 @property (nonatomic, retain) Programme *programme;
@@ -28,6 +30,8 @@
 @property (nonatomic, retain) NSString *tempDownloadFile;
 
 @property (nonatomic, retain) id downloadDelegate;
+
+@property (nonatomic, assign) NSInteger downloadRetryCount;
 
 -(ProgrammeDownload *)initWithProgramme:(Programme *)programme downloadPath:(NSString *)downloadPath delegate:(id)delegate;
 

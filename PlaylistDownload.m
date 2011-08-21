@@ -21,6 +21,8 @@
 @synthesize downloadPath = _downloadPath;
 @synthesize downloadFile = _downloadFile;
 
+@synthesize failure=_failure;
+
 +(NSString *)downloadPathUsingPlaylistGuid:(NSString *)playlistGuid {
     return [NSString stringWithFormat:@"%@/%@/%@/%@", [FileStore applicationDocumentsDirectory], AUDIO_DIR, @"playlists", playlistGuid];
 }
@@ -72,7 +74,7 @@
         NSError *error = [_request error];
         NSLog(@"Starting setFailedBlock when attempting to retrieve playlist metadata for guid [%@], error is [%@]", self.playlistGuid, [error localizedDescription]);
         
-        [self handleFailureforError:error fromProgrammeDownload:NO];
+        [self handleFailureforError:error fromProgrammeDownload:nil];
     }];
     
     [_request startAsynchronous];
@@ -123,7 +125,7 @@
     
     NSString *audioDownloadsPath = [self.playlist audioDownloadsPath];
     [[self.playlist programmes] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        ProgrammeDownload *progDownload = [[[ProgrammeDownload alloc] initWithProgramme:(Programme *)obj downloadPath:audioDownloadsPath delegate:self] autorelease];
+        ProgrammeDownload *progDownload = [[[ProgrammeDownload alloc] initWithProgramme:(Programme *)obj downloadPath:audioDownloadsPath delegate:self] retain];
         
         if([progDownload hasNotBeenDownloaded])
             [_audioDownloadsQueue addOperation:[progDownload generateRequest]];
@@ -131,49 +133,44 @@
     [_audioDownloadsQueue go];
 }
 
--(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(BOOL)wasDownloading{
+-(void)handleFailureforError:(NSError *)error fromProgrammeDownload:(ProgrammeDownload *)progDownload{
     BOOL wasRequestCancelledByUser = [error code] == ASIRequestCancelledErrorType;
     if([[error domain] isEqualToString:@"ASIHTTPRequestErrorDomain"] && wasRequestCancelledByUser) return;
     
+    if([self isFailureAlreadyHandled:error]) return;
+    
+    [self registerFailure:error];
+            
     NSString *errorMsg = nil;
     
     switch ([error code]) {
         case ASIConnectionFailureErrorType:
             NSLog(@"ASIConnectionFailureErrorType");
             
-            if(wasDownloading) [self stop];
-            
             errorMsg = @"Oops! we lost wifi, re-connect and try again.";
-            [self.storybox handleFailedPlaylist:(wasDownloading ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
+            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
             
             break;
-        
+            
         case ASIRequestTimedOutErrorType:
             NSLog(@"ASIRequestTimedOutErrorType");
             
-            if (!wasDownloading && _playlistMetadataRequestRetryCount < 3) {
-                NSLog(@"wasDownloading: [%d], _playlistMetadataRequestRetryCount[%d]", wasDownloading, _playlistMetadataRequestRetryCount);
-                
-                _playlistMetadataRequestRetryCount++;
-                [self getPlaylist];
-                return;
-            }
+            errorMsg = @"Oops! seems like we hit a slow connection. Try pulling again later.";
+            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
             
-            if (wasDownloading && _playlistDownloadProgrammesRetryCount < 3) {
-                NSLog(@"wasDownloading: [%d], _playlistDownloadProgrammesRetryCount[%d]", wasDownloading, _playlistDownloadProgrammesRetryCount);
-                
-                _playlistDownloadProgrammesRetryCount++;
-                [self downloadPlaylistProgrammes];
-                return;
-            }
-            
-            errorMsg = @"Oops! seems like we hit a a slow connection. Try pulling again later.";
-            [self.storybox handleFailedPlaylist:(wasDownloading ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
             break;
             
         default:
             break;
     }
+}
+
+-(void)registerFailure:(NSError *)error{
+    if(!self.failure) self.failure = error;
+}
+
+-(BOOL)isFailureAlreadyHandled:(NSError *)error{
+    return self.failure && [self.failure code] == [error code];
 }
 
 -(void)allDownloadsCompleted{

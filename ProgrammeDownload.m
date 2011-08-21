@@ -16,6 +16,7 @@
 @synthesize downloadFile=_downloadFile;
 @synthesize tempDownloadFile=_tempDownloadFile;
 @synthesize downloadDelegate=_downloadDelegate;
+@synthesize downloadRetryCount=_downloadRetryCount;
 
 -(ProgrammeDownload *)initWithProgramme:(Programme *)programme downloadPath:(NSString *)downloadPath delegate:(id)delegate{
     self = [super init];
@@ -49,7 +50,7 @@
     [request setAllowResumeForFileDownloads:YES];
     
     [request setStartedBlock:^{
-        NSLog(@"Request starting!");
+        NSLog(@"Request starting! - Status Code: [%d]", [request responseStatusCode]);
         [self createDownloadPathOnDisk];
         [self.programme setToDownloading];
     }];
@@ -65,7 +66,7 @@
         
         [self.programme setToNotDownloaded]; /* Or Failed Download? */
         
-        [self.downloadDelegate handleFailureforError:error fromProgrammeDownload:YES];
+        [self.downloadDelegate handleFailureforError:error fromProgrammeDownload:self];
     }];
     
     return request;
