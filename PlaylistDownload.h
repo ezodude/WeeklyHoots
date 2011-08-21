@@ -12,11 +12,10 @@
 #import "ASINetworkQueue.h"
 #import "ASIHTTPRequest.h"
 
-#import "ProgrammeDownload.h"
-
 @class Storybox;
 @class ASINetworkQueue;
 @class Playlist;
+@class ProgrammeDownload;
 
 #define AUDIO_DIR @"Audio"
 

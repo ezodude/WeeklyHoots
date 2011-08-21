@@ -16,6 +16,7 @@
 
 @synthesize currentPlaylistsSlot=_currentPlaylistsSlot;
 @synthesize olderPlaylistsSlot=_olderPlaylistsSlot;
+@synthesize ignoredPlaylists=_ignoredPlaylists;
 
 @synthesize playlistsCollectionDelegate=_playlistsCollectionDelegate;
 @synthesize collectionMode=_collectionMode;
@@ -25,6 +26,7 @@
     
     [self.currentPlaylistsSlot release];
     [self.olderPlaylistsSlot release];
+    [self.ignoredPlaylists release];
     
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
@@ -44,6 +46,7 @@
         _programmesAPIURL = [[[Environment sharedInstance] programmesAPIURL] retain];
         self.currentPlaylistsSlot = [NSArray array];
         self.olderPlaylistsSlot = [NSArray array];
+        self.ignoredPlaylists = [NSArray array];
     }
     return self;
 }
@@ -70,6 +73,10 @@
 -(NSArray *)getGuidsToIgnoreFromCollection{
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self.currentPlaylistsSlot count]];
     [self.currentPlaylistsSlot enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [result addObject:[obj guid]];
+    }];
+    
+    [self.ignoredPlaylists enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [result addObject:[obj guid]];
     }];
     
@@ -137,13 +144,21 @@
     if (self.collectionMode) [self collectPlaylistsUsingDelegate:nil];
 }
 
--(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort{
+-(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort ignorePlayList:(BOOL)shouldIgnore{
     NSLog(@"!!!Handling Failed Playlist!!!");
         
     [_playlistDownload release];
     
-    [self.playlistsCollectionDelegate playlistHasFailed:playlist errorMsg:msg];
-    if(shouldAbort) [self stopCollectingPlaylists];
+    [self.playlistsCollectionDelegate playlistHasFailed:playlist errorMsg:msg abortCollection:shouldAbort];
+    
+    if (playlist && shouldIgnore) {
+        NSMutableArray *toIgnore = [NSMutableArray arrayWithArray:self.ignoredPlaylists];
+        [toIgnore addObject:playlist];
+        
+        self.ignoredPlaylists = toIgnore;
+    }
+    
+    shouldAbort ? [self stopCollectingPlaylists] : [self collectPlaylistsUsingDelegate:nil];
 }
 
 -(void)finishedCollectingPlaylists{

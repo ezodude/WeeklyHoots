@@ -9,6 +9,7 @@
 #import "PlaylistDownload.h"
 #import "Storybox.h"
 #import "Playlist.h"
+#import "ProgrammeDownload.h"
 
 @implementation PlaylistDownload
 
@@ -145,19 +146,23 @@
     
     switch ([error code]) {
         case ASIConnectionFailureErrorType:
-            NSLog(@"ASIConnectionFailureErrorType");
-            
-            errorMsg = @"Oops! we lost wifi, re-connect and try again.";
-            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
+            errorMsg = @"Oops! lost connection, try pulling again later.";
+            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES ignorePlayList:NO];
             
             break;
             
         case ASIRequestTimedOutErrorType:
-            NSLog(@"ASIRequestTimedOutErrorType");
-            
             errorMsg = @"Oops! seems like we hit a slow connection. Try pulling again later.";
-            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES];
+            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:YES ignorePlayList:NO];
             
+            break;
+            
+        case SuperOwlPlaylistProgramme404:
+            errorMsg = @"Aborting this playlist as a programme is not available! Don't worry, we informed the super-owlers!";
+            
+            [self stop];
+            
+            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:NO ignorePlayList:YES];
             break;
             
         default:

@@ -11,6 +11,12 @@
 #import "FileStore.h"
 #import "ASIHTTPRequest.h"
 
+typedef enum {
+    SuperOwlPlaylistProgramme404
+} SuperOwlNetworkErrorType;
+
+extern NSString* const SuperOwlNetworkErrorDomain;
+
 @class ASIHTTPRequest;
 
 @interface ProgrammeDownload : NSObject {
@@ -40,5 +46,6 @@
 -(ASIHTTPRequest *)generateRequest;
 
 -(void)createDownloadPathOnDisk;
+-(void)removeDownloadPathFromDisk;
 
 @end

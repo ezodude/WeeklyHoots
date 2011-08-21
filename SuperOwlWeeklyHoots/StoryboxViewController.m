@@ -221,9 +221,16 @@
     [self loadStoryboxCollectionLabels];
 }
 
--(void)playlistHasFailed:(Playlist *)playlist errorMsg:(NSString *)msg{
+-(void)playlistHasFailed:(Playlist *)playlist errorMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort{
+    
+    if (!shouldAbort && playlist) {
+        self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
+        [self.allPlaylistsTableView reloadData];
+    }
+    
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Pull Cancelled" message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
     [alert show];
+    
 }
 
 -(void)finishedCollectingPlaylists{

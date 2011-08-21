@@ -25,6 +25,7 @@
     NSMutableArray *_tempPlaylistProcessing;
     NSArray *_currentPlaylistsSlot;
     NSArray *_olderPlaylistsSlot;
+    NSArray *_ignoredPlaylists;
     
     BOOL _collectionMode;
     PlaylistDownload *_playlistDownload;
@@ -35,6 +36,7 @@
 
 @property (nonatomic, retain) NSArray *currentPlaylistsSlot;
 @property (nonatomic, retain) NSArray *olderPlaylistsSlot;
+@property (nonatomic, retain) NSArray *ignoredPlaylists;
 
 @property (nonatomic, retain) id playlistsCollectionDelegate;
 @property (nonatomic, assign) BOOL collectionMode;
@@ -59,5 +61,5 @@
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
 
--(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort;
+-(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort ignorePlayList:(BOOL)shouldIgnore;
 @end

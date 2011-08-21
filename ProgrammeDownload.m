@@ -8,6 +8,7 @@
 
 #import "ProgrammeDownload.h"
 
+NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
 
 @implementation ProgrammeDownload
 
@@ -50,14 +51,25 @@
     [request setAllowResumeForFileDownloads:YES];
     
     [request setStartedBlock:^{
-        NSLog(@"Request starting! - Status Code: [%d]", [request responseStatusCode]);
+        NSLog(@"Request starting!");
         [self createDownloadPathOnDisk];
         [self.programme setToDownloading];
     }];
     
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock for programme title: [%@] uri: [%@]", [self.programme title], [self.programme audioUri]);
-        [self.programme setToDownloaded];
+        NSLog(@"Request status code [%d]", [request responseStatusCode]);
+        
+        if ([request responseStatusCode] == 404) {
+            NSError *error = [NSError errorWithDomain:SuperOwlNetworkErrorDomain code:SuperOwlPlaylistProgramme404 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"404 when downloading prog guid:[%@], audio uri: [%@]", self.programme.guid, self.programme.audioUri] , NSLocalizedDescriptionKey, nil]];
+            
+            [self.programme setToNotDownloaded];
+            [self removeDownloadPathFromDisk];
+            
+            [self.downloadDelegate handleFailureforError:error fromProgrammeDownload:self];
+        }else{
+            [self.programme setToDownloaded];
+        }
     }];
     
     [request setFailedBlock:^{
@@ -75,6 +87,11 @@
 -(void)createDownloadPathOnDisk{
     NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
     [manager createDirectoryAtPath:self.downloadPath withIntermediateDirectories:YES attributes:nil error:nil];
+}
+
+-(void)removeDownloadPathFromDisk{
+    NSFileManager *manager = [[[NSFileManager alloc] init] autorelease];
+    [manager removeItemAtPath:self.downloadPath error:nil];
 }
 
 - (void)dealloc {
