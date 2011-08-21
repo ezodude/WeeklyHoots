@@ -50,7 +50,7 @@
     [self getPlaylist];
 }
 
--(BOOL)getPlaylist{    
+-(BOOL)getPlaylist{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@playlists/%@.json", self.programmesAPIURL, self.playlistGuid]];
     
     if (_request)

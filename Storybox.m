@@ -9,6 +9,7 @@
 #import "Storybox.h"
 #import "FileStoreSyncer.h"
 #import "Playlist.h"
+#import "Reachability.h"
 
 @implementation Storybox
 
@@ -22,6 +23,9 @@
 @synthesize collectionMode=_collectionMode;
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_internetReachable release];
+    
     [_tempPlaylistProcessing release];
     
     [self.currentPlaylistsSlot release];
@@ -30,8 +34,10 @@
     
     [self.playlistsQueue release];
     [self.playlistsCollectionDelegate release];
+    
     [_playlistDownload release];
     [_programmesAPIURL release];
+    
     [super dealloc];
 }
 
@@ -47,6 +53,11 @@
         self.currentPlaylistsSlot = [NSArray array];
         self.olderPlaylistsSlot = [NSArray array];
         self.ignoredPlaylists = [NSArray array];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkWifiNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+        
+        _internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+        [_internetReachable startNotifier];
     }
     return self;
 }
@@ -103,6 +114,11 @@
     if(!self.playlistsCollectionDelegate && !_collectionMode) 
         self.playlistsCollectionDelegate = delegate;
     
+    if (!_wifiConnected) {
+        [self handleFailedPlaylist:nil erorrMsg:@"Sorry, you have to be on wifi to pull audio stories." abortCollection:YES ignorePlayList:NO];
+        return;
+    }
+    
     NSString *playlistGuidToCollect = [self nextPlaylistGuidToCollect];
     if (playlistGuidToCollect) {
         _playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] retain];
@@ -147,7 +163,7 @@
 -(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort ignorePlayList:(BOOL)shouldIgnore{
     NSLog(@"!!!Handling Failed Playlist!!!");
         
-    [_playlistDownload release];
+    if (_playlistDownload) [_playlistDownload release];
     
     [self.playlistsCollectionDelegate playlistHasFailed:playlist errorMsg:msg abortCollection:shouldAbort];
     
@@ -168,4 +184,12 @@
     [self.playlistsCollectionDelegate finishedCollectingPlaylists];
 }
 
+-(void)checkWifiNetworkStatus:(NSNotification *)notice{
+    NetworkStatus internetStatus = [_internetReachable currentReachabilityStatus];
+    _wifiConnected = (internetStatus == ReachableViaWiFi);
+}
+
+-(BOOL)isWifiConnected{
+    return _wifiConnected;
+}
 @end

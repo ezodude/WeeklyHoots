@@ -17,6 +17,8 @@
 @class PlaylistDownload;
 @class Playlist;
 
+@class Reachability;
+
 @interface Storybox : NSObject {
     NSString *_programmesAPIURL;
     
@@ -30,6 +32,9 @@
     BOOL _collectionMode;
     PlaylistDownload *_playlistDownload;
     id _playlistsCollectionDelegate;
+    
+    Reachability *_internetReachable;
+    BOOL _wifiConnected;
 }
 
 @property (nonatomic, retain) PlaylistsQueue *playlistsQueue;
@@ -62,4 +67,7 @@
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
 
 -(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort ignorePlayList:(BOOL)shouldIgnore;
+
+-(void)checkWifiNetworkStatus:(NSNotification *)notice;
+-(BOOL)isWifiConnected;
 @end

@@ -230,7 +230,6 @@
     
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Pull Cancelled" message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
     [alert show];
-    
 }
 
 -(void)finishedCollectingPlaylists{
@@ -244,6 +243,8 @@
 }
 
 -(void)stopCollectingPlaylists{
+    NSLog(@"stopCollectingPlaylists in StoryboxViewController");
+    
     self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
     [self.allPlaylistsTableView reloadData];
 
