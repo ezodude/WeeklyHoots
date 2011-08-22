@@ -132,12 +132,10 @@
 }
 
 -(void)stopCollectingPlaylists{
-    if (self.collectionMode){
-        [_playlistDownload stop];
-        self.collectionMode = NO;
-            
-        [self.playlistsCollectionDelegate stopCollectingPlaylists];
-    }
+    [_playlistDownload stop];
+    self.collectionMode = NO;
+        
+    [self.playlistsCollectionDelegate stopCollectingPlaylists];
 }
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist{
