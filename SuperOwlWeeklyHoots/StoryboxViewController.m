@@ -7,6 +7,7 @@
 //
 
 #import "StoryboxViewController.h"
+#import "PlaylistDetailsViewController.h"
 #import "StoryboxLoader.h"
 #import "PlaylistsQueue.h"
 #import "Storybox.h"
@@ -41,6 +42,8 @@
 - (void)dealloc
 {
     [self.navController release];
+    [_detailsController release];
+    
     [self.storyboxImageView release];
     [self.startDateDayLabel release];
     [self.startDateMonthYearLabel release];
@@ -77,6 +80,9 @@
 
 - (void)viewDidUnload
 {
+    [_detailsController release];
+    _detailsController = nil;
+
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -216,6 +222,7 @@
     playlist.title = [playlist.title substringFromIndex:2];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    
     [self.allPlaylistsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
     
     [self loadStoryboxCollectionLabels];
@@ -285,6 +292,8 @@
     Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
     
     cell.textLabel.text = playlist.title;
+    if (![[playlist.title substringToIndex:2] isEqualToString:@"* "])
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     return cell;
 }
@@ -326,5 +335,14 @@
     
 	[self.navController presentModalViewController:audioPlayer animated:YES];
 	[audioPlayer release];
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    if (_detailsController == nil) {
+        _detailsController = [[PlaylistDetailsViewController alloc] initWithNibName:@"PlaylistDetailsView" bundle:nil];
+    }
+    
+    [_detailsController setTitle:@"Playlist Details"];
+    [self.navController pushViewController:_detailsController animated:YES];
 }
 @end

@@ -20,6 +20,7 @@
 
 @class StoryboxLoader;
 @class StoryboxNavController;
+@class PlaylistDetailsController;
 @class Storybox;
 @class Playlist;
 @class MDAudioFile;
@@ -27,6 +28,7 @@
 
 @interface StoryboxViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> {
     StoryboxNavController *_navController;
+    PlaylistDetailsController *_detailsController;
     
     UIImageView *_storyboxImageView;
     UILabel *_startDateDayLabel;

@@ -28,6 +28,8 @@
 		892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */; };
 		892F7CC013C1E08500C4B98C /* WeeklyBundlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */; };
 		892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */; };
+		8936B3D11402D4D0004AE67D /* PlaylistDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936B3D01402D4D0004AE67D /* PlaylistDetailsViewController.m */; };
+		8936B3D31402D4F6004AE67D /* PlaylistDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8936B3D21402D4F6004AE67D /* PlaylistDetailsView.xib */; };
 		8938566F13FB0C2A004BFE90 /* FileStoreSyncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8938566E13FB0C2A004BFE90 /* FileStoreSyncer.m */; };
 		8938BF8913F994F200A32873 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8938BF8613F994F200A32873 /* done@2x.png */; };
 		8938BF8A13F994F200A32873 /* stop-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8938BF8713F994F200A32873 /* stop-highlighted@2x.png */; };
@@ -134,6 +136,9 @@
 		892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyBundlesView.xib; sourceTree = "<group>"; };
 		892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundlesNavController.h; sourceTree = "<group>"; };
 		892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundlesNavController.m; sourceTree = "<group>"; };
+		8936B3CF1402D4D0004AE67D /* PlaylistDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistDetailsViewController.h; sourceTree = "<group>"; };
+		8936B3D01402D4D0004AE67D /* PlaylistDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistDetailsViewController.m; sourceTree = "<group>"; };
+		8936B3D21402D4F6004AE67D /* PlaylistDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistDetailsView.xib; sourceTree = "<group>"; };
 		8938566D13FB0C2A004BFE90 /* FileStoreSyncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileStoreSyncer.h; sourceTree = "<group>"; };
 		8938566E13FB0C2A004BFE90 /* FileStoreSyncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileStoreSyncer.m; sourceTree = "<group>"; };
 		8938BF8613F994F200A32873 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
@@ -493,6 +498,9 @@
 				896C0C3513DC6B0E007F1B3F /* StoryboxView.xib */,
 				896C0C4313DCA3B0007F1B3F /* StoryboxNavController.h */,
 				896C0C4413DCA3B0007F1B3F /* StoryboxNavController.m */,
+				8936B3CF1402D4D0004AE67D /* PlaylistDetailsViewController.h */,
+				8936B3D01402D4D0004AE67D /* PlaylistDetailsViewController.m */,
+				8936B3D21402D4F6004AE67D /* PlaylistDetailsView.xib */,
 			);
 			name = Storybox;
 			sourceTree = "<group>";
@@ -687,6 +695,7 @@
 				8938BF9513F994FF00A32873 /* stop-normal.png in Resources */,
 				8938BF9813F99EF500A32873 /* Icon.png in Resources */,
 				8938BF9913F99EF500A32873 /* Icon@2x.png in Resources */,
+				8936B3D31402D4F6004AE67D /* PlaylistDetailsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,6 +738,7 @@
 				89A41A5113F06E4900769CAD /* MDAudioPlayerController.m in Sources */,
 				89A41A5213F06E4900769CAD /* MDAudioPlayerTableViewCell.m in Sources */,
 				8938566F13FB0C2A004BFE90 /* FileStoreSyncer.m in Sources */,
+				8936B3D11402D4D0004AE67D /* PlaylistDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
