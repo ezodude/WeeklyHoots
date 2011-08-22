@@ -19,6 +19,12 @@
 
 @class Reachability;
 
+typedef enum {
+    SuperOwlPlaylistProgramme404
+} SuperOwlNetworkErrorType;
+
+extern NSString* const SuperOwlNetworkErrorDomain;
+
 @interface Storybox : NSObject {
     NSString *_programmesAPIURL;
     

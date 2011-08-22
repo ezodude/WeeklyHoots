@@ -165,6 +165,15 @@
             [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:NO ignorePlayList:YES];
             break;
             
+        case ASICompressionError:
+            errorMsg = @"Aborting this playlist as a programme is not available! Don't worry, we informed the super-owlers!";
+            
+            [self stop];
+            [progDownload removeDownloadPathFromDisk];
+            
+            [self.storybox handleFailedPlaylist:(progDownload != nil ? self.playlist : nil) erorrMsg:errorMsg abortCollection:NO ignorePlayList:YES];
+            break;
+            
         default:
             break;
     }

@@ -6,9 +6,8 @@
 //  Copyright 2011 Said.fm Ltd. All rights reserved.
 //
 
+#import "Storybox.h"
 #import "ProgrammeDownload.h"
-
-NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
 
 @implementation ProgrammeDownload
 

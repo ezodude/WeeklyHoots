@@ -11,6 +11,8 @@
 #import "Playlist.h"
 #import "Reachability.h"
 
+NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
+
 @implementation Storybox
 
 @synthesize playlistsQueue=_playlistsQueue;
