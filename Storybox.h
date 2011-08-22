@@ -39,7 +39,7 @@ extern NSString* const SuperOwlNetworkErrorDomain;
     PlaylistDownload *_playlistDownload;
     id _playlistsCollectionDelegate;
     
-    Reachability *_internetReachable;
+    Reachability *_wifiReachable;
     BOOL _wifiConnected;
 }
 

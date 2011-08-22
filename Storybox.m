@@ -26,7 +26,7 @@ NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_internetReachable release];
+    [_wifiReachable release];
     
     [_tempPlaylistProcessing release];
     
@@ -58,8 +58,8 @@ NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkWifiNetworkStatus:) name:kReachabilityChangedNotification object:nil];
         
-        _internetReachable = [[Reachability reachabilityForInternetConnection] retain];
-        [_internetReachable startNotifier];
+        _wifiReachable = [[Reachability reachabilityForLocalWiFi] retain];
+        [_wifiReachable startNotifier];
     }
     return self;
 }
@@ -116,7 +116,7 @@ NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
     if(!self.playlistsCollectionDelegate && !_collectionMode) 
         self.playlistsCollectionDelegate = delegate;
     
-    if (!_wifiConnected) {
+    if (![self isWifiConnected]) {
         [self handleFailedPlaylist:nil erorrMsg:@"Sorry, you have to be on wifi to pull audio stories." abortCollection:YES ignorePlayList:NO];
         return;
     }
@@ -185,11 +185,11 @@ NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
 }
 
 -(void)checkWifiNetworkStatus:(NSNotification *)notice{
-    NetworkStatus internetStatus = [_internetReachable currentReachabilityStatus];
+    NetworkStatus internetStatus = [_wifiReachable currentReachabilityStatus];
     _wifiConnected = (internetStatus == ReachableViaWiFi);
 }
 
 -(BOOL)isWifiConnected{
-    return _wifiConnected;
+    return [_wifiReachable isReachableViaWiFi];
 }
 @end
