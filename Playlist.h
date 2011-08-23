@@ -58,6 +58,7 @@
 -(NSArray *)downloadFilepathsForProgrammes;
 
 -(BOOL)isExpired;
+-(NSInteger)numberOfDaysBeforeExpiry;
 -(BOOL)hasCompleteDownloads;
 
 -(NSDictionary *)dictionaryFromObject;

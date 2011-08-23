@@ -123,6 +123,15 @@
     return comparison == NSOrderedSame || comparison == NSOrderedAscending;
 }
 
+-(NSInteger)numberOfDaysBeforeExpiry{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDate *today = [NSDate date];
+    NSDateComponents *components = [gregorianCalendar components:NSDayCalendarUnit fromDate:today toDate:self.expiryDate options:0];
+
+    return [components day];
+}
+
 -(BOOL)hasCompleteDownloads{
     NSString *downloadsPath = [self audioDownloadsPath];
     

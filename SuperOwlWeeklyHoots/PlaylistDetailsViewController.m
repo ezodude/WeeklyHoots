@@ -54,6 +54,9 @@
     self.playlistTitle.text = self.sourcePlaylist.title;
     self.storyJockeyName.text = self.sourcePlaylist.storyJockey;
     
+    NSString *daysRemaining = self.sourcePlaylist.numberOfDaysBeforeExpiry == 0 ? @"Last day" : [NSString stringWithFormat:@"%d days left", self.sourcePlaylist.numberOfDaysBeforeExpiry];
+    self.daysRemaining.text = daysRemaining;
+    
     [self.summaryAndProgsTableView reloadData];
     
     [super viewWillAppear:animated];
@@ -135,9 +138,17 @@
         Programme *prog = [[self.sourcePlaylist programmes]objectAtIndex:row];
         cell.textLabel.text = prog.title;
         cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+        cell.imageView.image = [UIImage imageNamed:@"headphones"];
     }
     
     return cell;
+}
+
+#pragma mark -
+#pragma mark TableView Delegate Methods
+
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
 }
 
 @end
