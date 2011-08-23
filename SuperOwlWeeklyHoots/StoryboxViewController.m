@@ -232,7 +232,9 @@
     
     if (!shouldAbort && playlist) {
         self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
-        [self.allPlaylistsTableView reloadData];
+        
+        NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.allPlaylistsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];    
     }
     
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Pull Cancelled" message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
@@ -253,7 +255,11 @@
     NSLog(@"stopCollectingPlaylists in StoryboxViewController");
     
     self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
-    [self.allPlaylistsTableView reloadData];
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.allPlaylistsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
+    
+//    [self.allPlaylistsTableView reloadData];
 
     [self drawStopCollectionState];
     [self loadStoryboxCollectionLabels];
@@ -343,6 +349,13 @@
     }
     
     [_detailsController setTitle:@"Playlist Details"];
+    
+    NSUInteger section = [indexPath section];
+    NSUInteger row = [indexPath row];
+    
+    Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
+    
+    [_detailsController setSourcePlaylist:playlist];
     [self.navController pushViewController:_detailsController animated:YES];
 }
 @end

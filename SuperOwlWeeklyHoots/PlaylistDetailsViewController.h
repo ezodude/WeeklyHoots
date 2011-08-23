@@ -8,9 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class Playlist;
+@class Programme;
 
-@interface PlaylistDetailsViewController : UIViewController {
+@interface PlaylistDetailsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
     
+    Playlist *_sourcePlaylist;
+    
+    UILabel *_playlistTitle;
+    UILabel *_storyJockeyName;    
+    UILabel *_daysRemaining;
+    UITableView *_summaryAndProgsTableView;
 }
 
+@property (nonatomic, retain) Playlist *sourcePlaylist;
+
+@property (nonatomic, retain) IBOutlet UILabel *playlistTitle;
+@property (nonatomic, retain) IBOutlet UILabel *storyJockeyName;    
+@property (nonatomic, retain) IBOutlet UILabel *daysRemaining;
+@property (nonatomic, retain) IBOutlet UITableView *summaryAndProgsTableView;
+
+-(CGFloat)RAD_textHeightForText:(NSString *)text systemFontOfSize:(CGFloat)size;
 @end

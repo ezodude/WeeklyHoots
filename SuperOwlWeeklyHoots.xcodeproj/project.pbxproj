@@ -69,6 +69,8 @@
 		894C514013AB7B2900F83A5F /* RewindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513F13AB7B2900F83A5F /* RewindViewController.m */; };
 		894C514313AB7B2900F83A5F /* WeeklyHootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514113AB7B2900F83A5F /* WeeklyHootView.xib */; };
 		894C514613AB7B2900F83A5F /* RewindView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514413AB7B2900F83A5F /* RewindView.xib */; };
+		894DE98814042950004739C7 /* headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = 894DE98614042950004739C7 /* headphones.png */; };
+		894DE98914042950004739C7 /* headphones@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 894DE98714042950004739C7 /* headphones@2x.png */; };
 		896C0C3613DC6B0E007F1B3F /* StoryboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3413DC6B0E007F1B3F /* StoryboxViewController.m */; };
 		896C0C3713DC6B0E007F1B3F /* StoryboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896C0C3513DC6B0E007F1B3F /* StoryboxView.xib */; };
 		896C0C3A13DC8732007F1B3F /* PlaylistsQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */; };
@@ -193,6 +195,8 @@
 		894C513F13AB7B2900F83A5F /* RewindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewindViewController.m; sourceTree = "<group>"; };
 		894C514213AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WeeklyHootView.xib; sourceTree = "<group>"; };
 		894C514513AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RewindView.xib; sourceTree = "<group>"; };
+		894DE98614042950004739C7 /* headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headphones.png; sourceTree = "<group>"; };
+		894DE98714042950004739C7 /* headphones@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headphones@2x.png"; sourceTree = "<group>"; };
 		896C0C3313DC6B0E007F1B3F /* StoryboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboxViewController.h; sourceTree = "<group>"; };
 		896C0C3413DC6B0E007F1B3F /* StoryboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxViewController.m; sourceTree = "<group>"; };
 		896C0C3513DC6B0E007F1B3F /* StoryboxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryboxView.xib; sourceTree = "<group>"; };
@@ -301,6 +305,8 @@
 		890D0BE213F85D51007125E1 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				894DE98614042950004739C7 /* headphones.png */,
+				894DE98714042950004739C7 /* headphones@2x.png */,
 				8938BF9613F99EF500A32873 /* Icon.png */,
 				8938BF9713F99EF500A32873 /* Icon@2x.png */,
 				890D0BE713F85E8A007125E1 /* gear.png */,
@@ -696,6 +702,8 @@
 				8938BF9813F99EF500A32873 /* Icon.png in Resources */,
 				8938BF9913F99EF500A32873 /* Icon@2x.png in Resources */,
 				8936B3D31402D4F6004AE67D /* PlaylistDetailsView.xib in Resources */,
+				894DE98814042950004739C7 /* headphones.png in Resources */,
+				894DE98914042950004739C7 /* headphones@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

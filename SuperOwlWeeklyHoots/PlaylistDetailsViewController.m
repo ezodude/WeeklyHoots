@@ -7,9 +7,17 @@
 //
 
 #import "PlaylistDetailsViewController.h"
-
+#import "Playlist.h"
+#import "Programme.h"
 
 @implementation PlaylistDetailsViewController
+
+@synthesize sourcePlaylist=_sourcePlaylist;
+
+@synthesize playlistTitle=_playlistTitle;
+@synthesize storyJockeyName=_storyJockeyName;    
+@synthesize daysRemaining=_daysRemaining;
+@synthesize summaryAndProgsTableView=_summaryAndProgsTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,6 +30,13 @@
 
 - (void)dealloc
 {
+    [self.sourcePlaylist release];
+    
+    [self.playlistTitle release];
+    [self.storyJockeyName release];
+    [self.daysRemaining release];
+    [self.summaryAndProgsTableView release];
+    
     [super dealloc];
 }
 
@@ -35,32 +50,94 @@
 
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
+-(void)viewWillAppear:(BOOL)animated{
+    self.playlistTitle.text = self.sourcePlaylist.title;
+    self.storyJockeyName.text = self.sourcePlaylist.storyJockey;
+    
+    [self.summaryAndProgsTableView reloadData];
+    
+    [super viewWillAppear:animated];
 }
-*/
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+//    self.summaryAndProgsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.summaryAndProgsTableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)] autorelease];
     [super viewDidLoad];
 }
-*/
 
 - (void)viewDidUnload
 {
+    self.sourcePlaylist = nil;
+    
+    self.playlistTitle = nil;
+    self.storyJockeyName = nil;
+    self.daysRemaining = nil;
+    self.summaryAndProgsTableView = nil;
+    
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(CGFloat)RAD_textHeightForText:(NSString *)text systemFontOfSize:(CGFloat)size 
+{
+    //Calculate the expected size based on the font and linebreak mode of the label
+    CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width - 50;
+    CGFloat maxHeight = 9999;
+    CGSize maximumLabelSize = CGSizeMake(maxWidth,maxHeight);
+    
+    CGSize expectedLabelSize = [text sizeWithFont:[UIFont systemFontOfSize:size] constrainedToSize:maximumLabelSize lineBreakMode:UILineBreakModeWordWrap]; 
+    
+    return expectedLabelSize.height;
+}
+
+#pragma mark -
+#pragma mark TableView DataSource Methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return section == 0 ? 1 : [[self.sourcePlaylist programmes] count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath  
+{  
+    return [indexPath section] == 0 ? [self RAD_textHeightForText:[self.sourcePlaylist summary] systemFontOfSize:15] + 10.0 : 45.0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(cell == nil){
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    NSUInteger section = [indexPath section];
+    NSUInteger row = [indexPath row];
+    
+    if (section == 0) {
+        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.text = self.sourcePlaylist.summary;
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+    }else{
+        Programme *prog = [[self.sourcePlaylist programmes]objectAtIndex:row];
+        cell.textLabel.text = prog.title;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+    }
+    
+    return cell;
 }
 
 @end
