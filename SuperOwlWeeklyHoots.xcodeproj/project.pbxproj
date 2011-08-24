@@ -107,6 +107,12 @@
 		89E1D6FE13F9407900A40099 /* collect-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E1D6FC13F9407900A40099 /* collect-normal@2x.png */; };
 		89E1F08513DDFF2300D381E2 /* london_double_decker_500x333.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */; };
 		89E1F08813DDFFDB00D381E2 /* bus_window_500 x 339.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */; };
+		89E3607914056C4D006ECEBB /* StoryboxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E3607814056C4D006ECEBB /* StoryboxCell.m */; };
+		89E3607C14056D18006ECEBB /* StoryboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89E3607B14056D18006ECEBB /* StoryboxCell.xib */; };
+		89E3607F14057840006ECEBB /* circle-play.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E3607D14057840006ECEBB /* circle-play.png */; };
+		89E3608014057840006ECEBB /* circle-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E3607E14057840006ECEBB /* circle-play@2x.png */; };
+		89E3608314057867006ECEBB /* circle-o.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E3608114057867006ECEBB /* circle-o.png */; };
+		89E3608414057867006ECEBB /* circle-o@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E3608214057867006ECEBB /* circle-o@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,6 +253,13 @@
 		89E1D6FC13F9407900A40099 /* collect-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect-normal@2x.png"; sourceTree = "<group>"; };
 		89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_double_decker_500x333.jpg; sourceTree = "<group>"; };
 		89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bus_window_500 x 339.jpg"; sourceTree = "<group>"; };
+		89E3607714056C4D006ECEBB /* StoryboxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboxCell.h; sourceTree = "<group>"; };
+		89E3607814056C4D006ECEBB /* StoryboxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxCell.m; sourceTree = "<group>"; };
+		89E3607B14056D18006ECEBB /* StoryboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryboxCell.xib; sourceTree = "<group>"; };
+		89E3607D14057840006ECEBB /* circle-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-play.png"; sourceTree = "<group>"; };
+		89E3607E14057840006ECEBB /* circle-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-play@2x.png"; sourceTree = "<group>"; };
+		89E3608114057867006ECEBB /* circle-o.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-o.png"; sourceTree = "<group>"; };
+		89E3608214057867006ECEBB /* circle-o@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-o@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +318,10 @@
 		890D0BE213F85D51007125E1 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				89E3607D14057840006ECEBB /* circle-play.png */,
+				89E3607E14057840006ECEBB /* circle-play@2x.png */,
+				89E3608114057867006ECEBB /* circle-o.png */,
+				89E3608214057867006ECEBB /* circle-o@2x.png */,
 				894DE98614042950004739C7 /* headphones.png */,
 				894DE98714042950004739C7 /* headphones@2x.png */,
 				8938BF9613F99EF500A32873 /* Icon.png */,
@@ -401,6 +418,9 @@
 				8948138913D3314D004C7D37 /* BundleCell.h */,
 				8948138A13D3314D004C7D37 /* BundleCell.m */,
 				8948138B13D3314D004C7D37 /* BundleCell.xib */,
+				89E3607714056C4D006ECEBB /* StoryboxCell.h */,
+				89E3607814056C4D006ECEBB /* StoryboxCell.m */,
+				89E3607B14056D18006ECEBB /* StoryboxCell.xib */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -704,6 +724,11 @@
 				8936B3D31402D4F6004AE67D /* PlaylistDetailsView.xib in Resources */,
 				894DE98814042950004739C7 /* headphones.png in Resources */,
 				894DE98914042950004739C7 /* headphones@2x.png in Resources */,
+				89E3607C14056D18006ECEBB /* StoryboxCell.xib in Resources */,
+				89E3607F14057840006ECEBB /* circle-play.png in Resources */,
+				89E3608014057840006ECEBB /* circle-play@2x.png in Resources */,
+				89E3608314057867006ECEBB /* circle-o.png in Resources */,
+				89E3608414057867006ECEBB /* circle-o@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +772,7 @@
 				89A41A5213F06E4900769CAD /* MDAudioPlayerTableViewCell.m in Sources */,
 				8938566F13FB0C2A004BFE90 /* FileStoreSyncer.m in Sources */,
 				8936B3D11402D4D0004AE67D /* PlaylistDetailsViewController.m in Sources */,
+				89E3607914056C4D006ECEBB /* StoryboxCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

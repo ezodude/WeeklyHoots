@@ -19,7 +19,7 @@
 #import "ASIDownloadCache.h"
 
 #import "../JSONKit/JSONKit.h"
-#import "MBProgressHUD.h";
+#import "MBProgressHUD.h"
 
 @class Storybox;
 @class ASIHTTPRequest;
