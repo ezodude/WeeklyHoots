@@ -25,7 +25,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
     }
     return self;
 }
@@ -37,7 +36,7 @@
     // Configure the view for the selected state
 }
 
--(void)configureForPlaylist:(Playlist *)playlist{
+-(void)setupPlaylist:(Playlist *)playlist{
     self.sourcePlaylist = playlist;
     
     self.playlistTitle.text = self.sourcePlaylist.title;
@@ -47,10 +46,12 @@
     self.daysRemaining.text = daysRemaining;
 }
          
--(void)toggleReadiness:(BOOL)isReady{
-    self.isReady = isReady;
+-(void)configureReadiness{
+    self.isReady = [self.sourcePlaylist hasCompleteDownloads];
     
     if(self.isReady){
+        self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        
         [self.progressView setHidden:YES];
         [self.storyJockeyCaption setHidden:NO];
         [self.storyJockeyName setHidden:NO];

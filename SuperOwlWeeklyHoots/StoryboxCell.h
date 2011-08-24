@@ -32,6 +32,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *storyJockeyName;
 @property (nonatomic, retain) IBOutlet UILabel *daysRemaining;
 
--(void)configureForPlaylist:(Playlist *)playlist;
--(void)toggleReadiness:(BOOL)isReady;
+-(void)setupPlaylist:(Playlist *)playlist;
+-(void)configureReadiness;
 @end

@@ -12,6 +12,7 @@
 #import "PlaylistsQueue.h"
 #import "Storybox.h"
 #import "Playlist.h"
+#import "StoryboxCell.h"
 
 @implementation StoryboxViewController
 
@@ -74,6 +75,7 @@
 
 - (void)viewDidLoad
 {
+    self.allPlaylistsTableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)] autorelease];
     [self loadLatestStoryboxContent];
     [super viewDidLoad];
 }
@@ -205,7 +207,6 @@
     
     NSMutableArray *newCurrentPlaylists = [NSMutableArray arrayWithArray:self.storyboxCurrentPlaylists];
     
-    playlist.title = [NSString stringWithFormat:@"* %@", playlist.title];
     [newCurrentPlaylists insertObject:playlist atIndex:0];
     
     self.storyboxCurrentPlaylists = [NSArray arrayWithArray:newCurrentPlaylists];
@@ -218,8 +219,6 @@
     NSLog(@"Add playlist completed downloading");
     
     self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
-    
-    playlist.title = [playlist.title substringFromIndex:2];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
@@ -286,20 +285,23 @@
     
     static NSString *CellIdentifier = @"CellIdentifier";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    StoryboxCell *cell = (StoryboxCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil){
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StoryboxCell"
+                                                     owner:self options:nil];
+        for (id oneObject in nib) 
+            if ([oneObject isKindOfClass:[StoryboxCell class]])
+                cell = (StoryboxCell *)oneObject;
     }
 
     NSUInteger section = [indexPath section];
     NSUInteger row = [indexPath row];
     
     Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
-    
-    cell.textLabel.text = playlist.title;
-    if (![[playlist.title substringToIndex:2] isEqualToString:@"* "])
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+
+    [cell setupPlaylist:playlist];
+    [cell configureReadiness];
     
     return cell;
 }
@@ -314,8 +316,7 @@
     
     Playlist *playlist = section == 0 ? [self.storyboxCurrentPlaylists objectAtIndex:row] : [self.storyboxOlderPlaylists objectAtIndex:row];
     
-    
-    return ([[playlist.title substringToIndex:2] isEqualToString:@"* "]) ? nil : indexPath;
+    return [playlist hasCompleteDownloads] ? indexPath : nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -358,4 +359,9 @@
     [_detailsController setSourcePlaylist:playlist];
     [self.navController pushViewController:_detailsController animated:YES];
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 61.0;
+}
+
 @end

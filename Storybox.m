@@ -124,7 +124,6 @@ NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
     NSString *playlistGuidToCollect = [self nextPlaylistGuidToCollect];
     if (playlistGuidToCollect) {
         _playlistDownload = [[[PlaylistDownload alloc]initWithStorybox:self playlistGuid:playlistGuidToCollect apiBaseURL:_programmesAPIURL] retain];
-        
         [_playlistDownload getPlaylist];
                 
         self.collectionMode = YES;
