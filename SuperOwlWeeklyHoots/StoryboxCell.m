@@ -14,6 +14,7 @@
 @synthesize isReady=_isReady;
 @synthesize sourcePlaylist=_sourcePlaylist;
 @synthesize progressView=_progressView;
+@synthesize activityIndicator=_activityIndicator;
 
 @synthesize currentStateImage=_currentStateImage;
 @synthesize playlistTitle=_playlistTitle;
@@ -53,12 +54,16 @@
         self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         
         [self.progressView setHidden:YES];
+        [self.activityIndicator stopAnimating];
+        
         [self.storyJockeyCaption setHidden:NO];
         [self.storyJockeyName setHidden:NO];
         [self.daysRemaining setHidden:NO];
         self.currentStateImage.image = [UIImage imageNamed:@"circle-play"];
     }else{
         [self.progressView setHidden:NO];
+        [self.activityIndicator startAnimating];
+        
         [self.storyJockeyCaption setHidden:YES];
         [self.storyJockeyName setHidden:YES];
         [self.daysRemaining setHidden:YES];
@@ -70,6 +75,7 @@
 {
     [self.sourcePlaylist release];
     [self.progressView release];
+    [self.activityIndicator release];
     
     [self.currentStateImage release];
     [self.playlistTitle release];

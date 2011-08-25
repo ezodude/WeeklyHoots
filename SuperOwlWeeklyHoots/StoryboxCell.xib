@@ -13,11 +13,12 @@
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBUIProgressView</string>
-			<string>IBUITableViewCell</string>
 			<string>IBUIImageView</string>
-			<string>IBUIView</string>
 			<string>IBUILabel</string>
 			<string>IBProxyObject</string>
+			<string>IBUIActivityIndicatorView</string>
+			<string>IBUITableViewCell</string>
+			<string>IBUIView</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -94,7 +95,7 @@
 									<object class="IBUIProgressView" id="997778175">
 										<reference key="NSNextResponder" ref="819442707"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{56, 40}, {231, 9}}</string>
+										<string key="NSFrame">{{56, 40}, {211, 9}}</string>
 										<reference key="NSSuperview" ref="819442707"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="773687213"/>
@@ -156,6 +157,7 @@
 										<string key="NSFrame">{{216, 36}, {68, 16}}</string>
 										<reference key="NSSuperview" ref="819442707"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -168,6 +170,16 @@
 										<int key="IBUIBaselineAdjustment">1</int>
 										<float key="IBUIMinimumFontSize">10</float>
 										<int key="IBUITextAlignment">2</int>
+									</object>
+									<object class="IBUIActivityIndicatorView" id="833097708">
+										<reference key="NSNextResponder" ref="819442707"/>
+										<int key="NSvFlags">-2147483356</int>
+										<string key="NSFrame">{{275, 34}, {20, 20}}</string>
+										<reference key="NSSuperview" ref="819442707"/>
+										<reference key="NSWindow"/>
+										<bool key="IBUIOpaque">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">2</int>
 									</object>
 								</object>
 								<string key="NSFrameSize">{320, 60}</string>
@@ -264,6 +276,14 @@
 					</object>
 					<int key="connectionID">17</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">activityIndicator</string>
+						<reference key="source" ref="702558863"/>
+						<reference key="destination" ref="833097708"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -305,6 +325,7 @@
 							<reference ref="718816873"/>
 							<reference ref="773687213"/>
 							<reference ref="174201231"/>
+							<reference ref="833097708"/>
 						</object>
 						<reference key="parent" ref="702558863"/>
 					</object>
@@ -338,6 +359,11 @@
 						<reference key="object" ref="174201231"/>
 						<reference key="parent" ref="819442707"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">18</int>
+						<reference key="object" ref="833097708"/>
+						<reference key="parent" ref="819442707"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -348,6 +374,7 @@
 					<string>10.IBPluginDependency</string>
 					<string>11.IBPluginDependency</string>
 					<string>12.IBPluginDependency</string>
+					<string>18.IBPluginDependency</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
@@ -358,6 +385,7 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -381,7 +409,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">19</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -393,6 +421,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityIndicator</string>
 							<string>currentStateImage</string>
 							<string>daysRemaining</string>
 							<string>playlistTitle</string>
@@ -402,6 +431,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIActivityIndicatorView</string>
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -414,6 +444,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityIndicator</string>
 							<string>currentStateImage</string>
 							<string>daysRemaining</string>
 							<string>playlistTitle</string>
@@ -423,6 +454,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">activityIndicator</string>
+								<string key="candidateClassName">UIActivityIndicatorView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">currentStateImage</string>
 								<string key="candidateClassName">UIImageView</string>

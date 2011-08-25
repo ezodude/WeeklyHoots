@@ -14,6 +14,7 @@
     BOOL _isReady;
     Playlist *_sourcePlaylist;
     UIProgressView *_progressView;
+    UIActivityIndicatorView *_activityIndicator;
     
     UIImageView *_currentStateImage;
     UILabel *_playlistTitle;
@@ -25,6 +26,7 @@
 @property (nonatomic, assign) BOOL isReady;
 @property (nonatomic, retain) Playlist *sourcePlaylist;
 @property (nonatomic, retain) IBOutlet UIProgressView *progressView;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, retain) IBOutlet UIImageView *currentStateImage;
 @property (nonatomic, retain) IBOutlet UILabel *playlistTitle;
