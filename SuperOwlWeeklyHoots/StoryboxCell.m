@@ -49,6 +49,7 @@
          
 -(void)configureReadiness{
     self.isReady = [self.sourcePlaylist hasCompleteDownloads];
+    NSLog(@"self.isReady: [%d]", self.isReady);
     
     if(self.isReady){
         self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;

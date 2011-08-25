@@ -39,6 +39,7 @@
     UIButton *_collectPlaylistsButton;
     UILabel *_collectPlaylistsButtonCaption;
     
+    UIImageView *_introBackgroundImage;
     UITableView *_allPlaylistsTableView;
     
     Storybox *_storybox;
@@ -57,6 +58,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *collectPlaylistsButton;
 @property (nonatomic, retain) IBOutlet UILabel *collectPlaylistsButtonCaption;
 
+@property (nonatomic, retain) IBOutlet UIImageView *introBackgroundImage;
 @property (nonatomic, retain) IBOutlet UITableView *allPlaylistsTableView;
 
 @property (nonatomic, retain) NSArray *storyboxCurrentPlaylists;
@@ -83,4 +85,5 @@
 -(void)finishedCollectingPlaylists;
 
 -(void)stopCollectingPlaylists;
+-(void)resetCollectionState;
 @end

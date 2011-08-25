@@ -177,7 +177,14 @@ NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
         self.ignoredPlaylists = toIgnore;
     }
     
-    shouldAbort ? [self stopCollectingPlaylists] : [self collectPlaylistsUsingDelegate:nil];
+    if(playlist && shouldAbort){
+        [self stopCollectingPlaylists];
+    }else if(shouldAbort){
+        [self.playlistsCollectionDelegate resetCollectionState];
+    }else{
+        [self collectPlaylistsUsingDelegate:nil];
+    }
+//    shouldAbort ? [self stopCollectingPlaylists] : [self collectPlaylistsUsingDelegate:nil];
 }
 
 -(void)finishedCollectingPlaylists{

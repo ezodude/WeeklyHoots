@@ -26,6 +26,7 @@
 @synthesize collectPlaylistsButton=_collectPlaylistsButton;
 @synthesize collectPlaylistsButtonCaption=_collectPlaylistsButtonCaption;
 
+@synthesize introBackgroundImage=_introBackgroundImage;
 @synthesize allPlaylistsTableView=_allPlaylistsTableView;
 
 @synthesize storyboxCurrentPlaylists=_storyboxCurrentPlaylists;
@@ -54,6 +55,7 @@
     [self.collectPlaylistsButton release];
     [self.collectPlaylistsButtonCaption release];
     
+    [self.introBackgroundImage release];
     [self.allPlaylistsTableView release];
     
     [_storybox release];
@@ -76,6 +78,7 @@
 - (void)viewDidLoad
 {
     self.allPlaylistsTableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)] autorelease];
+    
     [self loadLatestStoryboxContent];
     [super viewDidLoad];
 }
@@ -160,6 +163,14 @@
     self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
     self.storyboxOlderPlaylists = [NSArray arrayWithArray:[_storybox olderPlaylistsSlot]];
     
+    if ([self.storyboxCurrentPlaylists count] > 0 || [self.storyboxOlderPlaylists count] > 0) {
+        [self.introBackgroundImage setHidden:YES];
+        [self.allPlaylistsTableView setHidden:NO];
+    }else{
+        [self.introBackgroundImage setHidden:NO];
+        [self.allPlaylistsTableView setHidden:YES];
+    }
+    
     [self.allPlaylistsTableView reloadData];
 }
 
@@ -204,6 +215,9 @@
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist{
     NSLog(@"Add playlist undergoing download");
+    
+    [self.introBackgroundImage setHidden:YES];
+    [self.allPlaylistsTableView setHidden:NO];
     
     NSMutableArray *newCurrentPlaylists = [NSMutableArray arrayWithArray:self.storyboxCurrentPlaylists];
     
@@ -266,7 +280,15 @@
     [self.allPlaylistsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
     
 //    [self.allPlaylistsTableView reloadData];
+    [self resetCollectionState];
+}
 
+-(void)resetCollectionState{
+    if ([self.storyboxCurrentPlaylists count] == 0) {
+        [self.allPlaylistsTableView setHidden:YES];
+        [self.introBackgroundImage setHidden:NO];
+    }
+    
     [self drawStopCollectionState];
     [self loadStoryboxCollectionLabels];
 }
