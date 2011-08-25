@@ -19,6 +19,8 @@
 @synthesize daysRemaining=_daysRemaining;
 @synthesize summaryAndProgsTableView=_summaryAndProgsTableView;
 
+@synthesize storyJockeyImageView=_storyJockeyImageView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,6 +36,7 @@
     
     [self.playlistTitle release];
     [self.storyJockeyName release];
+    [self.storyJockeyImageView release];
     [self.daysRemaining release];
     [self.summaryAndProgsTableView release];
     
@@ -51,6 +54,7 @@
 #pragma mark - View lifecycle
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.storyJockeyImageView.image = [UIImage imageNamed:self.sourcePlaylist.storyJockey];
     self.playlistTitle.text = self.sourcePlaylist.title;
     self.storyJockeyName.text = self.sourcePlaylist.storyJockey;
     

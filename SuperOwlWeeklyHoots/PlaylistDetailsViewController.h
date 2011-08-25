@@ -16,7 +16,8 @@
     Playlist *_sourcePlaylist;
     
     UILabel *_playlistTitle;
-    UILabel *_storyJockeyName;    
+    UILabel *_storyJockeyName;
+    UIImageView *_storyJockeyImageView;
     UILabel *_daysRemaining;
     UITableView *_summaryAndProgsTableView;
 }
@@ -24,7 +25,8 @@
 @property (nonatomic, retain) Playlist *sourcePlaylist;
 
 @property (nonatomic, retain) IBOutlet UILabel *playlistTitle;
-@property (nonatomic, retain) IBOutlet UILabel *storyJockeyName;    
+@property (nonatomic, retain) IBOutlet UILabel *storyJockeyName;
+@property (nonatomic, retain) IBOutlet UIImageView *storyJockeyImageView;
 @property (nonatomic, retain) IBOutlet UILabel *daysRemaining;
 @property (nonatomic, retain) IBOutlet UITableView *summaryAndProgsTableView;
 
