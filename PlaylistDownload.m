@@ -121,6 +121,8 @@
         [_audioDownloadsQueue setDelegate:self];
         [_audioDownloadsQueue setMaxConcurrentOperationCount:3];
         [_audioDownloadsQueue setShouldCancelAllRequestsOnFailure:YES];
+        [_audioDownloadsQueue setShowAccurateProgress:YES];
+        [_audioDownloadsQueue setDownloadProgressDelegate:self.storybox];
         [_audioDownloadsQueue setQueueDidFinishSelector:@selector(allDownloadsCompleted)];
     }
     

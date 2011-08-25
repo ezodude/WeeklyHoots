@@ -73,9 +73,14 @@
 -(IBAction)collectPlaylists:(id)sender;
 -(void)drawStopCollectionState;
 -(void)drawStartCollectionState;
+
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
+-(void)setProgress:(float)amount;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
+
 -(void)playlistHasFailed:(Playlist *)playlist errorMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort;
+
 -(void)finishedCollectingPlaylists;
+
 -(void)stopCollectingPlaylists;
 @end

@@ -215,6 +215,13 @@
     [self.allPlaylistsTableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
 }
 
+-(void)setProgress:(float)amount{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    StoryboxCell *cell = (StoryboxCell *)[self.allPlaylistsTableView cellForRowAtIndexPath:path];
+    NSLog(@"Amount: [%f]", amount);
+    [cell.progressView setProgress:amount];
+}
+
 -(void)playlistCompletedDownloading:(Playlist *)playlist{
     NSLog(@"Add playlist completed downloading");
     

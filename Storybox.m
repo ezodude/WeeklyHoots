@@ -143,6 +143,10 @@ NSString* const SuperOwlNetworkErrorDomain = @"SuperOwlNetworkErrorDomain";
     [self.playlistsCollectionDelegate addPlaylistUndergoingDownload:playlist];
 }
 
+-(void)setProgress:(float)amount{
+    [self.playlistsCollectionDelegate setProgress:amount];
+}
+
 -(void)playlistCompletedDownloading:(Playlist *)playlist{
     NSLog(@"Playlist [%@] Completed Downloading!", [playlist title]);
     NSLog(@"Collection Mode! [%d]", self.collectionMode);

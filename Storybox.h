@@ -70,6 +70,7 @@ extern NSString* const SuperOwlNetworkErrorDomain;
 -(void)finishedCollectingPlaylists;
 
 -(void)addPlaylistUndergoingDownload:(Playlist *)playlist;
+-(void)setProgress:(float)amount;
 -(void)playlistCompletedDownloading:(Playlist *)playlist;
 
 -(void)handleFailedPlaylist:(Playlist *)playlist erorrMsg:(NSString *)msg abortCollection:(BOOL)shouldAbort ignorePlayList:(BOOL)shouldIgnore;
