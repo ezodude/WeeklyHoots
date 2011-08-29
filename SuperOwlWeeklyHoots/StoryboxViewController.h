@@ -45,6 +45,8 @@
     Storybox *_storybox;
     NSArray *_storyboxCurrentPlaylists;
     NSArray *_storyboxOlderPlaylists;
+    
+    BOOL _isPlayerOn;
 }
 
 @property (nonatomic, retain) StoryboxNavController *navController;
@@ -63,6 +65,8 @@
 
 @property (nonatomic, retain) NSArray *storyboxCurrentPlaylists;
 @property (nonatomic, retain) NSArray *storyboxOlderPlaylists;
+
+@property (nonatomic, assign) BOOL isPlayerOn;
 
 -(void)loadLatestStoryboxContent;
 -(void)loadStoryboxImage;

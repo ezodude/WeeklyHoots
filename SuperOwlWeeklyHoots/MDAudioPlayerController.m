@@ -345,6 +345,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 {
 	[player stop];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"playerDismissed" object:nil];
 }
 
 - (void)showSongFiles
