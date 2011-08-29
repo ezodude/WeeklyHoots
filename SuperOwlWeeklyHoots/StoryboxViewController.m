@@ -80,6 +80,10 @@
     self.allPlaylistsTableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)] autorelease];
     
     [self loadLatestStoryboxContent];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(loadLatestStoryboxContent) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
     [super viewDidLoad];
 }
 
@@ -103,6 +107,8 @@
 #pragma mark Refresh Storybox Content Methods
 
 -(void)loadLatestStoryboxContent{
+    if (_storybox && [_storybox collectionMode]) return;
+    
     self.navController = [[[UIApplication sharedApplication] delegate] storyboxNavController];
     
     MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:self.navController.view animated:YES] retain];
