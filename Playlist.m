@@ -72,30 +72,6 @@
     return self;
 }
 
-//-(NSUInteger)totalProgrammesCount{
-//    if(!self.programmes) return 0;
-//    return [self.programmes count];
-//}
-//
-//-(NSUInteger)downloadedProgrammesCount{
-//    if(!self.programmes) return 0;
-//    __block NSUInteger result;
-//    
-//    [self.programmes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
-//        if ([obj downloaded])
-//            result++;
-//    }];
-//    
-//    return result;
-//}
-//
-//-(NSArray *)programmesAwaitingDownload{
-//    NSPredicate *notDownloadedPredicate = 
-//    [NSPredicate predicateWithFormat:@"downloaded == NO"];
-//    
-//    return [self.programmes filteredArrayUsingPredicate:notDownloadedPredicate];
-//}
-
 -(NSString *)pathOnDisk{
     NSString *localPlaylistsPath = [Storybox allPlaylistsPath];
     return [NSString stringWithFormat:@"%@/%@", localPlaylistsPath, self.guid];

@@ -49,10 +49,6 @@
                 dateQueued:(NSString *) dateQueued
                 programmes:(NSArray *)programmes;
 
-//-(NSUInteger)totalProgrammesCount;
-//-(NSUInteger)downloadedProgrammesCount;
-//-(NSArray *)programmesAwaitingDownload;
-
 -(NSString *)pathOnDisk;
 -(NSString *)audioDownloadsPath;
 -(NSArray *)downloadFilepathsForProgrammes;
