@@ -37,11 +37,7 @@
 		890D0BE613F85D65007125E1 /* storybox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 890D0BE413F85D65007125E1 /* storybox@2x.png */; };
 		890D0BE913F85E8A007125E1 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 890D0BE713F85E8A007125E1 /* gear.png */; };
 		890D0BEA13F85E8A007125E1 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 890D0BE813F85E8A007125E1 /* gear@2x.png */; };
-		891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DB32913BCD09500B27C2F /* BundlesManager.m */; };
 		892F7CB913C0F94100C4B98C /* FileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CB813C0F94100C4B98C /* FileStore.m */; };
-		892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */; };
-		892F7CC013C1E08500C4B98C /* WeeklyBundlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */; };
-		892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */; };
 		8936B3D11402D4D0004AE67D /* PlaylistDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936B3D01402D4D0004AE67D /* PlaylistDetailsViewController.m */; };
 		8936B3D31402D4F6004AE67D /* PlaylistDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8936B3D21402D4F6004AE67D /* PlaylistDetailsView.xib */; };
 		8938566F13FB0C2A004BFE90 /* FileStoreSyncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8938566E13FB0C2A004BFE90 /* FileStoreSyncer.m */; };
@@ -59,19 +55,10 @@
 		893FBFAE13C23CF2007EE2E7 /* CabinSketch-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFAD13C23CF2007EE2E7 /* CabinSketch-Bold.ttf */; };
 		893FBFB613C37047007EE2E7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFB413C37047007EE2E7 /* MBProgressHUD.m */; };
 		893FBFB913C3714E007EE2E7 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 893FBFB813C3714E007EE2E7 /* README.mdown */; };
-		893FBFBE13C4C083007EE2E7 /* AudioDownloadsRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFBD13C4C083007EE2E7 /* AudioDownloadsRunner.m */; };
-		893FBFC113C4D4D3007EE2E7 /* AudioDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */; };
 		8948138513D32F28004C7D37 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138013D32F28004C7D37 /* UIImage+Alpha.m */; };
 		8948138613D32F28004C7D37 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138213D32F28004C7D37 /* UIImage+Resize.m */; };
 		8948138713D32F28004C7D37 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138413D32F28004C7D37 /* UIImage+RoundedCorner.m */; };
-		8948138C13D3314D004C7D37 /* BundleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948138A13D3314D004C7D37 /* BundleCell.m */; };
-		8948138D13D3314D004C7D37 /* BundleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8948138B13D3314D004C7D37 /* BundleCell.xib */; };
 		8948139913D34737004C7D37 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8948139813D34736004C7D37 /* QuartzCore.framework */; };
-		894813A013D34907004C7D37 /* bus_window_240x163.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139B13D34907004C7D37 /* bus_window_240x163.jpg */; };
-		894813A113D34907004C7D37 /* london_double_decker_240x160.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139C13D34907004C7D37 /* london_double_decker_240x160.jpg */; };
-		894813A213D34907004C7D37 /* rush_hour_240x160.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139D13D34907004C7D37 /* rush_hour_240x160.jpg */; };
-		894813A313D34907004C7D37 /* story_road_240x180.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139E13D34907004C7D37 /* story_road_240x180.jpg */; };
-		894813A413D34907004C7D37 /* urban_commute_240x180.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8948139F13D34907004C7D37 /* urban_commute_240x180.jpg */; };
 		894C512713AB7B2900F83A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512613AB7B2900F83A5F /* UIKit.framework */; };
 		894C512913AB7B2900F83A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512813AB7B2900F83A5F /* Foundation.framework */; };
 		894C512B13AB7B2900F83A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C512A13AB7B2900F83A5F /* CoreGraphics.framework */; };
@@ -79,10 +66,6 @@
 		894C513413AB7B2900F83A5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513313AB7B2900F83A5F /* main.m */; };
 		894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */; };
 		894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C513813AB7B2900F83A5F /* MainWindow.xib */; };
-		894C513D13AB7B2900F83A5F /* WeeklyHootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513C13AB7B2900F83A5F /* WeeklyHootViewController.m */; };
-		894C514013AB7B2900F83A5F /* RewindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C513F13AB7B2900F83A5F /* RewindViewController.m */; };
-		894C514313AB7B2900F83A5F /* WeeklyHootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514113AB7B2900F83A5F /* WeeklyHootView.xib */; };
-		894C514613AB7B2900F83A5F /* RewindView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894C514413AB7B2900F83A5F /* RewindView.xib */; };
 		894DE98814042950004739C7 /* headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = 894DE98614042950004739C7 /* headphones.png */; };
 		894DE98914042950004739C7 /* headphones@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 894DE98714042950004739C7 /* headphones@2x.png */; };
 		896C0C3613DC6B0E007F1B3F /* StoryboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3413DC6B0E007F1B3F /* StoryboxViewController.m */; };
@@ -112,7 +95,6 @@
 		89A41A5113F06E4900769CAD /* MDAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A41A3C13F06E4900769CAD /* MDAudioPlayerController.m */; };
 		89A41A5213F06E4900769CAD /* MDAudioPlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A41A3E13F06E4900769CAD /* MDAudioPlayerTableViewCell.m */; };
 		89C0779813E9337F00DDAB6E /* ProgrammeDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C0779713E9337F00DDAB6E /* ProgrammeDownload.m */; };
-		89DF135413AF9351005A557A /* WeeklyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135313AF9351005A557A /* WeeklyBundle.m */; };
 		89DF135713AF9941005A557A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135613AF9941005A557A /* Playlist.m */; };
 		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
 		89DF135D13B0A046005A557A /* WeeklyHootSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89DF135C13B0A046005A557A /* WeeklyHootSectionHeaderView.xib */; };
@@ -163,15 +145,8 @@
 		890D0BE413F85D65007125E1 /* storybox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storybox@2x.png"; sourceTree = "<group>"; };
 		890D0BE713F85E8A007125E1 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		890D0BE813F85E8A007125E1 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
-		891DB32813BCD09500B27C2F /* BundlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundlesManager.h; sourceTree = "<group>"; };
-		891DB32913BCD09500B27C2F /* BundlesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundlesManager.m; sourceTree = "<group>"; };
 		892F7CB713C0F94100C4B98C /* FileStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileStore.h; sourceTree = "<group>"; };
 		892F7CB813C0F94100C4B98C /* FileStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileStore.m; sourceTree = "<group>"; };
-		892F7CBC13C1E08500C4B98C /* WeeklyBundlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundlesViewController.h; sourceTree = "<group>"; };
-		892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundlesViewController.m; sourceTree = "<group>"; };
-		892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyBundlesView.xib; sourceTree = "<group>"; };
-		892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundlesNavController.h; sourceTree = "<group>"; };
-		892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundlesNavController.m; sourceTree = "<group>"; };
 		8936B3CF1402D4D0004AE67D /* PlaylistDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistDetailsViewController.h; sourceTree = "<group>"; };
 		8936B3D01402D4D0004AE67D /* PlaylistDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistDetailsViewController.m; sourceTree = "<group>"; };
 		8936B3D21402D4F6004AE67D /* PlaylistDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistDetailsView.xib; sourceTree = "<group>"; };
@@ -193,25 +168,13 @@
 		893FBFB413C37047007EE2E7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		893FBFB513C37047007EE2E7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		893FBFB813C3714E007EE2E7 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
-		893FBFBC13C4C083007EE2E7 /* AudioDownloadsRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDownloadsRunner.h; sourceTree = "<group>"; };
-		893FBFBD13C4C083007EE2E7 /* AudioDownloadsRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDownloadsRunner.m; sourceTree = "<group>"; };
-		893FBFBF13C4D4D3007EE2E7 /* AudioDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDownload.h; sourceTree = "<group>"; };
-		893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDownload.m; sourceTree = "<group>"; };
 		8948137F13D32F28004C7D37 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		8948138013D32F28004C7D37 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		8948138113D32F28004C7D37 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		8948138213D32F28004C7D37 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		8948138313D32F28004C7D37 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		8948138413D32F28004C7D37 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
-		8948138913D3314D004C7D37 /* BundleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleCell.h; sourceTree = "<group>"; };
-		8948138A13D3314D004C7D37 /* BundleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleCell.m; sourceTree = "<group>"; };
-		8948138B13D3314D004C7D37 /* BundleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BundleCell.xib; sourceTree = "<group>"; };
 		8948139813D34736004C7D37 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		8948139B13D34907004C7D37 /* bus_window_240x163.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bus_window_240x163.jpg; sourceTree = "<group>"; };
-		8948139C13D34907004C7D37 /* london_double_decker_240x160.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_double_decker_240x160.jpg; sourceTree = "<group>"; };
-		8948139D13D34907004C7D37 /* rush_hour_240x160.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rush_hour_240x160.jpg; sourceTree = "<group>"; };
-		8948139E13D34907004C7D37 /* story_road_240x180.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = story_road_240x180.jpg; sourceTree = "<group>"; };
-		8948139F13D34907004C7D37 /* urban_commute_240x180.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = urban_commute_240x180.jpg; sourceTree = "<group>"; };
 		894C512213AB7B2900F83A5F /* SuperOwlWeeklyHoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperOwlWeeklyHoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C512613AB7B2900F83A5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		894C512813AB7B2900F83A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -223,12 +186,6 @@
 		894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperOwlWeeklyHootsAppDelegate.h; sourceTree = "<group>"; };
 		894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperOwlWeeklyHootsAppDelegate.m; sourceTree = "<group>"; };
 		894C513913AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		894C513B13AB7B2900F83A5F /* WeeklyHootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeeklyHootViewController.h; sourceTree = "<group>"; };
-		894C513C13AB7B2900F83A5F /* WeeklyHootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeeklyHootViewController.m; sourceTree = "<group>"; };
-		894C513E13AB7B2900F83A5F /* RewindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewindViewController.h; sourceTree = "<group>"; };
-		894C513F13AB7B2900F83A5F /* RewindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewindViewController.m; sourceTree = "<group>"; };
-		894C514213AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WeeklyHootView.xib; sourceTree = "<group>"; };
-		894C514513AB7B2900F83A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RewindView.xib; sourceTree = "<group>"; };
 		894DE98614042950004739C7 /* headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headphones.png; sourceTree = "<group>"; };
 		894DE98714042950004739C7 /* headphones@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headphones@2x.png"; sourceTree = "<group>"; };
 		896C0C3313DC6B0E007F1B3F /* StoryboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboxViewController.h; sourceTree = "<group>"; };
@@ -267,9 +224,6 @@
 		89A41A3E13F06E4900769CAD /* MDAudioPlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAudioPlayerTableViewCell.m; sourceTree = "<group>"; };
 		89C0779613E9337F00DDAB6E /* ProgrammeDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammeDownload.h; sourceTree = "<group>"; };
 		89C0779713E9337F00DDAB6E /* ProgrammeDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammeDownload.m; sourceTree = "<group>"; };
-		89D4A51D13B799EF0051A9F3 /* SuperOwlAudioNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperOwlAudioNotifications.h; sourceTree = "<group>"; };
-		89DF135213AF9351005A557A /* WeeklyBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyBundle.h; sourceTree = "<group>"; };
-		89DF135313AF9351005A557A /* WeeklyBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyBundle.m; sourceTree = "<group>"; };
 		89DF135513AF9941005A557A /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		89DF135613AF9941005A557A /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		89DF135813AF9A86005A557A /* Programme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Programme.h; sourceTree = "<group>"; };
@@ -403,21 +357,8 @@
 			isa = PBXGroup;
 			children = (
 				896C0C3213DC69C3007F1B3F /* Storybox */,
-				892F7CBB13C1E05000C4B98C /* WeeklyBundles */,
 			);
 			name = Sections;
-			sourceTree = "<group>";
-		};
-		892F7CBB13C1E05000C4B98C /* WeeklyBundles */ = {
-			isa = PBXGroup;
-			children = (
-				892F7CBC13C1E08500C4B98C /* WeeklyBundlesViewController.h */,
-				892F7CBD13C1E08500C4B98C /* WeeklyBundlesViewController.m */,
-				892F7CBE13C1E08500C4B98C /* WeeklyBundlesView.xib */,
-				892F7CC513C2284500C4B98C /* WeeklyBundlesNavController.m */,
-				892F7CC413C2284500C4B98C /* WeeklyBundlesNavController.h */,
-			);
-			name = WeeklyBundles;
 			sourceTree = "<group>";
 		};
 		892F7CC713C2383800C4B98C /* Fonts */ = {
@@ -471,9 +412,6 @@
 		8948138813D3304B004C7D37 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				8948138913D3314D004C7D37 /* BundleCell.h */,
-				8948138A13D3314D004C7D37 /* BundleCell.m */,
-				8948138B13D3314D004C7D37 /* BundleCell.xib */,
 				89E3607714056C4D006ECEBB /* StoryboxCell.h */,
 				89E3607814056C4D006ECEBB /* StoryboxCell.m */,
 				89E3607B14056D18006ECEBB /* StoryboxCell.xib */,
@@ -486,11 +424,6 @@
 			children = (
 				89E1F08713DDFFDB00D381E2 /* bus_window_500 x 339.jpg */,
 				89E1F08413DDFF2300D381E2 /* london_double_decker_500x333.jpg */,
-				8948139B13D34907004C7D37 /* bus_window_240x163.jpg */,
-				8948139C13D34907004C7D37 /* london_double_decker_240x160.jpg */,
-				8948139D13D34907004C7D37 /* rush_hour_240x160.jpg */,
-				8948139E13D34907004C7D37 /* story_road_240x180.jpg */,
-				8948139F13D34907004C7D37 /* urban_commute_240x180.jpg */,
 			);
 			name = "Bundle Background Images";
 			sourceTree = "<group>";
@@ -539,18 +472,11 @@
 				8948138813D3304B004C7D37 /* Custom Cells */,
 				892F7CBA13C1E03C00C4B98C /* Sections */,
 				892F7CB613C0F91D00C4B98C /* Utilities */,
-				89D4A51B13B799970051A9F3 /* Protocols */,
 				89099C0213B4AF5200FEE82B /* Config */,
 				89099BF313B4A2AA00FEE82B /* Vendor */,
 				894C513513AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.h */,
 				894C513613AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m */,
 				894C513813AB7B2900F83A5F /* MainWindow.xib */,
-				894C513B13AB7B2900F83A5F /* WeeklyHootViewController.h */,
-				894C513C13AB7B2900F83A5F /* WeeklyHootViewController.m */,
-				894C513E13AB7B2900F83A5F /* RewindViewController.h */,
-				894C513F13AB7B2900F83A5F /* RewindViewController.m */,
-				894C514113AB7B2900F83A5F /* WeeklyHootView.xib */,
-				894C514413AB7B2900F83A5F /* RewindView.xib */,
 				894C512D13AB7B2900F83A5F /* Supporting Files */,
 			);
 			path = SuperOwlWeeklyHoots;
@@ -627,25 +553,9 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		89D4A51B13B799970051A9F3 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				89D4A51D13B799EF0051A9F3 /* SuperOwlAudioNotifications.h */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		89DF135113AF931C005A557A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				89DF135213AF9351005A557A /* WeeklyBundle.h */,
-				89DF135313AF9351005A557A /* WeeklyBundle.m */,
-				891DB32813BCD09500B27C2F /* BundlesManager.h */,
-				891DB32913BCD09500B27C2F /* BundlesManager.m */,
-				893FBFBC13C4C083007EE2E7 /* AudioDownloadsRunner.h */,
-				893FBFBD13C4C083007EE2E7 /* AudioDownloadsRunner.m */,
-				893FBFBF13C4D4D3007EE2E7 /* AudioDownload.h */,
-				893FBFC013C4D4D3007EE2E7 /* AudioDownload.m */,
 				896C0C3813DC8732007F1B3F /* PlaylistsQueue.h */,
 				896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */,
 				896C0C3B13DC944F007F1B3F /* StoryboxLoader.h */,
@@ -728,21 +638,12 @@
 			files = (
 				894C513113AB7B2900F83A5F /* InfoPlist.strings in Resources */,
 				894C513A13AB7B2900F83A5F /* MainWindow.xib in Resources */,
-				894C514313AB7B2900F83A5F /* WeeklyHootView.xib in Resources */,
-				894C514613AB7B2900F83A5F /* RewindView.xib in Resources */,
 				89DF135D13B0A046005A557A /* WeeklyHootSectionHeaderView.xib in Resources */,
 				89099BF913B4A2E300FEE82B /* CHANGELOG.md in Resources */,
 				89099BFB13B4A2E300FEE82B /* README.md in Resources */,
 				89099BFD13B4AB8600FEE82B /* Environments.plist in Resources */,
-				892F7CC013C1E08500C4B98C /* WeeklyBundlesView.xib in Resources */,
 				893FBFAE13C23CF2007EE2E7 /* CabinSketch-Bold.ttf in Resources */,
 				893FBFB913C3714E007EE2E7 /* README.mdown in Resources */,
-				8948138D13D3314D004C7D37 /* BundleCell.xib in Resources */,
-				894813A013D34907004C7D37 /* bus_window_240x163.jpg in Resources */,
-				894813A113D34907004C7D37 /* london_double_decker_240x160.jpg in Resources */,
-				894813A213D34907004C7D37 /* rush_hour_240x160.jpg in Resources */,
-				894813A313D34907004C7D37 /* story_road_240x180.jpg in Resources */,
-				894813A413D34907004C7D37 /* urban_commute_240x180.jpg in Resources */,
 				896C0C3713DC6B0E007F1B3F /* StoryboxView.xib in Resources */,
 				89E1F08513DDFF2300D381E2 /* london_double_decker_500x333.jpg in Resources */,
 				89E1F08813DDFFDB00D381E2 /* bus_window_500 x 339.jpg in Resources */,
@@ -813,25 +714,16 @@
 			files = (
 				894C513413AB7B2900F83A5F /* main.m in Sources */,
 				894C513713AB7B2900F83A5F /* SuperOwlWeeklyHootsAppDelegate.m in Sources */,
-				894C513D13AB7B2900F83A5F /* WeeklyHootViewController.m in Sources */,
-				894C514013AB7B2900F83A5F /* RewindViewController.m in Sources */,
-				89DF135413AF9351005A557A /* WeeklyBundle.m in Sources */,
 				89DF135713AF9941005A557A /* Playlist.m in Sources */,
 				89DF135A13AF9A86005A557A /* Programme.m in Sources */,
 				89DF136013B0A27D005A557A /* WeeklyHootSectionHeader.m in Sources */,
 				89099BFA13B4A2E300FEE82B /* JSONKit.m in Sources */,
 				89099C0513B4AF7B00FEE82B /* Environment.m in Sources */,
-				891DB32A13BCD09500B27C2F /* BundlesManager.m in Sources */,
 				892F7CB913C0F94100C4B98C /* FileStore.m in Sources */,
-				892F7CBF13C1E08500C4B98C /* WeeklyBundlesViewController.m in Sources */,
-				892F7CC613C2284500C4B98C /* WeeklyBundlesNavController.m in Sources */,
 				893FBFB613C37047007EE2E7 /* MBProgressHUD.m in Sources */,
-				893FBFBE13C4C083007EE2E7 /* AudioDownloadsRunner.m in Sources */,
-				893FBFC113C4D4D3007EE2E7 /* AudioDownload.m in Sources */,
 				8948138513D32F28004C7D37 /* UIImage+Alpha.m in Sources */,
 				8948138613D32F28004C7D37 /* UIImage+Resize.m in Sources */,
 				8948138713D32F28004C7D37 /* UIImage+RoundedCorner.m in Sources */,
-				8948138C13D3314D004C7D37 /* BundleCell.m in Sources */,
 				896C0C3613DC6B0E007F1B3F /* StoryboxViewController.m in Sources */,
 				896C0C3A13DC8732007F1B3F /* PlaylistsQueue.m in Sources */,
 				896C0C3D13DC944F007F1B3F /* StoryboxLoader.m in Sources */,
@@ -865,22 +757,6 @@
 				894C513913AB7B2900F83A5F /* en */,
 			);
 			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		894C514113AB7B2900F83A5F /* WeeklyHootView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				894C514213AB7B2900F83A5F /* en */,
-			);
-			name = WeeklyHootView.xib;
-			sourceTree = "<group>";
-		};
-		894C514413AB7B2900F83A5F /* RewindView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				894C514513AB7B2900F83A5F /* en */,
-			);
-			name = RewindView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
