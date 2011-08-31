@@ -51,7 +51,6 @@
 						<string key="NSFrameSize">{320, 150}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC42NzkzNDc4MjYxIDAuNjc5MzQ3ODI2MSAwLjY3OTM0NzgyNjEAA</bytes>
@@ -345,7 +344,7 @@
 					<object class="IBUILabel" id="518928255">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{123, 124}, {74, 21}}</string>
+						<string key="NSFrame">{{126, 124}, {68, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="183807250"/>
@@ -354,7 +353,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">pull stories</string>
+						<string key="IBUIText">download</string>
 						<reference key="IBUIFont" ref="382250217"/>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
@@ -392,7 +391,6 @@
 						<string key="NSFrame">{{0, 153}, {320, 214}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
@@ -548,9 +546,9 @@
 							<reference ref="964897608"/>
 							<reference ref="720822391"/>
 							<reference ref="183807250"/>
-							<reference ref="518928255"/>
 							<reference ref="586635051"/>
 							<reference ref="284657947"/>
+							<reference ref="518928255"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>

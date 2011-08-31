@@ -220,7 +220,7 @@
     
     [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
     
-    self.collectPlaylistsButtonCaption.text = @"pull stories";
+    self.collectPlaylistsButtonCaption.text = @"download";
 }
 
 -(void)drawStartCollectionState{
@@ -275,7 +275,7 @@
         [self.allPlaylistsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];    
     }
     
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Pull Cancelled" message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Download Cancelled" message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
     [alert show];
 }
 
