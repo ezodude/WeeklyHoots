@@ -32,8 +32,6 @@
 @synthesize storyboxCurrentPlaylists=_storyboxCurrentPlaylists;
 @synthesize storyboxOlderPlaylists=_storyboxOlderPlaylists;
 
-@synthesize isPlayerOn=_isPlayerOn;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -83,12 +81,6 @@
     
     [self loadLatestStoryboxContent];
     
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
-    [notificationCenter addObserver:self selector:@selector(loadLatestStoryboxContent) name:UIApplicationWillEnterForegroundNotification object:nil];
-    
-    [notificationCenter addObserver:self selector:@selector(playerStateOff) name:@"playerDismissed" object:nil];
-    
     [super viewDidLoad];
 }
 
@@ -102,6 +94,21 @@
     // e.g. self.myOutlet = nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    [notificationCenter addObserver:self selector:@selector(loadLatestStoryboxContent) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [super viewWillAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    [notificationCenter removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [super viewWillDisappear:animated];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -112,7 +119,7 @@
 #pragma mark Refresh Storybox Content Methods
 
 -(void)loadLatestStoryboxContent{
-    if ((_storybox && [_storybox collectionMode]) || self.isPlayerOn) return;
+    if (_storybox && [_storybox collectionMode]) return;
     
     self.navController = [[[UIApplication sharedApplication] delegate] storyboxNavController];
     
@@ -305,13 +312,6 @@
 }
 
 #pragma mark -
-#pragma mark Player Management Methods
-
--(void)playerStateOff{
-    self.isPlayerOn = NO;
-}
-
-#pragma mark -
 #pragma mark TableView DataSource Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -388,8 +388,6 @@
 	MDAudioPlayerController *audioPlayer = [[MDAudioPlayerController alloc] initWithSoundFiles:playable atPath:[playlist audioDownloadsPath] andSelectedIndex:0];
     
 	[self.navController presentModalViewController:audioPlayer animated:YES];
-    
-    self.isPlayerOn = YES;
     
 	[audioPlayer release];
 }

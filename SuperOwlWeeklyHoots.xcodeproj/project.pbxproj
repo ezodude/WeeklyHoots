@@ -94,6 +94,8 @@
 		89A41A5013F06E4900769CAD /* MDAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A41A3A13F06E4900769CAD /* MDAudioFile.m */; };
 		89A41A5113F06E4900769CAD /* MDAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A41A3C13F06E4900769CAD /* MDAudioPlayerController.m */; };
 		89A41A5213F06E4900769CAD /* MDAudioPlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A41A3E13F06E4900769CAD /* MDAudioPlayerTableViewCell.m */; };
+		89BC1865140C2E7A00E804D8 /* storyboxdate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BC1864140C2E7A00E804D8 /* storyboxdate@2x.png */; };
+		89BC1867140C2E8800E804D8 /* storyboxdate.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BC1866140C2E8800E804D8 /* storyboxdate.png */; };
 		89C0779813E9337F00DDAB6E /* ProgrammeDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C0779713E9337F00DDAB6E /* ProgrammeDownload.m */; };
 		89DF135713AF9941005A557A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135613AF9941005A557A /* Playlist.m */; };
 		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
@@ -222,6 +224,8 @@
 		89A41A3C13F06E4900769CAD /* MDAudioPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAudioPlayerController.m; sourceTree = "<group>"; };
 		89A41A3D13F06E4900769CAD /* MDAudioPlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAudioPlayerTableViewCell.h; sourceTree = "<group>"; };
 		89A41A3E13F06E4900769CAD /* MDAudioPlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAudioPlayerTableViewCell.m; sourceTree = "<group>"; };
+		89BC1864140C2E7A00E804D8 /* storyboxdate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storyboxdate@2x.png"; sourceTree = "<group>"; };
+		89BC1866140C2E8800E804D8 /* storyboxdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storyboxdate.png; sourceTree = "<group>"; };
 		89C0779613E9337F00DDAB6E /* ProgrammeDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammeDownload.h; sourceTree = "<group>"; };
 		89C0779713E9337F00DDAB6E /* ProgrammeDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammeDownload.m; sourceTree = "<group>"; };
 		89DF135513AF9941005A557A /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 				8938BF8E13F994FF00A32873 /* done.png */,
 				8938BF8F13F994FF00A32873 /* stop-highlighted.png */,
 				8938BF9013F994FF00A32873 /* stop-normal.png */,
+				89BC1864140C2E7A00E804D8 /* storyboxdate@2x.png */,
+				89BC1866140C2E8800E804D8 /* storyboxdate.png */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -702,6 +708,8 @@
 				89082B45140708E8002ED28E /* Abdel@2x.png in Resources */,
 				89082B47140708F9002ED28E /* Abdel.png in Resources */,
 				89082B4914070906002ED28E /* intro-message.png in Resources */,
+				89BC1865140C2E7A00E804D8 /* storyboxdate@2x.png in Resources */,
+				89BC1867140C2E8800E804D8 /* storyboxdate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
