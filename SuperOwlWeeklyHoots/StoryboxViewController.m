@@ -160,15 +160,23 @@
 }
 
 -(void)loadStoryboxDateLabel{
+    self.startDateDayLabel.text = @"Storybox No. 1";
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];    
-    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dd" options:0 locale:[NSLocale currentLocale]]];
+//    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"dd" options:0 locale:[NSLocale currentLocale]]];
+//    
+//    self.startDateDayLabel.text = [dateFormatter 
+//                                stringFromDate:[[_storybox playlistsQueue] startDate]];
     
-    self.startDateDayLabel.text = [dateFormatter 
-                                stringFromDate:[[_storybox playlistsQueue] startDate]];
+    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"ddMMM" options:0 locale:[NSLocale currentLocale]]];
+    NSString *startDay = [dateFormatter 
+                         stringFromDate:[[_storybox playlistsQueue] startDate]];
     
-    [dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"MMMYY" options:0 locale:[NSLocale currentLocale]]];
-    self.startDateMonthYearLabel.text = [dateFormatter 
-                                stringFromDate:[[_storybox playlistsQueue] startDate]];
+    NSDate *endDay = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:[[_storybox playlistsQueue]startDate]];
+    
+    NSString *endDayAsString = [dateFormatter stringFromDate:endDay];
+    
+    self.startDateMonthYearLabel.text = [NSString stringWithFormat:@"%@ - %@", startDay, endDayAsString];
     [dateFormatter release];
 }
 
