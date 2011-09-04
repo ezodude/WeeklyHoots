@@ -51,7 +51,7 @@
 						<string key="NSFrameSize">{320, 150}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="817343929"/>
+						<reference key="NSNextKeyView" ref="964897608"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC42NzkzNDc4MjYxIDAuNjc5MzQ3ODI2MSAwLjY3OTM0NzgyNjEAA</bytes>
@@ -67,7 +67,7 @@
 							<object class="IBUILabel" id="887136114">
 								<reference key="NSNextResponder" ref="964897608"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{-88, 27}, {58, 18}}</string>
+								<string key="NSFrame">{{50, 27}, {58, 18}}</string>
 								<reference key="NSSuperview" ref="964897608"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="969660494"/>
@@ -98,7 +98,7 @@
 							<object class="IBUILabel" id="969660494">
 								<reference key="NSNextResponder" ref="964897608"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{-83, 5}, {48, 23}}</string>
+								<string key="NSFrame">{{55, 5}, {48, 23}}</string>
 								<reference key="NSSuperview" ref="964897608"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="515038427"/>
@@ -127,7 +127,7 @@
 							<object class="IBUILabel" id="238791270">
 								<reference key="NSNextResponder" ref="964897608"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{36, 2}, {39, 31}}</string>
+								<string key="NSFrame">{{174, 2}, {39, 31}}</string>
 								<reference key="NSSuperview" ref="964897608"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="787499726"/>
@@ -156,7 +156,7 @@
 							<object class="IBUILabel" id="515038427">
 								<reference key="NSNextResponder" ref="964897608"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{30, 24}, {50, 21}}</string>
+								<string key="NSFrame">{{168, 24}, {50, 21}}</string>
 								<reference key="NSSuperview" ref="964897608"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="238791270"/>
@@ -183,10 +183,10 @@
 							<object class="IBUILabel" id="263966214">
 								<reference key="NSNextResponder" ref="964897608"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{112, 2}, {39, 31}}</string>
+								<string key="NSFrame">{{250, 2}, {39, 31}}</string>
 								<reference key="NSSuperview" ref="964897608"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="518928255"/>
+								<reference key="NSNextKeyView" ref="817343929"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -210,7 +210,7 @@
 							<object class="IBUILabel" id="787499726">
 								<reference key="NSNextResponder" ref="964897608"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{90, 24}, {83, 21}}</string>
+								<string key="NSFrame">{{228, 24}, {83, 21}}</string>
 								<reference key="NSSuperview" ref="964897608"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="263966214"/>
@@ -228,7 +228,7 @@
 								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{138, 0}, {182, 50}}</string>
+						<string key="NSFrameSize">{320, 50}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="887136114"/>
@@ -356,16 +356,16 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">Storyboxdate</string>
+							<string key="NSResourceName">storybox-date</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="802030358">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{15, 11}, {112, 27}}</string>
+						<string key="NSFrame">{{12, 11}, {112, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="964897608"/>
+						<reference key="NSNextKeyView" ref="518928255"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -519,7 +519,6 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="373219250"/>
 							<reference ref="322983445"/>
 							<reference ref="964897608"/>
 							<reference ref="183807250"/>
@@ -528,6 +527,7 @@
 							<reference ref="518928255"/>
 							<reference ref="817343929"/>
 							<reference ref="802030358"/>
+							<reference ref="373219250"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -806,9 +806,9 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>Storyboxdate</string>
 				<string>collect-normal</string>
 				<string>intro-message</string>
+				<string>storybox-date</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>

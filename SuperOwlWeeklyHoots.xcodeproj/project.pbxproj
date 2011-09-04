@@ -95,8 +95,8 @@
 		89A41A5113F06E4900769CAD /* MDAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A41A3C13F06E4900769CAD /* MDAudioPlayerController.m */; };
 		89A41A5213F06E4900769CAD /* MDAudioPlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A41A3E13F06E4900769CAD /* MDAudioPlayerTableViewCell.m */; };
 		89C0779813E9337F00DDAB6E /* ProgrammeDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C0779713E9337F00DDAB6E /* ProgrammeDownload.m */; };
-		89CE8F311411D93400B894D6 /* Storyboxdate.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CE8F301411D93400B894D6 /* Storyboxdate.png */; };
-		89CE8F331411D94100B894D6 /* Storyboxdate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CE8F321411D94100B894D6 /* Storyboxdate@2x.png */; };
+		89CE8F311411D93400B894D6 /* storybox-date.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CE8F301411D93400B894D6 /* storybox-date.png */; };
+		89CE8F331411D94100B894D6 /* storybox-date@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CE8F321411D94100B894D6 /* storybox-date@2x.png */; };
 		89DF135713AF9941005A557A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135613AF9941005A557A /* Playlist.m */; };
 		89DF135A13AF9A86005A557A /* Programme.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF135913AF9A86005A557A /* Programme.m */; };
 		89E1D6FD13F9407900A40099 /* collect-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E1D6FB13F9407900A40099 /* collect-highlighted@2x.png */; };
@@ -224,8 +224,8 @@
 		89A41A3E13F06E4900769CAD /* MDAudioPlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAudioPlayerTableViewCell.m; sourceTree = "<group>"; };
 		89C0779613E9337F00DDAB6E /* ProgrammeDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammeDownload.h; sourceTree = "<group>"; };
 		89C0779713E9337F00DDAB6E /* ProgrammeDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammeDownload.m; sourceTree = "<group>"; };
-		89CE8F301411D93400B894D6 /* Storyboxdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Storyboxdate.png; sourceTree = "<group>"; };
-		89CE8F321411D94100B894D6 /* Storyboxdate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Storyboxdate@2x.png"; sourceTree = "<group>"; };
+		89CE8F301411D93400B894D6 /* storybox-date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storybox-date.png"; sourceTree = "<group>"; };
+		89CE8F321411D94100B894D6 /* storybox-date@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storybox-date@2x.png"; sourceTree = "<group>"; };
 		89DF135513AF9941005A557A /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		89DF135613AF9941005A557A /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		89DF135813AF9A86005A557A /* Programme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Programme.h; sourceTree = "<group>"; };
@@ -381,8 +381,6 @@
 				8938BF8E13F994FF00A32873 /* done.png */,
 				8938BF8F13F994FF00A32873 /* stop-highlighted.png */,
 				8938BF9013F994FF00A32873 /* stop-normal.png */,
-				89CE8F321411D94100B894D6 /* Storyboxdate@2x.png */,
-				89CE8F301411D93400B894D6 /* Storyboxdate.png */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -485,6 +483,8 @@
 		894C512D13AB7B2900F83A5F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				89CE8F321411D94100B894D6 /* storybox-date@2x.png */,
+				89CE8F301411D93400B894D6 /* storybox-date.png */,
 				89082B411406E92C002ED28E /* Storybox Startup */,
 				89082B291406D5FE002ED28E /* Story Jockeys */,
 				890D0BE213F85D51007125E1 /* Icons */,
@@ -692,8 +692,8 @@
 				89082B45140708E8002ED28E /* Abdel@2x.png in Resources */,
 				89082B47140708F9002ED28E /* Abdel.png in Resources */,
 				89082B4914070906002ED28E /* intro-message.png in Resources */,
-				89CE8F311411D93400B894D6 /* Storyboxdate.png in Resources */,
-				89CE8F331411D94100B894D6 /* Storyboxdate@2x.png in Resources */,
+				89CE8F311411D93400B894D6 /* storybox-date.png in Resources */,
+				89CE8F331411D94100B894D6 /* storybox-date@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
