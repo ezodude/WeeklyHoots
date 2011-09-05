@@ -27,6 +27,7 @@
                       summary:[dictionary objectForKey:@"summary"] 
                      duration:[dictionary objectForKey:@"duration"] 
                    dateQueued:[dictionary objectForKey:@"dateQueued"]
+                   expiryDate:[dictionary objectForKey:@"expiryDate"]
                    programmes:[dictionary objectForKey:@"programmes"]];
 }
 
@@ -36,6 +37,7 @@
                   summary:(NSString *)summary 
                  duration:(NSNumber *)duration 
                dateQueued:(NSString *) dateQueued
+                expiryDate:(NSString *) expiryDate
                programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
@@ -50,9 +52,11 @@
         [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         
         self.dateQueued = [dateFormatter dateFromString:dateQueued];
+        self.expiryDate = [dateFormatter dateFromString:expiryDate];
+
         [dateFormatter release];
         
-        self.expiryDate = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:self.dateQueued];
+//        self.expiryDate = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:self.dateQueued];
         
         if (programmes) {
             NSMutableArray *newProgrammes = [[NSMutableArray alloc] 

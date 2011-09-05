@@ -102,6 +102,7 @@
     NSString *summary = [dictionary objectForKey:@"full_summary"];
     
     [dictionary setObject:self.dataQueuedAsString forKey:@"dateQueued"];
+    [dictionary setObject:[[self.storybox playlistsQueue] playlistsExpiryDateAsString] forKey:@"expiryDate"];
     [dictionary setObject:storyJockey forKey:@"storyJockey"];
     [dictionary setObject:summary forKey:@"summary"];
     

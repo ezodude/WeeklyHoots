@@ -13,7 +13,7 @@
 
 @class Programme;
 
-#define REFRESH_FREQUENCY 1
+//#define REFRESH_FREQUENCY 1
 
 @interface Playlist : NSObject {
     NSString *_guid;
@@ -47,6 +47,7 @@
                 summary:(NSString *)summary 
                 duration:(NSNumber *)duration 
                 dateQueued:(NSString *) dateQueued
+                expiryDate:(NSString *) expiryDate
                 programmes:(NSArray *)programmes;
 
 -(NSString *)pathOnDisk;

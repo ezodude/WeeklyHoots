@@ -172,11 +172,10 @@
     NSString *startDay = [dateFormatter 
                          stringFromDate:[[_storybox playlistsQueue] startDate]];
     
-    NSDate *endDay = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:[[_storybox playlistsQueue]startDate]];
+    NSString *endDay = [dateFormatter 
+                          stringFromDate:[[_storybox playlistsQueue] endDate]];
     
-    NSString *endDayAsString = [dateFormatter stringFromDate:endDay];
-    
-    self.startDateMonthYearLabel.text = [NSString stringWithFormat:@"%@ - %@", startDay, endDayAsString];
+    self.startDateMonthYearLabel.text = [NSString stringWithFormat:@"%@ - %@", startDay, endDay];
     [dateFormatter release];
 }
 
