@@ -18,6 +18,7 @@
 @synthesize programmes=_programmes;
 @synthesize dateQueued=_dateQueued;
 @synthesize expiryDate=_expiryDate;
+@synthesize createdAt=_createdAt;
 
 -(id)initFromDictionary:(NSDictionary *)dictionary{
     return [self initWithGuid:[dictionary objectForKey:@"id"] 
@@ -27,6 +28,7 @@
                      duration:[dictionary objectForKey:@"duration"] 
                    dateQueued:[dictionary objectForKey:@"dateQueued"]
                    expiryDate:[dictionary objectForKey:@"expiryDate"]
+                 createdAt:[dictionary objectForKey:@"createdAt"]
                    programmes:[dictionary objectForKey:@"programmes"]];
 }
 
@@ -35,9 +37,10 @@
               storyJockey:(NSString *)storyJockey 
                   summary:(NSString *)summary 
                  duration:(NSNumber *)duration 
-               dateQueued:(NSString *) dateQueued
-                expiryDate:(NSString *) expiryDate
-               programmes:(NSArray *)programmes{
+               dateQueued:(NSString *)dateQueued
+                expiryDate:(NSString *)expiryDate
+                createdAt:(NSString *)createdAt
+                programmes:(NSArray *)programmes{
     self = [super init];
     if(self){
         self.guid = guid;
@@ -47,12 +50,15 @@
         if(duration) self.duration = [duration unsignedIntegerValue];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         self.dateQueued = [dateFormatter dateFromString:dateQueued];
         self.expiryDate = [dateFormatter dateFromString:expiryDate];
-
+        
+        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        self.createdAt = [dateFormatter dateFromString:createdAt];
+        
         [dateFormatter release];
         
 //        self.expiryDate = [NSDate dateWithTimeInterval:(60 * 60 * 24 * REFRESH_FREQUENCY) sinceDate:self.dateQueued];
@@ -136,11 +142,14 @@
 
 -(NSDictionary *)dictionaryFromObject{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
     NSString *dateQueuedAsString = [dateFormatter stringFromDate:self.dateQueued];
     NSString *expiryDateAsString = [dateFormatter stringFromDate:self.expiryDate];
+    
+    [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    NSString *createdAtAsString = [dateFormatter stringFromDate:self.createdAt];
     
     [dateFormatter release];
     
@@ -152,9 +161,12 @@
     }];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:8];
+    
     [dictionary setObject:self.guid forKey:@"id"];
     [dictionary setObject:dateQueuedAsString forKey:@"dateQueued"];
     [dictionary setObject:expiryDateAsString forKey:@"expiryDate"];
+    [dictionary setObject:createdAtAsString forKey:@"createdAt"];
+    
     if (self.title) [dictionary setObject:self.title forKey:@"title"];
     if (self.storyJockey) [dictionary setObject:self.storyJockey forKey:@"storyJockey"];
     if (self.summary) [dictionary setObject:self.summary forKey:@"summary"];
@@ -188,6 +200,7 @@
     [self.programmes release];
     [self.dateQueued release];
     [self.expiryDate release];
+    [self.createdAt release];
     [super dealloc];
 }
 @end

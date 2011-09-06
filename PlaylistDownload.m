@@ -103,6 +103,15 @@
     
     [dictionary setObject:self.dataQueuedAsString forKey:@"dateQueued"];
     [dictionary setObject:[[self.storybox playlistsQueue] playlistsExpiryDateAsString] forKey:@"expiryDate"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    
+    [dictionary setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"createdAt"];
+    
+    [dateFormatter release];
+    
     [dictionary setObject:storyJockey forKey:@"storyJockey"];
     [dictionary setObject:summary forKey:@"summary"];
     

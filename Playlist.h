@@ -25,6 +25,7 @@
     
     NSDate *_dateQueued;
     NSDate *_expiryDate;
+    NSDate *_createdAt;
 }
 
 @property (nonatomic, retain) NSString *guid;
@@ -33,9 +34,10 @@
 @property (nonatomic, retain) NSString *summary;
 @property (nonatomic, assign) NSUInteger duration;
 @property (nonatomic, retain) NSArray *programmes;
+
 @property (nonatomic, retain) NSDate *dateQueued;
 @property (nonatomic, retain) NSDate *expiryDate;
-
+@property (nonatomic, retain) NSDate *createdAt;
 
 -(id)initFromDictionary:(NSDictionary *)dictionary;
 
@@ -46,6 +48,7 @@
                 duration:(NSNumber *)duration 
                 dateQueued:(NSString *) dateQueued
                 expiryDate:(NSString *) expiryDate
+                createdAt:(NSString *) createdAt
                 programmes:(NSArray *)programmes;
 
 -(NSString *)pathOnDisk;
