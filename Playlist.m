@@ -15,7 +15,6 @@
 @synthesize storyJockey=_storyJockey ;
 @synthesize summary=_summary;
 @synthesize duration=_duration;
-@synthesize publicationDate=_publicationDate;
 @synthesize programmes=_programmes;
 @synthesize dateQueued=_dateQueued;
 @synthesize expiryDate=_expiryDate;
@@ -186,7 +185,6 @@
     [self.title release];
     [self.storyJockey release];
     [self.summary release];
-    [self.publicationDate release];
     [self.programmes release];
     [self.dateQueued release];
     [self.expiryDate release];

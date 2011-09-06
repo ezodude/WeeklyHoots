@@ -21,7 +21,6 @@
     NSString *_storyJockey;
     NSString *_summary;
     NSUInteger _duration;
-    NSDate *_publicationDate;
     NSArray *_programmes;
     
     NSDate *_dateQueued;
@@ -33,7 +32,6 @@
 @property (nonatomic, retain) NSString *storyJockey;
 @property (nonatomic, retain) NSString *summary;
 @property (nonatomic, assign) NSUInteger duration;
-@property (nonatomic, retain) NSDate *publicationDate;
 @property (nonatomic, retain) NSArray *programmes;
 @property (nonatomic, retain) NSDate *dateQueued;
 @property (nonatomic, retain) NSDate *expiryDate;
