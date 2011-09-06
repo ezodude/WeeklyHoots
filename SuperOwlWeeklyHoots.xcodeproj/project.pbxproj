@@ -37,6 +37,10 @@
 		890D0BE613F85D65007125E1 /* storybox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 890D0BE413F85D65007125E1 /* storybox@2x.png */; };
 		890D0BE913F85E8A007125E1 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 890D0BE713F85E8A007125E1 /* gear.png */; };
 		890D0BEA13F85E8A007125E1 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 890D0BE813F85E8A007125E1 /* gear@2x.png */; };
+		892AC82B14167C08004F7D70 /* zap.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AC82914167C08004F7D70 /* zap.png */; };
+		892AC82C14167C08004F7D70 /* zap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AC82A14167C08004F7D70 /* zap@2x.png */; };
+		892AC83114167D0D004F7D70 /* TrialInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AC82F14167D0D004F7D70 /* TrialInfoViewController.m */; };
+		892AC83214167D0D004F7D70 /* TrialInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892AC83014167D0D004F7D70 /* TrialInfoView.xib */; };
 		892F7CB913C0F94100C4B98C /* FileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 892F7CB813C0F94100C4B98C /* FileStore.m */; };
 		8936B3D11402D4D0004AE67D /* PlaylistDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936B3D01402D4D0004AE67D /* PlaylistDetailsViewController.m */; };
 		8936B3D31402D4F6004AE67D /* PlaylistDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8936B3D21402D4F6004AE67D /* PlaylistDetailsView.xib */; };
@@ -149,6 +153,11 @@
 		890D0BE413F85D65007125E1 /* storybox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storybox@2x.png"; sourceTree = "<group>"; };
 		890D0BE713F85E8A007125E1 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		890D0BE813F85E8A007125E1 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		892AC82914167C08004F7D70 /* zap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zap.png; sourceTree = "<group>"; };
+		892AC82A14167C08004F7D70 /* zap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zap@2x.png"; sourceTree = "<group>"; };
+		892AC82E14167D0D004F7D70 /* TrialInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrialInfoViewController.h; sourceTree = "<group>"; };
+		892AC82F14167D0D004F7D70 /* TrialInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrialInfoViewController.m; sourceTree = "<group>"; };
+		892AC83014167D0D004F7D70 /* TrialInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrialInfoView.xib; sourceTree = "<group>"; };
 		892F7CB713C0F94100C4B98C /* FileStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileStore.h; sourceTree = "<group>"; };
 		892F7CB813C0F94100C4B98C /* FileStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileStore.m; sourceTree = "<group>"; };
 		8936B3CF1402D4D0004AE67D /* PlaylistDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistDetailsViewController.h; sourceTree = "<group>"; };
@@ -347,8 +356,20 @@
 				890D0BE813F85E8A007125E1 /* gear@2x.png */,
 				890D0BE313F85D65007125E1 /* storybox.png */,
 				890D0BE413F85D65007125E1 /* storybox@2x.png */,
+				892AC82914167C08004F7D70 /* zap.png */,
+				892AC82A14167C08004F7D70 /* zap@2x.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		892AC82D14167CCA004F7D70 /* Trial Info */ = {
+			isa = PBXGroup;
+			children = (
+				892AC82E14167D0D004F7D70 /* TrialInfoViewController.h */,
+				892AC82F14167D0D004F7D70 /* TrialInfoViewController.m */,
+				892AC83014167D0D004F7D70 /* TrialInfoView.xib */,
+			);
+			name = "Trial Info";
 			sourceTree = "<group>";
 		};
 		892F7CB613C0F91D00C4B98C /* Utilities */ = {
@@ -363,6 +384,7 @@
 		892F7CBA13C1E03C00C4B98C /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				892AC82D14167CCA004F7D70 /* Trial Info */,
 				896C0C3213DC69C3007F1B3F /* Storybox */,
 			);
 			name = Sections;
@@ -710,6 +732,9 @@
 				89C3C817141500930078E90E /* rush_hour_500.jpg in Resources */,
 				89C3C818141500930078E90E /* tubes_500.jpg in Resources */,
 				89C3C819141500930078E90E /* wall_500.jpg in Resources */,
+				892AC82B14167C08004F7D70 /* zap.png in Resources */,
+				892AC82C14167C08004F7D70 /* zap@2x.png in Resources */,
+				892AC83214167D0D004F7D70 /* TrialInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +769,7 @@
 				8938566F13FB0C2A004BFE90 /* FileStoreSyncer.m in Sources */,
 				8936B3D11402D4D0004AE67D /* PlaylistDetailsViewController.m in Sources */,
 				89E3607914056C4D006ECEBB /* StoryboxCell.m in Sources */,
+				892AC83114167D0D004F7D70 /* TrialInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
