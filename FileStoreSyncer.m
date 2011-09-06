@@ -107,10 +107,14 @@
         isCurrent ? [currentSlot addObject:obj] : [olderSlot addObject:obj];
     }];
     
-    self.storybox.currentPlaylistsSlot = [NSArray arrayWithArray:currentSlot];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO selector:@selector(compare:)];
+    
+    self.storybox.currentPlaylistsSlot = [[NSArray arrayWithArray:currentSlot] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
     NSLog(@"self.storybox.currentPlaylistsSlot: [%@]", [self.storybox.currentPlaylistsSlot description]);
     
-    self.storybox.olderPlaylistsSlot = [NSArray arrayWithArray:olderSlot];
+    self.storybox.olderPlaylistsSlot = [[NSArray arrayWithArray:olderSlot] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
     NSLog(@"self.storybox.olderPlaylistsSlot: [%@]", [self.storybox.olderPlaylistsSlot description]);
 }
 
