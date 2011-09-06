@@ -17,7 +17,7 @@
     self = [super init];
     
     if (self) {
-        _programmesAPIURL = [[Environment sharedInstance] programmesAPIURL];
+        _programmesAPIURL = [[[Environment sharedInstance] programmesAPIURL] retain];
         NSString *cachePath = [FileStore createDirectoryPath:[NSString stringWithFormat:@"%@/%@", [FileStore applicationDocumentsDirectory], CACHE_DIR]];
         
         _remoteDataCache = [[ASIDownloadCache alloc] init]  ;

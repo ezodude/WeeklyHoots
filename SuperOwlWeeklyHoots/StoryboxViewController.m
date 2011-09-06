@@ -209,6 +209,8 @@
 #pragma mark Collect Playlists Methods
 
 -(IBAction)collectPlaylists:(id)sender{
+    if (_storybox == nil) return;
+    
     NSLog(@"startCollectingPlaylists");
     
     BOOL previouslyInCollectionMode = [_storybox collectionMode];
