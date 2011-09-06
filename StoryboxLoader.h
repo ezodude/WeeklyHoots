@@ -25,7 +25,7 @@
 @class ASIHTTPRequest;
 @class ASIDownloadCache;
 
-typedef void (^StoryboxSetupSuccessCallbackBlock)();
+typedef void (^StoryboxSetupSuccessCallbackBlock)(BOOL);
 
 #define CACHE_DIR @"/RemoteDataCache"
 

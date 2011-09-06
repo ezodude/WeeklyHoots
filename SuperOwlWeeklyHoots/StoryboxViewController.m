@@ -127,13 +127,15 @@
     StoryboxLoader *loader = [StoryboxLoader loader];
     
     [loader setupStoryboxUsingProgressIndicator:HUD 
-        WithCallback:^{
-            _storybox = [[loader storybox] retain];
-            [self loadStoryboxImage];
-            [self configureCollectionButton];
-            [self loadStoryboxDateLabel];
-            [self loadStoryboxCollectionLabels];
-            [self loadStoryboxPlaylists];
+        WithCallback:^(BOOL success){
+            if (success) {
+                _storybox = [[loader storybox] retain];
+                [self loadStoryboxImage];
+                [self configureCollectionButton];
+                [self loadStoryboxDateLabel];
+                [self loadStoryboxCollectionLabels];
+                [self loadStoryboxPlaylists];
+            }
             [self cleanUpProgressIndicator:HUD];
         }
      ];

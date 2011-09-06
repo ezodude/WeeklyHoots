@@ -48,12 +48,13 @@
     [request setCompletionBlock:^{
         NSLog(@"Starting setCompletionBlock");
         [self completeSetupFromRequest:request];
-        block();
+        block(YES);
     }];
     
     [request setFailedBlock:^{
         NSLog(@"Starting setFailedBlock");
         [self processFailureFromRequest:request];
+        block(NO);  
     }];
     
     [request startAsynchronous];
