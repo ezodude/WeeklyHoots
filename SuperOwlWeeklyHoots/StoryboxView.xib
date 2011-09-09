@@ -356,13 +356,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">storybox-date</string>
+							<string key="NSResourceName">storybox-date2</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="802030358">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{12, 11}, {112, 27}}</string>
+						<string key="NSFrame">{{16, 10}, {112, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="518928255"/>
@@ -526,8 +526,8 @@
 							<reference ref="284657947"/>
 							<reference ref="518928255"/>
 							<reference ref="817343929"/>
-							<reference ref="802030358"/>
 							<reference ref="373219250"/>
+							<reference ref="802030358"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -808,7 +808,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>collect-normal</string>
 				<string>intro-message</string>
-				<string>storybox-date</string>
+				<string>storybox-date2</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
