@@ -84,9 +84,9 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">New storybox every 3 days for 2 weeks.</string>
-						<object class="NSFont" key="IBUIFont" id="496888145">
+						<object class="NSFont" key="IBUIFont" id="248687632">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">16</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<reference key="IBUITextColor" ref="519039684"/>
@@ -97,7 +97,7 @@
 					<object class="IBUILabel" id="230250413">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 125}, {280, 21}}</string>
+						<string key="NSFrame">{{20, 118}, {280, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="86092719"/>
@@ -107,7 +107,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Each storybox has 4 eartastic playlists.</string>
-						<reference key="IBUIFont" ref="496888145"/>
+						<reference key="IBUIFont" ref="248687632"/>
 						<reference key="IBUITextColor" ref="519039684"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -116,7 +116,7 @@
 					<object class="IBUILabel" id="86092719">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 169}, {280, 21}}</string>
+						<string key="NSFrame">{{20, 158}, {280, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="650370628"/>
@@ -126,7 +126,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Download on wifi &amp; enjoy on the go.</string>
-						<reference key="IBUIFont" ref="496888145"/>
+						<reference key="IBUIFont" ref="248687632"/>
 						<reference key="IBUITextColor" ref="519039684"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -135,10 +135,9 @@
 					<object class="IBUITextView" id="650370628">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{13, 206}, {289, 76}}</string>
+						<string key="NSFrame">{{13, 206}, {289, 102}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -147,7 +146,7 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">We'd like to know how it went! especially any download problems &amp; any feedback on the quality of the playlists :)</string>
-						<reference key="IBUIFont" ref="496888145"/>
+						<reference key="IBUIFont" ref="248687632"/>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -156,7 +155,7 @@
 					<object class="IBUILabel" id="429891599">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{94, 301}, {133, 21}}</string>
+						<string key="NSFrame">{{74, 316}, {172, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -165,7 +164,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Go on, get going!</string>
-						<reference key="IBUIFont" ref="496888145"/>
+						<reference key="IBUIFont" ref="248687632"/>
 						<reference key="IBUITextColor" ref="519039684"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
