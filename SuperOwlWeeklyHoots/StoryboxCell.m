@@ -43,7 +43,7 @@
     self.playlistTitle.text = self.sourcePlaylist.title;
     self.storyJockeyName.text = self.sourcePlaylist.storyJockey;
     
-    NSString *daysRemaining = self.sourcePlaylist.numberOfDaysBeforeExpiry == 0 ? @"Last day" : [NSString stringWithFormat:@"%d days left", self.sourcePlaylist.numberOfDaysBeforeExpiry];
+    NSString *daysRemaining = self.sourcePlaylist.numberOfDaysBeforeExpiry == 0 ? @"Last day" : [NSString stringWithFormat:@"%d day(s) left", self.sourcePlaylist.numberOfDaysBeforeExpiry];
     self.daysRemaining.text = daysRemaining;
 }
          
