@@ -157,8 +157,11 @@
 }
 
 -(void)configureCollectionButton{
-    if(![_storybox allPlaylistsCollected]) return;
-    [self finishedCollectingPlaylists];
+    if(![_storybox allPlaylistsCollected]){
+        [self drawStopCollectionState];
+    }else{
+        [self finishedCollectingPlaylists];
+    }
 }
 
 -(void)loadStoryboxDateLabel{
@@ -336,7 +339,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return section == 0 ? nil : @"Previous Storybox Collection...";
+    return section == 0 ? nil : @"Previous Downloads...";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
