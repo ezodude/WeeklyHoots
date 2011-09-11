@@ -309,18 +309,15 @@
     self.storyboxCurrentPlaylists = [NSArray arrayWithArray:[_storybox currentPlaylistsSlot]];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.allPlaylistsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
+    if([self.allPlaylistsTableView numberOfRowsInSection:0] > 0){
+        [self.allPlaylistsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationFade];
+    }
     
 //    [self.allPlaylistsTableView reloadData];
     [self resetCollectionState];
 }
 
 -(void)resetCollectionState{
-//    if ([self.storyboxCurrentPlaylists count] == 0) {
-//        [self.allPlaylistsTableView setHidden:YES];
-//        [self.introBackgroundImage setHidden:NO];
-//    }
-    
     if ([self.storyboxCurrentPlaylists count] > 0 || [self.storyboxOlderPlaylists count] > 0) {
         [self.introBackgroundImage setHidden:YES];
         [self.allPlaylistsTableView setHidden:NO];
