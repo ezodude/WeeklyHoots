@@ -71,9 +71,9 @@
 		894DE98914042950004739C7 /* headphones@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 894DE98714042950004739C7 /* headphones@2x.png */; };
 		895DA1BE141A80730063A8EF /* storybox-date2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DA1BD141A80730063A8EF /* storybox-date2@2x.png */; };
 		895DA1C1141A80940063A8EF /* storybox-date2.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DA1C0141A80940063A8EF /* storybox-date2.png */; };
-		895DA1C3141A94180063A8EF /* intro-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DA1C2141A94180063A8EF /* intro-message.png */; };
-		895DA1C5141A94210063A8EF /* intro-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DA1C4141A94210063A8EF /* intro-message@2x.png */; };
 		895DA1C7141A9D520063A8EF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DA1C6141A9D520063A8EF /* Icon.png */; };
+		895DA1CD141D55EC0063A8EF /* intro-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DA1CC141D55EC0063A8EF /* intro-message@2x.png */; };
+		895DA1CF141D55F90063A8EF /* intro-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DA1CE141D55F90063A8EF /* intro-message.png */; };
 		896C0C3613DC6B0E007F1B3F /* StoryboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3413DC6B0E007F1B3F /* StoryboxViewController.m */; };
 		896C0C3713DC6B0E007F1B3F /* StoryboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896C0C3513DC6B0E007F1B3F /* StoryboxView.xib */; };
 		896C0C3A13DC8732007F1B3F /* PlaylistsQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 896C0C3913DC8732007F1B3F /* PlaylistsQueue.m */; };
@@ -200,9 +200,9 @@
 		894DE98714042950004739C7 /* headphones@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headphones@2x.png"; sourceTree = "<group>"; };
 		895DA1BD141A80730063A8EF /* storybox-date2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storybox-date2@2x.png"; sourceTree = "<group>"; };
 		895DA1C0141A80940063A8EF /* storybox-date2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storybox-date2.png"; sourceTree = "<group>"; };
-		895DA1C2141A94180063A8EF /* intro-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro-message.png"; sourceTree = "<group>"; };
-		895DA1C4141A94210063A8EF /* intro-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro-message@2x.png"; sourceTree = "<group>"; };
 		895DA1C6141A9D520063A8EF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		895DA1CC141D55EC0063A8EF /* intro-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro-message@2x.png"; sourceTree = "<group>"; };
+		895DA1CE141D55F90063A8EF /* intro-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro-message.png"; sourceTree = "<group>"; };
 		896C0C3313DC6B0E007F1B3F /* StoryboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboxViewController.h; sourceTree = "<group>"; };
 		896C0C3413DC6B0E007F1B3F /* StoryboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboxViewController.m; sourceTree = "<group>"; };
 		896C0C3513DC6B0E007F1B3F /* StoryboxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryboxView.xib; sourceTree = "<group>"; };
@@ -304,8 +304,8 @@
 		89082B411406E92C002ED28E /* Storybox Startup */ = {
 			isa = PBXGroup;
 			children = (
-				895DA1C4141A94210063A8EF /* intro-message@2x.png */,
-				895DA1C2141A94180063A8EF /* intro-message.png */,
+				895DA1CC141D55EC0063A8EF /* intro-message@2x.png */,
+				895DA1CE141D55F90063A8EF /* intro-message.png */,
 			);
 			name = "Storybox Startup";
 			sourceTree = "<group>";
@@ -732,9 +732,9 @@
 				892AC83214167D0D004F7D70 /* TrialInfoView.xib in Resources */,
 				895DA1BE141A80730063A8EF /* storybox-date2@2x.png in Resources */,
 				895DA1C1141A80940063A8EF /* storybox-date2.png in Resources */,
-				895DA1C3141A94180063A8EF /* intro-message.png in Resources */,
-				895DA1C5141A94210063A8EF /* intro-message@2x.png in Resources */,
 				895DA1C7141A9D520063A8EF /* Icon.png in Resources */,
+				895DA1CD141D55EC0063A8EF /* intro-message@2x.png in Resources */,
+				895DA1CF141D55F90063A8EF /* intro-message.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
