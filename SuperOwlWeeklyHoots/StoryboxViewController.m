@@ -316,9 +316,17 @@
 }
 
 -(void)resetCollectionState{
-    if ([self.storyboxCurrentPlaylists count] == 0) {
-        [self.allPlaylistsTableView setHidden:YES];
+//    if ([self.storyboxCurrentPlaylists count] == 0) {
+//        [self.allPlaylistsTableView setHidden:YES];
+//        [self.introBackgroundImage setHidden:NO];
+//    }
+    
+    if ([self.storyboxCurrentPlaylists count] > 0 || [self.storyboxOlderPlaylists count] > 0) {
+        [self.introBackgroundImage setHidden:YES];
+        [self.allPlaylistsTableView setHidden:NO];
+    }else{
         [self.introBackgroundImage setHidden:NO];
+        [self.allPlaylistsTableView setHidden:YES];
     }
     
     [self drawStopCollectionState];
