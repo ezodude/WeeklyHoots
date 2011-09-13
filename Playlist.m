@@ -114,6 +114,8 @@
     NSDate *today = [NSDate date];
     NSDateComponents *components = [gregorianCalendar components:NSDayCalendarUnit fromDate:today toDate:self.expiryDate options:0];
 
+    [gregorianCalendar release];
+    
     return [components day] + 1;
 }
 

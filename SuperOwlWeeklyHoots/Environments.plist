@@ -17,5 +17,10 @@
 		<key>programmesAPIURL</key>
 		<string>http://owler.heroku.com/</string>
 	</dict>
+	<key>Ad Hoc</key>
+	<dict>
+		<key>programmesAPIURL</key>
+		<string>http://owler.heroku.com/</string>
+	</dict>
 </dict>
 </plist>
