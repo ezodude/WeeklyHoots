@@ -974,7 +974,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1012,7 +1012,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1030,7 +1030,7 @@
 				89099BFE13B4AEF900FEE82B /* LocalDev */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = LocalDev;
+			defaultConfigurationName = Release;
 		};
 		894C514913AB7B2900F83A5F /* Build configuration list for PBXNativeTarget "SuperOwlWeeklyHoots" */ = {
 			isa = XCConfigurationList;
@@ -1041,7 +1041,7 @@
 				89099BFF13B4AEF900FEE82B /* LocalDev */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = LocalDev;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
