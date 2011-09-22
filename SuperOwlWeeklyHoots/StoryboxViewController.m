@@ -157,10 +157,10 @@
 }
 
 -(void)configureCollectionButton{
-    if(![_storybox allPlaylistsCollected]){
-        [self drawStopCollectionState];
-    }else{
+    if([_storybox allPlaylistsCollected]){
         [self finishedCollectingPlaylists];
+    }else{
+        [self drawStopCollectionState];
     }
 }
 
@@ -230,6 +230,10 @@
 }
 
 -(void)drawStopCollectionState{
+    self.collectPlaylistsButton.enabled = YES;
+    
+    [self.collectPlaylistsButton setImage:nil forState:UIControlStateDisabled];
+    
     [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-normal"] forState:UIControlStateNormal];
     
     [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"collect-highlighted"] forState:UIControlStateHighlighted];
@@ -238,6 +242,10 @@
 }
 
 -(void)drawStartCollectionState{
+    self.collectPlaylistsButton.enabled = YES;
+    
+    [self.collectPlaylistsButton setImage:nil forState:UIControlStateDisabled];
+    
     [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-normal"] forState:UIControlStateNormal];
     
     [self.collectPlaylistsButton setImage:[UIImage imageNamed:@"stop-highlighted"] forState:UIControlStateHighlighted];
