@@ -18,6 +18,7 @@
 
 @synthesize navController=_navController;
 
+@synthesize HUD=_HUD;
 @synthesize storyboxImageView=_storyboxImageView;
 @synthesize startDateDayLabel=_startDateDayLabel;
 @synthesize startDateMonthYearLabel=_startDateMonthYearLabel;
@@ -46,6 +47,7 @@
     [self.navController release];
     [_detailsController release];
     
+    [self.HUD release];
     [self.storyboxImageView release];
     [self.startDateDayLabel release];
     [self.startDateMonthYearLabel release];
@@ -123,10 +125,12 @@
     
     self.navController = [[[UIApplication sharedApplication] delegate] storyboxNavController];
     
-    MBProgressHUD *HUD = [[MBProgressHUD showHUDAddedTo:self.navController.view animated:YES] retain];
+    if (self.HUD) [self cleanUpProgressIndicator:self.HUD];
+    
+    self.HUD = [[MBProgressHUD showHUDAddedTo:self.navController.view animated:YES] retain];
     StoryboxLoader *loader = [StoryboxLoader loader];
     
-    [loader setupStoryboxUsingProgressIndicator:HUD 
+    [loader setupStoryboxUsingProgressIndicator:self.HUD 
         WithCallback:^(BOOL success){
             if (success) {
                 _storybox = [[loader storybox] retain];
@@ -136,7 +140,7 @@
                 [self loadStoryboxCollectionLabels];
                 [self loadStoryboxPlaylists];
             }
-            [self cleanUpProgressIndicator:HUD];
+            [self cleanUpProgressIndicator:self.HUD];
         }
      ];
 }

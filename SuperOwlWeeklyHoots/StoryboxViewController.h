@@ -30,6 +30,7 @@
     StoryboxNavController *_navController;
     PlaylistDetailsController *_detailsController;
     
+    MBProgressHUD *_HUD;
     UIImageView *_storyboxImageView;
     UILabel *_startDateDayLabel;
     UILabel *_startDateMonthYearLabel;
@@ -49,6 +50,7 @@
 
 @property (nonatomic, retain) StoryboxNavController *navController;
 
+@property (nonatomic, retain) IBOutlet MBProgressHUD *HUD;
 @property (nonatomic, retain) IBOutlet UIImageView *storyboxImageView;
 @property (nonatomic, retain) IBOutlet UILabel *startDateDayLabel;
 @property (nonatomic, retain) IBOutlet UILabel *startDateMonthYearLabel;
